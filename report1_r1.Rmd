@@ -60,7 +60,6 @@ colnames(df) <- c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
 
 # Display first few rows
 kable(head(df), caption = "First few rows of the dataset") %>% kable_styling()
-<<<<<<< HEAD
 ```
 
 =======
