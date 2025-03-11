@@ -1,6 +1,6 @@
 ---
 title: "Predicting Mortgage Yield using Regression Analysis"
-author: "Group 42 : Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurte"
+author: "Group 42"
 date: "`r Sys.Date()`"
 output: pdf_document
 geometry: margin=2.5cm
@@ -10,8 +10,9 @@ header-includes:
   - \usepackage{amsmath}
   - \usepackage{booktabs}
   - \usepackage{caption}
+  - \usepackage{fancyhdr}
   - \pagestyle{fancy}
-  - \fancyhead[L]{Group Member Names Here}
+  - \fancyhead[L]{Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurte}
   - \fancyfoot[C]{\thepage}
 editor_options: 
   markdown: 
@@ -25,7 +26,6 @@ Mortgage Yield (`mortYld`) is predicted based on economic and demographic factor
 This report investigates the relationship between mortgage yield and six predictor variables:
 =======
 Mortgage Yield (`mortYld`) is predicted based on economic and demographic factors. This study examines how **various economic and geographic factors influence mortgage yield (%)**, using data from historical mortgage reports. The aim is to develop a predictive model for mortgage yield based on six explanatory variables:
->>>>>>> 21ccb1042f3a597c90f879dba1637454adc071d9
 
 -   **X1:** Loan-to-Mortgage Ratio (high values indicate low down
     payments)
