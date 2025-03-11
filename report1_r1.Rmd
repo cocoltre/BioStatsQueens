@@ -63,7 +63,7 @@ kable(head(df), caption = "First few rows of the dataset") %>% kable_styling()
 ```
 
 =======
-
+```{r}
 # Count missing values
 colSums(is.na(df))
 
