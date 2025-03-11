@@ -56,7 +56,7 @@ library(car)  # For VIF (multicollinearity check)
 df <- read.csv("myield.csv")
 
 # Rename columns for easier reference
-colnames(df) <- c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
+colnames(df) <- c("smsa", "mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
 
 # Display first few rows
 kable(head(df), caption = "First few rows of the dataset") %>% kable_styling()
@@ -69,7 +69,7 @@ colSums(is.na(df))
 
 ```
 
->>>>>>> 21ccb1042f3a597c90f879dba1637454adc071d9
+
 ```{r}
 # Summary Statistics
 summary_stats <- summary(df)
