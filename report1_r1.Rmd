@@ -1,6 +1,6 @@
 ---
 title: "Predicting Mortgage Yield using Regression Analysis"
-author: "Your Name(s)"
+author: "Group 42 : Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurte"
 date: "`r Sys.Date()`"
 output: pdf_document
 geometry: margin=2.5cm
@@ -10,6 +10,9 @@ header-includes:
   - \usepackage{amsmath}
   - \usepackage{booktabs}
   - \usepackage{caption}
+  - \pagestyle{fancy}
+  - \fancyhead[L]{Group Member Names Here}
+  - \fancyfoot[C]{\thepage}
 editor_options: 
   markdown: 
     wrap: 72
@@ -17,17 +20,22 @@ editor_options:
 
 # Introduction
 
+<<<<<<< HEAD
 Mortgage Yield (`mortYld`) is predicted based on economic and demographic factors.  
 This report investigates the relationship between mortgage yield and six predictor variables:
+=======
+Mortgage Yield (`mortYld`) is predicted based on economic and demographic factors. This study examines how **various economic and geographic factors influence mortgage yield (%)**, using data from historical mortgage reports. The aim is to develop a predictive model for mortgage yield based on six explanatory variables:
+>>>>>>> 21ccb1042f3a597c90f879dba1637454adc071d9
 
-- **X1:** Loan-to-Mortgage Ratio (high values indicate low down payments)
-- **X2:** Distance from Boston (miles)
-- **X3:** Savings per new unit built
-- **X4:** Savings per capita
-- **X5:** Population increase (1950-1960, %)
-- **X6:** First mortgage from inter-regional banks (%)
+-   **X1:** Loan-to-Mortgage Ratio (high values indicate low down
+    payments)
+-   **X2:** Distance from Boston (miles)
+-   **X3:** Savings per new unit built
+-   **X4:** Savings per capita
+-   **X5:** Population increase (1950-1960, %)
+-   **X6:** First mortgage from inter-regional banks (%)
 
----
+------------------------------------------------------------------------
 
 # Exploratory Data Analysis (EDA)
 
@@ -36,6 +44,7 @@ This report investigates the relationship between mortgage yield and six predict
 ```{r}
 # Load necessary libraries
 library(ggplot2)
+library(tidyverse)
 library(dplyr)
 library(knitr)
 library(kableExtra)
@@ -51,8 +60,17 @@ colnames(df) <- c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
 
 # Display first few rows
 kable(head(df), caption = "First few rows of the dataset") %>% kable_styling()
+<<<<<<< HEAD
 ```
 
+=======
+
+# Count missing values
+colSums(is.na(df))
+
+```
+
+>>>>>>> 21ccb1042f3a597c90f879dba1637454adc071d9
 ```{r}
 # Summary Statistics
 summary_stats <- summary(df)
@@ -68,12 +86,12 @@ kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
 ```{r}
 # Histogram of Mortgage Yield
 ggplot(df, aes(x = mortYld)) + 
-  geom_histogram(binwidth = 0.2, fill = "blue", alpha = 0.6) +
+  geom_histogram(binwidth = 0.2, fill = "blue", color = "black", alpha = 0.6) +
   labs(title = "Distribution of Mortgage Yield", x = "Mortgage Yield (%)", y = "Count")
 
 # Scatter Plot: Mortgage Yield vs Loan/Mortgage Ratio
 ggplot(df, aes(x = X1, y = mortYld)) +
-  geom_point() +
+  geom_point(alpha=0.6) +
   geom_smooth(method = "lm", se = FALSE, color = "red") +
   labs(title = "Mortgage Yield vs Loan/Mortgage Ratio", 
        x = "Loan/Mortgage Ratio", y = "Mortgage Yield (%)")
