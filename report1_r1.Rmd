@@ -21,7 +21,11 @@ editor_options:
 
 # Introduction
 
-Mortgage Yield (`mortYld`) is predicted based on economic and demographic factors. This study examines how **various economic and geographic factors influence mortgage yield (%)**, using data from historical mortgage reports. The aim is to develop a predictive model for mortgage yield based on six explanatory variables:
+Mortgage Yield (`mortYld`) is predicted based on economic and
+demographic factors. This study examines how **various economic and
+geographic factors influence mortgage yield (%)**, using data from
+historical mortgage reports. The aim is to develop a predictive model
+for mortgage yield based on six explanatory variables:
 
 -   **X1:** Loan-to-Mortgage Ratio (high values indicate low down
     payments)
@@ -46,9 +50,10 @@ library(knitr)
 library(kableExtra)
 library(xtable)
 library(MASS)
-library(car)  # For VIF (multicollinearity check)
+library(car)
+library(magrittr)
 
-# Read dataset
+# Read data
 df <- read.csv("myield.csv")
 
 # Rename columns for easier reference
@@ -57,6 +62,7 @@ colnames(df) <- c("smsa", "mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
 # Display first few rows
 kable(head(df), caption = "First few rows of the dataset") %>% kable_styling()
 ```
+
 ```{r}
 # Count missing values
 colSums(is.na(df))
@@ -71,8 +77,16 @@ kable(summary_stats, caption = "Summary Statistics of Variables") %>% kable_styl
 
 ```{r}
 # Correlation Matrix
-cor_matrix <- round(cor(df), 2)
+
+# Select only numeric columns
+df_numeric <- df %>% select(where(is.numeric))
+
+# Compute correlation matrix
+cor_matrix <- round(cor(df_numeric, use = "complete.obs"), 2)  # Use "complete.obs" to handle missing values
+
+# Display the matrix
 kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
+
 ```
 
 ```{r}
@@ -115,7 +129,6 @@ ggplot(data.frame(fitted = fitted(model), residuals = resid(model)), aes(x = fit
   geom_hline(yintercept = 0, linetype = "dashed") +
   labs(title = "Residuals vs Fitted Plot", x = "Fitted Values", y = "Residuals")
 ```
-
 
 ```{r}
 # QQ-Plot of Residuals
