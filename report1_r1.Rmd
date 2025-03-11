@@ -17,94 +17,86 @@ editor_options:
 
 # Introduction
 
-Mortgage Yield (mortYld) is predicted based on economic and demographic
-factors. This report investigates the relationship between mortgage
-yield and six predictor variables:
+Mortgage Yield (`mortYld`) is predicted based on economic and demographic factors. This report investigates the relationship between mortgage yield and six predictor variables:
 
--   **X1:** Loan-to-Mortgage Ratio (high values indicate low down
-    payments)
--   **X2:** Distance from Boston (miles)
--   **X3:** Savings per new unit built
--   **X4:** Savings per capita
--   **X5:** Population increase (1950-1960, %)
--   **X6:** First mortgage from inter-regional banks (%)
+- **X1:** Loan-to-Mortgage Ratio (high values indicate low down payments)
+- **X2:** Distance from Boston (miles)
+- **X3:** Savings per new unit built
+- **X4:** Savings per capita
+- **X5:** Population increase (1950-1960, %)
+- **X6:** First mortgage from inter-regional banks (%)
+
+---
 
 # Exploratory Data Analysis (EDA)
 
 ## Load Data
 
-\`\`\`{r} \# Load necessary libraries library(ggplot2) library(dplyr)
-library(knitr) library(kableExtra) library(xtable)
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(xtable)
 
 # Read dataset
-
-df \<- read.csv("myield.csv")
+df <- read.csv("myield.csv")
 
 # Rename columns for easier reference
-
-colnames(df) \<- c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
+colnames(df) <- c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
 
 # Display first few rows
+kable(head(df), caption = "First few rows of the dataset") %>% kable_styling()
 
-kable(head(df), caption = "First few rows of the dataset") %\>%
-kable_styling()
+```
 
-summary_stats \<- summary(df) kable(summary_stats, caption = "Summary
-Statistics of Variables") %\>% kable_styling()
 
-cor_matrix \<- round(cor(df), 2) kable(cor_matrix, caption =
-"Correlation Matrix") %\>% kable_styling()
+```{r}
+# Summary Statistics
+summary_stats <- summary(df)
+kable(summary_stats, caption = "Summary Statistics of Variables") %>% kable_styling()
+
+# Correlation Matrix
+cor_matrix <- round(cor(df), 2)
+kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
 
 # Histogram of Mortgage Yield
+ggplot(df, aes(x = mortYld)) + 
+  geom_histogram(binwidth = 0.2, fill = "blue", alpha = 0.6) +
+  labs(title = "Distribution of Mortgage Yield", x = "Mortgage Yield (%)", y = "Count")
 
-ggplot(df, aes(x = mortYld)) + geom_histogram(binwidth = 0.2, fill =
-"blue", alpha = 0.6) + labs(title = "Distribution of Mortgage Yield", x
-= "Mortgage Yield (%)", y = "Count")
+# Scatter Plot: Mortgage Yield vs Loan/Mortgage Ratio
+ggplot(df, aes(x = X1, y = mortYld)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(title = "Mortgage Yield vs Loan/Mortgage Ratio", 
+       x = "Loan/Mortgage Ratio", y = "Mortgage Yield (%)")
 
-# Scatter Plots
+```
 
-ggplot(df, aes(x = X1, y = mortYld)) + geom_point() + geom_smooth(method
-= "lm", se = FALSE, color = "red") + labs(title = "Mortgage Yield vs
-Loan/Mortgage Ratio", x = "Loan/Mortgage Ratio", y = "Mortgage Yield
-(%)")
 
+```{r}
 # Fit linear regression model
-
-model \<- lm(mortYld \~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
+model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 
 # Model summary
-
 summary(model)
 
 # Stepwise regression
-
-library(MASS) step_model \<- stepAIC(model, direction = "both")
+library(MASS)
+step_model <- stepAIC(model, direction = "both")
 summary(step_model)
 
 # Residuals vs. Fitted Plot
-
 plot(model, which = 1)
 
 # QQ-Plot of Residuals
-
 plot(model, which = 2)
 
-coeffs \<- round(coef(model), 2) kable(as.data.frame(coeffs), caption =
-"Final Model Coefficients") %\>% kable_styling()
+coeffs <- round(coef(model), 2)
+kable(as.data.frame(coeffs), caption = "Final Model Coefficients") %>% kable_styling()
 
-[ \hat{mortYld} = r coeffs[1] + r coeffs[2] X_1 + r coeffs[3] X_2 + r
-coeffs[4] X_3 + r coeffs[5] X_4 + r coeffs[6] X_5 + r coeffs[7] X_6]
+```
 
-------------------------------------------------------------------------
 
-### Key Features:
-
-✅ **Meets formatting guidelines** (Margins, 12pt, No raw R code)\
-✅ **Follows structured sections** (EDA, Model fitting, Assessment,
-Conclusions)\
-✅ **Uses proper tables and plots** (No blurry images)\
-✅ **Clearly states assumptions and interpretations**\
-✅ **Renders into a clean PDF report**
-
-This should help you **quickly complete your R1 report in RMarkdown**!
-Let me know if you need adjustments. 🚀
