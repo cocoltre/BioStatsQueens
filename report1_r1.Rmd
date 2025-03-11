@@ -21,10 +21,6 @@ editor_options:
 
 # Introduction
 
-<<<<<<< HEAD
-Mortgage Yield (`mortYld`) is predicted based on economic and demographic factors.  
-This report investigates the relationship between mortgage yield and six predictor variables:
-=======
 Mortgage Yield (`mortYld`) is predicted based on economic and demographic factors. This study examines how **various economic and geographic factors influence mortgage yield (%)**, using data from historical mortgage reports. The aim is to develop a predictive model for mortgage yield based on six explanatory variables:
 
 -   **X1:** Loan-to-Mortgage Ratio (high values indicate low down
@@ -61,14 +57,11 @@ colnames(df) <- c("smsa", "mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
 # Display first few rows
 kable(head(df), caption = "First few rows of the dataset") %>% kable_styling()
 ```
-
-=======
 ```{r}
 # Count missing values
 colSums(is.na(df))
 
 ```
-
 
 ```{r}
 # Summary Statistics
