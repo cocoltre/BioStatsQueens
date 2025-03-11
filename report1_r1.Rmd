@@ -17,7 +17,8 @@ editor_options:
 
 # Introduction
 
-Mortgage Yield (`mortYld`) is predicted based on economic and demographic factors. This report investigates the relationship between mortgage yield and six predictor variables:
+Mortgage Yield (`mortYld`) is predicted based on economic and demographic factors.  
+This report investigates the relationship between mortgage yield and six predictor variables:
 
 - **X1:** Loan-to-Mortgage Ratio (high values indicate low down payments)
 - **X2:** Distance from Boston (miles)
@@ -30,7 +31,7 @@ Mortgage Yield (`mortYld`) is predicted based on economic and demographic factor
 
 # Exploratory Data Analysis (EDA)
 
-## Load Data
+## Load Data and Libraries
 
 ```{r}
 # Load necessary libraries
@@ -39,6 +40,8 @@ library(dplyr)
 library(knitr)
 library(kableExtra)
 library(xtable)
+library(MASS)
+library(car)  # For VIF (multicollinearity check)
 
 # Read dataset
 df <- read.csv("myield.csv")
@@ -48,19 +51,21 @@ colnames(df) <- c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
 
 # Display first few rows
 kable(head(df), caption = "First few rows of the dataset") %>% kable_styling()
-
 ```
-
 
 ```{r}
 # Summary Statistics
 summary_stats <- summary(df)
 kable(summary_stats, caption = "Summary Statistics of Variables") %>% kable_styling()
+```
 
+```{r}
 # Correlation Matrix
 cor_matrix <- round(cor(df), 2)
 kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
+```
 
+```{r}
 # Histogram of Mortgage Yield
 ggplot(df, aes(x = mortYld)) + 
   geom_histogram(binwidth = 0.2, fill = "blue", alpha = 0.6) +
@@ -75,7 +80,6 @@ ggplot(df, aes(x = X1, y = mortYld)) +
 
 ```
 
-
 ```{r}
 # Fit linear regression model
 model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
@@ -84,19 +88,36 @@ model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 summary(model)
 
 # Stepwise regression
-library(MASS)
 step_model <- stepAIC(model, direction = "both")
 summary(step_model)
+```
 
-# Residuals vs. Fitted Plot
-plot(model, which = 1)
+```{r}
+# Compute Variance Inflation Factor (VIF)
+vif_values <- vif(model)
+kable(as.data.frame(vif_values), caption = "Variance Inflation Factors (VIF)") %>% kable_styling()
+```
 
+```{r}
+# Residuals vs Fitted Plot
+ggplot(data.frame(fitted = fitted(model), residuals = resid(model)), aes(x = fitted, y = residuals)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(title = "Residuals vs Fitted Plot", x = "Fitted Values", y = "Residuals")
+```
+
+
+```{r}
 # QQ-Plot of Residuals
-plot(model, which = 2)
+ggplot(data.frame(sample = qqnorm(resid(model), plot.it = FALSE)$x, theoretical = qqline(resid(model), plot.it = FALSE)), 
+       aes(sample, theoretical)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1, linetype = "dashed") +
+  labs(title = "QQ-Plot of Residuals", x = "Theoretical Quantiles", y = "Sample Quantiles")
+```
 
+```{r}
 coeffs <- round(coef(model), 2)
 kable(as.data.frame(coeffs), caption = "Final Model Coefficients") %>% kable_styling()
 
 ```
-
-
