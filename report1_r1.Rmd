@@ -128,13 +128,15 @@ summary(step_model)
 ## Multicolinearity Check using VIF
 
 a VIF \> 5 indicates possible multicollinearity that can be problematic
-: we are not able to identify the variables associated with this
-collinearity but we will have to do it next.
+
+:   we are not able to identify the variables associated with this
+    collinearity but we will have to do it next.
 
 ```{r}
 # Compute Variance Inflation Factor (VIF)
 vif_values <- vif(model)
-kable(as.data.frame(vif_values), caption = "Variance Inflation Factors (VIF)") %>% kable_styling()
+kable(as.data.frame(vif_values), caption = "Variance Inflation Factors (VIF)")
+kable_styling()
 
 ```
 
@@ -168,7 +170,8 @@ qqline(resid(model), col = "red")
 
 ```{r}
 coeffs <- round(coef(model), 2)
-kable(as.data.frame(coeffs), caption = "Final Model Coefficients") %>% kable_styling()
+kable(as.data.frame(coeffs), caption = "Final Model Coefficients") 
+kable_styling()
 ```
 
 # Conclusions
