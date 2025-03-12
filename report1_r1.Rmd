@@ -69,40 +69,40 @@ colSums(is.na(df))
 
 ```
 
+## Summary Statistics
+
 ```{r}
 # Summary Statistics
 summary_stats <- summary(df)
 kable(summary_stats, caption = "Summary Statistics of Variables") %>% kable_styling()
 ```
 
+## Correlation Analysis
+
 ```{r}
 # Correlation Matrix
-
-# Select only numeric columns
-df_numeric <- df %>% select(where(is.numeric))
-
 # Compute correlation matrix
-cor_matrix <- round(cor(df_numeric, use = "complete.obs"), 2)  # Use "complete.obs" to handle missing values
-
-# Display the matrix
+cor_matrix <- round(cor(df[,3:8]), 2)  # Excluding 'smsa' and 'mortYld'
 kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
-
 ```
+
+## Visualizations
 
 ```{r}
 # Histogram of Mortgage Yield
 ggplot(df, aes(x = mortYld)) + 
-  geom_histogram(binwidth = 0.2, fill = "blue", color = "black", alpha = 0.6) +
+  geom_histogram(binwidth = 0.2, fill = "blue", alpha = 0.6) +
   labs(title = "Distribution of Mortgage Yield", x = "Mortgage Yield (%)", y = "Count")
 
 # Scatter Plot: Mortgage Yield vs Loan/Mortgage Ratio
 ggplot(df, aes(x = X1, y = mortYld)) +
-  geom_point(alpha=0.6) +
+  geom_point() +
   geom_smooth(method = "lm", se = FALSE, color = "red") +
   labs(title = "Mortgage Yield vs Loan/Mortgage Ratio", 
        x = "Loan/Mortgage Ratio", y = "Mortgage Yield (%)")
-
 ```
+
+# Model Fitting
 
 ```{r}
 # Fit linear regression model
@@ -111,16 +111,38 @@ model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 # Model summary
 summary(model)
 
-# Stepwise regression
+```
+
+## Make stepwise regression to select the best model
+
+By removing some of the variables
+
+```{r}
+# Stepwise regression (both directions)
 step_model <- stepAIC(model, direction = "both")
 summary(step_model)
 ```
+
+# Model assumptions and Diagnostics
+
+## Multicolinearity Check using VIF
+
+a VIF \> 5 indicates possible multicollinearity that can be problematic
+: we are not able to identify the variables associated with this
+collinearity but we will have to do it next.
 
 ```{r}
 # Compute Variance Inflation Factor (VIF)
 vif_values <- vif(model)
 kable(as.data.frame(vif_values), caption = "Variance Inflation Factors (VIF)") %>% kable_styling()
+
 ```
+
+## Residuals Analysis
+
+Random scatter indicates good assumption of homeoscedasticity. If we can
+distinguish a clear pattern, then we have potential heteroscedasticity
+issue.
 
 ```{r}
 # Residuals vs Fitted Plot
@@ -130,17 +152,30 @@ ggplot(data.frame(fitted = fitted(model), residuals = resid(model)), aes(x = fit
   labs(title = "Residuals vs Fitted Plot", x = "Fitted Values", y = "Residuals")
 ```
 
+## Normality Check
+
+If points lie on 45 degrees line, it means the residuals are normally
+distributed. If we can see a curved pattern, then the normality
+assumption is violated
+
 ```{r}
 # QQ-Plot of Residuals
-ggplot(data.frame(sample = qqnorm(resid(model), plot.it = FALSE)$x, theoretical = qqline(resid(model), plot.it = FALSE)), 
-       aes(sample, theoretical)) +
-  geom_point() +
-  geom_abline(intercept = 0, slope = 1, linetype = "dashed") +
-  labs(title = "QQ-Plot of Residuals", x = "Theoretical Quantiles", y = "Sample Quantiles")
+qqnorm(resid(model))
+qqline(resid(model), col = "red")
 ```
+
+# Final estimated Model
 
 ```{r}
 coeffs <- round(coef(model), 2)
 kable(as.data.frame(coeffs), caption = "Final Model Coefficients") %>% kable_styling()
+```
 
+# Conclusions
+
+```         
+•   The analysis showed that [mention significant predictors] have a strong relationship with mortgage yield.
+•   The assumptions of linear regression were [state if met or violated].
+•   The model provides [good/poor] predictive accuracy based on [R² and residual analysis].
+•   Future improvements could involve [mention possible improvements like transformations, additional predictors, etc.].
 ```
