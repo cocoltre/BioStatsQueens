@@ -102,6 +102,8 @@ ggplot(df, aes(x = X1, y = mortYld)) +
        x = "Loan/Mortgage Ratio", y = "Mortgage Yield (%)")
 ```
 
+------------------------------------------------------------------------
+
 # Model Fitting
 
 ```{r}
@@ -123,6 +125,8 @@ step_model <- stepAIC(model, direction = "both")
 summary(step_model)
 ```
 
+------------------------------------------------------------------------
+
 # Model assumptions and Diagnostics
 
 ## Multicolinearity Check using VIF
@@ -135,8 +139,7 @@ a VIF \> 5 indicates possible multicollinearity that can be problematic
 ```{r}
 # Compute Variance Inflation Factor (VIF)
 vif_values <- vif(model)
-kable(as.data.frame(vif_values), caption = "Variance Inflation Factors (VIF)")
-kable_styling()
+kable(as.data.frame(vif_values), caption = "Variance Inflation Factors (VIF)") %>% kable_styling()
 
 ```
 
@@ -166,13 +169,16 @@ qqnorm(resid(model))
 qqline(resid(model), col = "red")
 ```
 
+------------------------------------------------------------------------
+
 # Final estimated Model
 
 ```{r}
 coeffs <- round(coef(model), 2)
-kable(as.data.frame(coeffs), caption = "Final Model Coefficients") 
-kable_styling()
+kable(as.data.frame(coeffs), caption = "Final Model Coefficients") %>% kable_styling()
 ```
+
+------------------------------------------------------------------------
 
 # Conclusions
 
