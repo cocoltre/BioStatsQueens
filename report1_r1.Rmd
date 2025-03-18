@@ -11,6 +11,8 @@ header-includes:
   - \usepackage{booktabs}
   - \usepackage{caption}
   - \usepackage{fancyhdr}
+  - \usepackage{ragged2e}
+  - \justifying
   - \pagestyle{fancy}
   - \fancyhead[L]{Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurte}
   - \fancyfoot[C]{\thepage}
@@ -21,19 +23,45 @@ editor_options:
 
 # Introduction
 
-Mortgage Yield (`mortYld`) is predicted based on economic and
-demographic factors. This study examines how **various economic and
-geographic factors influence mortgage yield (%)**, using data from
-historical mortgage reports. The aim is to develop a predictive model
-for mortgage yield based on six explanatory variables:
-
--   **X1:** Loan-to-Mortgage Ratio (high values indicate low down
-    payments)
--   **X2:** Distance from Boston (miles)
--   **X3:** Savings per new unit built
--   **X4:** Savings per capita
--   **X5:** Population increase (1950-1960, %)
--   **X6:** First mortgage from inter-regional banks (%)
+The study of A. H. Schaaf, 1966, "Regional Differences in Mortgage
+Financing Costs" investigates the existence and causes of regional
+differences in mortgage financing costs in the United States. These
+differences in mortgage yields have decreased in the early 20th century,
+however they remained stable after World War 2. The paper explores two
+main explanations for this phenomenon:\
+\
+**1.** differences in investment value due to risk, terms, and
+liquidity\
+**2.** market imperfections such as legal barriers and information
+gaps.\
+\
+The data used in this study comes from the Federal Home Loan Bank Board,
+which contains interest rates and fees in 18 SMSAs (Standard
+Metropolitan Statistical Areas). The findings suggest that distance from
+major financial centers, risk levels, and local demand for savings
+significantly affect mortgage yields. However, market structure and
+overall savings levels play a lesser role.\
+\
+The aim of this report is to analyze the data and develop a predictive
+model to predict Mortgage Yield (`mortYld`) based on 8 explanatory
+variables:\
+\
+- **smsa:** Standard Metropolitan Statistical Areas (18) → Name of the
+city/region.\
+- **mortYld:** Mortgage Yield, in % → The percentage return on a
+mortgage.\
+- **X1:** Loan-to-Mortgage Ratio, in % → High values indicate low down
+payments.\
+- **X2:** Distance from Boston, in miles → Measures regional proximity
+to financial centers.\
+- **X3:** Savings per new unit built, in \$ → Indicator of regional
+credit demand.\
+- **X4:** Savings per capita, in \$ → Measures local savings levels
+(credit supply).\
+- **X5:** Population increase, 1950-1960, in % → Proxy for housing
+demand growth.\
+- **X6:** Percentage of first mortgages from inter-regional banks, in %
+→ Indicator of external financing reliance.\
 
 ------------------------------------------------------------------------
 
