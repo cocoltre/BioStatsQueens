@@ -184,45 +184,9 @@ savings. It could indicate higher affordability and lower mortgage yield
 in some regions. we can see there is at least an outlier for Population
 Increase (X5)
 
-## Bivariate Numerical Analysis : Correlation Analysis
+## Bivariate Numerical Analysis
 
-### Numerical : correlation matrix
-
-```{r}
-# Correlation Matrix
-# Compute correlation matrix
-cor_matrix <- round(cor(df[,3:8]), 2)  # Excluding 'smsa' and 'mortYld'
-kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
-```
-
-X3 (Savings per New Unit Built) and X4 (Savings per Capita) seem to be
-strongly correlated (0.77). X2 (Distance from Boston) and X3 (Savings
-per New Unit Built) have a high negative correlation (-0.64). X3
-(Savings per New Unit Built) is also negatively correlated with X5
-(Population Growth) at -0.63.
-
-We can then think about removing one of the highly correlated
-predictors, if multicollinearity affects the regression model.
-
-### Graphical : Heatmap and Scatter Plot
-
-```{r}
-library(ggplot2)
-library(reshape2)
-
-# Convert correlation matrix to long format for heatmap
-melted_cor <- melt(cor_matrix)
-
-# Reverse the order of the y-axis (Var2) so that X1 appears at the top-left
-ggplot(data = melted_cor, aes(x=Var1, y=factor(Var2, levels=rev(unique(Var2))), fill=value)) + 
-  geom_tile() +
-  scale_fill_gradient2(low="blue", high="red", mid="white", 
-                       midpoint=0, limit=c(-1,1), space="Lab") +
-  scale_x_discrete(position = "top") +  # Move X-axis labels to top
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 0)) + # Rotate labels for readability
-  ggtitle("Correlation Heatmap")
-```
+### Association Analysis
 
 ```{r}
 # Set up a 2x3 grid for multiple scatter plots
@@ -248,9 +212,49 @@ for (i in 1:6) {
 par(mfrow = c(1, 1))
 
 ```
+Tell about positive, negative associations, weak, strong ? (week 2 slide 5)
 
-Tell about positive, negative, linear, unclear relationships... Strong
-or weak. Analyse curvature.
+### Correlation analysis
+
+```{r}
+# Correlation Matrix
+# Compute correlation matrix
+cor_matrix <- round(cor(df[,3:8]), 2)  # Excluding 'smsa' and 'mortYld'
+kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
+```
+Numerical interpretation : LINEAR RELASHIONSHIPS
+
+X3 (Savings per New Unit Built) and X4 (Savings per Capita) seem to be
+strongly correlated (0.77). X2 (Distance from Boston) and X3 (Savings
+per New Unit Built) have a high negative correlation (-0.64). X3
+(Savings per New Unit Built) is also negatively correlated with X5
+(Population Growth) at -0.63.
+
+We can then think about removing one of the highly correlated
+predictors, if multicollinearity affects the regression model.
+
+numerical value of r : curve ? outliers? parallel lines? 
+
+### Graphical : Heatmap and Scatter Plot
+
+```{r}
+library(ggplot2)
+library(reshape2)
+
+# Convert correlation matrix to long format for heatmap
+melted_cor <- melt(cor_matrix)
+
+# Reverse the order of the y-axis (Var2) so that X1 appears at the top-left
+ggplot(data = melted_cor, aes(x=Var1, y=factor(Var2, levels=rev(unique(Var2))), fill=value)) + 
+  geom_tile() +
+  scale_fill_gradient2(low="blue", high="red", mid="white", 
+                       midpoint=0, limit=c(-1,1), space="Lab") +
+  scale_x_discrete(position = "top") +  # Move X-axis labels to top
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 0)) + # Rotate labels for readability
+  ggtitle("Correlation Heatmap")
+```
+### faire une dispersion matrix ? slide 28 cours 2
 
 ------------------------------------------------------------------------
 
