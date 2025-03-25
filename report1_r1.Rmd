@@ -198,7 +198,7 @@ var_names <- c("Loan-to-Mortgage Ratio", "Distance from Boston",
                "Population Increase", "First Mortgage from Inter-Regional Banks")
 
 # Define colors for better visualization
-point_colors <- c("blue", "red", "green", "purple", "orange", "cyan")
+point_colors <- c("red", "blue", "green", "purple", "orange", "cyan")
 
 # Loop through each variable (X1 to X6) and create a scatterplot against mortYld
 for (i in 1:6) {
