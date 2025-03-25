@@ -252,6 +252,16 @@ pairs(selected_vars,
 
 ```
 
+The scatterplot matrix provides a quick visual assessment of linearity,
+strength of associations, potential collinearity among predictors, and
+outlier detection. It complements numerical analyses like the
+correlation matrix and VIF.
+
+We can visualizes bivariate relationships, **how each variable relates
+to the others**, especially to mortYld and assess if a relationship is
+linear, curved, or weak, positive or negative.We can also spot
+**outliers** or cities that don’t follow the general trend.
+
 Tell about positive, negative associations, weak, strong ? (week 2 slide
 5)
 
