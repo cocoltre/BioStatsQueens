@@ -245,7 +245,7 @@ selected_vars <- df[, c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")]
 
 # Create the scatter plot matrix
 pairs(selected_vars, 
-      main = "Association Matrix of Variables",
+      main = "Association Matrix of Variables and mortYld",
       col = "blue",   # Set color for points
       pch = 19)       # Use solid dots for points
 
@@ -270,7 +270,7 @@ Tell about positive, negative associations, weak, strong ? (week 2 slide
 ```{r}
 # Correlation Matrix
 # Compute correlation matrix
-cor_matrix <- round(cor(df[,3:8]), 2)  # Excluding 'smsa' and 'mortYld'
+cor_matrix <- round(cor(df[,2:8]), 2)  # Excluding 'smsa'
 kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
 ```
 
