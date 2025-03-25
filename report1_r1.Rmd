@@ -226,6 +226,20 @@ pairs(selected_vars,
 
 
 ```
+
+The scatterplot matrix provides a quick visual assessment of linearity,
+strength of associations, potential collinearity among predictors, and
+outlier detection. It complements numerical analyses like the
+correlation matrix and VIF.
+
+We can visualizes bivariate relationships, **how each variable relates
+to the others**, especially to mortYld and assess if a relationship is
+linear, curved, or weak, positive or negative.We can also spot
+**outliers** or cities that don’t follow the general trend.
+
+Tell about positive, negative associations, weak, strong ? (week 2 slide
+5)
+
 ```{r}
 # Set up a 2x3 grid for multiple scatter plots
 par(mfrow = c(2, 3))
@@ -251,18 +265,50 @@ par(mfrow = c(1, 1))
 
 ```
 
-The scatterplot matrix provides a quick visual assessment of linearity,
-strength of associations, potential collinearity among predictors, and
-outlier detection. It complements numerical analyses like the
-correlation matrix and VIF.
-
-We can visualizes bivariate relationships, **how each variable relates
-to the others**, especially to mortYld and assess if a relationship is
-linear, curved, or weak, positive or negative.We can also spot
-**outliers** or cities that don’t follow the general trend.
-
-Tell about positive, negative associations, weak, strong ? (week 2 slide
-5)
+Let's take a closer look into the Association Matrix, regarding the
+relationship between Mortgage Yield (%) and the explanatory variables
+(x-axis).\
+**1. Loan-to-Mortgage Ratio:** As this ratio increases, the Mortgage
+Yield increases. This suggests a positive correlation, and that higher
+loan-to-mortgage ratios (more borrowed money relative to the property
+value) are associated with higher mortgage yields. This is likely due to
+increased risk for lenders when down payments are low.\
+**2. Distance from Boston:** There is a positive correlation. Boston
+represents a major financial center with surplus capital. Regions
+further from Boston might have higher yields due to higher transfer
+costs or credit shortages.\
+**3. Savings per New Unit Built :** There is a negative correlation.
+This indicates that areas with more savings dedicated to new
+construction have better access to local financing, resulting in lower
+mortgage yields. It reflects regional credit demand and its influence on
+yield determination.\
+**4. Savings per Capita:** The relationship is less clear but appears to
+be a weak negative correlation. This suggesting that greater local
+savings levels (credit supply) may reduce the need for external
+financing. However, the impact is not as strong as the previous plots.\
+**5. Population Increase:** There is a positive correlation. High
+population growth may imply higher demand for housing, increasing
+mortgage yields due to heightened competition for available funds.
+Reflects regional economic growth and housing demand.\
+**6. First Mortgage from Inter-Regional Banks:** No clear trend. It
+seems like the reliance on external financing (measured by the
+percentage of first mortgages from inter-regional banks) does not
+significantly influence mortgage yields. The absence of a trend could
+indicate that other factors, such as local market structures and
+policies, play a more prominent role.\
+\
+**To resume:**\
+- Loan-to-Mortgage Ratio (X1), Distance from Boston (X2), and Population
+Increase (X5) are the most influential variables positively correlated
+with Mortgage Yield.\
+- Savings per New Unit Built (X3) is the most influential negative
+variable, indicating that local savings availability can effectively
+reduce yields.\
+- The Savings per Capita (X4) and External Financing (X6) variables show
+weak relationships with mortgage yields.\
+- These observations support the findings of Schaaf (1966) that distance
+from financial centers, risk factors, and local demand for savings
+contribute to yield variations.\
 
 ### Correlation analysis
 
