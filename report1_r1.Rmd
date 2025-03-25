@@ -189,9 +189,38 @@ Increase (X5)
 ## Bivariate Numerical Analysis
 
 ### Association Analysis
+```{r}
+# Set up a 2x3 grid for multiple scatter plots
+par(mfrow = c(2, 3))
+
+# Define variable names
+var_names <- c("Loan-to-Mortgage Ratio", "Distance from Boston", 
+               "Savings per New Unit Built", "Savings per Capita", 
+               "Population Increase", "First Mortgage from Inter-Regional Banks")
+
+# Define colors for better visualization
+point_colors <- c("red", "blue", "green", "purple", "orange", "cyan")
+
+# Loop through each variable (X1 to X6) and create a scatter plot with mortYld on the Y-axis
+for (i in 1:6) {
+  plot(df[[paste0("X", i)]], df$mortYld,
+       main = paste(var_names[i], "vs Mortgage Yield"),
+       xlab = var_names[i], ylab = "Mortgage Yield (%)",
+       col = point_colors[i], pch = 19)
+}
+
+# Reset plotting parameters to default
+par(mfrow = c(1, 1))
+
+```
 
 ```{r}
-# Select only the relevant numerical variables (X1 to X6 and mortYld)
+# Adjust the plotting window size to be square-like (you may need to resize RStudio plot panel)
+par(mfrow = c(1, 1))  # Reset to 1x1 layout
+par(mai = c(1, 1, 1, 1))  # Adjust margins to give more space around the plot
+par(pin = c(10, 10))  # Set plot aspect ratio manually (width and height in inches)
+
+# Select relevant numerical variables
 selected_vars <- df[, c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")]
 
 # Create the scatter plot matrix
