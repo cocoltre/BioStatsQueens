@@ -212,7 +212,9 @@ for (i in 1:6) {
 par(mfrow = c(1, 1))
 
 ```
-Tell about positive, negative associations, weak, strong ? (week 2 slide 5)
+
+Tell about positive, negative associations, weak, strong ? (week 2 slide
+5)
 
 ### Correlation analysis
 
@@ -222,6 +224,7 @@ Tell about positive, negative associations, weak, strong ? (week 2 slide 5)
 cor_matrix <- round(cor(df[,3:8]), 2)  # Excluding 'smsa' and 'mortYld'
 kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
 ```
+
 Numerical interpretation : LINEAR RELASHIONSHIPS
 
 X3 (Savings per New Unit Built) and X4 (Savings per Capita) seem to be
@@ -233,7 +236,7 @@ per New Unit Built) have a high negative correlation (-0.64). X3
 We can then think about removing one of the highly correlated
 predictors, if multicollinearity affects the regression model.
 
-numerical value of r : curve ? outliers? parallel lines? 
+numerical value of r : curve ? outliers? parallel lines?
 
 ### Graphical : Heatmap and Scatter Plot
 
@@ -254,6 +257,7 @@ ggplot(data = melted_cor, aes(x=Var1, y=factor(Var2, levels=rev(unique(Var2))), 
   theme(axis.text.x = element_text(angle = 45, hjust = 0)) + # Rotate labels for readability
   ggtitle("Correlation Heatmap")
 ```
+
 ### faire une dispersion matrix ? slide 28 cours 2
 
 ------------------------------------------------------------------------
