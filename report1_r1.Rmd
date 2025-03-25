@@ -273,6 +273,11 @@ Tell about positive, negative associations, weak, strong ? (week 2 slide
 cor_matrix <- round(cor(df[,2:8]), 2)  # Excluding 'smsa'
 kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
 ```
+```{r}
+cor(residuals(lm(df$X2 ~ df$X3)), residuals(lm(df$X6 ~ df$X3)))
+
+```
+We see that X2 is only weakly positively correlated (r = 0.21) to X6 after controlling for X3; compare this to the much higher simple correlation (r = 0.60). In other words, much of the apparent correlation between X2 and X6 can be explained by their mutual positive correlation with X3.
 
 Numerical interpretation : LINEAR RELASHIONSHIPS
 
