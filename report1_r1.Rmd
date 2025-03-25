@@ -316,6 +316,9 @@ contribute to yield variations.\
 ### Correlation analysis
 
 ```{r}
+cor_matrix <- round(cor(df[, 2:8]), 2)  # Excludes 'smsa'
+cor_df <- as.data.frame(cor_matrix)
+
 # Table
 kable(cor_df, caption = "Correlation Matrix (Variables: mortYld to X6)", 
       align = 'c', booktabs = TRUE) %>%
