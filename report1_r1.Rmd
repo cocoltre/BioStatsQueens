@@ -69,7 +69,7 @@ demand growth.\
 
 ## Load Data and Libraries
 
-```{r}
+```{r, echo=FALSE}
 # Load necessary libraries
 library(ggplot2)
 library(tidyverse)
@@ -316,6 +316,13 @@ contribute to yield variations.\
 ### Correlation analysis
 
 ```{r}
+# Correlation matrix
+cor_matrix <- cor(df[, c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")])
+
+# Save the correlation matrix as a data frame for display
+cor_df <- as.data.frame(round(cor_matrix, 2))
+
+
 # Table
 kable(cor_df, caption = "Correlation Matrix (Variables: mortYld to X6)", 
       align = 'c', booktabs = TRUE) %>%
