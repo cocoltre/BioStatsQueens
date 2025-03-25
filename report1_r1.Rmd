@@ -68,6 +68,7 @@ demand growth.\
 # Exploratory Data Analysis (EDA)
 
 ## Load Data and Libraries
+
 ```{r global-options, include=FALSE}
 knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
                       echo=FALSE, warning=FALSE, message=FALSE)
@@ -373,6 +374,18 @@ numerical value of r : curve ? outliers? parallel lines?
 ------------------------------------------------------------------------
 
 # Model Fitting
+
+In this analysis, all predictors are continuous variables and each
+observation corresponds to a unique SMSA (Standard Metropolitan
+Statistical Area). Since the dataset contains no grouping or categorical
+factors with unequal group sizes, this is a standard multiple regression
+model with one observation per row. Therefore, the design is not
+factorial and does not involve unbalanced group structures. As a result,
+the order in which predictors are entered into the lm() function does
+not influence the coefficient estimates, F-tests, or model
+interpretation. This contrasts with unbalanced ANOVA-type models, where
+order matters due to sequential sum of squares (Type I). In our case,
+standard regression assumptions apply, and order is not a concern.
 
 ## Pairwise Simple Regressions
 
