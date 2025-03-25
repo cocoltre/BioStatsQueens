@@ -189,7 +189,7 @@ Increase (X5)
 ### Association Analysis
 
 ```{r}
-# Set up a 2x3 grid for multiple scatter plots
+# Set up a 2x3 grid for multiple histograms
 par(mfrow = c(2, 3))
 
 # Define variable names
@@ -198,18 +198,20 @@ var_names <- c("Loan-to-Mortgage Ratio", "Distance from Boston",
                "Population Increase", "First Mortgage from Inter-Regional Banks")
 
 # Define colors for better visualization
-point_colors <- c("red", "blue", "green", "purple", "orange", "cyan")
+hist_colors <- c("red", "blue", "green", "purple", "orange", "cyan")
 
-# Loop through each variable (X1 to X6) and create a scatterplot against mortYld
+# Loop through each variable (X1 to X6) and create a histogram
 for (i in 1:6) {
-  plot(df[[paste0("X", i)]], df$mortYld,
-       main = paste(var_names[i], "vs Mortgage Yield"),
-       xlab = var_names[i], ylab = "Mortgage Yield (%)",
-       col = point_colors[i], pch = 19)
+  hist(df[[paste0("X", i)]], 
+       main = paste("Histogram of", var_names[i]),
+       xlab = var_names[i], 
+       col = hist_colors[i], 
+       border = "black")
 }
 
 # Reset plotting parameters to default
 par(mfrow = c(1, 1))
+
 
 ```
 Tell about positive, negative associations, weak, strong ? (week 2 slide 5)
