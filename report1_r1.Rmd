@@ -189,6 +189,7 @@ Increase (X5)
 ## Bivariate Numerical Analysis
 
 ### Association Analysis
+
 ```{r}
 # Set up a 2x3 grid for multiple scatter plots
 par(mfrow = c(2, 3))
@@ -304,7 +305,6 @@ data.frame(
   kable_styling()
 ```
 
-
 ## Null Model vs Full Model Comparison
 
 ```{r}
@@ -315,7 +315,8 @@ full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 anova(null_model, full_model)
 ```
 
-Here we can see that the Null model don't fit the data. We really should the variables.
+Here we can see that the Null model don't fit the data. We really should
+the variables.
 
 ```{r}
 # Fit linear regression model
