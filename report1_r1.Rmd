@@ -145,8 +145,8 @@ ggplot(df, aes(x = reorder(smsa, mortYld), y = mortYld)) +
   theme_minimal()
 
 
-# Set up a 2x3 plotting area
-par(mfrow = c(2, 3))  
+# Set up a 2x3 grid for multiple histograms
+par(mfrow = c(2, 3))
 
 # Define variable names
 var_names <- c("Loan-to-Mortgage Ratio", "Distance from Boston", 
@@ -154,18 +154,20 @@ var_names <- c("Loan-to-Mortgage Ratio", "Distance from Boston",
                "Population Increase", "First Mortgage from Inter-Regional Banks")
 
 # Define colors for better visualization
-box_colors <- c("red", "blue", "green", "purple", "orange", "cyan")
+hist_colors <- c("red", "blue", "green", "purple", "orange", "cyan")
 
-# Loop through each variable (X1 to X6) and create a boxplot
+# Loop through each variable (X1 to X6) and create a histogram
 for (i in 1:6) {
-  boxplot(df[[paste0("X", i)]], 
-          main = var_names[i], 
-          col = box_colors[i], 
-          ylab = "Value")
+  hist(df[[paste0("X", i)]], 
+       main = paste("Histogram of", var_names[i]),
+       xlab = var_names[i], 
+       col = hist_colors[i], 
+       border = "black")
 }
 
 # Reset plotting parameters to default
 par(mfrow = c(1, 1))
+
 ```
 
 1st graph : doesn't seem to follows a normal distribution.
@@ -189,28 +191,14 @@ Increase (X5)
 ### Association Analysis
 
 ```{r}
-# Set up a 2x3 grid for multiple histograms
-par(mfrow = c(2, 3))
+# Select only the relevant numerical variables (X1 to X6 and mortYld)
+selected_vars <- df[, c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")]
 
-# Define variable names
-var_names <- c("Loan-to-Mortgage Ratio", "Distance from Boston", 
-               "Savings per New Unit Built", "Savings per Capita", 
-               "Population Increase", "First Mortgage from Inter-Regional Banks")
-
-# Define colors for better visualization
-hist_colors <- c("red", "blue", "green", "purple", "orange", "cyan")
-
-# Loop through each variable (X1 to X6) and create a histogram
-for (i in 1:6) {
-  hist(df[[paste0("X", i)]], 
-       main = paste("Histogram of", var_names[i]),
-       xlab = var_names[i], 
-       col = hist_colors[i], 
-       border = "black")
-}
-
-# Reset plotting parameters to default
-par(mfrow = c(1, 1))
+# Create the scatter plot matrix
+pairs(selected_vars, 
+      main = "Association Matrix of Variables",
+      col = "blue",   # Set color for points
+      pch = 19)       # Use solid dots for points
 
 
 ```
