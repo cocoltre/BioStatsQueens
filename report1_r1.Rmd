@@ -178,13 +178,32 @@ we see regional differences exist in mortgage yields, possibly due to
 economic factors like savings, loan terms, and regional banking
 practices.
 
-3rd graph : There is a little variability for Loan-to-Mortgage Ratio,
-which might suggest that this variable has limited predictive power in
-explaining mortgage yield variation. X3 and X4 have right-skewed
-distribution (longer upper whisker) meaning a few cities have very high
-savings. It could indicate higher affordability and lower mortgage yield
-in some regions. we can see there is at least an outlier for Population
-Increase (X5)
+3rd graph :
+
+The histograms reveal the characteristics of the predictor variables.
+
+The loan-to-mortgage ratio (X1) shows low variance with most values
+concentrated between 70% and 78%, indicating limited variability across
+regions. It might suggest that this variable has limited predictive
+power in explaining mortgage yield variation.
+
+Distance from Boston (X2) displays a wide and multimodal distribution,
+reflecting substantial geographic spread among SMSAs.
+
+Savings per new unit built (X3) and savings per capita (X4) both exhibit
+right-skewed distributions, suggesting that a few cities have notably
+higher savings levels.
+
+Population increase (X5) is highly skewed with one major outlier,
+indicating that most cities had moderate growth, while a few experienced
+rapid expansion. We can also observe potential outliers.
+
+Finally, the percentage of first mortgages from inter-regional banks
+(X6) is also right-skewed, with most cities relying minimally on
+external financing and a few showing heavy dependence.
+
+These patterns suggest that certain variables may benefit from
+transformation prior to regression modeling.
 
 ## Bivariate Numerical Analysis
 
@@ -226,12 +245,22 @@ selected_vars <- df[, c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")]
 
 # Create the scatter plot matrix
 pairs(selected_vars, 
-      main = "Association Matrix of Variables",
+      main = "Association Matrix of Variables and mortYld",
       col = "blue",   # Set color for points
       pch = 19)       # Use solid dots for points
 
 
 ```
+
+The scatterplot matrix provides a quick visual assessment of linearity,
+strength of associations, potential collinearity among predictors, and
+outlier detection. It complements numerical analyses like the
+correlation matrix and VIF.
+
+We can visualizes bivariate relationships, **how each variable relates
+to the others**, especially to mortYld and assess if a relationship is
+linear, curved, or weak, positive or negative.We can also spot
+**outliers** or cities that don’t follow the general trend.
 
 Tell about positive, negative associations, weak, strong ? (week 2 slide
 5)
@@ -241,7 +270,7 @@ Tell about positive, negative associations, weak, strong ? (week 2 slide
 ```{r}
 # Correlation Matrix
 # Compute correlation matrix
-cor_matrix <- round(cor(df[,3:8]), 2)  # Excluding 'smsa' and 'mortYld'
+cor_matrix <- round(cor(df[,2:8]), 2)  # Excluding 'smsa'
 kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
 ```
 
