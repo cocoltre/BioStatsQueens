@@ -68,8 +68,12 @@ demand growth.\
 # Exploratory Data Analysis (EDA)
 
 ## Load Data and Libraries
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
+                      echo=FALSE, warning=FALSE, message=FALSE)
+```
 
-```{r, echo=FALSE}
+```{r}
 # Load necessary libraries
 library(ggplot2)
 library(tidyverse)
