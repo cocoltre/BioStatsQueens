@@ -110,7 +110,7 @@ each region.
 
 ```{r}
 # Summary Statistics
-summary_stats <- summary(df)
+summary_stats <- summary(df[, colnames(df) != "smsa"])
 kable(summary_stats, caption = "Summary Statistics of Variables") %>% kable_styling()
 ```
 
@@ -254,6 +254,7 @@ ggplot(data = melted_cor, aes(x=Var1, y=factor(Var2, levels=rev(unique(Var2))), 
                        midpoint=0, limit=c(-1,1), space="Lab") +
   scale_x_discrete(position = "top") +  # Move X-axis labels to top
   theme_minimal() +
+  coord_fixed() +
   theme(axis.text.x = element_text(angle = 45, hjust = 0)) + # Rotate labels for readability
   ggtitle("Correlation Heatmap")
 ```
@@ -352,8 +353,17 @@ assumption is violated
 
 ```{r}
 # QQ-Plot of Residuals
-qqnorm(resid(model))
-qqline(resid(model), col = "red")
+residuals <- resid(model)  # Extract residuals
+
+# Set up a square plotting area
+par(pty = "s")  
+
+# Generate the Q-Q plot
+qqnorm(residuals, main = "Q-Q Plot of Residuals") #Normal Q-Q Plot
+qqline(residuals, col = "red")
+
+# Reset plotting parameters (optional)
+par(pty = "m")  
 ```
 
 ------------------------------------------------------------------------
