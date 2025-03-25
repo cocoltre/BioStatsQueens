@@ -267,6 +267,36 @@ ggplot(data = melted_cor, aes(x=Var1, y=factor(Var2, levels=rev(unique(Var2))), 
 
 # Model Fitting
 
+## Pairwise Simple Regressions
+
+```{r}
+# Pairwise Simple Regressions
+models_simple <- lapply(1:6, function(i) {
+  formula <- as.formula(paste("mortYld ~ X", i, sep = ""))
+  lm(formula, data = df)
+})
+
+simple_summaries <- lapply(models_simple, summary)
+
+data.frame(
+  Predictor = paste0("X", 1:6),
+  R_squared = sapply(simple_summaries, function(m) round(m$r.squared, 3)),
+  p_value = sapply(simple_summaries, function(m) round(coef(m)[2,4], 4))
+) %>%
+  kable(caption = "Simple Linear Regressions: R² and p-values") %>%
+  kable_styling()
+```
+
+## Null Model vs Full Model Comparison
+
+```{r}
+# Null Model vs Full Model Comparison
+null_model <- lm(mortYld ~ 1, data = df)
+full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
+
+anova(null_model, full_model)
+```
+
 ```{r}
 # Fit linear regression model
 model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
@@ -314,6 +344,29 @@ summary(step_interaction_model)
 ```
 
 This model is worse then with all 3-way interactions.
+
+## Model Comparison
+
+```{r}
+# Compare model performances
+adj_r2_compare <- data.frame(
+  Model = c("Full Model", "Stepwise Model", "2-Way Interaction Model"),
+  Adj_R2 = c(
+    summary(full_model)$adj.r.squared,
+    summary(step_model)$adj.r.squared,
+    summary(reduced_interaction_model)$adj.r.squared
+  )
+)
+
+kable(adj_r2_compare, caption = "Adjusted R² for Different Models") %>% kable_styling()
+
+# Compare AIC
+aic_compare <- AIC(full_model, step_model, reduced_interaction_model)
+kable(aic_compare, caption = "AIC for Different Models") %>% kable_styling()
+
+# Compare with ANOVA
+anova(full_model, step_model, reduced_interaction_model)
+```
 
 ------------------------------------------------------------------------
 
