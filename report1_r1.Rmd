@@ -422,7 +422,7 @@ The stepwise regression process identified X1, X3, and X4 as the most
 significant predictors of mortality yield, leading to the final model.:\
 The AIC isn't increased by a lot when keeping the other variables, which
 means that these are still statistically valid but not so useful.:\
-mortYld = 4.223 + 0.02229.X1 − 0.001863.X3 + 0.0002249.X4\
+mortYld = 4.223 + 0.02229.X1 - 0.001863.X3 + 0.0002249.X4\
 Now we will test a model with 3-way interactions.
 
 ```{r}
@@ -530,8 +530,7 @@ par(pty = "m")
 # Final estimated Model
 
 ```{r}
-coeffs <- round(coef(model), 2)
-kable(as.data.frame(coeffs), caption = "Final Model Coefficients") %>% kable_styling()
+
 ```
 
 ------------------------------------------------------------------------
