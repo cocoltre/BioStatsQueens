@@ -428,6 +428,7 @@ model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 summary(model)
 
 ```
+We see that this model does not guve us information about each coefficient except the intercept. We have to pursue the analysis further. 
 
 ## Make stepwise regression to select the best model
 
