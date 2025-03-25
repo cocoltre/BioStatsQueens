@@ -234,11 +234,17 @@ correlation matrix and VIF.
 
 We can visualizes bivariate relationships, **how each variable relates
 to the others**, especially to mortYld and assess if a relationship is
-linear, curved, or weak, positive or negative.We can also spot
+linear, curved, or weak, positive or negative. We can also spot
 **outliers** or cities that don’t follow the general trend.
 
-Tell about positive, negative associations, weak, strong ? (week 2 slide
-5)
+We can see that most of the plots are random dispersion, some are
+linear, and some are curved. X3 seems to be positively associated with
+X4 and negatively with X5. X2:X3 seems more exponential, mortYld seems
+to be square root associated with X5.
+
+Let's take a closer look into the Association Matrix, regarding the
+relationship between Mortgage Yield (%) and the explanatory variables
+(x-axis).
 
 ```{r}
 # Set up a 2x3 grid for multiple scatter plots
@@ -265,9 +271,6 @@ par(mfrow = c(1, 1))
 
 ```
 
-Let's take a closer look into the Association Matrix, regarding the
-relationship between Mortgage Yield (%) and the explanatory variables
-(x-axis).\
 **1. Loan-to-Mortgage Ratio:** As this ratio increases, the Mortgage
 Yield increases. This suggests a positive correlation, and that higher
 loan-to-mortgage ratios (more borrowed money relative to the property
@@ -313,10 +316,26 @@ contribute to yield variations.\
 ### Correlation analysis
 
 ```{r}
-# Correlation Matrix
-# Compute correlation matrix
-cor_matrix <- round(cor(df[,2:8]), 2)  # Excluding 'smsa'
-kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
+# Table
+kable(cor_df, caption = "Correlation Matrix (Variables: mortYld to X6)", 
+      align = 'c', booktabs = TRUE) %>%
+  kable_styling(full_width = FALSE, position = "left") %>%
+  row_spec(0, bold = TRUE)
+
+# Heatmap
+library(reshape2)
+melted_cor <- melt(cor_matrix)
+
+ggplot(data = melted_cor, aes(x=Var1, y=factor(Var2, levels=rev(unique(Var2))), fill=value)) + 
+  geom_tile() +
+  scale_fill_gradient2(low="blue", high="red", mid="white", 
+                       midpoint=0, limit=c(-1,1), space="Lab") +
+  scale_x_discrete(position = "top") +
+  coord_fixed() +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 0)) +
+  ggtitle("Correlation Heatmap")
+
 ```
 
 ```{r}
@@ -342,29 +361,6 @@ We can then think about removing one of the highly correlated
 predictors, if multicollinearity affects the regression model.
 
 numerical value of r : curve ? outliers? parallel lines?
-
-### Graphical : Heatmap and Scatter Plot
-
-```{r}
-library(ggplot2)
-library(reshape2)
-
-# Convert correlation matrix to long format for heatmap
-melted_cor <- melt(cor_matrix)
-
-# Reverse the order of the y-axis (Var2) so that X1 appears at the top-left
-ggplot(data = melted_cor, aes(x=Var1, y=factor(Var2, levels=rev(unique(Var2))), fill=value)) + 
-  geom_tile() +
-  scale_fill_gradient2(low="blue", high="red", mid="white", 
-                       midpoint=0, limit=c(-1,1), space="Lab") +
-  scale_x_discrete(position = "top") +  # Move X-axis labels to top
-  theme_minimal() +
-  coord_fixed() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 0)) + # Rotate labels for readability
-  ggtitle("Correlation Heatmap")
-```
-
-### faire une dispersion matrix ? slide 28 cours 2
 
 ------------------------------------------------------------------------
 
@@ -424,8 +420,9 @@ summary(step_model)
 
 The stepwise regression process identified X1, X3, and X4 as the most
 significant predictors of mortality yield, leading to the final model.:\
-The AIC isn't increased by a lot when keeping the other variables, which means that these are still statistically valid but not so useful.:\
-mortYld = 4.223 + 0.02229.X1 − 0.001863.X3 + 0.0002249.X4\
+The AIC isn't increased by a lot when keeping the other variables, which
+means that these are still statistically valid but not so useful.:\
+mortYld = 4.223 + 0.02229.X1 - 0.001863.X3 + 0.0002249.X4\
 Now we will test a model with 3-way interactions.
 
 ```{r}
@@ -533,8 +530,7 @@ par(pty = "m")
 # Final estimated Model
 
 ```{r}
-coeffs <- round(coef(model), 2)
-kable(as.data.frame(coeffs), caption = "Final Model Coefficients") %>% kable_styling()
+
 ```
 
 ------------------------------------------------------------------------
