@@ -318,11 +318,17 @@ contribute to yield variations.\
 cor_matrix <- round(cor(df[,2:8]), 2)  # Excluding 'smsa'
 kable(cor_matrix, caption = "Correlation Matrix") %>% kable_styling()
 ```
+
 ```{r}
 cor(residuals(lm(df$X2 ~ df$X3)), residuals(lm(df$X6 ~ df$X3)))
 
 ```
-We see that X2 is only weakly positively correlated (r = 0.21) to X6 after controlling for X3; compare this to the much higher simple correlation (r = 0.60). In other words, much of the apparent correlation between X2 and X6 can be explained by their mutual positive correlation with X3.
+
+We see that X2 is only weakly positively correlated (r = 0.21) to X6
+after controlling for X3; compare this to the much higher simple
+correlation (r = 0.60). In other words, much of the apparent correlation
+between X2 and X6 can be explained by their mutual positive correlation
+with X3.
 
 Numerical interpretation : LINEAR RELASHIONSHIPS
 
@@ -417,7 +423,8 @@ summary(step_model)
 ```
 
 The stepwise regression process identified X1, X3, and X4 as the most
-significant predictors of mortality yield, leading to the final model:\
+significant predictors of mortality yield, leading to the final model.:\
+The AIC isn't increased by a lot when keeping the other variables, which means that these are still statistically valid but not so useful.:\
 mortYld = 4.223 + 0.02229.X1 − 0.001863.X3 + 0.0002249.X4\
 Now we will test a model with 3-way interactions.
 
