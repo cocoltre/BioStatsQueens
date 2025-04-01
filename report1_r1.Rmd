@@ -62,7 +62,7 @@ to financial centers.\
 credit demand.\
 - **X4:** Savings per Capita, in \$ → Measures local savings levels
 (credit supply).\
-- **X5:** Population increase, 1950-1960, in % → Proxy for housing
+- **X5:** Population Increase, 1950-1960, in % → Proxy for housing
 demand growth.\
 <<<<<<< HEAD
 - **X6:** Percentage of first mortgages from inter-regional banks, in %
@@ -143,7 +143,7 @@ kable(summary_stats, caption = "Summary Statistics of Variables") %>%
 Through this summary, we already observe that mortgage yields don’t vary much across regions. Most values are between 5.2% and
 6.2%, suggesting relatively stable mortgage rates.
 
-Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%, indicating relatively consistent lending practices across regions. Distance from Boston (X2) has a vast range (0–3162 miles), highlighting geographical diversity and potential financial access disparities. Savings per New Unit Built (X3) and Savings per Capita (X4) are characterized by means bigger than medians, representing right-skewed distributions, thus suggesting regional imbalances in credit demand and supply/in housing affordability across regions. Population increase (X5) from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing housing market pressures. Lastly, Percentage of First Mortgages from Inter-Regional Banks (X6) spans from 2.0% to 51.3%, meaning that some areas depend heavily on external financing while others rely more on local institutions.
+Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%, indicating relatively consistent lending practices across regions. Distance from Boston (X2) has a vast range (0–3162 miles), highlighting geographical diversity and potential financial access disparities. Savings per New Unit Built (X3) and Savings per Capita (X4) are characterized by means bigger than medians, representing right-skewed distributions, thus suggesting regional imbalances in credit demand and supply/in housing affordability across regions. Population Increase (X5) from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing housing market pressures. Lastly, Percentage of First Mortgages from Inter-Regional Banks (X6) spans from 2.0% to 51.3%, meaning that some areas depend heavily on external financing while others rely more on local institutions.
 
 
 ### Graphical Representation
@@ -201,7 +201,7 @@ substantial geographic spread among SMSAs.
 Savings per New Unit Built (X3) and Savings per Capita (X4) both exhibit
 right-skewed distributions, suggesting that a few cities have notably
 higher savings levels.
-Population increase (X5) is also highly right-skewed with one major outlier (increase of %~%25%),
+Population Increase (X5) is also highly right-skewed with one major outlier (increase of %~%25%),
 indicating that most regions had moderate growth, while a few experienced
 rapid expansion.
 Finally, the percentage of First Mortgages from Inter-Regional Banks
@@ -301,9 +301,10 @@ significantly influence mortgage yields.\
 **To resume:**\
 - X1, X2 and X5 seem to be the most influential variables positively
 correlated with Mortgage Yield.\
-- X3 is the most influential negative variable.\
-- X4 X6 variables show weak relationships with mortgage yields.\
-- These observations support the findings of Schaaf (1966) that distance
+- X3 is the most influential variable negatively
+correlated with Mortgage Yield.\
+- X4 and X6 variables show weak relationships with mortgage yields.\
+These observations support the findings of Schaaf (1966) that distance
 from financial centers, risk factors, and local demand for savings
 contribute to yield variations.\
 
