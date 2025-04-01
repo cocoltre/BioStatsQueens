@@ -467,9 +467,9 @@ variation in mortYld. The intercept appears to be really significant to
 fit the model.
 
 However, most variables do not show statistically significant individual
-contributions. Only X1 and X3 show strong significance (p ≈ 0.05). Other
-variables, X2, X5 and X6, do not show strong individual effects. This
-suggests that a reduced model may be more interpretable.
+contributions. Only X1 and X3 show strong significance (p $\approx$
+0.05). Other variables, X2, X5 and X6, do not show strong individual
+effects. This suggests that a reduced model may be more interpretable.
 
 ## Make stepwise regression to select the best model
 
