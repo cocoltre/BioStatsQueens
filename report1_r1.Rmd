@@ -60,7 +60,7 @@ credit demand.\
 (credit supply).\
 - **X5:** Population increase, 1950-1960, in % → Proxy for housing
 demand growth.\
-- **X6:** Percentage of first mortgages from inter-regional banks, in %
+- **X6:** Percentage of First Mortgages from Inter-Regional Banks, in %
 → Indicator of external financing reliance.\
 
 ------------------------------------------------------------------------
@@ -107,7 +107,7 @@ colSums(is.na(df))
 ```
 
 Here is a display of the first few rows of the dataset. Each SMSA is described by
-its mortgage yield (`mortYld`) as the dependent variable and six explanatory
+its Mortgage Yield (`mortYld`) as the dependent variable and six explanatory
 variables (X1 to X6). All data consist of numerical values and quick checking confirms that there are no missing values in any region.
 
 ## Univariate Analysis
@@ -123,7 +123,7 @@ kable(summary_stats, caption = "Summary Statistics of Variables") %>% kable_styl
 Through this summary, we already observe that mortgage yields don’t vary much across regions. Most values are between 5.2% and
 6.2%, suggesting relatively stable mortgage rates.
 
-Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%, indicating relatively consistent lending practices across regions. Distance from Boston (X2) has a vast range (0–3162 miles), highlighting geographical diversity and potential financial access disparities. Savings per New Unit Built (X3) and Savings per Capita (X4) are characterized by means bigger than medians, representing right-skewed distributions, thus suggesting regional imbalances in credit demand and supply/in housing affordability across regions. Population increase (X5) from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing housing market pressures. Lastly, Percentage of first mortgages from inter-regional banks (X6) spans from 2.0% to 51.3%, meaning that some areas depend heavily on external financing while others rely more on local institutions.
+Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%, indicating relatively consistent lending practices across regions. Distance from Boston (X2) has a vast range (0–3162 miles), highlighting geographical diversity and potential financial access disparities. Savings per New Unit Built (X3) and Savings per Capita (X4) are characterized by means bigger than medians, representing right-skewed distributions, thus suggesting regional imbalances in credit demand and supply/in housing affordability across regions. Population increase (X5) from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing housing market pressures. Lastly, Percentage of First Mortgages from Inter-Regional Banks (X6) spans from 2.0% to 51.3%, meaning that some areas depend heavily on external financing while others rely more on local institutions.
 
 
 ### Graphical Representation
@@ -184,7 +184,7 @@ higher savings levels.
 Population increase (X5) is also highly right-skewed with one major outlier (increase of %~%25%),
 indicating that most regions had moderate growth, while a few experienced
 rapid expansion.
-Finally, the percentage of first mortgages from inter-regional banks
+Finally, the percentage of First Mortgages from Inter-Regional Banks
 (X6) is also right-skewed, with most cities relying minimally on
 external financing and a few showing heavy dependence.
 
@@ -212,23 +212,23 @@ pairs(selected_vars,
 
 ```
 
-The scatterplot matrix provides a quick visual assessment of linearity,
-strength of associations among predictors, and outlier detection. It
+The Association Matrix provides a quick visual assessment of linearity,
+strength of linear associations among predictors, and outlier detection. It
 complements numerical analyses like the correlation matrix and VIF.
 
-We can visualizes bivariate relationships, how each variable relates to
-the others, especially to mortYld and assess if a relationship is
-linear, curved, or weak, positive or negative. We can also spot outliers
+We visualize bivariate relationships, i.e. how each variable relates to
+the others and mortYld, and assess if a relationship looks
+linear, curved or weak, as well as positive or negative. We can also spot outliers
 or cities that don’t follow the general trend.
 
-We can see that most of the plots are random dispersion, some are
+We can see that most of the plots are random dispersion, while some are
 linear, and some are curved. X3 seems to be positively associated with
 X4 and negatively with X5. X2 and X3 seem exponentially associated.
-mortYld and X5 seem to be associated in a squared root maner.
+X6 seems to be negatively associated with X3.
 
 Let's take a closer look into the Association Matrix, regarding the
 relationship between Mortgage Yield (%) and the explanatory variables
-(x-axis), representing the first column in the precedent figure.
+(x-axis), representing the first row in the precedent figure.
 
 ```{r, fig.width=10, fig.height=5}
 # Set up a 2x3 grid for multiple scatter plots
@@ -257,16 +257,16 @@ par(mfrow = c(1, 1))
 
 **1. Loan-to-Mortgage Ratio:** As this ratio increases, the Mortgage
 Yield increases. This suggests a positive correlation, and that higher
-loan-to-mortgage ratios (more borrowed money relative to the property
+Loan-to-Mortgage Ratios (more borrowed money relative to the property
 value) are associated with higher mortgage yields.\
 **2. Distance from Boston:** There is a positive correlation. Boston
 represents a major financial center with surplus capital. Regions
 further from Boston might have higher yields.\
-**3. Savings per New Unit Built :** There is a negative correlation.
+**3. Savings per New Unit Built :** There seems to be a negative correlation.
 This indicates that areas with more savings dedicated to new
 construction have better access to local financing, resulting in lower
 mortgage yields.\
-**4. Savings per Capita:** The relationship is less clear but appears to
+**4. Savings per Capita:** The relationship is less distinguishable but appears to
 be a weak negative correlation or a random dispersion.\
 **5. Population Increase:** There is a positive association which can be
 seen as a square-root relationship. High population growth may imply
@@ -275,7 +275,7 @@ competition for available funds. We can observe a potential outlier at
 the right side of the plot.\
 **6. First Mortgage from Inter-Regional Banks:** No clear trend. It
 seems like the reliance on external financing (measured by the
-percentage of first mortgages from inter-regional banks) does not
+Percentage of First Mortgages from Inter-Regional Banks) does not
 significantly influence mortgage yields.\
 \
 **To resume:**\
