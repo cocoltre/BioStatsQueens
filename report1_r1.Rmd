@@ -20,7 +20,7 @@ header-includes:
   - \usepackage{multicol}
   - \justifying
   - \pagestyle{fancy}
-  - \fancyhead[L]{Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurte}
+  - \fancyhead[L]{Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurtre}
   - \fancyfoot[C]{\thepage}
 editor_options: 
   markdown: 
@@ -31,14 +31,12 @@ editor_options:
 
 The study of A. H. Schaaf, 1966, "Regional Differences in Mortgage
 Financing Costs" investigates the existence and causes of regional
-differences in mortgage financing costs in the United States. These
-differences in mortgage yields have decreased in the early 20th century,
-however they remained stable after World War 2. The paper explores two
-main explanations for this phenomenon:\
+differences in mortgage financing costs in the United States. While these
+differences in mortgage yields were decreasing in the early 20th century, they suprinsingly remained stable after World War II. The paper explores two main explanations for this phenomenon:\
 \
-**1.** differences in investment value due to risk, terms, and
-liquidity\
-**2.** market imperfections such as legal barriers and information
+**1.** Differences in investment value due to risk, terms, and
+liquidity.\
+**2.** Market imperfections such as legal barriers and information
 gaps.\
 \
 The data used in this study comes from the Federal Home Loan Bank Board,
@@ -49,13 +47,9 @@ significantly affect mortgage yields. However, market structure and
 overall savings levels play a lesser role.\
 \
 The aim of this report is to analyze the data and develop a predictive
-model to predict Mortgage Yield (`mortYld`) based on 8 explanatory
+model to predict Mortgage Yield (`mortYld` in %) based on 6 explanatory
 variables:\
 \
-- **smsa:** Standard Metropolitan Statistical Areas (18) → Name of the
-city/region.\
-- **mortYld:** Mortgage Yield, in % → The percentage return on a
-mortgage.\
 - **X1:** Loan-to-Mortgage Ratio, in % → High values indicate low down
 payments.\
 - **X2:** Distance from Boston, in miles → Measures regional proximity
@@ -467,7 +461,7 @@ variation in mortYld. The intercept appears to be really significant to
 fit the model.
 
 However, most variables do not show statistically significant individual
-contributions. Only X1 and X3 show strong significance (p ≈ 0.05). Other
+contributions. Only X1 and X3 show strong significance (p %~~% 0.05). Other
 variables, X2, X5 and X6, do not show strong individual effects. This
 suggests that a reduced model may be more interpretable.
 
