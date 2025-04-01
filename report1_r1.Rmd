@@ -20,11 +20,7 @@ header-includes:
   - \usepackage{multicol}
   - \justifying
   - \pagestyle{fancy}
-<<<<<<< HEAD
   - \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurte}
-=======
-  - \fancyhead[L]{Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurtre}
->>>>>>> 8f6a53ecbe505010c0a1093b8a29576b20010806
   - \fancyfoot[C]{\thepage}
 editor_options: 
   markdown: 
@@ -64,13 +60,8 @@ credit demand.\
 (credit supply).\
 - **X5:** Population Increase, 1950-1960, in % → Proxy for housing
 demand growth.\
-<<<<<<< HEAD
 - **X6:** Percentage of first mortgages from inter-regional banks, in %
 → Indicator of external financing reliance.
-=======
-- **X6:** Percentage of First Mortgages from Inter-Regional Banks, in %
-→ Indicator of external financing reliance.\
->>>>>>> 8f6a53ecbe505010c0a1093b8a29576b20010806
 
 ------------------------------------------------------------------------
 
@@ -116,18 +107,12 @@ colSums(is.na(df))
 
 ```
 
-<<<<<<< HEAD
 Here is a display of the data, on the first few rows of the dataset. It
 contains 8 columns. smsa is the Standard Metropolitan Statistical Area,
 which is the name of the city/region. Mortgage yield (mortYld) is the
 dependent variable, and X1 to X6 are the six variables. We can observe
 that all data are numerical values and there is no missing value for
 each region.
-=======
-Here is a display of the first few rows of the dataset. Each SMSA is described by
-its Mortgage Yield (`mortYld`) as the dependent variable and six explanatory
-variables (X1 to X6). All data consist of numerical values and quick checking confirms that there are no missing values in any region.
->>>>>>> 8f6a53ecbe505010c0a1093b8a29576b20010806
 
 ## Univariate Analysis
 
@@ -451,15 +436,9 @@ variation in mortYld. The intercept appears to be really significant to
 fit the model.
 
 However, most variables do not show statistically significant individual
-<<<<<<< HEAD
-contributions. Only X1 and X3 show strong significance (p %~~% 0.05). Other
-variables, X2, X5 and X6, do not show strong individual effects. This
-suggests that a reduced model may be more interpretable.
-=======
 contributions. Only X1 and X3 show strong significance (p $\approx$
 0.05). Other variables, X2, X5 and X6, do not show strong individual
 effects. This suggests that a reduced model may be more interpretable.
->>>>>>> 47138a17d1ee1c6bb3daa11dde3bd15baa14cc0d
 
 ## Make stepwise regression to select the best model
 
