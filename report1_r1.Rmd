@@ -32,7 +32,7 @@ editor_options:
 The study of A. H. Schaaf, 1966, "Regional Differences in Mortgage
 Financing Costs" investigates the existence and causes of regional
 differences in mortgage financing costs in the United States. While these
-differences in mortgage yields were decreasing in the early 20th century, they suprinsingly remained stable after World War II. The paper explores two main explanations for this phenomenon:\
+differences in mortgage yields were decreasing in the early 20th century, they suprisingly remained stable after World War II. The paper explores two main explanations for this phenomenon:\
 \
 **1.** Differences in investment value due to risk, terms, and
 liquidity.\
@@ -44,7 +44,7 @@ which contains interest rates and fees in 18 SMSAs (Standard
 Metropolitan Statistical Areas). The findings suggest that distance from
 major financial centers, risk levels, and local demand for savings
 significantly affect mortgage yields. However, market structure and
-overall savings levels play a lesser role.\
+overall savings levels play a lesser important role.\
 \
 The aim of this report is to analyze the data and develop a predictive
 model to predict Mortgage Yield (`mortYld` in %) based on 6 explanatory
@@ -106,12 +106,9 @@ colSums(is.na(df))
 
 ```
 
-Here is a display of the data, on the first few rows of the dataset. It
-contains mortgage yield (mortYld) as the dependent variable and six
-variables (X1 to X6). smsa represents the Standard Metropolitan
-Statistical Area which is the name of the city/region. We can observe
-that all data are numerical values and there is no missing value for
-each region.
+Here is a display of the first few rows of the dataset. Each smsa is described by
+its mortgage yield (`mortYld`) as the dependent variable and six explanatory
+variables (X1 to X6). All data consist of numerical values and quick checking confirms that there are no missing values in any region.
 
 ## Univariate Analysis
 
