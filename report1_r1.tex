@@ -38,46 +38,6 @@
 \makeatother
 \usepackage{xcolor}
 \usepackage[margin=2.5cm]{geometry}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -104,7 +64,7 @@
 \usepackage{multicol}
 \justifying
 \pagestyle{fancy}
-\fancyhead[L]{Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurte}
+\fancyhead[L]{Delandre, Garcia, Biocchi, Leteurte}
 \fancyfoot[C]{\thepage}
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -179,7 +139,7 @@ credit demand.\\
 - \textbf{X5:} Population increase, 1950-1960, in \% → Proxy for housing
 demand growth.\\
 - \textbf{X6:} Percentage of first mortgages from inter-regional banks,
-in \% → Indicator of external financing reliance.\\
+in \% → Indicator of external financing reliance.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -187,6 +147,8 @@ in \% → Indicator of external financing reliance.\\
 (EDA)}\label{exploratory-data-analysis-eda}
 
 \subsection{Load Data and Libraries}\label{load-data-and-libraries}
+
+\begingroup\fontsize{8}{10}\selectfont
 
 \begin{longtable}[t]{lrrrrrrr}
 \caption{\label{tab:unnamed-chunk-1}First few rows of the dataset}\\
@@ -202,22 +164,20 @@ Miami & 6.02 & 77.4 & 1542 & 119.1 & 1136.7 & 88.9 & 18.7\\
 Atlanta & 6.02 & 73.6 & 1074 & 32.3 & 582.9 & 39.9 & 26.6\\
 \bottomrule
 \end{longtable}
-
-\begin{verbatim}
-##    smsa mortYld      X1      X2      X3      X4      X5      X6 
-##       0       0       0       0       0       0       0       0
-\end{verbatim}
+\endgroup{}
 
 Here is a display of the data, on the first few rows of the dataset. It
-contains mortgage yield (mortYld) as the dependent variable and six
-variables (X1 to X6). smsa represents the Standard Metropolitan
-Statistical Area which is the name of the city/region. We can observe
+contains 8 columns. smsa is the Standard Metropolitan Statistical Area,
+which is the name of the city/region. Mortgage yield (mortYld) is the
+dependent variable, and X1 to X6 are the six variables. We can observe
 that all data are numerical values and there is no missing value for
 each region.
 
 \subsection{Univariate Analysis}\label{univariate-analysis}
 
 \subsubsection{Summary Statistics}\label{summary-statistics}
+
+\begingroup\fontsize{8}{10}\selectfont
 
 \begin{longtable}[t]{llllllll}
 \caption{\label{tab:unnamed-chunk-3}Summary Statistics of Variables}\\
@@ -233,6 +193,7 @@ each region.
  & Max.   :6.170 & Max.   :78.10 & Max.   :3162 & Max.   :428.2 & Max.   :2582.4 & Max.   :88.90 & Max.   :51.30\\
 \bottomrule
 \end{longtable}
+\endgroup{}
 
 We can observe that each variable 18 observations corresponding to 18
 different SMSAs. Through this summary, we can already observe mortgage
@@ -359,16 +320,6 @@ These correlations tell only about the if the variables are linearly
 associated. A low value doesn't mean that the variables are not
 correlated in another way.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{cor}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(}\FunctionTok{lm}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{X2 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ df}\SpecialCharTok{$}\NormalTok{X3)), }\FunctionTok{residuals}\NormalTok{(}\FunctionTok{lm}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{X6 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ df}\SpecialCharTok{$}\NormalTok{X3)))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 0.3760938
-\end{verbatim}
-
 We can also see that X2 is only weakly positively correlated (r = 0.21)
 to X6 after controlling for X3; compare this to the much higher simple
 correlation (r = 0.60). In other words, much of the apparent correlation
@@ -391,8 +342,10 @@ F-tests, or model interpretation.
 \subsection{Pairwise Simple
 Regressions}\label{pairwise-simple-regressions}
 
+\begingroup\fontsize{8}{10}\selectfont
+
 \begin{longtable}[t]{lrr}
-\caption{\label{tab:unnamed-chunk-9}Simple Linear Regressions: R² and p-values}\\
+\caption{\label{tab:unnamed-chunk-8}Simple Linear Regressions: $R^2$ and p-values}\\
 \toprule
 Predictor & R\_squared & p\_value\\
 \midrule
@@ -405,36 +358,28 @@ X5 & 0.419 & 0.0037\\
 X6 & 0.346 & 0.0103\\
 \bottomrule
 \end{longtable}
+\endgroup{}
 
 The table summarizes the strength of individual linear relationships
 between each predictor (X1--X6) and the mortgage yield using simple
 linear regression.
 
-\begin{verbatim}
-•   **X1** has the **strongest linear association** with mortgage yield,
-\end{verbatim}
-
-explaining approximately \textbf{65.4\% of its variance} and is highly
-significant (p \textless{} 0.001)
-
-\begin{verbatim}
-•   **X2** and **X3** also show strong and significant associations (R² =
-\end{verbatim}
-
-0.546 and 0.517, respectively).
-
-\begin{verbatim}
-•   **X5** and **X6** show moderate yet significant associations (R² =
-\end{verbatim}
-
-0.419 and 0.346).
-
-\begin{verbatim}
-•   **X4 (Savings per Capita)** does **not** show a significant
-\end{verbatim}
-
-relationship with mortgage yield (R² = 0.049, p = 0.3763), suggesting it
-may not be a strong individual predictor.
+\begin{itemize}
+\item
+  \textbf{X1} has the \textbf{strongest linear association} with
+  mortgage yield, explaining approximately \textbf{65.4\% of its
+  variance} and is highly significant (p \textless{} 0.001)
+\item
+  \textbf{X2} and \textbf{X3} also show strong and significant
+  associations (\(R^2\) = 0.546 and 0.517, respectively).
+\item
+  \textbf{X5} and \textbf{X6} show moderate yet significant associations
+  (\(R^2\) = 0.419 and 0.346).
+\item
+  \textbf{X4 (Savings per Capita)} does \textbf{not} show a significant
+  relationship with mortgage yield (\(R^2\) = 0.049, p = 0.3763),
+  suggesting it may not be a strong individual predictor.
+\end{itemize}
 
 This preliminary analysis indicates that variables X1, X2, and X3 are
 the most promising candidates for predicting mortgage yield in a
@@ -642,8 +587,10 @@ difficult to interpret meaningfully.
 
 \subsection{Model Comparison}\label{model-comparison}
 
+\begingroup\fontsize{8}{10}\selectfont
+
 \begin{longtable}[t]{lrrrrr}
-\caption{\label{tab:unnamed-chunk-14}Comparison of Model Performance Metrics}\\
+\caption{\label{tab:unnamed-chunk-13}Comparison of Model Performance Metrics}\\
 \toprule
 Model & R2 & Adj\_R2 & AIC & Residual\_SE & F\_statistic\\
 \midrule
@@ -652,6 +599,7 @@ Stepwise Model & 0.863 & 0.834 & -29.731 & 0.091 & 29.493\\
 2-Way Interaction Model & 0.870 & 0.799 & -24.600 & 0.100 & 12.250\\
 \bottomrule
 \end{longtable}
+\endgroup{}
 
 The \textbf{Stepwise Model} offers the best trade-off between simplicity
 and performance: It has the \textbf{lowest AIC}, indicating the best
@@ -689,7 +637,7 @@ Diagnostics}\label{model-assumptions-and-diagnostics}
 
 \subsection{Independence evaluation}\label{independence-evaluation}
 
-\includegraphics{Figs/unnamed-chunk-16-1.pdf}
+\includegraphics{Figs/unnamed-chunk-15-1.pdf}
 
 The 1st graph shows that the residuals appear randomly scattered around
 0. There's no clear pattern. This suggests the assumptions of linearity
@@ -701,8 +649,10 @@ the independance is verified.
 \subsection{Multicolinearity
 diagnostic}\label{multicolinearity-diagnostic}
 
+\begingroup\fontsize{8}{10}\selectfont
+
 \begin{longtable}[t]{lr}
-\caption{\label{tab:unnamed-chunk-17}Variance Inflation Factors (VIF)}\\
+\caption{\label{tab:unnamed-chunk-16}Variance Inflation Factors (VIF)}\\
 \toprule
  & vif\_values\\
 \midrule
@@ -711,6 +661,7 @@ X3 & 4.550125\\
 X4 & 3.348330\\
 \bottomrule
 \end{longtable}
+\endgroup{}
 
 All variables have a VIF value under 5 meaning that variables are not
 too highly related and that no variable should be eliminated. This
@@ -723,7 +674,7 @@ Random scatter indicates good assumption of homeoscedasticity. If we can
 distinguish a clear pattern, then we have potential heteroscedasticity
 issue.
 
-\includegraphics{Figs/unnamed-chunk-18-1.pdf}
+\includegraphics{Figs/unnamed-chunk-17-1.pdf}
 
 \subsection{Normality Check}\label{normality-check}
 
@@ -731,7 +682,7 @@ If points lie on 45 degrees line, it means the residuals are normally
 distributed. If we can see a curved pattern, then the normality
 assumption is violated
 
-\includegraphics{Figs/unnamed-chunk-19-1.pdf}
+\includegraphics{Figs/unnamed-chunk-18-1.pdf}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 

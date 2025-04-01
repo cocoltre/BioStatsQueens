@@ -20,7 +20,7 @@ header-includes:
   - \usepackage{multicol}
   - \justifying
   - \pagestyle{fancy}
-  - \fancyhead[L]{Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurte}
+  - \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurte}
   - \fancyfoot[C]{\thepage}
 editor_options: 
   markdown: 
@@ -67,7 +67,7 @@ credit demand.\
 - **X5:** Population increase, 1950-1960, in % → Proxy for housing
 demand growth.\
 - **X6:** Percentage of first mortgages from inter-regional banks, in %
-→ Indicator of external financing reliance.\
+→ Indicator of external financing reliance.
 
 ------------------------------------------------------------------------
 
@@ -103,19 +103,20 @@ df <- read.csv("myield.csv")
 colnames(df) <- c("smsa", "mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
 
 # Display first few rows
-kable(head(df), caption = "First few rows of the dataset") %>% kable_styling()
+kable(head(df), caption = "First few rows of the dataset") %>%
+  kable_styling(font_size = 8, latex_options = "hold_position")
 ```
 
-```{r}
+```{r, include=FALSE}
 # Count missing values
 colSums(is.na(df))
 
 ```
 
 Here is a display of the data, on the first few rows of the dataset. It
-contains mortgage yield (mortYld) as the dependent variable and six
-variables (X1 to X6). smsa represents the Standard Metropolitan
-Statistical Area which is the name of the city/region. We can observe
+contains 8 columns. smsa is the Standard Metropolitan Statistical Area,
+which is the name of the city/region. Mortgage yield (mortYld) is the
+dependent variable, and X1 to X6 are the six variables. We can observe
 that all data are numerical values and there is no missing value for
 each region.
 
@@ -126,7 +127,8 @@ each region.
 ```{r}
 # Summary Statistics
 summary_stats <- summary(df[, colnames(df) != "smsa"])
-kable(summary_stats, caption = "Summary Statistics of Variables") %>% kable_styling()
+kable(summary_stats, caption = "Summary Statistics of Variables") %>%
+  kable_styling(font_size = 8, latex_options = "hold_position")
 ```
 
 We can observe that each variable 18 observations corresponding to 18
@@ -217,21 +219,21 @@ transformation prior to regression modeling.
 
 ### Association Analysis
 
-```{r, fig.width=8, fig.height=8}
-# Adjust the plotting window size to be square-like (you may need to resize RStudio plot panel)
-par(mfrow = c(1, 1))  # Reset to 1x1 layout
-par(mai = c(1, 1, 1, 1))  # Adjust margins to give more space around the plot
-par(pin = c(10, 10))  # Set plot aspect ratio manually (width and height in inches)
+```{r, fig.width=4.5, fig.height=4.5}
+# Réinitialisation des paramètres graphiques
+par(mfrow = c(1, 1))
+par(mai = c(0.3, 0.3, 0.5, 0.3))  # marges réduites : bas, gauche, haut, droite
+par(oma = c(0, 0, 0, 0))          # aucune marge extérieure
 
-# Select relevant numerical variables
+# Sélection des variables numériques
 selected_vars <- df[, c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")]
 
-# Create the scatter plot matrix
-pairs(selected_vars, 
+# Affichage du scatterplot matrix
+pairs(selected_vars,
       main = "Association Matrix of Variables and mortYld",
-      col = "blue",   # Set color for points
-      pch = 19)       # Use solid dots for points
-
+      cex.main = 0.9,       # taille du titre réduite
+      col = "blue",
+      pch = 19)
 
 ```
 
@@ -312,26 +314,28 @@ contribute to yield variations.\
 
 ### Correlation analysis
 
-```{r, fig.width=8, fig.height=8}
+```{r, fig.width=5, fig.height=5}
 library(reshape2)
 
-cor_matrix <- round(cor(df[, 2:8]), 2)  # Exclude 'smsa'
+# Compute correlation matrix and reshape
+cor_matrix <- cor(df[, c("mortYld", "X1", "X2", "X3", "X4", "X5", "X6")])
 melted_cor <- melt(cor_matrix)
 
-# Plot heatmap with text labels
-ggplot(data = melted_cor, aes(x = Var1, y = factor(Var2, levels = rev(unique(Var2))), fill = value)) + 
+# Plot
+ggplot(data = melted_cor, aes(x = Var1, y = Var2, fill = value)) + 
   geom_tile(color = "white") +
-  geom_text(aes(label = value), size = 4) +  # Print correlation value on each tile
+  geom_text(aes(label = round(value, 2)), size = 3) +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
-                       midpoint = 0, limit = c(-1, 1)) +
-  scale_x_discrete(position = "top") +
-  coord_fixed() +
-  labs(title = "Correlation Heatmap", x = "", y = "") +
-  theme_minimal() +
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name = "value") +
+  coord_fixed() + 
+  theme_minimal(base_size = 8) +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 0),
-    plot.title = element_text(hjust = 0.5)
-  )
+    plot.title = element_text(size = 10, face = "bold", hjust = 0.5, margin = margin(b = 5)),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.margin = margin(5, 5, 5, 5)
+  ) +
+  labs(title = "Correlation Heatmap")
 
 ```
 
@@ -351,10 +355,6 @@ predictors, if multicollinearity affects the regression model.
 These correlations tell only about the if the variables are linearly
 associated. A low value doesn't mean that the variables are not
 correlated in another way.
-
-```{r, echo=TRUE}
-cor(residuals(lm(df$X2 ~ df$X3)), residuals(lm(df$X6 ~ df$X3)))
-```
 
 We can also see that X2 is only weakly positively correlated (r = 0.21)
 to X6 after controlling for X3; compare this to the much higher simple
@@ -377,7 +377,7 @@ F-tests, or model interpretation.
 
 ## Pairwise Simple Regressions
 
-```{r, fig.width=13, fig.height=3}
+```{r, fig.width=10, fig.height=2}
 # Pairwise Simple Regressions
 models_simple <- lapply(1:6, function(i) {
   formula <- as.formula(paste("mortYld ~ X", i, sep = ""))
@@ -389,40 +389,28 @@ simple_summaries <- lapply(models_simple, summary)
 data.frame(
   Predictor = paste0("X", 1:6),
   R_squared = sapply(simple_summaries, function(m) round(m$r.squared, 3)),
-  p_value = sapply(simple_summaries, function(m) round(coef(m)[2,4], 4))
+  p_value = sapply(simple_summaries, function(m) round(coef(m)[2, 4], 4))
 ) %>%
-  kable(caption = "Simple Linear Regressions: R² and p-values") %>%
-  kable_styling()
+  kable(caption = "Simple Linear Regressions: $R^2$ and p-values", escape = FALSE, booktabs = TRUE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position")
 ```
 
 The table summarizes the strength of individual linear relationships
 between each predictor (X1–X6) and the mortgage yield using simple
 linear regression.
 
-```         
-•   **X1** has the **strongest linear association** with mortgage yield,
-```
-
+- **X1** has the **strongest linear association** with mortgage yield,
 explaining approximately **65.4% of its variance** and is highly
 significant (p \< 0.001)
 
-```         
-•   **X2** and **X3** also show strong and significant associations (R² =
-```
-
+- **X2** and **X3** also show strong and significant associations ($R^2$ =
 0.546 and 0.517, respectively).
 
-```         
-•   **X5** and **X6** show moderate yet significant associations (R² =
-```
-
+- **X5** and **X6** show moderate yet significant associations ($R^2$ =
 0.419 and 0.346).
 
-```         
-•   **X4 (Savings per Capita)** does **not** show a significant
-```
-
-relationship with mortgage yield (R² = 0.049, p = 0.3763), suggesting it
+- **X4 (Savings per Capita)** does **not** show a significant
+relationship with mortgage yield ($R^2$ = 0.049, p = 0.3763), suggesting it
 may not be a strong individual predictor.
 
 This preliminary analysis indicates that variables X1, X2, and X3 are
@@ -519,7 +507,7 @@ difficult to interpret meaningfully.
 
 ## Model Comparison
 
-```{r, fig.width=13, fig.height=3}
+```{r, fig.width=10, fig.height=2}
 # Create comparison table
 model_metrics <- data.frame(
   Model = c("Full Model", "Stepwise Model", "2-Way Interaction Model"),
@@ -552,7 +540,7 @@ model_metrics <- data.frame(
 
 # Display table
 kable(model_metrics, digits = 3, caption = "Comparison of Model Performance Metrics") %>%
-  kable_styling(full_width = FALSE, position = "center")
+  kable_styling(font_size = 8, full_width = FALSE, position = "center")
 ```
 
 The **Stepwise Model** offers the best trade-off between simplicity and
@@ -584,7 +572,7 @@ interpretability.
 
 ## Independence evaluation
 
-```{r, fig.width=10, fig.height=6}
+```{r, fig.width=6, fig.height=3}
 par(mfrow = c(1, 2))
 
 # Residuals vs Fitted Values
@@ -615,7 +603,8 @@ the independance is verified.
 ```{r, fig.width=8, fig.height=3}
 # Compute Variance Inflation Factor (VIF)
 vif_values <- vif(step_model)
-kable(as.data.frame(vif_values), caption = "Variance Inflation Factors (VIF)") %>% kable_styling()
+kable(as.data.frame(vif_values), caption = "Variance Inflation Factors (VIF)") %>% 
+  kable_styling(font_size = 8, latex_options = "hold_position")
 
 ```
 
@@ -630,7 +619,8 @@ Random scatter indicates good assumption of homeoscedasticity. If we can
 distinguish a clear pattern, then we have potential heteroscedasticity
 issue.
 
-```{r, fig.width=6, fig.height=6}
+```{r, fig.width=4, fig.height=4}
+par(pty = "s") 
 plot(step_model$fitted.values, abs(resid(step_model)),
      main = "Scale-Location Plot",
      xlab = "Fitted values", ylab = "|Residuals|", pch = 19)
@@ -642,8 +632,9 @@ If points lie on 45 degrees line, it means the residuals are normally
 distributed. If we can see a curved pattern, then the normality
 assumption is violated
 
-```{r}
+```{r, fig.width=4, fig.height=4}
 # Q-Q Plot with equal axis limits
+par(pty = "s") 
 qqnorm(resid(step_model), 
        main = "Q-Q Plot of Residuals", 
        xlim = c(-2, 2), ylim = c(-0.2, 0.2))  # Fix both axes to same limits
