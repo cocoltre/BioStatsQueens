@@ -54,9 +54,9 @@ variables:\
 payments.\
 - **X2:** Distance from Boston, in miles → Measures regional proximity
 to financial centers.\
-- **X3:** Savings per new unit built, in \$ → Indicator of regional
+- **X3:** Savings per New Unit Built, in \$ → Indicator of regional
 credit demand.\
-- **X4:** Savings per capita, in \$ → Measures local savings levels
+- **X4:** Savings per Capita, in \$ → Measures local savings levels
 (credit supply).\
 - **X5:** Population increase, 1950-1960, in % → Proxy for housing
 demand growth.\
@@ -120,17 +120,12 @@ summary_stats <- summary(df[, colnames(df) != "smsa"])
 kable(summary_stats, caption = "Summary Statistics of Variables") %>% kable_styling()
 ```
 
-We can observe that each variable 18 observations corresponding to 18
-different SMSAs. Through this summary, we can already observe mortgage
-yields don’t vary much across regions. Most values are between 5.5% and
+Through this summary, we already observe that mortgage
+yields don’t vary much across regions. Most values are between 5.2% and
 6.2%, suggesting relatively stable mortgage rates.
 
-Loan-to-mortgage ratios (X1) are concentrated in between 70% and 78%,
-with low variance. Savings per New Unit Built (X3) are characterized by
-a mean bigger than the median, representing a right-skewed distribution
-and then large disparities in housing affordability across regions.
+Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%, indicating relatively consistent lending practices across regions. Distance from Boston (X2) has a vast range (0–3162 miles), highlighting geographical diversity and potential financial access disparities. Savings per New Unit Built (X3) and Savings per Capita (X4) are characterized by means bigger than medians, representing right-skewed distributions, thus suggesting regional imbalances in credit demand and supply/in housing affordability across regions. Population increase (X5) from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing housing market pressures. Lastly, reliance on inter-regional banks (X6) spans from 2.0% to 51.3%, with some areas depending heavily on external financing while others rely more on local institutions. Overall, the data suggests regional variation in housing finance conditions, credit accessibility, and mortgage market dynamics.
 
--\> to complete
 
 ### Graphical Representation
 
