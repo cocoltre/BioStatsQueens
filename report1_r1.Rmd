@@ -20,7 +20,11 @@ header-includes:
   - \usepackage{multicol}
   - \justifying
   - \pagestyle{fancy}
+<<<<<<< HEAD
   - \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurte}
+=======
+  - \fancyhead[L]{Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurtre}
+>>>>>>> 8f6a53ecbe505010c0a1093b8a29576b20010806
   - \fancyfoot[C]{\thepage}
 editor_options: 
   markdown: 
@@ -31,14 +35,12 @@ editor_options:
 
 The study of A. H. Schaaf, 1966, "Regional Differences in Mortgage
 Financing Costs" investigates the existence and causes of regional
-differences in mortgage financing costs in the United States. These
-differences in mortgage yields have decreased in the early 20th century,
-however they remained stable after World War 2. The paper explores two
-main explanations for this phenomenon:\
+differences in mortgage financing costs in the United States. While these
+differences in mortgage yields were decreasing in the early 20th century, they suprisingly remained stable after World War II. The paper explores two main explanations for this phenomenon:\
 \
-**1.** differences in investment value due to risk, terms, and
-liquidity\
-**2.** market imperfections such as legal barriers and information
+**1.** Differences in investment value due to risk, terms, and
+liquidity.\
+**2.** Market imperfections such as legal barriers and information
 gaps.\
 \
 The data used in this study comes from the Federal Home Loan Bank Board,
@@ -46,28 +48,29 @@ which contains interest rates and fees in 18 SMSAs (Standard
 Metropolitan Statistical Areas). The findings suggest that distance from
 major financial centers, risk levels, and local demand for savings
 significantly affect mortgage yields. However, market structure and
-overall savings levels play a lesser role.\
+overall savings levels play a lesser important role.\
 \
 The aim of this report is to analyze the data and develop a predictive
-model to predict Mortgage Yield (`mortYld`) based on 8 explanatory
+model to predict Mortgage Yield (`mortYld` in %) based on 6 explanatory
 variables:\
 \
-- **smsa:** Standard Metropolitan Statistical Areas (18) → Name of the
-city/region.\
-- **mortYld:** Mortgage Yield, in % → The percentage return on a
-mortgage.\
 - **X1:** Loan-to-Mortgage Ratio, in % → High values indicate low down
 payments.\
 - **X2:** Distance from Boston, in miles → Measures regional proximity
 to financial centers.\
-- **X3:** Savings per new unit built, in \$ → Indicator of regional
+- **X3:** Savings per New Unit Built, in \$ → Indicator of regional
 credit demand.\
-- **X4:** Savings per capita, in \$ → Measures local savings levels
+- **X4:** Savings per Capita, in \$ → Measures local savings levels
 (credit supply).\
 - **X5:** Population increase, 1950-1960, in % → Proxy for housing
 demand growth.\
+<<<<<<< HEAD
 - **X6:** Percentage of first mortgages from inter-regional banks, in %
 → Indicator of external financing reliance.
+=======
+- **X6:** Percentage of First Mortgages from Inter-Regional Banks, in %
+→ Indicator of external financing reliance.\
+>>>>>>> 8f6a53ecbe505010c0a1093b8a29576b20010806
 
 ------------------------------------------------------------------------
 
@@ -113,12 +116,18 @@ colSums(is.na(df))
 
 ```
 
+<<<<<<< HEAD
 Here is a display of the data, on the first few rows of the dataset. It
 contains 8 columns. smsa is the Standard Metropolitan Statistical Area,
 which is the name of the city/region. Mortgage yield (mortYld) is the
 dependent variable, and X1 to X6 are the six variables. We can observe
 that all data are numerical values and there is no missing value for
 each region.
+=======
+Here is a display of the first few rows of the dataset. Each SMSA is described by
+its Mortgage Yield (`mortYld`) as the dependent variable and six explanatory
+variables (X1 to X6). All data consist of numerical values and quick checking confirms that there are no missing values in any region.
+>>>>>>> 8f6a53ecbe505010c0a1093b8a29576b20010806
 
 ## Univariate Analysis
 
@@ -131,17 +140,11 @@ kable(summary_stats, caption = "Summary Statistics of Variables") %>%
   kable_styling(font_size = 8, latex_options = "hold_position")
 ```
 
-We can observe that each variable 18 observations corresponding to 18
-different SMSAs. Through this summary, we can already observe mortgage
-yields don’t vary much across regions. Most values are between 5.5% and
+Through this summary, we already observe that mortgage yields don’t vary much across regions. Most values are between 5.2% and
 6.2%, suggesting relatively stable mortgage rates.
 
-Loan-to-mortgage ratios (X1) are concentrated in between 70% and 78%,
-with low variance. Savings per New Unit Built (X3) are characterized by
-a mean bigger than the median, representing a right-skewed distribution
-and then large disparities in housing affordability across regions.
+Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%, indicating relatively consistent lending practices across regions. Distance from Boston (X2) has a vast range (0–3162 miles), highlighting geographical diversity and potential financial access disparities. Savings per New Unit Built (X3) and Savings per Capita (X4) are characterized by means bigger than medians, representing right-skewed distributions, thus suggesting regional imbalances in credit demand and supply/in housing affordability across regions. Population increase (X5) from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing housing market pressures. Lastly, Percentage of First Mortgages from Inter-Regional Banks (X6) spans from 2.0% to 51.3%, meaning that some areas depend heavily on external financing while others rely more on local institutions.
 
--\> to complete
 
 ### Graphical Representation
 
@@ -186,34 +189,26 @@ final_plot <- bar_plot + hist_grid + plot_layout(widths = c(1.3, 2))
 final_plot
 ```
 
-There is not a huge variation in mortgage yield across SMSAs, as most
-bars are at similar heights but if we focus in between 4 and 6%, we see
-regional differences exist in mortgage yields, possibly due to economic
-factors like savings, loan terms, and regional banking practices.
+With deeper analysis, although the variation across SMSAs is small, we see that regional differences still exist in mortgage yields, possibly due to economic factors like savings, loan terms, and regional banking practices.
 
-The histograms reveal the characteristics of the predictor variables.
+The histograms confirm the distribution of the explanatory variables.
 
-The loan-to-mortgage ratio (X1) shows low variance with most values
-concentrated between 66% and 80%, possibly indicating limited
+The Loan-to-Mortgage Ratio (X1) shows low variance with most values
+concentrated between 67% and 80%, possibly indicating limited
 variability across regions.
-
-Distance from Boston (X2) displays a wide distribution, reflecting
+Distance from Boston (X2) displays a wide and almost homogeneous distribution, reflecting
 substantial geographic spread among SMSAs.
-
-Savings per new unit built (X3) and savings per capita (X4) both exhibit
+Savings per New Unit Built (X3) and Savings per Capita (X4) both exhibit
 right-skewed distributions, suggesting that a few cities have notably
 higher savings levels.
-
-Population increase (X5) is also highly skewed with one major outlier,
-indicating that most cities had moderate growth, while a few experienced
+Population increase (X5) is also highly right-skewed with one major outlier (increase of %~%25%),
+indicating that most regions had moderate growth, while a few experienced
 rapid expansion.
-
-Finally, the percentage of first mortgages from inter-regional banks
+Finally, the percentage of First Mortgages from Inter-Regional Banks
 (X6) is also right-skewed, with most cities relying minimally on
 external financing and a few showing heavy dependence.
 
-These patterns suggest that certain variables may benefit from
-transformation prior to regression modeling.
+Overall, the data suggests regional variation in housing finance conditions, credit accessibility, and mortgage market dynamics.
 
 ## Bivariate Numerical Analysis
 
@@ -237,23 +232,23 @@ pairs(selected_vars,
 
 ```
 
-The scatterplot matrix provides a quick visual assessment of linearity,
-strength of associations among predictors, and outlier detection. It
+The Association Matrix provides a quick visual assessment of linearity,
+strength of linear associations among predictors, and outlier detection. It
 complements numerical analyses like the correlation matrix and VIF.
 
-We can visualizes bivariate relationships, how each variable relates to
-the others, especially to mortYld and assess if a relationship is
-linear, curved, or weak, positive or negative. We can also spot outliers
+We visualize bivariate relationships, i.e. how each variable relates to
+the others and mortYld, and assess if a relationship looks
+linear, curved or weak, as well as positive or negative. We can also spot outliers
 or cities that don’t follow the general trend.
 
-We can see that most of the plots are random dispersion, some are
+We can see that most of the plots are random dispersion, while some are
 linear, and some are curved. X3 seems to be positively associated with
 X4 and negatively with X5. X2 and X3 seem exponentially associated.
-mortYld and X5 seem to be associated in a squared root maner.
+X6 seems to be negatively associated with X3.
 
 Let's take a closer look into the Association Matrix, regarding the
 relationship between Mortgage Yield (%) and the explanatory variables
-(x-axis), representing the first column in the precedent figure.
+(x-axis), representing the first row in the precedent figure.
 
 ```{r, fig.width=10, fig.height=5}
 # Set up a 2x3 grid for multiple scatter plots
@@ -282,16 +277,16 @@ par(mfrow = c(1, 1))
 
 **1. Loan-to-Mortgage Ratio:** As this ratio increases, the Mortgage
 Yield increases. This suggests a positive correlation, and that higher
-loan-to-mortgage ratios (more borrowed money relative to the property
+Loan-to-Mortgage Ratios (more borrowed money relative to the property
 value) are associated with higher mortgage yields.\
 **2. Distance from Boston:** There is a positive correlation. Boston
 represents a major financial center with surplus capital. Regions
 further from Boston might have higher yields.\
-**3. Savings per New Unit Built :** There is a negative correlation.
+**3. Savings per New Unit Built :** There seems to be a negative correlation.
 This indicates that areas with more savings dedicated to new
 construction have better access to local financing, resulting in lower
 mortgage yields.\
-**4. Savings per Capita:** The relationship is less clear but appears to
+**4. Savings per Capita:** The relationship is less distinguishable but appears to
 be a weak negative correlation or a random dispersion.\
 **5. Population Increase:** There is a positive association which can be
 seen as a square-root relationship. High population growth may imply
@@ -300,7 +295,7 @@ competition for available funds. We can observe a potential outlier at
 the right side of the plot.\
 **6. First Mortgage from Inter-Regional Banks:** No clear trend. It
 seems like the reliance on external financing (measured by the
-percentage of first mortgages from inter-regional banks) does not
+Percentage of First Mortgages from Inter-Regional Banks) does not
 significantly influence mortgage yields.\
 \
 **To resume:**\
@@ -455,9 +450,15 @@ variation in mortYld. The intercept appears to be really significant to
 fit the model.
 
 However, most variables do not show statistically significant individual
+<<<<<<< HEAD
+contributions. Only X1 and X3 show strong significance (p %~~% 0.05). Other
+variables, X2, X5 and X6, do not show strong individual effects. This
+suggests that a reduced model may be more interpretable.
+=======
 contributions. Only X1 and X3 show strong significance (p $\approx$
 0.05). Other variables, X2, X5 and X6, do not show strong individual
 effects. This suggests that a reduced model may be more interpretable.
+>>>>>>> 47138a17d1ee1c6bb3daa11dde3bd15baa14cc0d
 
 ## Make stepwise regression to select the best model
 
