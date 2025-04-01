@@ -106,7 +106,7 @@ colSums(is.na(df))
 
 ```
 
-Here is a display of the first few rows of the dataset. Each smsa is described by
+Here is a display of the first few rows of the dataset. Each SMSA is described by
 its mortgage yield (`mortYld`) as the dependent variable and six explanatory
 variables (X1 to X6). All data consist of numerical values and quick checking confirms that there are no missing values in any region.
 
@@ -120,11 +120,10 @@ summary_stats <- summary(df[, colnames(df) != "smsa"])
 kable(summary_stats, caption = "Summary Statistics of Variables") %>% kable_styling()
 ```
 
-Through this summary, we already observe that mortgage
-yields don’t vary much across regions. Most values are between 5.2% and
+Through this summary, we already observe that mortgage yields don’t vary much across regions. Most values are between 5.2% and
 6.2%, suggesting relatively stable mortgage rates.
 
-Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%, indicating relatively consistent lending practices across regions. Distance from Boston (X2) has a vast range (0–3162 miles), highlighting geographical diversity and potential financial access disparities. Savings per New Unit Built (X3) and Savings per Capita (X4) are characterized by means bigger than medians, representing right-skewed distributions, thus suggesting regional imbalances in credit demand and supply/in housing affordability across regions. Population increase (X5) from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing housing market pressures. Lastly, reliance on inter-regional banks (X6) spans from 2.0% to 51.3%, with some areas depending heavily on external financing while others rely more on local institutions. Overall, the data suggests regional variation in housing finance conditions, credit accessibility, and mortgage market dynamics.
+Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%, indicating relatively consistent lending practices across regions. Distance from Boston (X2) has a vast range (0–3162 miles), highlighting geographical diversity and potential financial access disparities. Savings per New Unit Built (X3) and Savings per Capita (X4) are characterized by means bigger than medians, representing right-skewed distributions, thus suggesting regional imbalances in credit demand and supply/in housing affordability across regions. Population increase (X5) from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing housing market pressures. Lastly, Percentage of first mortgages from inter-regional banks (X6) spans from 2.0% to 51.3%, meaning that some areas depend heavily on external financing while others rely more on local institutions.
 
 
 ### Graphical Representation
@@ -170,34 +169,26 @@ final_plot <- bar_plot + hist_grid + plot_layout(widths = c(1.3, 2))
 final_plot
 ```
 
-There is not a huge variation in mortgage yield across SMSAs, as most
-bars are at similar heights but if we focus in between 4 and 6%, we see
-regional differences exist in mortgage yields, possibly due to economic
-factors like savings, loan terms, and regional banking practices.
+With deeper analysis, although the variation across SMSAs is small, we see that regional differences still exist in mortgage yields, possibly due to economic factors like savings, loan terms, and regional banking practices.
 
-The histograms reveal the characteristics of the predictor variables.
+The histograms confirm the distribution of the explanatory variables.
 
-The loan-to-mortgage ratio (X1) shows low variance with most values
-concentrated between 66% and 80%, possibly indicating limited
+The Loan-to-Mortgage Ratio (X1) shows low variance with most values
+concentrated between 67% and 80%, possibly indicating limited
 variability across regions.
-
-Distance from Boston (X2) displays a wide distribution, reflecting
+Distance from Boston (X2) displays a wide and almost homogeneous distribution, reflecting
 substantial geographic spread among SMSAs.
-
-Savings per new unit built (X3) and savings per capita (X4) both exhibit
+Savings per New Unit Built (X3) and Savings per Capita (X4) both exhibit
 right-skewed distributions, suggesting that a few cities have notably
 higher savings levels.
-
-Population increase (X5) is also highly skewed with one major outlier,
-indicating that most cities had moderate growth, while a few experienced
+Population increase (X5) is also highly right-skewed with one major outlier (increase of %~%25%),
+indicating that most regions had moderate growth, while a few experienced
 rapid expansion.
-
 Finally, the percentage of first mortgages from inter-regional banks
 (X6) is also right-skewed, with most cities relying minimally on
 external financing and a few showing heavy dependence.
 
-These patterns suggest that certain variables may benefit from
-transformation prior to regression modeling.
+Overall, the data suggests regional variation in housing finance conditions, credit accessibility, and mortgage market dynamics.
 
 ## Bivariate Numerical Analysis
 
