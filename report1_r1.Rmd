@@ -20,7 +20,7 @@ header-includes:
   - \usepackage{multicol}
   - \justifying
   - \pagestyle{fancy}
-  - \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurte}
+  - \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurtre}
   - \fancyfoot[C]{\thepage}
 editor_options: 
   markdown: 
