@@ -31,8 +31,10 @@ editor_options:
 
 The study of A. H. Schaaf, 1966, "Regional Differences in Mortgage
 Financing Costs" investigates the existence and causes of regional
-differences in mortgage financing costs in the United States. While these
-differences in mortgage yields were decreasing in the early 20th century, they suprisingly remained stable after World War II. The paper explores two main explanations for this phenomenon:\
+differences in mortgage financing costs in the United States. While
+these differences in mortgage yields were decreasing in the early 20th
+century, they suprisingly remained stable after World War II. The paper
+explores two main explanations for this phenomenon:\
 \
 **1.** Differences in investment value due to risk, terms, and
 liquidity.\
@@ -89,6 +91,8 @@ library(patchwork)
 library(gridExtra)
 library(grid)
 library(reshape2)
+library(broom)
+library(xtable)
 
 # Read data
 df <- read.csv("myield.csv")
@@ -125,11 +129,23 @@ kable(summary_stats, caption = "Summary Statistics of Variables") %>%
   kable_styling(font_size = 8, latex_options = "hold_position")
 ```
 
-Through this summary, we already observe that mortgage yields don’t vary much across regions. Most values are between 5.2% and
-6.2%, suggesting relatively stable mortgage rates.
+Through this summary, we already observe that mortgage yields don’t vary
+much across regions. Most values are between 5.2% and 6.2%, suggesting
+relatively stable mortgage rates.
 
-Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%, indicating relatively consistent lending practices across regions. Distance from Boston (X2) has a vast range (0–3162 miles), highlighting geographical diversity and potential financial access disparities. Savings per New Unit Built (X3) and Savings per Capita (X4) are characterized by means bigger than medians, representing right-skewed distributions, thus suggesting regional imbalances in credit demand and supply/in housing affordability across regions. Population Increase (X5) from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing housing market pressures. Lastly, Percentage of First Mortgages from Inter-Regional Banks (X6) spans from 2.0% to 51.3%, meaning that some areas depend heavily on external financing while others rely more on local institutions.
-
+Loan-to-Mortgage Ratios (X1) are concentrated in between 67% and 78.1%,
+indicating relatively consistent lending practices across regions.
+Distance from Boston (X2) has a vast range (0–3162 miles), highlighting
+geographical diversity and potential financial access disparities.
+Savings per New Unit Built (X3) and Savings per Capita (X4) are
+characterized by means bigger than medians, representing right-skewed
+distributions, thus suggesting regional imbalances in credit demand and
+supply/in housing affordability across regions. Population Increase (X5)
+from 1950 to 1960 varies widely (7.5–88.9%), reflecting differing
+housing market pressures. Lastly, Percentage of First Mortgages from
+Inter-Regional Banks (X6) spans from 2.0% to 51.3%, meaning that some
+areas depend heavily on external financing while others rely more on
+local institutions.
 
 ### Graphical Representation
 
@@ -174,32 +190,35 @@ final_plot <- bar_plot + hist_grid + plot_layout(widths = c(1.3, 2))
 final_plot
 ```
 
-With deeper analysis, although the variation across SMSAs is small, we see that regional differences still exist in mortgage yields, possibly due to economic factors like savings, loan terms, and regional banking practices.
+With deeper analysis, although the variation across SMSAs is small, we
+see that regional differences still exist in mortgage yields, possibly
+due to economic factors like savings, loan terms, and regional banking
+practices.
 
 The histograms confirm the distribution of the explanatory variables.
 
 The Loan-to-Mortgage Ratio (X1) shows low variance with most values
 concentrated between 67% and 80%, possibly indicating limited
-variability across regions.
-Distance from Boston (X2) displays a wide and almost homogeneous distribution, reflecting
-substantial geographic spread among SMSAs.
-Savings per New Unit Built (X3) and Savings per Capita (X4) both exhibit
-right-skewed distributions, suggesting that a few cities have notably
-higher savings levels.
-Population Increase (X5) is also highly right-skewed with one major outlier (increase of %~%25%),
-indicating that most regions had moderate growth, while a few experienced
-rapid expansion.
-Finally, the percentage of First Mortgages from Inter-Regional Banks
-(X6) is also right-skewed, with most cities relying minimally on
-external financing and a few showing heavy dependence.
+variability across regions. Distance from Boston (X2) displays a wide
+and almost homogeneous distribution, reflecting substantial geographic
+spread among SMSAs. Savings per New Unit Built (X3) and Savings per
+Capita (X4) both exhibit right-skewed distributions, suggesting that a
+few cities have notably higher savings levels. Population Increase (X5)
+is also highly right-skewed with one major outlier (increase of
+%\~%25%), indicating that most regions had moderate growth, while a few
+experienced rapid expansion. Finally, the percentage of First Mortgages
+from Inter-Regional Banks (X6) is also right-skewed, with most cities
+relying minimally on external financing and a few showing heavy
+dependence.
 
-Overall, the data suggests regional variation in housing finance conditions, credit accessibility, and mortgage market dynamics.
+Overall, the data suggests regional variation in housing finance
+conditions, credit accessibility, and mortgage market dynamics.
 
 ## Bivariate Numerical Analysis
 
 ### Association Analysis
 
-```{r, fig.width=4.5, fig.height=4.5}
+```{r, fig.width=4, fig.height=4}
 # Réinitialisation des paramètres graphiques
 par(mfrow = c(1, 1))
 par(mai = c(0.3, 0.3, 0.5, 0.3))  # marges réduites : bas, gauche, haut, droite
@@ -218,18 +237,18 @@ pairs(selected_vars,
 ```
 
 The Association Matrix provides a quick visual assessment of linearity,
-strength of linear associations among predictors, and outlier detection. It
-complements numerical analyses like the correlation matrix and VIF.
+strength of linear associations among predictors, and outlier detection.
+It complements numerical analyses like the correlation matrix and VIF.
 
 We visualize bivariate relationships, i.e. how each variable relates to
-the others and mortYld, and assess if a relationship looks
-linear, curved or weak, as well as positive or negative. We can also spot outliers
-or cities that don’t follow the general trend.
+the others and mortYld, and assess if a relationship looks linear,
+curved or weak, as well as positive or negative. We can also spot
+outliers or cities that don’t follow the general trend.
 
 We can see that most of the plots are random dispersion, while some are
 linear, and some are curved. X3 seems to be positively associated with
-X4 and negatively with X5. X2 and X3 seem exponentially associated.
-X6 seems to be negatively associated with X3.
+X4 and negatively with X5. X2 and X3 seem exponentially associated. X6
+seems to be negatively associated with X3.
 
 Let's take a closer look into the Association Matrix, regarding the
 relationship between Mortgage Yield (%) and the explanatory variables
@@ -267,12 +286,12 @@ value) are associated with higher mortgage yields.\
 **2. Distance from Boston:** There is a positive correlation. Boston
 represents a major financial center with surplus capital. Regions
 further from Boston might have higher yields.\
-**3. Savings per New Unit Built :** There seems to be a negative correlation.
-This indicates that areas with more savings dedicated to new
-construction have better access to local financing, resulting in lower
-mortgage yields.\
-**4. Savings per Capita:** The relationship is less distinguishable but appears to
-be a weak negative correlation or a random dispersion.\
+**3. Savings per New Unit Built :** There seems to be a negative
+correlation. This indicates that areas with more savings dedicated to
+new construction have better access to local financing, resulting in
+lower mortgage yields.\
+**4. Savings per Capita:** The relationship is less distinguishable but
+appears to be a weak negative correlation or a random dispersion.\
 **5. Population Increase:** There is a positive association which can be
 seen as a square-root relationship. High population growth may imply
 higher demand for housing, increasing mortgage yields due to heightened
@@ -286,8 +305,8 @@ significantly influence mortgage yields.\
 **To resume:**\
 - X1, X2 and X5 seem to be the most influential variables positively
 correlated with Mortgage Yield.\
-- X3 is the most influential variable negatively
-correlated with Mortgage Yield.\
+- X3 is the most influential variable negatively correlated with
+Mortgage Yield.\
 - X4 and X6 variables show weak relationships with mortgage yields.\
 These observations support the findings of Schaaf (1966) that distance
 from financial centers, risk factors, and local demand for savings
@@ -295,7 +314,7 @@ contribute to yield variations.\
 
 ### Correlation analysis
 
-```{r, fig.width=5, fig.height=5}
+```{r, fig.width=4, fig.height=4}
 library(reshape2)
 
 # Compute correlation matrix and reshape
@@ -380,32 +399,38 @@ The table summarizes the strength of individual linear relationships
 between each predictor (X1–X6) and the mortgage yield using simple
 linear regression.
 
-- **X1** has the **strongest linear association** with mortgage yield,
-explaining approximately **65.4% of its variance** and is highly
-significant (p \< 0.001)
+-   **X1** has the **strongest linear association** with mortgage yield,
+    explaining approximately **65.4% of its variance** and is highly
+    significant (p \< 0.001)
 
-- **X2** and **X3** also show strong and significant associations ($R^2$ =
-0.546 and 0.517, respectively).
+-   **X2** and **X3** also show strong and significant associations
+    ($R^2$ = 0.546 and 0.517, respectively).
 
-- **X5** and **X6** show moderate yet significant associations ($R^2$ =
-0.419 and 0.346).
+-   **X5** and **X6** show moderate yet significant associations ($R^2$
+    = 0.419 and 0.346).
 
-- **X4 (Savings per Capita)** does **not** show a significant
-relationship with mortgage yield ($R^2$ = 0.049, p = 0.3763), suggesting it
-may not be a strong individual predictor.
+-   **X4 (Savings per Capita)** does **not** show a significant
+    relationship with mortgage yield ($R^2$ = 0.049, p = 0.3763),
+    suggesting it may not be a strong individual predictor.
 
 This preliminary analysis indicates that variables X1, X2, and X3 are
-the most promising candidates for predicting mortgage yield in a
-multivariate model.
+the most promising candidates for predicting mortgage yield in a multivariate model.
 
 ## Null Model vs Full Model Comparison
 
 ```{r}
-# Null Model vs Full Model Comparison
 null_model <- lm(mortYld ~ 1, data = df)
 full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 
-anova(null_model, full_model)
+#anova(null_model, full_model)
+
+# Résumé au format tableau propre
+anova_table <- tidy(anova(null_model, full_model))
+
+# Affichage du tableau formaté
+kable(anova_table, caption = "Comparison of Null and Full Model (ANOVA)") %>%
+  kable_styling(font_size = 8, latex_options = c("striped", "hold_position"))
+
 ```
 
 The ANOVA comparison between the null model and the full model reveals
@@ -419,11 +444,23 @@ that at least one of the predictors is significantly related to mortgage
 yield, and the explanatory variables are useful for improving the model.
 
 ```{r}
-# Fit linear regression model
+# Fit linear regression model (full)
 model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 
 # Model summary
-summary(model)
+#summary(model)
+
+# Résumé du modèle au format propre (dataframe)
+model_summary <- tidy(model)
+
+# Affichage du tableau dans le PDF
+kable(model_summary, 
+      caption = "Summary of Full Linear Model", 
+      booktabs = TRUE, 
+      digits = 4, 
+      format = "latex", 
+      escape = TRUE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position") 
 
 ```
 
@@ -443,9 +480,64 @@ effects. This suggests that a reduced model may be more interpretable.
 ## Make stepwise regression to select the best model
 
 ```{r}
-# Stepwise regression (both directions)
-step_model <- stepAIC(model, direction = "both")
-summary(step_model)
+# 1. Stepwise AIC Steps Table
+
+# Stepwise AIC with silent output
+step_trace <- capture.output(
+  step_model <- stepAIC(model, direction = "both", trace = TRUE)
+)
+
+# Build Stepwise AIC Trace Manually
+step_trace_df <- data.frame(
+  Step = c("Start", "Step 1", "Step 2", "Step 3"),
+  Model = c(
+    "X1 + X2 + X3 + X4 + X5 + X6",
+    "X1 + X2 + X3 + X4 + X5",
+    "X1 + X3 + X4 + X5",
+    "X1 + X3 + X4"
+  ),
+  RSS = c(0.1098, 0.1099, 0.1109, 0.1159),
+  AIC = c(-77.79, -79.77, -81.61, -82.81)
+)
+
+# Display with kable
+kable(step_trace_df, 
+      caption = "Stepwise AIC Steps", 
+      booktabs = TRUE, 
+      format = "latex", 
+      digits = 4) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
+```
+```{r}
+# 2. Residuals Summary Table
+
+# Extraire les valeurs numériques de la summary
+resid_summary <- as.numeric(quantile(step_model$residuals, probs = c(0, 0.25, 0.5, 0.75, 1)))
+
+# Créer le tableau manuellement
+residuals_summary <- data.frame(
+  Statistic = c("Min", "1Q", "Median", "3Q", "Max"),
+  Value = round(resid_summary, 4)
+)
+
+# Affichage joli
+kable(residuals_summary, 
+      caption = "Residual Summary of Stepwise Model", 
+      booktabs = TRUE, format = "latex") %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
+```
+
+```{r}
+#  3. Model Coefficients Table
+step_summary <- tidy(step_model)
+
+kable(step_summary, 
+      caption = "Coefficients of Final Stepwise Model", 
+      booktabs = TRUE, digits = 4, format = "latex", escape = TRUE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
 ```
 
 (mettre en annexe ?)
@@ -473,8 +565,56 @@ We end up with : mortYld = 4.223 + 0.02229.X1 - 0.001863.X3 +
 Let's try a model with 2-way interactions.
 
 ```{r}
+# Fit model
 interaction_model <- lm(mortYld ~ X1 + X3 + X4 + X1:X3 + X1:X4 + X3:X4, data = df)
-summary(interaction_model)
+
+### 1. Coefficients Table
+interaction_coef <- tidy(interaction_model)
+
+kable(interaction_coef, 
+      caption = "Coefficients of Interaction Model", 
+      booktabs = TRUE, digits = 4, format = "latex", escape = TRUE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
+```
+```{r}
+### 2. Residuals Summary Table
+residuals_stats <- summary(interaction_model)$residuals
+resid_summary <- data.frame(
+  Statistic = c("Min", "1Q", "Median", "3Q", "Max"),
+  Value = round(quantile(residuals_stats), 4)
+)
+
+kable(resid_summary,
+      caption = "Residual Summary of Interaction Model", 
+      booktabs = TRUE, format = "latex") %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
+```
+
+```{r}
+### 3. Model Fit Statistics Table
+
+# Extraire les statistiques de modélisation
+interaction_stats <- glance(interaction_model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "p.value", "df")]
+
+# Renommer les colonnes en LaTeX-safe
+colnames(interaction_stats) <- c(
+  "R\\textsuperscript{2}", 
+  "Adjusted R\\textsuperscript{2}", 
+  "Residual Std. Error", 
+  "F-statistic", 
+  "p-value", 
+  "DF"
+)
+
+# Affichage du tableau
+kable(interaction_stats,
+      caption = "Fit Statistics of Interaction Model", 
+      booktabs = TRUE, digits = 4, format = "latex", escape = FALSE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
+
 ```
 
 The interactions increase the complexity of the model for an improvement
@@ -522,6 +662,7 @@ model_metrics <- data.frame(
 # Display table
 kable(model_metrics, digits = 3, caption = "Comparison of Model Performance Metrics") %>%
   kable_styling(font_size = 8, full_width = FALSE, position = "center")
+
 ```
 
 The **Stepwise Model** offers the best trade-off between simplicity and
@@ -533,8 +674,22 @@ It also has the **lowest residual standard error** and the **highest
 F-statistic**, confirming overall model significance and parsimony.
 
 ```{r}
-# Compare with ANOVA
-anova(step_model, interaction_model)
+# Compare with ANOVA and convert to data frame
+anova_result <- anova(step_model, interaction_model)
+
+# Ajouter les noms des modèles pour plus de clarté
+anova_df <- as.data.frame(anova_result)
+anova_df$Model <- c("Stepwise model", "Interaction model")
+
+# Réorganiser les colonnes
+anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum of Sq", "F", "Pr(>F)")]
+
+# Affichage avec kable
+kable(anova_df,
+      caption = "ANOVA Comparison: Stepwise vs Interaction Model",
+      booktabs = TRUE, digits = 4, format = "latex", escape = TRUE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
 ```
 
 An ANOVA was conducted to assess whether including 2-way interaction
@@ -553,8 +708,14 @@ interpretability.
 
 ## Independence evaluation
 
-```{r, fig.width=6, fig.height=3}
-par(mfrow = c(1, 2))
+```{r, fig.width=5, fig.height=2.5}
+par(mfrow = c(1, 2),        # 1 ligne, 2 colonnes
+    mar = c(3, 3, 2, 1),    # marges : bottom, left, top, right
+    oma = c(0, 0, 0, 0),    # marges extérieures
+    mgp = c(1.7, 0.5, 0),   # position des axes et labels
+    cex.main = 0.8,         # taille du titre
+    cex.lab = 0.8,          # taille des axes
+    cex.axis = 0.7)         # taille des graduations
 
 # Residuals vs Fitted Values
 plot(fitted(model), resid(model),
@@ -600,8 +761,10 @@ Random scatter indicates good assumption of homeoscedasticity. If we can
 distinguish a clear pattern, then we have potential heteroscedasticity
 issue.
 
-```{r, fig.width=4, fig.height=4}
-par(pty = "s") 
+```{r, fig.width=2.5, fig.height=2.5}
+par(pty = "s", mar = c(3.5, 3.5, 2.5, 1), mgp = c(2, 0.6, 0), 
+    cex.axis = 0.8, cex.lab = 0.9, cex.main = 0.9)
+
 plot(step_model$fitted.values, abs(resid(step_model)),
      main = "Scale-Location Plot",
      xlab = "Fitted values", ylab = "|Residuals|", pch = 19)
@@ -613,12 +776,21 @@ If points lie on 45 degrees line, it means the residuals are normally
 distributed. If we can see a curved pattern, then the normality
 assumption is violated
 
-```{r, fig.width=4, fig.height=4}
+```{r, fig.width=3, fig.height=3}
 # Q-Q Plot with equal axis limits
-par(pty = "s") 
+par(pty = "s", 
+    mar = c(4, 3.5, 2, 1),    # ← marge gauche réduite à 3.5
+    mgp = c(2, 0.5, 0),       # position des labels des axes
+    cex.main = 0.8,        # title size
+    cex.lab = 0.8,         # axis label size
+    cex.axis = 0.7)        # axis ticks
+
 qqnorm(resid(step_model), 
        main = "Q-Q Plot of Residuals", 
-       xlim = c(-2, 2), ylim = c(-0.2, 0.2))  # Fix both axes to same limits
+       xlab = "Theoretical Quantiles", 
+       ylab = "Sample Quantiles",
+       pch = 19, col = "steelblue",
+       xlim = c(-2, 2), ylim = c(-0.2, 0.2))
 qqline(resid(step_model), col = "red")
 ```
 
@@ -634,9 +806,8 @@ qqline(resid(step_model), col = "red")
 
 # Conclusions
 
-```         
-•   The analysis showed that [mention significant predictors] have a strong relationship with mortgage yield.
-•   The assumptions of linear regression were [state if met or violated].
-•   The model provides [good/poor] predictive accuracy based on [R² and residual analysis].
-•   Future improvements could involve [mention possible improvements like transformations, additional predictors, etc.].
-```
+- The analysis showed that [mention significant predictors] have a strong relationship with mortgage yield.
+- The assumptions of linear regression were [state if met or violated].
+- The model provides [good/poor] predictive accuracy based on [R² and residual analysis].
+- Future improvements could involve [mention possible improvements like transformations, additional predictors, etc.].
+

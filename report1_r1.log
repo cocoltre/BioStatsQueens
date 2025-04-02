@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.25)  1 APR 2025 16:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.25)  2 APR 2025 15:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -820,7 +820,7 @@ pData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
 <Figs/unnamed-chunk-4-1.pdf, id=20, 939.51pt x 361.35pt>
 File: Figs/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-4-1.pdf  used on input line 212.
+Package pdftex.def Info: Figs/unnamed-chunk-4-1.pdf  used on input line 214.
 (pdftex.def)             Requested size: 472.03323pt x 181.55124pt.
 
 
@@ -831,126 +831,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[2 <./Figs/unnamed-chunk-4-1.pdf>]
-<Figs/unnamed-chunk-5-1.pdf, id=35, 325.215pt x 325.215pt>
+[2]
+<Figs/unnamed-chunk-5-1.pdf, id=29, 289.08pt x 289.08pt>
 File: Figs/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-5-1.pdf  used on input line 248.
-(pdftex.def)             Requested size: 325.23901pt x 325.23901pt.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[3 <./Figs/unnamed-chunk-5-1.pdf>]
-<Figs/unnamed-chunk-6-1.pdf, id=48, 722.7pt x 361.35pt>
-File: Figs/unnamed-chunk-6-1.pdf Graphic file (type pdf)
-<use Figs/unnamed-chunk-6-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-6-1.pdf  used on input line 268.
-(pdftex.def)             Requested size: 472.03212pt x 236.01607pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 270--301
-
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[4 <./Figs/unnamed-chunk-6-1.pdf>]
-<Figs/unnamed-chunk-7-1.pdf, id=59, 361.35pt x 361.35pt>
-File: Figs/unnamed-chunk-7-1.pdf Graphic file (type pdf)
-<use Figs/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-7-1.pdf  used on input line 304.
-(pdftex.def)             Requested size: 361.34912pt x 361.34912pt.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[5 <./Figs/unnamed-chunk-7-1.pdf>]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 348.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[6{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
-c}{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-401.
-(C:\Users\msgar\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmtt.fd
-File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[7{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
-c}]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 545--549
-
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[9]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[10]
-<Figs/unnamed-chunk-15-1.pdf, id=105, 578.16pt x 289.08pt>
-File: Figs/unnamed-chunk-15-1.pdf Graphic file (type pdf)
-<use Figs/unnamed-chunk-15-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-15-1.pdf  used on input line 640.
-(pdftex.def)             Requested size: 472.02992pt x 236.01495pt.
-<Figs/unnamed-chunk-17-1.pdf, id=106, 289.08pt x 289.08pt>
-File: Figs/unnamed-chunk-17-1.pdf Graphic file (type pdf)
-<use Figs/unnamed-chunk-17-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-17-1.pdf  used on input line 677.
+Package pdftex.def Info: Figs/unnamed-chunk-5-1.pdf  used on input line 245.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
 
 
@@ -961,12 +846,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[11 <./Figs/unnamed-chunk-15-1.pdf>]
-<Figs/unnamed-chunk-18-1.pdf, id=122, 867.24pt x 578.16pt>
-File: Figs/unnamed-chunk-18-1.pdf Graphic file (type pdf)
-<use Figs/unnamed-chunk-18-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-18-1.pdf  used on input line 685.
-(pdftex.def)             Requested size: 472.03435pt x 314.68954pt.
+[3 <./Figs/unnamed-chunk-4-1.pdf>]
+<Figs/unnamed-chunk-6-1.pdf, id=40, 722.7pt x 361.35pt>
+File: Figs/unnamed-chunk-6-1.pdf Graphic file (type pdf)
+<use Figs/unnamed-chunk-6-1.pdf>
+Package pdftex.def Info: Figs/unnamed-chunk-6-1.pdf  used on input line 265.
+(pdftex.def)             Requested size: 472.03212pt x 236.01607pt.
 
 
 
@@ -976,25 +861,41 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[12 <./Figs/unnamed-chunk-17-1.pdf>]
-Overfull \hbox (154.58072pt too wide) in paragraph at lines 700--700
-[]\TS1/lmtt/m/n/10.95 ˆ   \T1/lmtt/m/n/10.95 The analysis showed that [mention 
-significant predictors] have a strong relationship with mortgage yield.[] 
+[4 <./Figs/unnamed-chunk-5-1.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 267--299
+
  []
 
+<Figs/unnamed-chunk-7-1.pdf, id=53, 289.08pt x 289.08pt>
+File: Figs/unnamed-chunk-7-1.pdf Graphic file (type pdf)
+<use Figs/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: Figs/unnamed-chunk-7-1.pdf  used on input line 302.
+(pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
 
-Overfull \hbox (51.10352pt too wide) in paragraph at lines 700--700
-[]\TS1/lmtt/m/n/10.95 ˆ   \T1/lmtt/m/n/10.95 The model provides [good/poor] pre
-dictive accuracy based on [R\TS1/lmtt/m/n/10.95 ² \T1/lmtt/m/n/10.95 and residu
-al analysis].[] 
- []
 
 
-Overfull \hbox (217.81679pt too wide) in paragraph at lines 700--700
-[]\TS1/lmtt/m/n/10.95 ˆ   \T1/lmtt/m/n/10.95 Future improvements could involve 
-[mention possible improvements like transformations, additional predictors, etc
-.].[] 
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[5 <./Figs/unnamed-chunk-6-1.pdf>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[6 <./Figs/unnamed-chunk-7-1.pdf>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 346.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 417.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
@@ -1005,33 +906,101 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[13 <./Figs/unnamed-chunk-18-1.pdf>] (report1_r1.aux)
+[7{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
+c}{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[8{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
+c}]
+Underfull \hbox (badness 10000) in paragraph at lines 517--521
+
+ []
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[9]
+<Figs/unnamed-chunk-19-1.pdf, id=108, 361.35pt x 180.675pt>
+File: Figs/unnamed-chunk-19-1.pdf Graphic file (type pdf)
+<use Figs/unnamed-chunk-19-1.pdf>
+Package pdftex.def Info: Figs/unnamed-chunk-19-1.pdf  used on input line 642.
+(pdftex.def)             Requested size: 361.34912pt x 180.67455pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[10 <./Figs/unnamed-chunk-19-1.pdf>]
+<Figs/unnamed-chunk-21-1.pdf, id=123, 180.675pt x 180.675pt>
+File: Figs/unnamed-chunk-21-1.pdf Graphic file (type pdf)
+<use Figs/unnamed-chunk-21-1.pdf>
+Package pdftex.def Info: Figs/unnamed-chunk-21-1.pdf  used on input line 679.
+(pdftex.def)             Requested size: 180.67455pt x 180.67455pt.
+<Figs/unnamed-chunk-22-1.pdf, id=124, 216.81pt x 216.81pt>
+File: Figs/unnamed-chunk-22-1.pdf Graphic file (type pdf)
+<use Figs/unnamed-chunk-22-1.pdf>
+Package pdftex.def Info: Figs/unnamed-chunk-22-1.pdf  used on input line 687.
+(pdftex.def)             Requested size: 216.81938pt x 216.81938pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[11 <./Figs/unnamed-chunk-21-1.pdf>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[12 <./Figs/unnamed-chunk-22-1.pdf>] (report1_r1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 17292 strings out of 473523
- 282045 string characters out of 5714630
- 727044 words of memory out of 5000000
- 40067 multiletter control sequences out of 15000+600000
- 610025 words of font info for 135 fonts, out of 8000000 for 9000
+ 17293 strings out of 473523
+ 281961 string characters out of 5714630
+ 728720 words of memory out of 5000000
+ 40058 multiletter control sequences out of 15000+600000
+ 616663 words of font info for 140 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,11n,93p,1009b,645s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,13n,93p,1009b,625s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pf
 b><C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb
 ><C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb>
 <C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><
-C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:
-/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro10.pfb><C:
-/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:
-/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on report1_r1.pdf (13 pages, 388463 bytes).
+C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:
+/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/U
+sers/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro10.pfb><C:/U
+sers/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/U
+sers/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
+Output written on report1_r1.pdf (12 pages, 393509 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 40 named destinations out of 1000 (max. 500000)
- 30924 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 284 PDF objects out of 1000 (max. 8388607)
+ 48 named destinations out of 1000 (max. 500000)
+ 35020 words of extra memory for PDF output out of 35830 (max. 10000000)
 
