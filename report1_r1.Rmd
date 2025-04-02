@@ -318,6 +318,7 @@ ggplot(data = melted_cor, aes(x = Var1, y = Var2, fill = value)) +
   labs(title = "Correlation Heatmap")
 
 ```
+
 Now, let's take a look at the correlations between each variable and confirm our previous observations.
 
 - X3 is are strongly positively correlated to X4 (0.77) and moderately negatively correlated to X2 (-0.64), X5 (-0.63) and X6 (-0.56). This confirms our observations with the Association Matrix.
