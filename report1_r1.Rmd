@@ -451,34 +451,42 @@ kable(step_trace_df,
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
 ```
-```{r}
-# 2. Residuals Summary Table
-
-# Extraire les valeurs numériques de la summary
-resid_summary <- as.numeric(quantile(step_model$residuals, probs = c(0, 0.25, 0.5, 0.75, 1)))
-
-# Créer le tableau manuellement
-residuals_summary <- data.frame(
-  Statistic = c("Min", "1Q", "Median", "3Q", "Max"),
-  Value = round(resid_summary, 4)
-)
-
-# Affichage joli
-kable(residuals_summary, 
-      caption = "Residual Summary of Stepwise Model", 
-      booktabs = TRUE, format = "latex") %>%
-  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
-
-```
 
 ```{r}
-#  3. Model Coefficients Table
+#  2. Model Coefficients Table
 step_summary <- tidy(step_model)
 
 kable(step_summary, 
       caption = "Coefficients of Final Stepwise Model", 
       booktabs = TRUE, digits = 4, format = "latex", escape = TRUE) %>%
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
+```
+
+```{r}
+# 3. Fit Statistics of Stepwise Model
+
+# Extraire les stats globales
+step_glance <- glance(step_model)[, c("sigma", "r.squared", "adj.r.squared", "statistic", "df", "p.value")]
+colnames(step_glance) <- c("Residual Std. Error", "R²", "Adjusted R²", "F-statistic", "DF", "p-value")
+
+# Convertir en data.frame pour mise en forme fine
+step_glance <- as.data.frame(step_glance)
+
+# Appliquer un arrondi classique sauf pour la p-value
+step_glance$`Residual Std. Error` <- round(step_glance$`Residual Std. Error`, 4)
+step_glance$`R²` <- round(step_glance$`R²`, 4)
+step_glance$`Adjusted R²` <- round(step_glance$`Adjusted R²`, 4)
+step_glance$`F-statistic` <- round(step_glance$`F-statistic`, 4)
+step_glance$`DF` <- as.integer(step_glance$`DF`)  # entier
+step_glance$`p-value` <- formatC(step_glance$`p-value`, format = "e", digits = 2)
+
+# Afficher en tableau LaTeX
+kable(step_glance,
+      caption = "Fit Statistics of Stepwise Model",
+      booktabs = TRUE, format = "latex", escape = TRUE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
 
 ```
 
