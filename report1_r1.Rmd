@@ -234,14 +234,7 @@ pairs(selected_vars,
 
 ```
 
-The Association Matrix provides a quick visual assessment of linearity,
-strength of linear associations among predictors, and outlier detection.
-It complements numerical analyses like the correlation matrix and VIF.
-
-We visualize bivariate relationships, i.e. how each variable relates to
-the others and mortYld, and assess if a relationship looks linear,
-curved or weak, as well as positive or negative. We can also spot
-outliers or cities that don’t follow the general trend.
+The Association Matrix provides a quick visual assessment of bivariate relationships (how each variable relates to the others and `mortYld`), of types of associations among predictors (if a relationship looks linear, curved or weak, as well as positive or negative), and of outlier presence. It complements numerical analyses like the correlation matrix and VIF.
 
 We can see that most of the plots are random dispersion, while some are
 linear, and some are curved. X3 seems to be positively associated with
