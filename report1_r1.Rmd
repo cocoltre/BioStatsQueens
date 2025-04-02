@@ -315,7 +315,7 @@ ggplot(data = melted_cor, aes(x = Var1, y = Var2, fill = value)) +
 ```
 
 Now, let's take a look at the correlations between each variable and confirm our previous observations.
-
+\
 - X3 is are strongly positively correlated to X4 (0.77) and moderately negatively correlated to X2 (-0.64), X5 (-0.63) and X6 (-0.56). This confirms our observations with the Association Matrix.\
 - X1 and X2 exhibit strong positive correlation with mortYld, while X5 shows moderate positive correlation, and X3 a
 strong negative one. X6 shows moderate positive correlation with mortYld as well. X4 shows only weak correlation with mortYld. In consequence, we can confirm our previous statements about the scatter-plots.
