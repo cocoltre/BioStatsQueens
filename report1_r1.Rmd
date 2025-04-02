@@ -106,19 +106,10 @@ kable(head(df), caption = "First few rows of the dataset") %>%
 colSums(is.na(df))
 
 ```
-<<<<<<< HEAD
+
 Here is a display of the first few rows of the dataset. Each SMSA is described by
 its Mortgage Yield (`mortYld`) as the dependent variable and six explanatory
 variables (X1 to X6). All data consist of numerical values and quick checking confirms that there are no missing values in any region.
-=======
-
-Here is a display of the data, on the first few rows of the dataset. It
-contains 8 columns. smsa is the Standard Metropolitan Statistical Area,
-which is the name of the city/region. Mortgage yield (mortYld) is the
-dependent variable, and X1 to X6 are the six variables. We can observe
-that all data are numerical values and there is no missing value for
-each region.
->>>>>>> 227411a9c2c67aeaa9fba4812fccddfb96cb8d08
 
 ## Univariate Analysis
 
