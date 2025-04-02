@@ -326,7 +326,7 @@ Now, let's take a look at the correlations between each variable and confirm our
 strong negative one. X6 shows moderate positive correlation with mortYld as well. X4 shows only weak correlation with mortYld. In consequence, we can confirm our previous statements about the scatter-plots.
 
 We can then think about removing one of the highly correlated
-predictors, to see if multicollinearity affects the regression model. However, these correlations only indicate if two variables are linearly associated. A low value doesn't necessarily mean that the variables are not correlated in another way.
+predictors, to see if multicollinearity affects the regression model. However, these correlations only indicate if two variables are linearly associated. Thus, a low value doesn't necessarily mean that the variables are not correlated in another way.
 
 
 ------------------------------------------------------------------------
@@ -413,15 +413,13 @@ step_model <- stepAIC(model, direction = "both")
 summary(step_model)
 ```
 
-(mettre en annexe ?)
+The stepwise regression process identifies X1, X3, and X4 as the most
+significant predictors of Mortgage Yield, constituting the final model.
 
-The stepwise regression process identified X1, X3, and X4 as the most
-significant predictors of mortality yield, leading to the final model.
-
-It's interesting to see that X4 appears among the 3 most significant
-predictoes although it shows the weakest correlation in the correlation
+It is interesting to observe that X4 appears among the 3 most significant
+predictors although it shows the weakest correlation in the correlation
 matrix. Multiple regression measures the effect of each variable while
-holding all other constant. As X4 has very strong correlation with X3,
+holding all other constant. As X4 has very strong correlation with X3 (0.77),
 holding X3 can make the unique contribution of X4 clearer.
 
 The final model explains approximately **83.4% of the variance** in
