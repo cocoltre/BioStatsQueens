@@ -257,25 +257,25 @@ par(mfrow = c(1, 1))
 
 ```
 
-**1. Loan-to-Mortgage Ratio:** As this ratio increases, the Mortgage
+**X1: Loan-to-Mortgage Ratio:** As this ratio increases, the Mortgage
 Yield increases. This suggests a positive correlation, and that higher
 Loan-to-Mortgage Ratios (more borrowed money relative to the property
 value) are associated with higher mortgage yields.\
-**2. Distance from Boston:** There is a positive correlation. Boston
+**X2: Distance from Boston:** There is a positive correlation. Boston
 represents a major financial center with surplus capital. Regions
 further from Boston might have higher yields.\
-**3. Savings per New Unit Built :** There seems to be a negative correlation.
+**X3: Savings per New Unit Built :** There seems to be a negative correlation.
 This indicates that areas with more savings dedicated to new
 construction have better access to local financing, resulting in lower
 mortgage yields.\
-**4. Savings per Capita:** The relationship is less distinguishable but appears to
+**X4: Savings per Capita:** The relationship is less distinguishable but appears to
 be a weak negative correlation or a random dispersion.\
-**5. Population Increase:** There is a positive association which can be
+**X5: Population Increase:** There is a positive association which can be
 seen as a square-root relationship. High population growth may imply
 higher demand for housing, increasing mortgage yields due to heightened
 competition for available funds. We can observe a potential outlier at
 the right side of the plot.\
-**6. First Mortgage from Inter-Regional Banks:** No clear trend. It
+**X6: First Mortgage from Inter-Regional Banks:** No clear trend. It
 seems like the reliance on external financing (measured by the
 Percentage of First Mortgages from Inter-Regional Banks) does not
 significantly influence mortgage yields.\
@@ -287,6 +287,7 @@ correlated with Mortgage Yield.\
 correlated with Mortgage Yield.\
 - X6 shows moderate positive influence on Mortgage Yield.
 - X4 variable shows a weak relationship with mortgage yields.\
+
 These observations support the findings of Schaaf (1966) that distance
 from financial centers, risk factors, and local demand for savings
 contribute to yield variations.\
@@ -319,9 +320,8 @@ ggplot(data = melted_cor, aes(x = Var1, y = Var2, fill = value)) +
 ```
 Now, let's take a look at the correlations between each variable and confirm our previous observations.
 
-X3 is are strongly positively correlated to X4 (0.77) and moderately negatively correlated to X2 (-0.64), X5 (-0.63) and X6 (-0.56). This confirms our observations with the Association Matrix.
-
-X1 and X2 exhibit strong positive correlation with mortYld, while X5 shows moderate positive correlation, and X3 a
+- X3 is are strongly positively correlated to X4 (0.77) and moderately negatively correlated to X2 (-0.64), X5 (-0.63) and X6 (-0.56). This confirms our observations with the Association Matrix.
+- X1 and X2 exhibit strong positive correlation with mortYld, while X5 shows moderate positive correlation, and X3 a
 strong negative one. X6 shows moderate positive correlation with mortYld as well. X4 shows only weak correlation with mortYld. In consequence, we can confirm our previous statements about the scatter-plots.
 
 We can then think about removing one of the highly correlated
@@ -361,27 +361,14 @@ data.frame(
   kable_styling(font_size = 8, latex_options = "hold_position")
 ```
 
-The table summarizes the strength of individual linear relationships
-between each predictor (X1–X6) and the mortgage yield using simple
-linear regression.
+The table summarizes the individual linear relationships between each predictor (X1–X6) and Mortgage Yield, assuming all other variables remain constant, based on simple linear regression.
 
-- **X1** has the **strongest linear association** with mortgage yield,
-explaining approximately **65.4% of its variance** and is highly
-significant (p \< 0.001)
+- X1 is the strongest and most significant predictor of Mortgage Yield, explaining 65.4% of its variance (p \< 0.0001).
+- X2 and X3 also show strong and significant linear associations ($R^2$ = 0.546 and 0.517, respectively with p \< 0.001 and p \< 0.001).
+- X5 and X6 show moderate yet significant associations ($R^2$ = 0.419 and 0.346, respectively with p \< 0.005 and p \< 0.05).
+- X4 doesn't exhibit a significant linear relationship with Mortgage Yield ($R^2$ = 0.049, p = 0.3763), suggesting it may not be a strong individual linear predictor.
 
-- **X2** and **X3** also show strong and significant associations ($R^2$ =
-0.546 and 0.517, respectively).
-
-- **X5** and **X6** show moderate yet significant associations ($R^2$ =
-0.419 and 0.346).
-
-- **X4 (Savings per Capita)** does **not** show a significant
-relationship with mortgage yield ($R^2$ = 0.049, p = 0.3763), suggesting it
-may not be a strong individual predictor.
-
-This preliminary analysis indicates that variables X1, X2, and X3 are
-the most promising candidates for predicting mortgage yield in a
-multivariate model.
+This preliminary analysis indicates that variables X1, X2, and X3 may be the most promising candidates for predicting Mortgage Yield in a multivariate linear model.
 
 ## Null Model vs Full Model Comparison
 
