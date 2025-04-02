@@ -277,34 +277,22 @@ par(mfrow = c(1, 1))
 
 ```
 
-**X1: Loan-to-Mortgage Ratio:** As this ratio increases, the Mortgage
-Yield increases. This suggests a positive correlation, and that higher
+- As X1 increases, the Mortgage Yield increases. This suggests a positive correlation, and that higher
 Loan-to-Mortgage Ratios (more borrowed money relative to the property
 value) are associated with higher mortgage yields.\
-**X2: Distance from Boston:** There is a positive correlation. Boston
-represents a major financial center with surplus capital. Regions
+- X2 describes a positive correlation with `mortYld`. Boston represents a major financial center with surplus capital. Regions
 further from Boston might have higher yields.\
-**X3: Savings per New Unit Built :** There seems to be a negative correlation.
-This indicates that areas with more savings dedicated to new
-construction have better access to local financing, resulting in lower
-mortgage yields.\
-**X4: Savings per Capita:** The relationship is less distinguishable but appears to
-be a weak negative correlation or a random dispersion.\
-**X5: Population Increase:** There is a positive association which can be
-seen as a square-root relationship. High population growth may imply
-higher demand for housing, increasing mortgage yields due to heightened
-competition for available funds. We can observe a potential outlier at
-the right side of the plot.\
-**X6: First Mortgage from Inter-Regional Banks:** No clear trend. It
-seems like the reliance on external financing (measured by the
-Percentage of First Mortgages from Inter-Regional Banks) does not
-significantly influence mortgage yields.\
+- X3 seems to be negatively correlated with `mortYld`. This indicates that areas with more savings dedicated to new
+construction have better access to local financing, resulting in lower mortgage yields.\
+- X4's influence is less distinguishable but appears to be a weak negative correlation or a random dispersion.\
+- X5 shows a positive association which can be seen as a square-root relationship. High population growth may imply
+higher demand for housing, increasing mortgage yields due to heightened competition for available funds. We can observe a potential outlier at the right side of the plot.\
+- X6's variation shows no clear trend. It seems like the reliance on external financing (measured by the
+Percentage of First Mortgages from Inter-Regional Banks) does not significantly influence mortgage yields.\
 \
 **To resume:**\
-- X1, X2 and X5 seem to be the most influential variables positively
-correlated with Mortgage Yield.\
-- X3 is the most influential variable negatively
-correlated with Mortgage Yield.\
+- X1, X2 and X5 seem to be the most influential variables positively correlated with Mortgage Yield.\
+- X3 is the most influential variable negatively correlated with Mortgage Yield.\
 - X6 shows moderate positive influence on Mortgage Yield.
 - X4 variable shows a weak relationship with mortgage yields.\
 
@@ -436,7 +424,7 @@ Yield, and after adjusting for the number of predictors, 80% of the variance is
 still explained, highlithing a strong fit. The overall model is
 statistically significant, with a very low p-value (p \< 0.001). Once again, it means
 that at least one predictor contributes significantly to explaining the
-variation in 'mortYld'. The intercept appears to be really significant to
+variation in `mortYld`. The intercept appears to be really significant to
 fit the model (p \< 0.001).
 
 However, most variables do not show statistically significant individual
