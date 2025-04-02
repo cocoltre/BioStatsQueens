@@ -362,8 +362,7 @@ data.frame(
   kable_styling(font_size = 8, latex_options = "hold_position")
 ```
 
-The table summarizes the individual linear relationships between each predictor (X1–X6) and Mortgage Yield, assuming all other variables remain constant, based on simple linear regression.
-
+The table summarizes the individual linear relationships between each predictor (X1–X6) and Mortgage Yield, assuming all other variables remain constant, based on simple linear regression.\
 - X1 is the strongest and most significant predictor of Mortgage Yield, explaining 65.4% of its variance (p \< 0.0001).
 - X2 and X3 also show strong and significant linear associations ($R^2$ = 0.546 and 0.517, respectively with p \< 0.001 and p \< 0.001).
 - X5 and X6 show moderate yet significant associations ($R^2$ = 0.419 and 0.346, respectively with p \< 0.005 and p \< 0.05).
