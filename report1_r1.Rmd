@@ -30,7 +30,7 @@ editor_options:
 # Introduction
 
 The study of A. H. Schaaf, 1966, "Regional Differences in Mortgage
-Financing Costs" investigates the existence and causes of regional
+Financing Costs", investigates the existence and causes of regional
 differences in mortgage financing costs in the United States. While
 these differences in mortgage yields were decreasing in the early 20th
 century, they suprisingly remained stable after World War II. The paper
@@ -269,7 +269,7 @@ for (i in 1:6) {
 par(mfrow = c(1, 1))
 
 ```
-
+\
 - As X1 increases, the Mortgage Yield increases. This suggests a positive correlation, and that higher
 Loan-to-Mortgage Ratios (more borrowed money relative to the property
 value) are associated with higher mortgage yields.\
