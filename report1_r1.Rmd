@@ -287,7 +287,7 @@ These observations support the findings of Schaaf (1966) stating that distance
 from financial centers, risk factors, and local demand for savings
 contribute to Mortgage Yield variations.\
 
-### Correlation analysis
+### Correlation Analysis
 
 ```{r, fig.width=4, fig.height=4}
 library(reshape2)
@@ -486,23 +486,18 @@ The stepwise regression process identifies X1, X3, and X4 as the most
 significant predictors of Mortgage Yield, constituting the final model.
 
 It is interesting to observe that X4 appears among the 3 most significant
-predictors although it shows the weakest correlation in the correlation
-matrix. Multiple regression measures the effect of each variable while
-holding all other constant. As X4 has very strong correlation with X3 (0.77),
+predictors although it shows the weakest correlation in the Correlation
+Matrix. Multiple regression measures the effect of each variable while
+holding all others constant. As X4 has very strong correlation with X3 (0.77),
 holding X3 can make the unique contribution of X4 clearer.
 
-The final model explains approximately **83.4% of the variance** in
-mortgage yield using only these three predictors.\
-The AIC isn't increased by a lot when keeping the other variables, which
-means that these are still statistically valid but not so useful. The
-final is simpler but still explain the data just as well or better.
+The final model explains approximately 83.4% of the variance in
+Mortgage Yield using only these three predictors. The AIC isn't increased by a lot when keeping more predictors, meaning that even if these can still be statistically valid to keep, they are not so useful to the model. Though the final model is simpler, it explains the data just as well or better than more complex models.
 
-The residual standard error (0.091) is low, and the overall model is
-highly significant, indicating a good fit.\
-We end up with : mortYld = 4.223 + 0.02229.X1 - 0.001863.X3 +
-0.0002249.X4\
+The residual standard error (0.091) is low, and the overall model is highly significant (p \< ...), indicating a good fit.\
+We end up with : mortYld = 4.223 + 0.02229.X1 - 0.001863.X3 + 0.0002249.X4\
 
-Let's try a model with 2-way interactions.
+Let's now try a model with 2-way interactions.
 
 ```{r}
 # Fit model
