@@ -173,7 +173,7 @@ final_plot
 
 With deeper analysis, although the variation across SMSAs is small, we see that regional differences still exist in mortgage yields, possibly due to economic factors like savings, loan terms, and regional banking practices.
 
-The histograms confirm the distribution of the explanatory variables.
+The histograms confirm the distribution of the explanatory variables:
 
 The Loan-to-Mortgage Ratio (X1) shows low variance with most values
 concentrated between 67% and 80%, possibly indicating limited
@@ -183,7 +183,7 @@ substantial geographic spread among SMSAs.
 Savings per New Unit Built (X3) and Savings per Capita (X4) both exhibit
 right-skewed distributions, suggesting that a few cities have notably
 higher savings levels.
-Population Increase (X5) is also highly right-skewed with one major outlier (increase of %~%25%),
+Population Increase (X5) is also highly right-skewed with one major outlier (increase of ~25%),
 indicating that most regions had moderate growth, while a few experienced
 rapid expansion.
 Finally, the percentage of First Mortgages from Inter-Regional Banks
