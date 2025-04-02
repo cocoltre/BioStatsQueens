@@ -283,9 +283,9 @@ higher demand for housing, increasing mortgage yields due to heightened competit
 - X6 shows moderate positive influence on Mortgage Yield.\
 - X4 variable shows a weak relationship with mortgage yields.\
 
-These observations support the findings of Schaaf (1966) that distance
+These observations support the findings of Schaaf (1966) stating that distance
 from financial centers, risk factors, and local demand for savings
-contribute to yield variations.\
+contribute to Mortgage Yield variations.\
 
 ### Correlation analysis
 
