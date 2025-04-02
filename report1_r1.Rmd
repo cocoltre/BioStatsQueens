@@ -380,15 +380,8 @@ full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 anova(null_model, full_model)
 ```
 
-The ANOVA comparison between the null model and the full model reveals
-that the full model, which includes the predictors, significantly
-improves the model fit. The null model (intercept-only) does not explain
-much of the variation in mortgage yield.
-
-The full model, provides a better explanation of the mortgage yield, as
-shown by the significant F-statistic and the p-value. This indicates
-that at least one of the predictors is significantly related to mortgage
-yield, and the explanatory variables are useful for improving the model.
+The ANOVA comparison between the null model (intercept-only) and the full model (including all predictors), reveals that the full model better explains the Mortgage Yield, as shown by the significant F-statistic and p-value (p \< 0.001). This indicates that at least one of the predictors is significantly related to Mortgage
+Yield, and is useful for improving the model.
 
 ```{r}
 # Fit linear regression model
@@ -399,18 +392,18 @@ summary(model)
 
 ```
 
-The model explains approximately **87%** of the variance in mortgage
-yield, and after adjusting for the number of predictors, **80%** is
-still explained. This is a strong fit. The overall model is
-statistically significant, with a very low p-value. Once again, it means
+The full model explains approximately 87% of the variance in Mortgage
+Yield, and after adjusting for the number of predictors, 80% of the variance is
+still explained, highlithing a strong fit. The overall model is
+statistically significant, with a very low p-value (p \< 0.001). Once again, it means
 that at least one predictor contributes significantly to explaining the
-variation in mortYld. The intercept appears to be really significant to
-fit the model.
+variation in 'mortYld'. The intercept appears to be really significant to
+fit the model (p \< 0.001).
 
 However, most variables do not show statistically significant individual
-contributions. Only X1 and X3 show strong significance (p $\approx$
-0.05). Other variables, X2, X5 and X6, do not show strong individual
-effects. This suggests that a reduced model may be more interpretable.
+contributions. Only X1 and X3 show weak significance (p $\approx$
+0.05). The other variables, X2, X5 and X6, do not show significant individual
+effects. This suggests that a reduced model may be more appropriate.
 
 ## Make stepwise regression to select the best model
 
