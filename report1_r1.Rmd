@@ -8,7 +8,7 @@ output:
     toc: false
     latex_engine: pdflatex
     keep_tex: true
-geometry: margin=2.5cm
+geometry: top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm
 fontsize: 11pt
 header-includes:
   - \usepackage{graphicx}
@@ -23,13 +23,20 @@ header-includes:
   - \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurtre}
   - \fancyfoot[C]{\thepage}
   - \usepackage{titlesec}
-  - \titlespacing*{\title}{0pt}{-5cm}{0pt}  # Move title even higher
-  - \titlespacing*{\author}{0pt}{-4.5cm}{0pt}  # Move author higher
-  - \titlespacing*{\date}{0pt}{-4.5cm}{0pt}  # Move date higher
+  # Adjust spacing between title, author, and date
+  - \titlespacing*{\title}{0pt}{0pt}{0pt}  # Title has no space above or below
+  - \titlespacing*{\author}{0pt}{-0.5cm}{0pt}  # Author moved closer to title (less space)
+  - \titlespacing*{\date}{0pt}{-0.5cm}{0pt}  # Date moved closer to author (less space)
+  # Adjust space before Introduction
+  - \titlespacing*{\section}{0pt}{0.5cm}{0pt}  # Space before first section (Introduction) reduced
+  # Add more space between sections and subsections
+  - \titlespacing*{\subsection}{0pt}{1cm}{0pt}  # Add space between section and subsection (e.g. 2 and 2.1)
+  - \titlespacing*{\subsubsection}{0pt}{0.8cm}{0pt}  # Add space between subsections (e.g. 2.1 and 2.1.1)
   - \usepackage{etoolbox}
   - \patchcmd{\maketitle}{\vspace*{2\baselineskip}}{}{}{}  # Remove extra space in title block
-  - \setlength{\topmargin}{-2cm}  # Move everything up
-  - \setlength{\headheight}{12pt}  # Minimal headheight to avoid fancyhdr warnings
+  - \usepackage{titling}
+  - \setlength{\droptitle}{-1.5cm}  # Moves the whole title block up
+  - \setlength{\headheight}{12pt}  # Minimal headheight to avoid warnings
   - \setlength{\headsep}{5pt}  # Reduce space between header and text
   - \setlength{\parindent}{0pt}  # Reduce paragraph indent
   - \setlength{\parskip}{1pt}  # Reduce paragraph spacing

@@ -37,7 +37,7 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\usepackage[margin=2.5cm]{geometry}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -67,12 +67,16 @@
 \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurtre}
 \fancyfoot[C]{\thepage}
 \usepackage{titlesec}
-\titlespacing*{\title}{0pt}{-5cm}{0pt}
-\titlespacing*{\author}{0pt}{-4.5cm}{0pt}
-\titlespacing*{\date}{0pt}{-4.5cm}{0pt}
+\titlespacing*{\title}{0pt}{0pt}{0pt}
+\titlespacing*{\author}{0pt}{-0.5cm}{0pt}
+\titlespacing*{\date}{0pt}{-0.5cm}{0pt}
+\titlespacing*{\section}{0pt}{0.5cm}{0pt}
+\titlespacing*{\subsection}{0pt}{1cm}{0pt}
+\titlespacing*{\subsubsection}{0pt}{0.8cm}{0pt}
 \usepackage{etoolbox}
 \patchcmd{\maketitle}{\vspace*{2\baselineskip}}{}{}{}
-\setlength{\topmargin}{-2cm}
+\usepackage{titling}
+\setlength{\droptitle}{-1.5cm}
 \setlength{\headheight}{12pt}
 \setlength{\headsep}{5pt}
 \setlength{\parindent}{0pt}
@@ -324,8 +328,6 @@ predictors, to see if multicollinearity affects the regression model.
 However, these correlations only indicate if two variables are linearly
 associated. Thus, a low value doesn't necessarily mean that the
 variables are not correlated in another way.
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \section{Model Fitting}\label{model-fitting}
 
@@ -632,8 +634,6 @@ variance.\\
 As a result, the simpler model with only main effects (X1, X3, and X4)
 truly provides the best fit, as it also offers comparable explanatory
 power and better interpretability.
-
-\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \section{Model assumptions and
 Diagnostics}\label{model-assumptions-and-diagnostics}

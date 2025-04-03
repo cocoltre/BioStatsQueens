@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.1)  3 APR 2025 14:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.3)  3 APR 2025 14:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -340,12 +340,17 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count301
+) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/titling/titling.sty
+Package: titling 2009/09/04 v2.1d maketitle typesetting
+\thanksmarkwidth=\skip86
+\thanksmargin=\skip87
+\droptitle=\skip88
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
-\LTleft=\skip86
-\LTright=\skip87
-\LTpre=\skip88
-\LTpost=\skip89
+\LTleft=\skip89
+\LTright=\skip90
+\LTpre=\skip91
+\LTpost=\skip92
 \LTchunksize=\count302
 \LTcapwidth=\dimen196
 \LT@head=\box101
@@ -364,14 +369,14 @@ Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 \ar@mcellbox=\box106
 \extrarowheight=\dimen198
 \NC@list=\toks29
-\extratabsurround=\skip90
-\backup@length=\skip91
+\extratabsurround=\skip93
+\backup@length=\skip94
 \ar@cellbox=\box107
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
-\multirow@colwidth=\skip92
+\multirow@colwidth=\skip95
 \multirow@cntb=\count307
-\multirow@dima=\skip93
+\multirow@dima=\skip96
 \bigstrutjot=\dimen199
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen256
@@ -390,7 +395,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
 \everycr=\toks33
-\minrowclearance=\skip94
+\minrowclearance=\skip97
 \rownum=\count310
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
@@ -430,7 +435,7 @@ Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \tabu@arstrutbox=\box113
 \tabu@hleads=\box114
 \tabu@vleads=\box115
-\tabu@cellskip=\skip95
+\tabu@cellskip=\skip98
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/threeparttable/threeparttable.sty
 Package: threeparttable 2003/06/13  v 3.0
 \@tempboxb=\box116
@@ -441,11 +446,11 @@ Package: environ 2014/05/04 v0.3 A new way to define environments
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\TPTL@width=\skip96
+\TPTL@width=\skip99
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box117
 \UL@hyphenbox=\box118
-\UL@skip=\skip97
+\UL@skip=\skip100
 \UL@hook=\toks36
 \UL@height=\dimen269
 \UL@pe=\count318
@@ -563,12 +568,12 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip98
+\Hy@SectionHShift=\skip101
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
 \BKM@id=\count331
 ))
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 110.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 114.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -578,24 +583,24 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 ) (./report1_r1.aux)
 \openout1 = `report1_r1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 114.
+LaTeX Font Info:    ... okay on input line 114.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -618,7 +623,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \textheight=652.70622pt
 * \oddsidemargin=-1.1381pt
 * \evensidemargin=-1.1381pt
-* \topmargin=-56.9055pt
+* \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=5.0pt
 * \topskip=11.0pt
@@ -646,51 +651,53 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 110.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 112.
+Package hyperref Info: Link coloring OFF on input line 114.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 116.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 112.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 116.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 112.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 116.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 112.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 116.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 112.
+(Font)              <12> on input line 116.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 112.
+(Font)              <8> on input line 116.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 112.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 112.
+(Font)              <6> on input line 116.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 116.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 112.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 116.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 135.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 139.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 138.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 142.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [1
+)
+
+[1
 
 {/Users/colineleteurtre/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
 <Figs/unnamed-chunk-4-1.pdf, id=21, 939.51pt x 361.35pt>
 File: Figs/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-4-1.pdf  used on input line 222.
+Package pdftex.def Info: Figs/unnamed-chunk-4-1.pdf  used on input line 226.
 (pdftex.def)             Requested size: 472.03323pt x 181.55124pt.
 
 
@@ -705,25 +712,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <Figs/unnamed-chunk-5-1.pdf, id=36, 289.08pt x 289.08pt>
 File: Figs/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-5-1.pdf  used on input line 253.
+Package pdftex.def Info: Figs/unnamed-chunk-5-1.pdf  used on input line 257.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[3 <./Figs/unnamed-chunk-5-1.pdf>]
-<Figs/unnamed-chunk-6-1.pdf, id=49, 722.7pt x 361.35pt>
+<Figs/unnamed-chunk-6-1.pdf, id=37, 722.7pt x 361.35pt>
 File: Figs/unnamed-chunk-6-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-6-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-6-1.pdf  used on input line 271.
+Package pdftex.def Info: Figs/unnamed-chunk-6-1.pdf  used on input line 275.
 (pdftex.def)             Requested size: 472.03212pt x 236.01607pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--304
+Underfull \hbox (badness 10000) in paragraph at lines 275--308
 
  []
 
@@ -736,12 +733,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[4 <./Figs/unnamed-chunk-6-1.pdf>]
-<Figs/unnamed-chunk-7-1.pdf, id=60, 289.08pt x 289.08pt>
+[3 <./Figs/unnamed-chunk-5-1.pdf>]
+<Figs/unnamed-chunk-7-1.pdf, id=50, 289.08pt x 289.08pt>
 File: Figs/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-7-1.pdf  used on input line 307.
+Package pdftex.def Info: Figs/unnamed-chunk-7-1.pdf  used on input line 311.
 (pdftex.def)             Requested size: 289.09251pt x 289.09251pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[4 <./Figs/unnamed-chunk-6-1.pdf>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 349.
 
 
 
@@ -753,12 +762,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [5 <./Figs/unnamed-chunk-7-1.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 347.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 409.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+(Font)              <5> on input line 411.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -790,7 +794,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [8]
-<Figs/unnamed-chunk-19-1.pdf, id=104, 542.025pt x 180.675pt>
+<Figs/unnamed-chunk-19-1.pdf, id=105, 542.025pt x 180.675pt>
 File: Figs/unnamed-chunk-19-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-19-1.pdf>
 Package pdftex.def Info: Figs/unnamed-chunk-19-1.pdf  used on input line 643.
@@ -835,15 +839,15 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15151 strings out of 475171
- 243917 string characters out of 5764506
- 658578 words of memory out of 5000000
- 37843 multiletter control sequences out of 15000+600000
+ 15225 strings out of 475171
+ 245211 string characters out of 5764506
+ 665321 words of memory out of 5000000
+ 37913 multiletter control sequences out of 15000+600000
  611339 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 89i,13n,93p,876b,616s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,13n,93p,876b,568s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on report1_r1.pdf (11 pages, 363103 bytes).
+Output written on report1_r1.pdf (11 pages, 363065 bytes).
 PDF statistics:
  269 PDF objects out of 1000 (max. 8388607)
  215 compressed objects within 3 object streams
