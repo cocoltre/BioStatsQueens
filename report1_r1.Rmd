@@ -23,9 +23,9 @@ header-includes:
   - \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurtre}
   - \fancyfoot[C]{\thepage}
   - \usepackage{titlesec}
-  - \titlespacing*{\title}{0pt}{-4cm}{0pt}  # Move title even higher
-  - \titlespacing*{\author}{0pt}{-3.5cm}{0pt}  # Move author higher
-  - \titlespacing*{\date}{0pt}{-3.5cm}{0pt}  # Move date higher
+  - \titlespacing*{\title}{0pt}{-5cm}{0pt}  # Move title even higher
+  - \titlespacing*{\author}{0pt}{-4.5cm}{0pt}  # Move author higher
+  - \titlespacing*{\date}{0pt}{-4.5cm}{0pt}  # Move date higher
   - \usepackage{etoolbox}
   - \patchcmd{\maketitle}{\vspace*{2\baselineskip}}{}{}{}  # Remove extra space in title block
   - \setlength{\topmargin}{-2cm}  # Move everything up
@@ -333,9 +333,6 @@ strong negative one. X6 shows moderate positive correlation with `mortYld` as we
 \
 We can then think about removing one of the highly correlated
 predictors, to see if multicollinearity affects the regression model. However, these correlations only indicate if two variables are linearly associated. Thus, a low value doesn't necessarily mean that the variables are not correlated in another way.
-
-
-------------------------------------------------------------------------
 
 # Model Fitting
 
@@ -650,8 +647,6 @@ variance.\
 As a result, the simpler model with only main effects (X1,
 X3, and X4) truly provides the best fit, as it also offers comparable explanatory power and better
 interpretability.
-
-------------------------------------------------------------------------
 
 # Model assumptions and Diagnostics
 
