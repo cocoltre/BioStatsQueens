@@ -109,7 +109,7 @@
 
 \title{\textbf{Predicting Mortgage Yield using Regression Analysis}}
 \author{Group 42}
-\date{2025-04-07}
+\date{2025-04-08}
 
 \begin{document}
 \maketitle
@@ -267,26 +267,29 @@ Let's take a closer look into the Association Matrix, regarding the
 relationship between Mortgage Yield (\%) and the explanatory variables
 (x-axis), representing the first row in the precedent figure.\\
 
-\includegraphics{Figs/unnamed-chunk-5-1.pdf} As the Loan-to-Mortgage
-Ratio (X1) increases, the Mortgage Yield increases. This suggests a
-positive correlation, and that higher Loan-to-Mortgage Ratios (more
-borrowed money relative to the property value) are associated with
-higher Mortgage Yields. Distance from Boston (X2) reveals a positive
-correlation with \texttt{mortYld}. Boston represents a major financial
-center with surplus capital. Regions further from Boston might have
-higher Yields. Savings per New Unit Built (X3) seems to be negatively
-correlated with \texttt{mortYld}. This indicates that areas with more
-savings dedicated to new construction have better access to local
-financing, resulting in lower Mortgage Yields. Savings per Capita (X4)'s
-influence is less distinguishable but appears to be a weak negative
-correlation or a random dispersion. Population Increase (X5) shows a
-positive association which can be seen as a square-root relationship.
-High population growth may imply higher demand for housing, increasing
-Mortgage Yields due to heightened competition for available funds. We
-can observe a potential outlier at the right side of the plot. The
-Percentage of First Mortgages from Inter-Regional Banks (X6)'s variation
-shows no clear trend. It seems like the reliance on external financing
-does not significantly influence Mortgage Yields.\\
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=1.5\linewidth]{6plots_summary.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.25\textwidth}
+\small
+As the Loan-to-Mortgage Ratio (X1) increases, the Mortgage Yield increases. This suggests a positive correlation, and that higher Loan-to-Mortgage Ratios (more borrowed money relative to the property value) are associated with higher Mortgage Yields. Distance from Boston (X2) reveals a positive correlation with \texttt{mortYld}. Boston represents a major financial center with surplus capital.
+\end{minipage}
+
+Regions further from Boston might have higher Yields. Savings per New
+Unit Built (X3) seems to be negatively correlated with \texttt{mortYld}.
+This indicates that areas with more savings dedicated to new
+construction have better access to local financing, resulting in lower
+Mortgage Yields. Savings per Capita (X4)'s influence is less
+distinguishable but appears to be a weak negative correlation or a
+random dispersion. Population Increase (X5) shows a positive association
+which can be seen as a square-root relationship. High population growth
+may imply higher demand for housing, increasing Mortgage Yields due to
+heightened competition for available funds. We can observe a potential
+outlier at the right side of the plot. The Percentage of First Mortgages
+from Inter-Regional Banks (X6)'s variationshows no clear trend. It seems
+like the reliance on external financing does not significantly influence
+Mortgage Yields.\\
 \strut \\
 \textbf{To resume:}\\
 - X1, X2 and X5 seem to be the most influential variables positively
@@ -337,42 +340,31 @@ F-tests, or model interpretation.
 \subsection{Pairwise Simple
 Regressions}\label{pairwise-simple-regressions}
 
-\begingroup\fontsize{8}{10}\selectfont
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=\linewidth]{simple_regression_table.png}\\
+\small Table 3: Simple Linear Regressions: $R^2$ and p-values
+\end{minipage}
+\hspace{1em}
+\begin{minipage}{0.52\textwidth}
+\small
+The table summarizes the individual linear relationships between each predictor (X1–X6) and Mortgage Yield, based on simple linear regression.
+\begin{itemize}
+\item \textbf{X1} is the strongest and most significant predictor of Mortgage Yield, explaining 65.4\% of its variance (p < 0.0001).
+\item \textbf{X2} and \textbf{X3} also show strong and significant linear associations ($R^2$ = 0.546 and 0.517 respectively, both with p < 0.001).
+\item \textbf{X5} and \textbf{X6} show moderate yet significant associations ($R^2$ = 0.419 and 0.346 respectively, with p < 0.005 and p < 0.05).
+\end{itemize}
+\end{minipage}
+\addtocounter{table}{1}
 
-\begin{longtable}[t]{lrr}
-\caption{\label{tab:unnamed-chunk-6}Simple Linear Regressions: $R^2$ and p-values}\\
-\toprule
-Predictor & R\_squared & p\_value\\
-\midrule
-X1 & 0.654 & 0.0000\\
-X2 & 0.546 & 0.0005\\
-X3 & 0.517 & 0.0008\\
-X4 & 0.049 & 0.3763\\
-X5 & 0.419 & 0.0037\\
-\addlinespace
-X6 & 0.346 & 0.0103\\
-\bottomrule
-\end{longtable}
-\endgroup{}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{X4} does not exhibit a significant relationship with Mortgage
+  Yield (\(R^2\) = 0.049, p = 0.3763).\\
+\end{itemize}
 
-The table summarizes the individual linear relationships between each
-predictor (X1--X6) and Mortgage Yield, assuming all other variables
-remain constant, based on simple linear regression.\\
-- X1 is the strongest and most significant predictor of Mortgage Yield,
-explaining 65.4\% of its variance (p \textless{} 0.0001).\\
-- X2 and X3 also show strong and significant linear associations
-(\(R^2\) = 0.546 and 0.517, respectively with p \textless{} 0.001 and p
-\textless{} 0.001).\\
-- X5 and X6 show moderate yet significant associations (\(R^2\) = 0.419
-and 0.346, respectively with p \textless{} 0.005 and p \textless{}
-0.05).\\
-- X4 doesn't exhibit a significant linear relationship with Mortgage
-Yield (\(R^2\) = 0.049, p = 0.3763), suggesting it may not be a strong
-individual linear predictor.\\
-\strut \\
-This preliminary analysis indicates that variables X1, X2, and X3 may be
-the most promising candidates for predicting Mortgage Yield in a
-multivariate linear model.
+This analysis suggests that variables X1, X2, and X3 may be the most
+promising candidates for predicting Mortgage Yield.
 
 \subsection{Null Model vs Full Model
 Comparison}\label{null-model-vs-full-model-comparison}
@@ -380,7 +372,7 @@ Comparison}\label{null-model-vs-full-model-comparison}
 \begingroup\fontsize{8}{10}\selectfont
 
 \begin{longtable}[t]{lrrrrrr}
-\caption{\label{tab:unnamed-chunk-7}Comparison of Null and Full Model (ANOVA)}\\
+\caption{\label{tab:unnamed-chunk-5}Comparison of Null and Full Model (ANOVA)}\\
 \toprule
 term & df.residual & rss & df & sumsq & statistic & p.value\\
 \midrule
@@ -397,48 +389,23 @@ F-statistic and p-value (p \textless{} 0.001). This indicates that at
 least one of the predictors is significantly related to Mortgage Yield,
 and is useful for improving the model.
 
-\begin{table}[!h]
-\centering
-\caption{\label{tab:unnamed-chunk-8}Summary of Full Linear Model}
-\centering
-\fontsize{8}{10}\selectfont
-\begin{tabular}[t]{lrrrr}
-\toprule
-term & estimate & std.error & statistic & p.value\\
-\midrule
-(Intercept) & 4.2852 & 0.6682 & 6.4127 & 0.0000\\
-X1 & 0.0203 & 0.0093 & 2.1835 & 0.0515\\
-X2 & 0.0000 & 0.0000 & 0.2896 & 0.7775\\
-X3 & -0.0016 & 0.0008 & -2.1029 & 0.0593\\
-X4 & 0.0002 & 0.0001 & 1.7944 & 0.1002\\
-\addlinespace
-X5 & 0.0013 & 0.0018 & 0.7267 & 0.4826\\
-X6 & 0.0002 & 0.0023 & 0.1024 & 0.9203\\
-\bottomrule
-\end{tabular}
-\end{table}
-\begin{table}[!h]
-\centering
-\caption{\label{tab:unnamed-chunk-9}Fit Statistics of Full Linear Model}
-\centering
-\fontsize{8}{10}\selectfont
-\begin{tabular}[t]{rrrrrr}
-\toprule
-R\textsuperscript{2} & Adjusted R\textsuperscript{2} & Residual Std. Error & F-statistic & DF & p-value\\
-\midrule
-0.8706 & 0.8 & 0.0999 & 12.3349 & 6 & 3e-04\\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{minipage}{0.42\textwidth}
+\includegraphics[width=1.2\linewidth]{full_model_summary_table.png}\\
+\small Table 5: Summary of Full Linear Model
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+\small
+The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% after adjusting for the number of predictors, which highlights a strong fit. The Residual Standard Error is low, and the overall model is statistically significant, with a very low p-value ($p < 0.001$). Once again, it means that at least one term contributes significantly to explaining the variation in \texttt{mortYld}.
+\end{minipage}
+\vspace{0.2em}
 
-The Full model explains \textasciitilde87\% of the variance in Mortgage
-Yield, and 80\% after adjusting for the number of predictors, which
-highlights a strong fit. The Residual Standard Error (?) is low, and the
-overall model is statistically significant, with a very low p-value (p
-\textless{} 0.001). Once again, it means that at least one term
-contributes significantly to explaining the variation in
-\texttt{mortYld}.\\
-\strut \\
+\noindent
+\includegraphics[width=0.9\linewidth,height=0.18\textheight]{full_model_fitstats_table.png}\textbackslash{}
+\small Table 6: Fit Statistics of Full Linear Model
+
+\addtocounter{table}{2}
+
 The intercept appears to be strongly significant to fit the model (p
 \textless{} 0.001). On the other hand, most of the variables do not show
 statistically significant individual contributions: only X1 and X3 show
@@ -469,7 +436,7 @@ model}\label{make-stepwise-regression-to-select-the-best-model}
 
 \begin{table}[!h]
 \centering
-\caption{\label{tab:unnamed-chunk-10}Fit Statistics of Stepwise Model}
+\caption{\label{tab:unnamed-chunk-8}Fit Statistics of Stepwise Model}
 \centering
 \fontsize{8}{10}\selectfont
 \begin{tabular}[t]{rrrrrl}
@@ -504,46 +471,20 @@ We end up with : \texttt{mortYld} = 4.223 + 0.02229\(\times\)X1 -
 \strut \\
 Let's now try a model with 2-way interactions.
 
-\begin{table}[!h]
-\centering
-\caption{\label{tab:unnamed-chunk-11}Coefficients of Interaction Model}
-\centering
-\fontsize{8}{10}\selectfont
-\begin{tabular}[t]{lrrrr}
-\toprule
-term & estimate & std.error & statistic & p.value\\
-\midrule
-(Intercept) & 5.3710 & 2.0329 & 2.6421 & 0.0229\\
-X1 & 0.0069 & 0.0266 & 0.2601 & 0.7996\\
-X3 & -0.0001 & 0.0096 & -0.0108 & 0.9916\\
-X4 & -0.0009 & 0.0025 & -0.3706 & 0.7180\\
-X1:X3 & 0.0000 & 0.0001 & -0.1582 & 0.8772\\
-\addlinespace
-X1:X4 & 0.0000 & 0.0000 & 0.4641 & 0.6516\\
-X3:X4 & 0.0000 & 0.0000 & -0.1046 & 0.9185\\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[!h]
-\centering
-\caption{\label{tab:unnamed-chunk-12}Fit Statistics of Interaction Model}
-\centering
-\fontsize{8}{10}\selectfont
-\begin{tabular}[t]{rrrrrr}
-\toprule
-R\textsuperscript{2} & Adjusted R\textsuperscript{2} & Residual Std. Error & F-statistic & DF & p-value\\
-\midrule
-0.8698 & 0.7988 & 0.1002 & 12.25 & 6 & 3e-04\\
-\bottomrule
-\end{tabular}
-\end{table}
-
+\begin{minipage}{0.45\textwidth}
+\includegraphics[width=1.1\linewidth]{interaction_model_coef.png}\\
+\vspace{0.5em}
+\includegraphics[width=1.1\linewidth]{interaction_model_fitstats.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.52\textwidth}
+\small
 The 2-way Interactions model, which is more complex than the Stepwise
 model, explains approximately 79.9\% of the variance in Mortgage Yield.
 The Residual Standard Error (0.1002) is low, and the overall model is
-highly significant (p \textless{} 0.001), indicating that at least one
-of the terms has a significant influence on Mortgage Yield.
+highly significant (p < 0.001), indicating that at least one of the
+terms has a significant influence on Mortgage Yield.
+\end{minipage}
 
 None of the variables show statistically significant individual
 contributions: only the intercept appears to be moderately significant
@@ -564,7 +505,7 @@ difficult to interpret meaningfully.
 \begingroup\fontsize{8}{10}\selectfont
 
 \begin{longtable}[t]{lrrrrr}
-\caption{\label{tab:unnamed-chunk-13}Comparison of Model Performance Metrics}\\
+\caption{\label{tab:unnamed-chunk-11}Comparison of Model Performance Metrics}\\
 \toprule
 Model & R2 & Adj\_R2 & AIC & Residual\_SE & F\_statistic\\
 \midrule
@@ -586,7 +527,7 @@ parsimony.
 
 \begin{table}[!h]
 \centering
-\caption{\label{tab:unnamed-chunk-14}ANOVA Comparison: Stepwise vs Interactions Model}
+\caption{\label{tab:unnamed-chunk-12}ANOVA Comparison: Stepwise vs Interactions Model}
 \centering
 \fontsize{8}{10}\selectfont
 \begin{tabular}[t]{lrrrrrr}
@@ -614,7 +555,7 @@ Diagnostics}\label{model-assumptions-and-diagnostics}
 
 \subsection{Independence evaluation}\label{independence-evaluation}
 
-\includegraphics{Figs/unnamed-chunk-15-1.pdf}
+\includegraphics{Figs/unnamed-chunk-13-1.pdf}
 
 The \texttt{Residuals\ VS\ Fitted\ Values} plot shows that the residuals
 are randomly scattered around 0, with no clear pattern. This suggests
@@ -635,7 +576,7 @@ diagnostic}\label{multicolinearity-diagnostic}
 \begingroup\fontsize{8}{10}\selectfont
 
 \begin{longtable}[t]{lr}
-\caption{\label{tab:unnamed-chunk-16}Variance Inflation Factors (VIF)}\\
+\caption{\label{tab:unnamed-chunk-14}Variance Inflation Factors (VIF)}\\
 \toprule
  & vif\_values\\
 \midrule
