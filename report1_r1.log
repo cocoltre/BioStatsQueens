@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.25)  8 APR 2025 17:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.25)  9 APR 2025 17:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -968,8 +968,8 @@ File: full_model_summary_table.png Graphic file (type png)
 Package pdftex.def Info: full_model_summary_table.png  used on input line 393.
 (pdftex.def)             Requested size: 237.90683pt x 138.31792pt.
 
-Overfull \hbox (39.65459pt too wide) in paragraph at lines 393--395
-[][] 
+Overfull \hbox (39.65459pt too wide) in paragraph at lines 393--396
+[][]
  []
 
 <full_model_fitstats_table.png, id=55, 578.16pt x 86.724pt>
@@ -995,34 +995,29 @@ itstats_table.png>]
 <stepwise_aic_table.png, id=68, 325.215pt x 144.54pt>
 File: stepwise_aic_table.png Graphic file (type png)
 <use stepwise_aic_table.png>
-Package pdftex.def Info: stepwise_aic_table.png  used on input line 425.
+Package pdftex.def Info: stepwise_aic_table.png  used on input line 428.
 (pdftex.def)             Requested size: 226.57707pt x 100.7009pt.
 <stepwise_coef_table.png, id=69, 325.215pt x 144.54pt>
 File: stepwise_coef_table.png Graphic file (type png)
 <use stepwise_coef_table.png>
-Package pdftex.def Info: stepwise_coef_table.png  used on input line 431.
+Package pdftex.def Info: stepwise_coef_table.png  used on input line 435.
 (pdftex.def)             Requested size: 226.57707pt x 100.7009pt.
-<interaction_model_coef.png, id=70, 346.896pt x 180.675pt>
+<interaction_model_coef.png, id=70, 419.166pt x 180.675pt>
 File: interaction_model_coef.png Graphic file (type png)
 <use interaction_model_coef.png>
-Package pdftex.def Info: interaction_model_coef.png  used on input line 475.
-(pdftex.def)             Requested size: 233.65771pt x 121.69672pt.
-<interaction_model_fitstats.png, id=71, 346.896pt x 101.178pt>
+Package pdftex.def Info: interaction_model_coef.png  used on input line 479.
+(pdftex.def)             Requested size: 283.21906pt x 122.07716pt.
+
+Overfull \hbox (94.40945pt too wide) in paragraph at lines 479--482
+[][]
+ []
+
+<interaction_model_fitstats.png, id=71, 650.43pt x 72.27pt>
 File: interaction_model_fitstats.png Graphic file (type png)
 <use interaction_model_fitstats.png>
-Package pdftex.def Info: interaction_model_fitstats.png  used on input line 477
+Package pdftex.def Info: interaction_model_fitstats.png  used on input line 494
 .
-(pdftex.def)             Requested size: 233.65771pt x 68.15015pt.
-
-Overfull \hbox (21.2451pt too wide) in paragraph at lines 475--478
-[][] 
- []
-
-
-Overfull \hbox (23.46732pt too wide) in paragraph at lines 475--478
- [] 
- []
-
+(pdftex.def)             Requested size: 472.04094pt x 52.44897pt.
 
 
 
@@ -1032,11 +1027,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[6 <./stepwise_aic_table.png> <./stepwise_coef_table.png>]
+[6 <./stepwise_aic_table.png> <./stepwise_coef_table.png> <./interaction_model_
+coef.png>]
 <Figs/unnamed-chunk-13-1.pdf, id=80, 542.025pt x 180.675pt>
 File: Figs/unnamed-chunk-13-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-13-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-13-1.pdf  used on input line 558.
+Package pdftex.def Info: Figs/unnamed-chunk-13-1.pdf  used on input line 573.
 (pdftex.def)             Requested size: 472.0459pt x 157.34862pt.
 
 
@@ -1047,12 +1043,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[7 <./interaction_model_coef.png> <./interaction_model_fitstats.png>]
-<qqplot_residuals.png, id=89, 385.44pt x 385.44pt>
+[7 <./interaction_model_fitstats.png>]
+<vif_table.png, id=89, 108.405pt x 93.951pt>
+File: vif_table.png Graphic file (type png)
+<use vif_table.png>
+Package pdftex.def Info: vif_table.png  used on input line 592.
+(pdftex.def)             Requested size: 84.96742pt x 73.63844pt.
+
+Overfull \hbox (2.2222pt too wide) in paragraph at lines 591--600
+$[]$  $[]$ 
+ []
+
+<qqplot_residuals.png, id=90, 337.26pt x 337.26pt>
 File: qqplot_residuals.png Graphic file (type png)
 <use qqplot_residuals.png>
-Package pdftex.def Info: qqplot_residuals.png  used on input line 601.
-(pdftex.def)             Requested size: 180.55104pt x 180.55104pt.
+Package pdftex.def Info: qqplot_residuals.png  used on input line 605.
+(pdftex.def)             Requested size: 165.21767pt x 165.21767pt.
 
 
 
@@ -1062,7 +1068,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[8 <./Figs/unnamed-chunk-13-1.pdf>]
+[8 <./Figs/unnamed-chunk-13-1.pdf> <./vif_table.png> <./qqplot_residuals.png>]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1071,18 +1077,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[9 <./qqplot_residuals.png>] (report1_r1.aux)
+[9] (report1_r1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 17779 strings out of 473523
- 289333 string characters out of 5714630
- 743106 words of memory out of 5000000
- 40481 multiletter control sequences out of 15000+600000
- 633744 words of font info for 186 fonts, out of 8000000 for 9000
+ 17787 strings out of 473523
+ 289478 string characters out of 5714630
+ 743024 words of memory out of 5000000
+ 40486 multiletter control sequences out of 15000+600000
+ 633910 words of font info for 188 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,12n,93p,1201b,572s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
@@ -1097,9 +1103,9 @@ sers/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Use
 rs/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro10.pfb><C:/Use
 rs/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Use
 rs/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on report1_r1.pdf (9 pages, 687460 bytes).
+Output written on report1_r1.pdf (9 pages, 704336 bytes).
 PDF statistics:
  238 PDF objects out of 1000 (max. 8388607)
- 36 named destinations out of 1000 (max. 500000)
- 43226 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 35 named destinations out of 1000 (max. 500000)
+ 43231 words of extra memory for PDF output out of 51595 (max. 10000000)
 

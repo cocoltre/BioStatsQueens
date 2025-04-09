@@ -109,7 +109,7 @@
 
 \title{\textbf{Predicting Mortgage Yield using Regression Analysis}}
 \author{Group 42}
-\date{2025-04-08}
+\date{2025-04-09}
 
 \begin{document}
 \maketitle
@@ -390,7 +390,8 @@ least one of the predictors is significantly related to Mortgage Yield,
 and is useful for improving the model.
 
 \begin{minipage}{0.42\textwidth}
-\includegraphics[width=1.2\linewidth]{full_model_summary_table.png}\\
+\includegraphics[width=1.2\linewidth]{full_model_summary_table.png}
+\vspace{-0.2em}
 \small Table 5: Summary of Full Linear Model
 \end{minipage}
 \hfill
@@ -398,10 +399,12 @@ and is useful for improving the model.
 \small
 The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% after adjusting for the number of predictors, which highlights a strong fit. The Residual Standard Error is low, and the overall model is statistically significant, with a very low p-value ($p < 0.001$). Once again, it means that at least one term contributes significantly to explaining the variation in \texttt{mortYld}.
 \end{minipage}
-\vspace{0.2em}
 
 \noindent
-\includegraphics[width=0.9\linewidth,height=0.18\textheight]{full_model_fitstats_table.png}\textbackslash{}
+\includegraphics[width=0.9\linewidth,height=0.18\textheight]{full_model_fitstats_table.png}
+
+\par
+
 \small Table 6: Fit Statistics of Full Linear Model
 
 \addtocounter{table}{2}
@@ -413,16 +416,17 @@ weak significance (p \(\approx\) 0.05), while the other variables, X2,
 X5 and X6, do not show significant individual effects. This suggests
 that a reduced model may be more appropriate.\\
 \strut \\
-We end up with : \texttt{mortYld} = 4.2852 + 0.0203\(\times\)X1 +
-0.0\(\times\)X2 - 0.0016\(\times\)X3 + 0.0002\(\times\)X4 +
-0.0013\(\times\)X5 + 0.0002\(\times\)X6
+We end up with : \texttt{mortYld} = 4.2852 + 0.0203\(\cdot\)X1 +
+0.0\(\cdot\)X2 - 0.0016\(\cdot\)X3 + 0.0002\(\cdot\)X4 +
+0.0013\(\cdot\)X5 + 0.0002\(\cdot\)X6
 
 \subsection{Make stepwise regression to select the best
 model}\label{make-stepwise-regression-to-select-the-best-model}
 
 \begin{minipage}{0.48\textwidth}
 \centering
-\includegraphics[width=\linewidth]{stepwise_aic_table.png}\\
+\includegraphics[width=\linewidth]{stepwise_aic_table.png}
+\vspace{0.3em}
 \small Table 7: Stepwise AIC Steps
 \end{minipage}
 \hfill
@@ -466,18 +470,18 @@ data just as well or better than more complex models. The Residual
 Standard Error (0.091) is low, and the overall model is highly
 significant (p \textless{} 0.001), indicating a good fit.\\
 \strut \\
-We end up with : \texttt{mortYld} = 4.223 + 0.02229\(\times\)X1 -
-0.001863\(\times\)X3 + 0.0002249\(\times\)X4\\
+We end up with : \texttt{mortYld} = 4.223 + 0.02229\(\cdot\)X1 -
+0.001863\(\cdot\)X3 + 0.0002249\(\cdot\)X4\\
 \strut \\
 Let's now try a model with 2-way interactions.
 
-\begin{minipage}{0.45\textwidth}
-\includegraphics[width=1.1\linewidth]{interaction_model_coef.png}\\
-\vspace{0.5em}
-\includegraphics[width=1.1\linewidth]{interaction_model_fitstats.png}
+\begin{minipage}{0.4\textwidth}
+\includegraphics[width=1.5\linewidth]{interaction_model_coef.png}
+\vspace{0.3em}
+\small Table 10: Coefficients of Interaction Model
 \end{minipage}
 \hfill
-\begin{minipage}{0.52\textwidth}
+\begin{minipage}{0.35\textwidth}
 \small
 The 2-way Interactions model, which is more complex than the Stepwise
 model, explains approximately 79.9\% of the variance in Mortgage Yield.
@@ -486,13 +490,24 @@ highly significant (p < 0.001), indicating that at least one of the
 terms has a significant influence on Mortgage Yield.
 \end{minipage}
 
+\noindent
+\includegraphics[width=1\linewidth]{interaction_model_fitstats.png}
+
+\par
+
+\small Table 11: Fit Statistics of Interaction Model
+
+\addtocounter{table}{2}
+
+\hfill\break
 None of the variables show statistically significant individual
 contributions: only the intercept appears to be moderately significant
 to fit the model (p \textless{} 0.05). This suggests that a reduced
 model may be more appropriate.\\
 \strut \\
-We end up with : \texttt{mortYld} = 5.3710 + 0.0069*X1 - 0.0001*X3 -
-0.0009*X4 + 0.0*X1:X3 + 0.0*X1:X4 + 0.0*X3:X4\\
+We end up with : \texttt{mortYld} = 5.3710 + 0.0069\(\cdot\)X1 -
+0.0001\(\cdot\)X3 - 0.0009\(\cdot\)X4 + 0.0\(\cdot\)X1:X3 +
+0.0\(\cdot\)X1:X4 + 0.0\(\cdot\)X3:X4\\
 \strut \\
 We decided not to include a 3-way Interactions model in our analysis.
 Given the small sample size (18 observations), adding high-order
@@ -573,35 +588,24 @@ verified, as they are not correlated with the order of observations.
 \subsection{Multicolinearity
 diagnostic}\label{multicolinearity-diagnostic}
 
-\begingroup\fontsize{8}{10}\selectfont
-
-\begin{longtable}[t]{lr}
-\caption{\label{tab:unnamed-chunk-14}Variance Inflation Factors (VIF)}\\
-\toprule
- & vif\_values\\
-\midrule
-X1 & 1.886802\\
-X3 & 4.550125\\
-X4 & 3.348330\\
-\bottomrule
-\end{longtable}
-\endgroup{}
-
-As all variables have a VIF value under 5, it means that they don't
-cause problematic multicollinearity in the final model and that none of
-them should be eliminated. This confirms our choice of keeping X3 and
-X4: even if they showed a high correlation coefficient (0.77), these
-variables still provide enough unique, non-redundant information to
-justify keeping them in the model.
+\begin{minipage}{0.2\textwidth}
+\includegraphics[width=0.9\linewidth]{vif_table.png}\\
+\small Table 14: Variance Inflation Factors (VIF)
+\end{minipage}
+\hfill
+\begin{minipage}{0.8\textwidth}
+\small
+As all variables have a VIF value under 5, it means that they don’t cause problematic multicollinearity in the final model and that none of them should be eliminated. This confirms our choice of keeping X3 and X4: even if they showed a high correlation coefficient (0.77), these variables still provide enough unique, non-redundant information to justify keeping them in the model.
+\end{minipage}
 
 \subsection{Normality Check}\label{normality-check}
 
-\begin{minipage}{0.45\textwidth}
+\begin{minipage}{0.35\textwidth}
 \centering
-\includegraphics[width=0.85\linewidth]{qqplot_residuals.png}
+\includegraphics[width=1\linewidth]{qqplot_residuals.png}
 \end{minipage}
 \hfill
-\begin{minipage}{0.5\textwidth}
+\begin{minipage}{0.6\textwidth}
 \small
 The \texttt{Q-Q plot of Residuals} indicates that most of the points align closely with the 45-degree line, suggesting that the residuals are approximately normally distributed. However, six points deviate at the extremes of the theoretical quantiles, which indicates the presence of potential outliers or heavy tails in the distribution. In a dataset with just 18 observations, small deviations in the Q-Q plot are usual. Outliers or deviations are common in such a small sample size and do not automatically suggest a violation of normality.
 \end{minipage}
@@ -609,8 +613,8 @@ The \texttt{Q-Q plot of Residuals} indicates that most of the points align close
 \section{Conclusions}\label{conclusions}
 
 \hfill\break
-The final estimated model is : \texttt{mortYld} = 4.223 + 0.02229*X1 -
-0.001863*X3 + 0.0002249*X4\\
+The final estimated model is : \texttt{mortYld} = 4.223 +
+0.02229\(\cdot\)X1 - 0.001863\(\cdot\)X3 + 0.0002249\(\cdot\)X4\\
 where X1 is the Loan-to-Mortgage Ratio, X3 is the Savings per New Unit
 Built, and X4 is the Savings per Capita.
 
