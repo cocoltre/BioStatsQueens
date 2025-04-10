@@ -109,7 +109,7 @@
 
 \title{\textbf{Predicting Mortgage Yield using Regression Analysis}}
 \author{Group 42}
-\date{2025-04-09}
+\date{2025-04-10}
 
 \begin{document}
 \maketitle
@@ -121,12 +121,9 @@ Financing Costs'', investigates the existence and causes of regional
 differences in Mortgage financing costs in the United States. While
 these differences in Mortgage Yields were decreasing in the early 20th
 century, they suprisingly remained stable after World War II. The paper
-explores two main explanations for this phenomenon:\\
-\strut \\
-\textbf{1.} Differences in investment value due to risk, terms, and
-liquidity.\\
-\textbf{2.} Market imperfections such as legal barriers and information
-gaps.\\
+explores two main explanations for this phenomenon: differences in
+investment value due to risk, terms, and liquidity, and market
+imperfections such as legal barriers and information gaps.\\
 
 The data used in this study comes from the Federal Home Loan Bank Board,
 which contains interest rates and fees in 18 SMSAs (Standard
@@ -139,17 +136,17 @@ The aim of this report is to analyze the data and develop a predictive
 model to predict Mortgage Yield (\texttt{mortYld} in \%) based on 6
 explanatory variables:\\
 \strut \\
-- \textbf{X1:} Loan-to-Mortgage Ratio, in \% → High values indicate low
+- \textbf{X1}: Loan-to-Mortgage Ratio, in \% → High values indicate low
 down payments.\\
-- \textbf{X2:} Distance from Boston, in miles → Measures regional
+- \textbf{X2}: Distance from Boston, in miles → Measures regional
 proximity to financial centers.\\
-- \textbf{X3:} Savings per New Unit Built, in \$ → Indicator of regional
+- \textbf{X3}: Savings per New Unit Built, in \$ → Indicator of regional
 credit demand.\\
-- \textbf{X4:} Savings per Capita, in \$ → Measures local savings levels
+- \textbf{X4}: Savings per Capita, in \$ → Measures local savings levels
 (credit supply).\\
-- \textbf{X5:} Population Increase, 1950-1960, in \% → Proxy for housing
+- \textbf{X5}: Population Increase, 1950-1960, in \% → Proxy for housing
 demand growth.\\
-- \textbf{X6:} Percentage of First Mortgages from Inter-Regional Banks,
+- \textbf{X6}: Percentage of First Mortgages from Inter-Regional Banks,
 in \% → Indicator of external financing reliance.
 
 \section{Exploratory Data Analysis
@@ -177,9 +174,9 @@ Atlanta & 6.02 & 73.6 & 1074 & 32.3 & 582.9 & 39.9 & 26.6\\
 
 Here is a display of the first few rows of the dataset. Each SMSA is
 described by its Mortgage Yield (\texttt{mortYld}) as the dependent
-variable and six explanatory variables (X1 to X6). All data consist of
-numerical values and quick checking confirms that there are no missing
-values in any region.
+variable and six explanatory variables (\textbf{X1} to \textbf{X6}). All
+data consist of numerical values and quick checking confirms that there
+are no missing values in any region.
 
 \subsection{Univariate Analysis}\label{univariate-analysis}
 
@@ -207,19 +204,20 @@ Through this summary, we already observe that Mortgage Yields don't vary
 much across regions. Most values are between 5.2\% and 6.2\%, suggesting
 relatively stable Mortgage rates.
 
-Loan-to-Mortgage Ratios (X1) are concentrated in between 67\% and
-78.1\%, indicating relatively consistent lending practices across
-regions. Distance from Boston (X2) has a vast range (0--3162 miles),
-highlighting geographical diversity and potential financial access
-disparities. Savings per New Unit Built (X3) and Savings per Capita (X4)
-are characterized by means bigger than medians, representing
-right-skewed distributions, thus suggesting regional imbalances in
-credit demand and supply in housing affordability across regions.
-Population Increase (X5) from 1950 to 1960 varies widely (7.5--88.9\%),
-reflecting differing housing market pressures. Lastly, Percentage of
-First Mortgages from Inter-Regional Banks (X6) spans from 2.0\% to
-51.3\%, meaning that some areas depend heavily on external financing
-while others rely more on local institutions.
+Loan-to-Mortgage Ratios (\textbf{X1}) are concentrated in between 67\%
+and 78.1\%, indicating relatively consistent lending practices across
+regions. Distance from Boston (\textbf{X2}) has a vast range (0--3162
+miles), highlighting geographical diversity and potential financial
+access disparities. Savings per New Unit Built (\textbf{X3}) and Savings
+per Capita (\textbf{X4}) are characterized by means bigger than medians,
+representing right-skewed distributions, thus suggesting regional
+imbalances in credit demand and supply in housing affordability across
+regions. Population Increase (\textbf{X5}) from 1950 to 1960 varies
+widely (7.5--88.9\%), reflecting differing housing market pressures.
+Lastly, Percentage of First Mortgages from Inter-Regional Banks
+(\textbf{X6}) spans from 2.0\% to 51.3\%, meaning that some areas depend
+heavily on external financing while others rely more on local
+institutions.
 
 \subsubsection{Graphical Representation}\label{graphical-representation}
 
@@ -231,21 +229,21 @@ due to economic factors like savings, loan terms, and regional banking
 practices. The histograms confirm the distribution of the explanatory
 variables:
 
-The Loan-to-Mortgage Ratio (X1) shows low variance with most values
-concentrated between 67\% and 80\%, possibly indicating limited
-variability across regions. Distance from Boston (X2) displays a wide
-and almost homogeneous distribution, reflecting substantial geographic
-spread among SMSAs. Savings per New Unit Built (X3) and Savings per
-Capita (X4) both exhibit right-skewed distributions, suggesting that a
-few cities have notably higher savings levels. Population Increase (X5)
-is also highly right-skewed with one major outlier (increase of
-\textasciitilde25\%), indicating that most regions had moderate growth,
-while a few experienced rapid expansion. Finally, the percentage of
-First Mortgages from Inter-Regional Banks (X6) is also right-skewed,
-with most cities relying minimally on external financing and a few
-showing heavy dependence. Overall, the data suggests regional variation
-in housing finance conditions, credit accessibility, and Mortgage market
-dynamics.
+The Loan-to-Mortgage Ratio (\textbf{X1}) shows low variance with most
+values concentrated between 67\% and 80\%, possibly indicating limited
+variability across regions. Distance from Boston (\textbf{X2}) displays
+a wide and almost homogeneous distribution, reflecting substantial
+geographic spread among SMSAs. Savings per New Unit Built (\textbf{X3})
+and Savings per Capita (\textbf{X4}) both exhibit right-skewed
+distributions, suggesting that a few cities have notably higher savings
+levels. Population Increase (\textbf{X5}) is also highly right-skewed
+with one major outlier (increase of \textasciitilde25\%), indicating
+that most regions had moderate growth, while a few experienced rapid
+expansion. Finally, the percentage of First Mortgages from
+Inter-Regional Banks (\textbf{X6}) is also right-skewed, with most
+cities relying minimally on external financing and a few showing heavy
+dependence. Overall, the data suggests regional variation in housing
+finance conditions, credit accessibility, and Mortgage market dynamics.
 
 \subsection{Bivariate Numerical
 Analysis}\label{bivariate-numerical-analysis}
@@ -273,31 +271,23 @@ relationship between Mortgage Yield (\%) and the explanatory variables
 \hfill
 \begin{minipage}{0.25\textwidth}
 \small
-As the Loan-to-Mortgage Ratio (X1) increases, the Mortgage Yield increases. This suggests a positive correlation, and that higher Loan-to-Mortgage Ratios (more borrowed money relative to the property value) are associated with higher Mortgage Yields. Distance from Boston (X2) reveals a positive correlation with \texttt{mortYld}. Boston represents a major financial center with surplus capital.
+As the Loan-to-Mortgage Ratio (\textbf{X1}) increases, the Mortgage Yield increases. This suggests a positive correlation, and that higher Loan-to-Mortgage Ratios (more borrowed money relative to the property value) are associated with higher Mortgage Yields. Distance from Boston (\textbf{X2}) reveals a positive correlation with \texttt{mortYld}. Boston represents a major financial center with surplus capital.
 \end{minipage}
 
 Regions further from Boston might have higher Yields. Savings per New
-Unit Built (X3) seems to be negatively correlated with \texttt{mortYld}.
-This indicates that areas with more savings dedicated to new
-construction have better access to local financing, resulting in lower
-Mortgage Yields. Savings per Capita (X4)'s influence is less
-distinguishable but appears to be a weak negative correlation or a
-random dispersion. Population Increase (X5) shows a positive association
-which can be seen as a square-root relationship. High population growth
-may imply higher demand for housing, increasing Mortgage Yields due to
-heightened competition for available funds. We can observe a potential
-outlier at the right side of the plot. The Percentage of First Mortgages
-from Inter-Regional Banks (X6)'s variationshows no clear trend. It seems
-like the reliance on external financing does not significantly influence
-Mortgage Yields.\\
-\strut \\
-\textbf{To resume:}\\
-- X1, X2 and X5 seem to be the most influential variables positively
-correlated with Mortgage Yield.\\
-- X3 is the most influential variable negatively correlated with
-Mortgage Yield.\\
-- X6 shows moderate positive influence on Mortgage Yield.\\
-- X4 variable shows a weak relationship with Mortgage Yields.\\
+Unit Built (\textbf{X3}) seems to be negatively correlated with
+\texttt{mortYld}. This indicates that areas with more savings dedicated
+to new construction have better access to local financing, resulting in
+lower Mortgage Yields. Savings per Capita (\textbf{X4})'s influence is
+less distinguishable but appears to be a weak negative correlation or a
+random dispersion. Population Increase (\textbf{X5}) shows a positive
+association which can be seen as a square-root relationship. High
+population growth may imply higher demand for housing, increasing
+Mortgage Yields due to heightened competition for available funds. We
+can observe a potential outlier at the right side of the plot. The
+Percentage of First Mortgages from Inter-Regional Banks (\textbf{X6})'s
+variation shows no clear trend. It seems like the reliance on external
+financing does not significantly influence Mortgage Yields.\\
 \strut \\
 These observations support the findings of Schaaf (1966) stating that
 distance from financial centers, risk factors, and local demand for
@@ -334,8 +324,8 @@ grouping or categorical factors with unequal group sizes, this is a
 standard multiple regression model with one observation per row.
 Therefore, the design is not factorial and does not involve unbalanced
 group structures. As a result, the order in which predictors are entered
-into the lm() function does not influence the coefficient estimates,
-F-tests, or model interpretation.
+into the \texttt{lm()} function does not influence the coefficient
+estimates, F-tests, or model interpretation.
 
 \subsection{Pairwise Simple
 Regressions}\label{pairwise-simple-regressions}
@@ -347,24 +337,20 @@ Regressions}\label{pairwise-simple-regressions}
 \hspace{1em}
 \begin{minipage}{0.52\textwidth}
 \small
-The table summarizes the individual linear relationships between each predictor (X1–X6) and Mortgage Yield, based on simple linear regression.
-\begin{itemize}
-\item \textbf{X1} is the strongest and most significant predictor of Mortgage Yield, explaining 65.4\% of its variance (p < 0.0001).
-\item \textbf{X2} and \textbf{X3} also show strong and significant linear associations ($R^2$ = 0.546 and 0.517 respectively, both with p < 0.001).
-\item \textbf{X5} and \textbf{X6} show moderate yet significant associations ($R^2$ = 0.419 and 0.346 respectively, with p < 0.005 and p < 0.05).
-\end{itemize}
+The table summarizes the individual linear relationships between each predictor (\textbf{X1}–\textbf{X6}) and Mortgage Yield, based on simple linear regression.\\
+- \textbf{X1} is the strongest and most significant predictor of Mortgage Yield, explaining 65.4\% of its variance (p < 0.0001). \\
+- \textbf{X2} and \textbf{X3} also show strong and significant linear associations ($R^2$ = 0.546 and 0.517 respectively, both with p < 0.001).\\
+- \textbf{X5} and \textbf{X6} show moderate yet significant associations ($R^2$ = 0.419 and 0.346 respectively, with p < 0.005 and p < 0.05).
 \end{minipage}
 \addtocounter{table}{1}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{X4} does not exhibit a significant relationship with Mortgage
-  Yield (\(R^2\) = 0.049, p = 0.3763).\\
-\end{itemize}
+\hfill\break
+- \textbf{X4} does not exhibit a significant relationship with Mortgage
+Yield (\(R^2\) = 0.049, p = 0.3763).\\
 
-This analysis suggests that variables X1, X2, and X3 may be the most
-promising candidates for predicting Mortgage Yield.
+This analysis suggests that variables \textbf{X1}, \textbf{X2}, and
+\textbf{X3} may be the most promising candidates for predicting Mortgage
+Yield.
 
 \subsection{Null Model vs Full Model
 Comparison}\label{null-model-vs-full-model-comparison}
@@ -411,14 +397,16 @@ The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% a
 
 The intercept appears to be strongly significant to fit the model (p
 \textless{} 0.001). On the other hand, most of the variables do not show
-statistically significant individual contributions: only X1 and X3 show
-weak significance (p \(\approx\) 0.05), while the other variables, X2,
-X5 and X6, do not show significant individual effects. This suggests
-that a reduced model may be more appropriate.\\
+statistically significant individual contributions: only \textbf{X1} and
+\textbf{X3} show weak significance (p \(\approx\) 0.05), while the other
+variables, \textbf{X2}, \textbf{X5} and \textbf{X6}, do not show
+significant individual effects. This suggests that a reduced model may
+be more appropriate.\\
 \strut \\
-We end up with : \texttt{mortYld} = 4.2852 + 0.0203\(\cdot\)X1 +
-0.0\(\cdot\)X2 - 0.0016\(\cdot\)X3 + 0.0002\(\cdot\)X4 +
-0.0013\(\cdot\)X5 + 0.0002\(\cdot\)X6
+We end up with : \texttt{mortYld} = 4.2852 + 0.0203\(\cdot\)\textbf{X1}
++ 0.0\(\cdot\)\textbf{X2} - 0.0016\(\cdot\)\textbf{X3} +
+0.0002\(\cdot\)\textbf{X4} + 0.0013\(\cdot\)\textbf{X5} +
+0.0002\(\cdot\)\textbf{X6}
 
 \subsection{Make stepwise regression to select the best
 model}\label{make-stepwise-regression-to-select-the-best-model}
@@ -452,14 +440,16 @@ $R^2$ & Adjusted $R^2$ & Residual Std. Error & F-statistic & DF & p-value\\
 \end{tabular}
 \end{table}
 
-The Stepwise regression process identifies X1, X3, and X4 as the most
-significant predictors of Mortgage Yield, constituting the final model.
+The Stepwise regression process identifies \textbf{X1}, \textbf{X3}, and
+\textbf{X4} as the most significant predictors of Mortgage Yield,
+constituting the final model.
 
-It is interesting to note that X4 appears among the 3 most significant
-predictors although it shows very weak correlation in the Correlation
-Matrix. Multiple regression measures the effect of each variable while
-holding all others constant. As X4 has very strong correlation with X3
-(0.77), holding X3 can make the unique contribution of X4 clearer.
+It is interesting to note that \textbf{X4} appears among the 3 most
+significant predictors although it shows very weak correlation in the
+Correlation Matrix. Multiple regression measures the effect of each
+variable while holding all others constant. As \textbf{X4} has very
+strong correlation with \textbf{X3} (0.77), holding \textbf{X3} can make
+the unique contribution of \textbf{X4} clearer.
 
 The final Stepwise model explains approximately 83.4\% of the variance
 in Mortgage Yield using only these three predictors. The AIC doesn't
@@ -470,8 +460,8 @@ data just as well or better than more complex models. The Residual
 Standard Error (0.091) is low, and the overall model is highly
 significant (p \textless{} 0.001), indicating a good fit.\\
 \strut \\
-We end up with : \texttt{mortYld} = 4.223 + 0.02229\(\cdot\)X1 -
-0.001863\(\cdot\)X3 + 0.0002249\(\cdot\)X4\\
+We end up with : \texttt{mortYld} = 4.223 + 0.02229\(\cdot\)\textbf{X1}
+- 0.001863\(\cdot\)\textbf{X3} + 0.0002249\(\cdot\)\textbf{X4}\\
 \strut \\
 Let's now try a model with 2-way interactions.
 
@@ -490,7 +480,6 @@ highly significant (p < 0.001), indicating that at least one of the
 terms has a significant influence on Mortgage Yield.
 \end{minipage}
 
-\noindent
 \includegraphics[width=1\linewidth]{interaction_model_fitstats.png}
 
 \par
@@ -505,9 +494,11 @@ contributions: only the intercept appears to be moderately significant
 to fit the model (p \textless{} 0.05). This suggests that a reduced
 model may be more appropriate.\\
 \strut \\
-We end up with : \texttt{mortYld} = 5.3710 + 0.0069\(\cdot\)X1 -
-0.0001\(\cdot\)X3 - 0.0009\(\cdot\)X4 + 0.0\(\cdot\)X1:X3 +
-0.0\(\cdot\)X1:X4 + 0.0\(\cdot\)X3:X4\\
+We end up with : \texttt{mortYld} = 5.3710 + 0.0069\(\cdot\)\textbf{X1}
+- 0.0001\(\cdot\)\textbf{X3} - 0.0009\(\cdot\)\textbf{X4} +
+0.0\(\cdot\)\textbf{X1}:\textbf{X3} +
+0.0\(\cdot\)\textbf{X1}:\textbf{X4} +
+0.0\(\cdot\)\textbf{X3}:\textbf{X4}\\
 \strut \\
 We decided not to include a 3-way Interactions model in our analysis.
 Given the small sample size (18 observations), adding high-order
@@ -531,14 +522,13 @@ Stepwise Model & 0.863 & 0.834 & -29.731 & 0.091 & 29.493\\
 \end{longtable}
 \endgroup{}
 
-The \textbf{Stepwise model} offers the best trade-off between simplicity
-and performance: it has the lowest AIC (\textasciitilde29.7),
-demonstrating the best model fit among the three. Despite having a
-slightly lower R² than the Full and 2-ways Interactions model, it
-achieves the highest Adjusted R². It also has the lowest Residual
-Standard Error (0.091) and the highest F-statistic
-(\textasciitilde29.5). This confirms the overall model significance and
-parsimony.
+The Stepwise model offers the best trade-off between simplicity and
+performance: it has the lowest AIC (\textasciitilde29.7), demonstrating
+the best model fit among the three. Despite having a slightly lower R²
+than the Full and 2-ways Interactions model, it achieves the highest
+Adjusted R². It also has the lowest Residual Standard Error (0.091) and
+the highest F-statistic (\textasciitilde29.5). This confirms the overall
+model significance and parsimony.
 
 \begin{table}[!h]
 \centering
@@ -561,9 +551,9 @@ F-statistic of 0.18 and a p-value of 0.91, indicating that the
 additional interaction terms do not meaningfully reduce the residual
 variance.
 
-As a result, the simpler model with only main effects (X1, X3, and X4)
-truly provides the best fit, as it also offers comparable explanatory
-power and better interpretability.
+As a result, the simpler model with only main effects (\textbf{X1},
+\textbf{X3}, and \textbf{X4}) truly provides the best fit, as it also
+offers comparable explanatory power and better interpretability.
 
 \section{Model assumptions and
 Diagnostics}\label{model-assumptions-and-diagnostics}
@@ -589,13 +579,14 @@ verified, as they are not correlated with the order of observations.
 diagnostic}\label{multicolinearity-diagnostic}
 
 \begin{minipage}{0.2\textwidth}
+\centering
 \includegraphics[width=0.9\linewidth]{vif_table.png}\\
 \small Table 14: Variance Inflation Factors (VIF)
 \end{minipage}
 \hfill
 \begin{minipage}{0.8\textwidth}
 \small
-As all variables have a VIF value under 5, it means that they don’t cause problematic multicollinearity in the final model and that none of them should be eliminated. This confirms our choice of keeping X3 and X4: even if they showed a high correlation coefficient (0.77), these variables still provide enough unique, non-redundant information to justify keeping them in the model.
+As all variables have a VIF value under 5, it means that they don’t cause problematic multicollinearity in the final model and that none of them should be eliminated. This confirms our choice of keeping \textbf{X3} and \textbf{X4}: even if they showed a high correlation coefficient (0.77), these variables still provide enough unique, non-redundant information to justify keeping them in the model.
 \end{minipage}
 
 \subsection{Normality Check}\label{normality-check}
@@ -614,24 +605,25 @@ The \texttt{Q-Q plot of Residuals} indicates that most of the points align close
 
 \hfill\break
 The final estimated model is : \texttt{mortYld} = 4.223 +
-0.02229\(\cdot\)X1 - 0.001863\(\cdot\)X3 + 0.0002249\(\cdot\)X4\\
-where X1 is the Loan-to-Mortgage Ratio, X3 is the Savings per New Unit
-Built, and X4 is the Savings per Capita.
+0.02229\(\cdot\)\textbf{X1} - 0.001863\(\cdot\)\textbf{X3} +
+0.0002249\(\cdot\)\textbf{X4}\\
+where \textbf{X1} is the Loan-to-Mortgage Ratio, \textbf{X3} is the
+Savings per New Unit Built, and \textbf{X4} is the Savings per Capita.
 
 The analysis thus shows that Loan-to-Mortgage Ratio, Savings per New
 Unit Built, and Savings per Capita collectively have a significant
 impact on Mortgage Yield. Mortgage Yield is positively influenced by the
-Loan-to-Mortgage Ratio (X1), suggesting that when the loan is higher
-compared to the mortgage, lenders may see better returns on their
+Loan-to-Mortgage Ratio (\textbf{X1}), suggesting that when the loan is
+higher compared to the mortgage, lenders may see better returns on their
 investment. On the other hand, Mortgage Yield is negatively impacted by
-Savings per New Unit Built (X3). When there is more capital saved for
-new construction, there may be less reliance on mortgages, potentially
-leading to lower returns on those mortgages. Lastly, Savings per Capita
-(X4) has a positive, though small, effect on the Mortgage Yield. As
-individuals save more money, it may lead to a slight increase in the
-return on mortgages, possibly because higher savings per capita can
-signal a more financially stable environment for lenders, leading to
-better mortgage performance.
+Savings per New Unit Built (\textbf{X3}). When there is more capital
+saved for new construction, there may be less reliance on mortgages,
+potentially leading to lower returns on those mortgages. Lastly, Savings
+per Capita (\textbf{X4}) has a positive, though small, effect on the
+Mortgage Yield. As individuals save more money, it may lead to a slight
+increase in the return on mortgages, possibly because higher savings per
+capita can signal a more financially stable environment for lenders,
+leading to better mortgage performance.
 
 While the assumptions of linear regression are generally satisfied,
 there are some minor deviations. The model shows strong predictive
