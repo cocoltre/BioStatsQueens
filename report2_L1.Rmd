@@ -1,0 +1,68 @@
+---
+title: "Assignment 2: Statistical critique of a published paper"
+author: "Group42"
+date: "2025-04-10"
+output: pdf_document
+---
+Instructions:
+
+This assignment is a statistical critique of a published paper. Your report can 
+either be written as a full review or in a question/answer format by just simply 
+by responding to each question. Your report should not be more than 1 page.
+
+You can turn in this report any time before the final deadline - 30 June 2024. 
+You will get full credit (i.e. 1/2 point toward your course note) for turning in 
+a reasonable effort.
+
+A guide sheet (study assessment questions) is uploaded to help you to address 
+statistical issues.
+
+The file contains a longer list of questions to consider when evaluating a study 
+in your future career. As a guide for your 2nd assignment report, please make 
+sure that you respond particularly to the following: (numbers in parentheses 
+represent points out of 6)
+
+(1) 1. Briefly give the biomedical background for the paper. What question/hypothesis is being investigated?
+
+(1) 2. What data are collected (include how many individuals, what variables, inclusion / exclusion criteria for the study)?
+
+(1) 3. What analyses were carried out? Are these analyses appropriate for the problem?
+
+(1) 4. What other analyses should have been done (or might have been done but not shown)? Explain.
+
+(1) 5. Is there any mention of power of the analyses? How would you go about trying to estimate power? 
+(NOTE: you do NOT have to actually give power estimates, just say how you might go about it.)
+
+(1) 6. What conclusions do the authors draw? Are these conclusions substantiated by the results? Explain.
+
+
+Questions of document:
+
+When presented with the results of research which includes statistics, you should ask yourself 
+these questions. The answers should guide you in assessing the validity of the asserted 
+conclusions.  
+
+1. What question(s) does the study address?  
+2. Is this study an experiment or an observational study (who decides who gets the treatment)?  
+3. What is the ‘treatment’? (Is there a treatment?) How many treatments are there? 
+4.  Is there a control group? Is a placebo used for the control group?  
+5.  (If controlled experiment) Is the experiment run blind? Double-blind?  
+6. (If controlled experiment) Is the experiment randomized? (Is the assignment to the treatment 
+group or control group governed by a chance procedure, rather than by judgement or a haphazard 
+procedure?)  
+7. What are the experimental units? 
+8. What is the experimental design? 
+9. What confounding factors may be involved?  
+10. Are any confounding factors controlled for?  
+11. What type of data are collected? 
+12. Are data values measured or self-reported? 
+13. What potential sources of bias are there? 
+14. Is the study exploratory or confirmatory? 
+15. Are the statistical hypotheses articulated before the study is carried out, or are they suggested 
+by the study? 
+16. How are the data analyzed? Is the analysis appropriate for the design? 
+17. Is the study exploratory or confirmatory? 
+18. Is there adequate power? Is the sample size appropriate for the stated aims? 
+19. Does the study adequately address the question(s) it attempts to answer? (Can the question(s) 
+possibly be answered by this study?)  
+20. In light of your answers to the above, does the evidence support the conclusions? 
