@@ -970,7 +970,7 @@ The \texttt{Q-Q plot of Residuals} indicates that most of the points align close
 \end{minipage}
 
 \vspace{-3em}
-# Conclusions
+# Conclusion
 The final estimated model is : `mortYld` = 4.223 + 0.02229$\cdot$**X1** -
 0.001863$\cdot$**X3** + 0.0002249$\cdot$**X4**\
 where **X1** is the Loan-to-Mortgage Ratio, **X3** is the Savings per New Unit
