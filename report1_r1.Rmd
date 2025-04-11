@@ -348,8 +348,6 @@ predictors, to see if multicollinearity affects the regression model.
 However, these correlations only indicate if two variables are linearly
 associated. Thus, a low value doesn't necessarily mean that the
 variables are not correlated in another way.
-\end{minipage}
-
 
 # Model Fitting
 In this analysis, all predictors are continuous variables and each
