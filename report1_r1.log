@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.10)  11 APR 2025 16:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.10)  11 APR 2025 17:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -736,7 +736,7 @@ File: correlation_heatmap.png Graphic file (type png)
 Package pdftex.def Info: correlation_heatmap.png  used on input line 299.
 (pdftex.def)             Requested size: 188.81902pt x 188.81902pt.
 
-Overfull \hbox (2.43332pt too wide) in paragraph at lines 298--316
+Overfull \hbox (2.43332pt too wide) in paragraph at lines 298--318
 $[]$  $[]$ 
  []
 
@@ -753,26 +753,26 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <simple_regression_table.png, id=48, 289.08pt x 144.54pt>
 File: simple_regression_table.png Graphic file (type png)
 <use simple_regression_table.png>
-Package pdftex.def Info: simple_regression_table.png  used on input line 335.
+Package pdftex.def Info: simple_regression_table.png  used on input line 334.
 (pdftex.def)             Requested size: 236.01495pt x 118.00746pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 336.
+(Font)              <10> on input line 335.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 336.
+(Font)              <7> on input line 335.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 336.
+(Font)              <5> on input line 335.
 
-Overfull \hbox (25.2593pt too wide) in paragraph at lines 334--347
+Overfull \hbox (25.2593pt too wide) in paragraph at lines 333--346
 $[]$   $[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--347
+Underfull \hbox (badness 10000) in paragraph at lines 333--346
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--350
+Underfull \hbox (badness 10000) in paragraph at lines 347--349
 
  []
 
@@ -789,22 +789,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <full_model_summary_table.png, id=63, 310.761pt x 180.675pt>
 File: full_model_summary_table.png Graphic file (type png)
 <use full_model_summary_table.png>
-Package pdftex.def Info: full_model_summary_table.png  used on input line 374.
+Package pdftex.def Info: full_model_summary_table.png  used on input line 373.
 (pdftex.def)             Requested size: 198.25569pt x 115.26492pt.
 <full_model_fitstats_table.png, id=64, 578.16pt x 86.724pt>
 File: full_model_fitstats_table.png Graphic file (type png)
 <use full_model_fitstats_table.png>
-Package pdftex.def Info: full_model_fitstats_table.png  used on input line 387.
+Package pdftex.def Info: full_model_fitstats_table.png  used on input line 386.
 (pdftex.def)             Requested size: 424.8234pt x 63.7235pt.
 <stepwise_aic_table.png, id=65, 325.215pt x 144.54pt>
 File: stepwise_aic_table.png Graphic file (type png)
 <use stepwise_aic_table.png>
-Package pdftex.def Info: stepwise_aic_table.png  used on input line 410.
+Package pdftex.def Info: stepwise_aic_table.png  used on input line 409.
 (pdftex.def)             Requested size: 226.57707pt x 100.7009pt.
 <stepwise_coef_table.png, id=66, 325.215pt x 144.54pt>
 File: stepwise_coef_table.png Graphic file (type png)
 <use stepwise_coef_table.png>
-Package pdftex.def Info: stepwise_coef_table.png  used on input line 417.
+Package pdftex.def Info: stepwise_coef_table.png  used on input line 416.
 (pdftex.def)             Requested size: 226.57707pt x 100.7009pt.
 
 
@@ -819,29 +819,29 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <interaction_model_coef.png, id=79, 419.166pt x 180.675pt>
 File: interaction_model_coef.png Graphic file (type png)
 <use interaction_model_coef.png>
-Package pdftex.def Info: interaction_model_coef.png  used on input line 463.
+Package pdftex.def Info: interaction_model_coef.png  used on input line 462.
 (pdftex.def)             Requested size: 283.21906pt x 122.07716pt.
 
-Overfull \hbox (94.40945pt too wide) in paragraph at lines 463--466
+Overfull \hbox (94.40945pt too wide) in paragraph at lines 462--465
 [][]
  []
 
 
-Underfull \hbox (badness 4254) in paragraph at lines 469--474
+Underfull \hbox (badness 4254) in paragraph at lines 468--473
 []\T1/lmr/m/n/10.95 The 2-way In-ter-ac-tions model,
  []
 
 <interaction_model_fitstats.png, id=80, 650.43pt x 72.27pt>
 File: interaction_model_fitstats.png Graphic file (type png)
 <use interaction_model_fitstats.png>
-Package pdftex.def Info: interaction_model_fitstats.png  used on input line 476.
+Package pdftex.def Info: interaction_model_fitstats.png  used on input line 475.
 (pdftex.def)             Requested size: 472.04094pt x 52.44897pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 489.
+(Font)              <9> on input line 488.
 <Figs/unnamed-chunk-13-1.pdf, id=81, 542.025pt x 180.675pt>
 File: Figs/unnamed-chunk-13-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-13-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-13-1.pdf  used on input line 555.
+Package pdftex.def Info: Figs/unnamed-chunk-13-1.pdf  used on input line 554.
 (pdftex.def)             Requested size: 472.0459pt x 157.34862pt.
 
 
@@ -856,12 +856,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <vif_table.png, id=92, 108.405pt x 93.951pt>
 File: vif_table.png Graphic file (type png)
 <use vif_table.png>
-Package pdftex.def Info: vif_table.png  used on input line 586.
+Package pdftex.def Info: vif_table.png  used on input line 585.
 (pdftex.def)             Requested size: 75.52733pt x 65.45703pt.
 <qqplot_residuals.png, id=93, 652.4375pt x 652.4375pt>
 File: qqplot_residuals.png Graphic file (type png)
 <use qqplot_residuals.png>
-Package pdftex.def Info: qqplot_residuals.png  used on input line 607.
+Package pdftex.def Info: qqplot_residuals.png  used on input line 606.
 (pdftex.def)             Requested size: 140.19168pt x 140.19168pt.
 
 
@@ -896,7 +896,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  89i,12n,93p,876b,563s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on report1_r1.pdf (8 pages, 933990 bytes).
+Output written on report1_r1.pdf (8 pages, 933354 bytes).
 PDF statistics:
  268 PDF objects out of 1000 (max. 8388607)
  198 compressed objects within 2 object streams
