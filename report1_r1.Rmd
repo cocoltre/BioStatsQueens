@@ -339,7 +339,7 @@ ggsave("correlation_heatmap.png", plot = heatmap_plot, width = 3.2, height = 3.2
 \vspace{0.5em}
 \small
 Now, let's take a look at the correlations between each variable and confirm our previous observations: \\
-\textbf{X3} is strongly positively correlated to \textbf{X4} (0.77) and negatively to \textbf{X2} (-0.64), \textbf{X5} (-0.63), and \textbf{X6} (-0.56).\\
+\textbf{X3} is strongly positively correlated with \textbf{X4} (0.77) and negatively with \textbf{X2} (-0.64), \textbf{X5} (-0.63), and \textbf{X6} (-0.56).\\
 \textbf{X1} and \textbf{X2} exhibit strong positive correlation with \texttt{mortYld}, while \textbf{X5} shows moderate positive correlation, and \textbf{X3} a strong negative one. \textbf{X6} shows moderate positive correlation with \texttt{mortYld} as well. \textbf{X4} shows only weak correlation with \texttt{mortYld}.\\
 This confirms what we saw earlier in the association matrix.\
 \
@@ -348,6 +348,7 @@ predictors, to see if multicollinearity affects the regression model.
 However, these correlations only indicate if two variables are linearly
 associated. Thus, a low value doesn't necessarily mean that the
 variables are not correlated in another way.
+\end{minipage}
 
 # Model Fitting
 In this analysis, all predictors are continuous variables and each
