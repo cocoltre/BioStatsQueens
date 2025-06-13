@@ -1,0 +1,864 @@
+---
+title: "**Predicting Mortgage Yield using Regression Analysis**"
+author: "Group 42: Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurtre"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    number_sections: true
+    toc: false
+    latex_engine: pdflatex
+    keep_tex: true
+geometry: top=2.5cm, bottom=2.0cm, left=2.5cm, right=2.5cm
+fontsize: 12pt
+header-includes:
+  - \usepackage{graphicx}
+  - \usepackage{amsmath}
+  - \usepackage{booktabs}
+  - \usepackage[font=footnotesize,skip=4pt]{caption}
+  - \usepackage{caption}
+  - \usepackage{fancyhdr}
+  - \usepackage{ragged2e}
+  - \usepackage{multicol}
+  - \justifying
+  - \pagestyle{fancy}
+  - \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurtre}
+  - \fancyfoot[C]{\thepage}
+  - \usepackage{titlesec}
+  # Adjust spacing between title, author, and date
+  - \titlespacing*{\title}{0pt}{0pt}{0pt}  # Title has no space above or below
+  - \titlespacing*{\author}{0pt}{-0.5cm}{0pt}  # Author moved closer to title (less space)
+  - \titlespacing*{\date}{0pt}{-0.5cm}{0pt}  # Date moved closer to author (less space)
+  # Adjust space before Introduction
+  - \titlespacing*{\section}{0pt}{0.5cm}{0pt}  # Space before first section (Introduction) reduced
+  # Add more space between sections and subsections
+  - \titlespacing*{\subsection}{0pt}{0.5cm}{0pt}  # Add space between section and subsection (e.g. 2 and 2.1)
+  - \titlespacing*{\subsubsection}{0pt}{0.8cm}{0pt}  # Add space between subsections (e.g. 2.1 and 2.1.1)
+  - \usepackage{etoolbox}
+  - \patchcmd{\maketitle}{\vspace*{2\baselineskip}}{}{}{}  # Remove extra space in title block
+  - \usepackage{titling}
+  - \setlength{\droptitle}{-1.5cm}  # Moves the whole title block up
+  - \setlength{\headheight}{12pt}  # Minimal headheight to avoid warnings
+  - \setlength{\headsep}{5pt}  # Reduce space between header and text
+  - \setlength{\parindent}{0pt}  # Reduce paragraph indent
+  - \setlength{\parskip}{1pt}  # Reduce paragraph spacing
+
+
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Introduction
+
+The study of A. H. Schaaf, 1966, "Regional Differences in Mortgage
+Financing Costs", investigates the existence and causes of regional
+differences in Mortgage financing costs in the United States. While
+these differences in Mortgage Yields were decreasing in the early 20th
+century, they suprisingly remained stable after World War II. The paper
+explores two main explanations for this phenomenon: differences in investment value due to risk, terms, and liquidity, and market imperfections such as legal barriers and information
+gaps.
+\vspace{0.5pt}
+The data used in this study comes from the Federal Home Loan Bank Board,
+which contains interest rates and fees in 18 SMSAs (Standard
+Metropolitan Statistical Areas). The findings suggest that distance from
+major financial centers, risk levels, and local demand for savings
+significantly affect Mortgage Yields. However, market structure and
+overall savings levels play a lesser important role.
+\vspace{0.5pt}
+The aim of this report is to analyze the data and develop a
+model to predict Mortgage Yield (in %) based on 6 explanatory
+variables:\
+- **X1**: Loan-to-Mortgage Ratio, in % → High values indicate low down
+payments.\
+- **X2**: Distance from Boston, in miles → Measures regional proximity
+to financial centers.\
+- **X3**: Savings per New Unit Built, in \$ → Indicator of regional
+credit demand.\
+- **X4**: Savings per Capita, in \$ → Measures local savings levels
+(credit supply).\
+- **X5**: Population Increase, 1950-1960, in % → Proxy for housing
+demand growth.\
+- **X6**: Percentage of First Mortgages from Inter-Regional Banks, in %
+→ Indicator of external financing reliance.
+
+# Exploratory Data Analysis (EDA)
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figs/',
+                      echo=FALSE, warning=FALSE, message=FALSE)
+```
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+library(xtable)
+library(MASS)
+library(car)
+library(magrittr)
+library(patchwork)
+library(gridExtra)
+library(grid)
+library(gtable)
+library(reshape2)
+library(broom)
+library(xtable)
+
+# Read data
+df <- read.csv("mYield.csv")
+
+# Rename columns for easier reference
+colnames(df) <- c("smsa", "mortYld", "X1", "X2", "X3", "X4", "X5", "X6")
+
+# Display first few rows
+#kable(head(df), caption = "First few rows of the dataset") %>%
+#  kable_styling(font_size = 7, latex_options = "hold_position")
+```
+
+```{r, include=FALSE}
+# Count missing values
+colSums(is.na(df))
+
+```
+
+Each SMSA in the dataset is described by its Mortgage Yield as the dependent variable, along with six explanatory variables (X1 to X6). These variables include financial ratios, regional distances, savings indicators, population growth, and bank origination shares. All variables are numerical, and a preliminary check confirms there are no missing values in any of the observations.
+
+## Univariate analysis
+
+### Numerical analysis
+We begin with a numerical summary of each variable:
+
+\vspace{-0.5cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/Table 1.png}
+\caption{Table 1: Summary Statistics of Variables}
+\end{figure}
+\vspace{-0.5cm}
+Through this summary, we already observe that Mortgage Yields (**mortYld**) don’t vary much across regions. Most values are between 5.2% and 6.2%, suggesting relatively stable Mortgage rates.
+
+Loan-to-Mortgage Ratios (**X1**) are concentrated in between 67% and 78.1%.
+Distance from Boston (**X2**) has a vast range (0–3162 miles), highlighting
+geographical diversity and potential financial access disparities.
+Savings per New Unit Built (**X3**) and Savings per Capita (**X4**) are
+characterized by means bigger than medians, representing right-skewed
+distributions. Population Increase (**X5**) from 1950 to 1960 varies widely (7.5–88.9%). Lastly, Percentage of First Mortgages from Inter-Regional Banks (**X6**) spans from 2.0% to 51.3%, meaning that some areas depend heavily on external financing while others rely more on local institutions.
+
+### Graphical analysis
+
+\begin{figure}[H]
+\centering
+
+\begin{minipage}[t]{0.45\textwidth}
+\centering
+\includegraphics[width=1.1\linewidth]{figures/Figure 1.png}
+\caption*{Figure 1: Histogram of Mortgage Yield per SMSA}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\centering
+\vspace{-6cm}
+\includegraphics[width=1.1\linewidth]{figures/Figure 2.png}
+\caption*{Figure 2: Histograms of each variable (X1 to X6)}
+\end{minipage}
+
+\end{figure}
+\vspace{-0.5cm}
+With deeper analysis, although the variation across SMSAs is small, we
+see that regional differences still exist in Mortgage Yields, possibly
+due to economic factors like savings, loan terms, and regional banking
+practices. The histograms confirm the distribution of the explanatory
+variables:
+
+The Loan-to-Mortgage Ratio (**X1**) shows low variance, possibly indicating limited variability across regions. Distance from Boston (**X2**) displays a wide and almost homogeneous distribution, reflecting substantial geographic spread among SMSAs. The right-skewed distributions of Savings per New Unit Built (**X3**) and Savings per Capita (**X4**) suggest that a few cities have notably higher savings levels. Population Increase (**X5**)
+is also highly right-skewed with one potential major outlier, indicating that most regions had moderate growth, while a few experienced rapid expansion. Finally, the percentage of First Mortgages from Inter-Regional Banks (**X6**) show that most cities relying minimally on external financing and a few showing heavy dependence. Overall, the data suggests regional variation in housing finance conditions, credit accessibility, and Mortgage market dynamics.
+
+
+## Bivariate analysis
+
+### Graphical analysis
+The Association Matrix provides a quick visual assessment of bivariate relationships (how each variable relates to the others and \texttt{mortYld}), of types of associations among predictors (if a relationship looks linear, curved or weak, as well as positive or negative), and of outlier presence. It complements numerical analyses like the correlation matrix.
+We can see that most of the plots are random dispersion, while some are linear, and some are curved. \textbf{X3} seems to be positively associated with \textbf{X4} and negatively with \textbf{X5}. \textbf{X2} and \textbf{X3} seem negatively exponentially associated. \textbf{X6} seems to be negatively associated with \textbf{X3}.
+
+\begin{figure}[H]
+\centering
+
+\begin{minipage}[t]{0.38\textwidth}
+\centering
+\includegraphics[width=1\linewidth]{figures/Figure 3.png}
+\caption*{Figure 3: Association Matrix of Variables and Mortgage Yield}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.58\textwidth}
+\centering
+\vspace{-6cm}
+\includegraphics[width=1\linewidth]{figures/Figure 4.png}
+\caption*{Figure 4: Scatterplots of each variable (X1 to X6) compared to Mortgage Yield}
+\end{minipage}
+\end{figure}
+
+
+Let's take a closer look into the Association Matrix, regarding the
+relationship between Mortgage Yield (%) and the explanatory variables
+(x-axis), representing the first row in the precedent figure.\
+
+As \textbf{X1} increases, the Mortgage Yield increases. This suggests a positive correlation, and that higher Loan-to-Mortgage Ratios (more borrowed money relative to the property value) are associated with higher Mortgage Yields. \textbf{X2} reveals a positive correlation with \texttt{mortYld}. Boston represents a major financial center with surplus capital.
+
+Regions further from Boston might have higher Yields. **X3** seems to be negatively correlated with `mortYld`. This indicates that areas with more savings dedicated to new construction have better access to local financing, resulting in lower Mortgage Yields. **X4**'s influence is less distinguishable but appears to be a weak negative correlation or a random dispersion. **X5** shows a positive association which can be seen as a square-root relationship. High population growth may imply higher demand for housing, increasing Mortgage Yields due to heightened competition for available funds. We can observe a potential outlier at the right side of the plot. **X6**'s variation shows no clear trend. It seems like the reliance on external financing does not significantly influence Mortgage Yields.\
+These observations support the findings of Schaaf (1966) stating that
+distance from financial centers, risk factors, and local demand for
+savings contribute to Mortgage Yield variations.
+\vspace{-3pt}
+
+
+### Numerical analysis
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{0.39\textwidth}
+\includegraphics[width=\linewidth]{figures/Figure 5.png}
+\caption*{Figure 5: Correlation Heatmaps of variables}
+\end{minipage}
+\hfill
+\begin{minipage}{0.59\textwidth}
+\vspace{-1cm}
+\small
+Now, let's take a look at the correlations between each variable and confirm our previous observations:
+\textbf{X3} is strongly positively correlated with \textbf{X4} (0.77) and negatively with \textbf{X2} (-0.64), \textbf{X5} (-0.63), and \textbf{X6} (-0.56).
+\textbf{X1} and \textbf{X2} exhibit strong positive correlation with \texttt{mortYld}, while \textbf{X5} shows moderate positive correlation, and \textbf{X3} a strong negative one. \textbf{X6} shows moderate positive correlation with \texttt{mortYld} as well. \textbf{X4} shows only weak correlation with \texttt{mortYld}.
+
+
+This confirms what we saw earlier in the association matrix.
+
+We can then think about removing one of the highly correlated
+predictors, to see if multicollinearity affects the regression model.
+However, these correlations only indicate if two variables are linearly
+associated. Thus, a low value doesn't necessarily mean that the
+variables are not correlated in another way.
+\end{minipage}
+
+
+\end{figure}
+
+
+
+
+# Model Fitting
+In this analysis, all predictors are continuous variables and each
+observation corresponds to a unique SMSA. Since the dataset contains no
+grouping or categorical factors with unequal group sizes, this is a
+standard multiple regression model with one observation per row.
+Therefore, the design is not factorial and does not involve unbalanced
+group structures. As a result, the order of the predictors for the linear regression model does not influence the coefficient estimates, F-tests, or model interpretation.
+
+
+We aim to model the relationship between Mortgage Yield and a set of six explanatory variables using multiple linear regression.  
+The multiple linear regression model is defined mathematically as:
+\vspace{-0.2cm}	
+\[
+\text{mortYld}_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 X_{3i} + \beta_4 X_{4i} + \beta_5 X_{5i} + \beta_6 X_{6i} + \varepsilon_i
+\]
+where:   
+	•	$\text{mortYld}_i$ is the mortgage yield for the i-th SMSA,  
+	•	$X_{1i}$ to $X_{6i}$ are the explanatory variables,  
+	•	$\beta_0$ is the intercept,  
+	•	$\beta_1$ to $\beta_6$ are the regression coefficients,  
+	•	$\varepsilon_i$ is the error term for observation i.   
+	
+\vspace{0.2cm}		
+	
+We assume the classical linear regression assumptions:  
+	1.	Linearity: The relationship between each predictor and the outcome is linear.  
+	2.	Independence: The errors $\varepsilon_i$ are independent across observations.  
+	3.	Homoscedasticity: The errors have constant variance: $\text{Var}(\varepsilon_i) = \sigma^2$.  
+	4.	Normality: The errors follow a normal distribution: $\varepsilon_i \sim \mathcal{N}(0, \sigma^2)$.  
+	5.	No multicollinearity: The predictors are not perfectly linearly correlated. 
+	
+\vspace{0.2cm}	
+	
+The model is fitted using Ordinary Least Squares (OLS), which minimizes the sum of squared residuals:  
+\vspace{-0.2cm}	
+\[
+\min_{\boldsymbol\beta} \sum_{i=1}^n \left( \text{mortYld}_i - \beta_0 - \sum_{j=1}^6 \beta_j X_{ji} \right)^2
+\]
+\vspace{-0.3cm}	
+
+
+## Null Model vs Full Model Comparison
+
+```{r}
+null_model <- lm(mortYld ~ 1, data = df)
+full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
+
+#anova(null_model, full_model)
+
+# Résumé au format tableau propre
+anova_table <- tidy(anova(null_model, full_model))
+
+# Affichage du tableau formaté
+#kable(anova_table, caption = "Comparison of Null and Full Model (ANOVA)") %>%
+#  kable_styling(font_size = 8, latex_options = c("striped", "hold_position"))
+
+```
+\vspace{-0.5cm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/Table 2.png}
+\caption{Table 2: Comparison of Null and Full Model (ANOVA)}
+\end{figure}
+\vspace{-0.5cm}
+
+The ANOVA comparison between the null model (intercept-only) and the
+full model (including all predictors), reveals that the full model
+better explains the Mortgage Yield, as shown by the significant
+F-statistic and p-value (p \< 0.001). This indicates that at least one
+of the predictors is significantly related to Mortgage Yield.
+
+```{r}
+# 1. Full Linear Model Summary Table
+model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
+model_summary <- tidy(model)
+table1 <- tableGrob(model_summary, rows = NULL)
+
+# Harmoniser colonnes
+table1$widths <- unit(rep(1, ncol(table1)), "null")
+
+# Appliquer fond blanc et police lisible
+for (i in seq_along(table1$grobs)) {
+  if (is.null(table1$grobs[[i]]$gp)) table1$grobs[[i]]$gp <- gpar()
+  table1$grobs[[i]]$gp$fill <- "#ffffff"
+  table1$grobs[[i]]$gp$fontsize <- 9
+}
+
+# Bordure noire autour du tableau
+table1 <- gtable_add_grob(
+  table1,
+  rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
+  t = 1, l = 1, b = nrow(table1), r = ncol(table1)
+)
+
+# Export PNG
+ggsave("full_model_summary_table.png", table1, width = 4.3, height = 2.5, dpi = 300)
+ 
+```
+
+```{r}
+# 2. Fit Statistics Table
+model_stats <- glance(model)[, c("r.squared", "adj.r.squared", "sigma", "statistic","df", "p.value")]
+colnames(model_stats) <- c(
+  "R²", 
+  "Adjusted R²",
+  "Residual Std. Error", 
+  "F-statistic", 
+  "DF",
+  "p-value"
+)
+
+# Round numeric values to 6 digits
+model_stats <- as.data.frame(lapply(model_stats, function(x) {
+  if (is.numeric(x)) round(x, 6) else x
+}))
+
+table2 <- tableGrob(model_stats, rows = NULL)
+table2$widths <- unit(rep(1, ncol(table2)), "null")
+
+# Appliquer fond blanc et style
+for (i in seq_along(table2$grobs)) {
+  if (is.null(table2$grobs[[i]]$gp)) table2$grobs[[i]]$gp <- gpar()
+  table2$grobs[[i]]$gp$fill <- "#ffffff"
+  table2$grobs[[i]]$gp$fontsize <- 9
+}
+
+table2 <- gtable_add_grob(
+  table2,
+  rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
+  t = 1, l = 1, b = nrow(table2), r = ncol(table2)
+)
+
+ggsave("full_model_fitstats_table.png", table2, width = 8, height = 1.2, dpi = 300)
+
+```
+\begin{minipage}{0.42\textwidth}
+\includegraphics[width=1\linewidth]{full_model_summary_table.png}
+\vspace{-0.2em}
+\footnotesize Table 5: Summary of Full Linear Model
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% after adjusting for the number of predictors, which highlights a strong fit. The Residual Standard Error is low, and the overall model is statistically significant, with a very low p-value ($p < 0.001$). Once again, it means that at least one term contributes significantly to explaining the variation in \texttt{mortYld}.
+\end{minipage}
+\noindent
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth, height=0.15\textheight]{full_model_fitstats_table.png}
+  \vspace{-6pt}
+  \caption*{\footnotesize \textbf{Table 6:} Fit Statistics of Full Linear Model}
+\end{figure}
+\addtocounter{table}{2}
+
+The intercept appears to be strongly significant to fit the model (p \<
+0.001). On the other hand, most of the variables do not show
+statistically significant individual contributions: only **X1** and **X3** show
+weak significance (p $\approx$ 0.05), while the other variables, **X2**, **X5**
+and **X6**, do not show significant individual effects. This suggests that a reduced model may be more appropriate.\
+We end up with : `mortYld` = 4.2852 + 0.0203$\cdot$**X1** + 0.0$\cdot$**X2** - 0.0016$\cdot$**X3** + 0.0002$\cdot$**X4** + 0.0013$\cdot$**X5** +
+0.0002$\cdot$**X6**
+
+## Make stepwise regression to select the best model
+
+```{r save_stepwise_tables, echo=FALSE, message=FALSE, warning=FALSE}
+# 1. Stepwise AIC Steps Table
+step_trace <- capture.output(
+  step_model <- stepAIC(model, direction = "both", trace = TRUE)
+)
+
+# Build Stepwise AIC Trace Manually
+step_trace_df <- data.frame(
+  Step = c("Start", "Step 1", "Step 2", "Step 3"),
+  Model = c("X1 + X2 + X3 + X4 + X5 + X6",
+            "X1 + X2 + X3 + X4 + X5",
+            "X1 + X3 + X4 + X5",
+            "X1 + X3 + X4"),
+  RSS = c(0.1098, 0.1099, 0.1109, 0.1159),
+  AIC = c(-77.79, -79.77, -81.61, -82.81)
+)
+
+table1 <- tableGrob(step_trace_df, rows = NULL)
+table1$widths <- unit(rep(1, ncol(table1)), "null")
+
+for (i in seq_along(table1$grobs)) {
+  if (is.null(table1$grobs[[i]]$gp)) table1$grobs[[i]]$gp <- gpar()
+  table1$grobs[[i]]$gp$fontsize <- 9
+  table1$grobs[[i]]$gp$fill <- "#ffffff"
+}
+
+# Ajouter quadrillage noir pour table 1
+table1 <- gtable::gtable_add_grob(
+  table1,
+  grobs = rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
+  t = 1, l = 1, b = nrow(table1), r = ncol(table1)
+)
+
+# TABLE 2: Coefficient table avec colonne "term"
+step_summary <- tidy(step_model)  # on garde toutes les colonnes
+
+table2 <- tableGrob(step_summary, rows = NULL)
+table2$widths <- unit(rep(1, ncol(table2)), "null")
+
+for (i in seq_along(table2$grobs)) {
+  if (is.null(table2$grobs[[i]]$gp)) table2$grobs[[i]]$gp <- gpar()
+  table2$grobs[[i]]$gp$fontsize <- 8.5
+  table2$grobs[[i]]$gp$fill <- "#ffffff"
+}
+
+# Ajouter quadrillage noir pour table 2
+table2 <- gtable::gtable_add_grob(
+  table2,
+  grobs = rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
+  t = 1, l = 1, b = nrow(table2), r = ncol(table2)
+)
+
+# Sauvegarde des PNG
+ggsave("stepwise_aic_table.png", table1, width = 4.5, height = 2, dpi = 300)
+ggsave("stepwise_coef_table.png", table2, width = 4.5, height = 2, dpi = 300)
+
+```
+\begin{minipage}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{stepwise_aic_table.png}
+\vspace{-0.3em}
+\footnotesize Table 7: Stepwise AIC Steps
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{stepwise_coef_table.png}\\
+\vspace{-0.3em}
+\footnotesize Table 8: Coefficients of Final Stepwise Model
+\end{minipage}
+
+\addtocounter{table}{2}
+
+```{r}
+# 3. Fit Statistics of Stepwise Model
+
+# Extraire les stats globales
+step_glance <- glance(step_model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
+colnames(step_glance) <- c("$R^2$", "Adjusted $R^2$", "Residual Std. Error", "F-statistic", "DF", "p-value")
+
+
+# Convertir en data.frame pour mise en forme fine
+step_glance <- as.data.frame(step_glance)
+
+# Appliquer un arrondi classique sauf pour la p-value
+step_glance$`$R^2$` <- round(step_glance$`$R^2$`, 4)
+step_glance$`Adjusted $R^2$` <- round(step_glance$`Adjusted $R^2$`, 4)
+step_glance$`Residual Std. Error` <- round(step_glance$`Residual Std. Error`, 4)
+step_glance$`F-statistic` <- round(step_glance$`F-statistic`, 4)
+step_glance$`DF` <- as.integer(step_glance$`DF`)  # entier
+step_glance$`p-value` <- formatC(step_glance$`p-value`, format = "e", digits = 2)
+
+# Afficher en tableau LaTeX
+kable(step_glance,
+      caption = "Fit Statistics of Stepwise Model",
+      booktabs = TRUE, format = "latex", escape = FALSE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
+
+```
+
+The Stepwise regression process identifies **X1**, **X3**, and **X4** as the most
+significant predictors of Mortgage Yield, constituting the final model.
+
+It is interesting to note that **X4** appears among the 3 most significant
+predictors although it shows very weak correlation in the Correlation
+Matrix. Multiple regression measures the effect of each variable while
+holding all others constant. As **X4** has very strong correlation with **X3**
+(0.77), holding **X3** can make the unique contribution of **X4** clearer.
+
+The final Stepwise model explains approximately 83.4% of the variance in
+Mortgage Yield using only these three predictors. The AIC doesn't
+increases a lot when keeping more predictors, meaning that even if these
+predictors can still be statistically valid to keep, they are not so
+useful to the model. Though the final model is simpler, it explains the
+data just as well or better than more complex models. The Residual
+Standard Error (0.091) is low, and the overall model is highly
+significant (p \< 0.001), indicating a good fit.\
+We end up with : `mortYld` = 4.223 + 0.02229$\cdot$**X1** -
+0.001863$\cdot$**X3** + 0.0002249$\cdot$**X4**\
+\
+Let's now try a model with 2-way interactions.
+
+```{r}
+# 1. Coefficients Table
+interaction_model <- lm(mortYld ~ X1 + X3 + X4 + X1:X3 + X1:X4 + X3:X4, data = df)
+interaction_coef <- broom::tidy(interaction_model)
+
+# Génération du tableau
+table1 <- gridExtra::tableGrob(interaction_coef, rows = NULL)
+
+# Appliquer fond blanc et taille police
+for (i in seq_along(table1$grobs)) {
+  if (is.null(table1$grobs[[i]]$gp)) table1$grobs[[i]]$gp <- gpar()
+  table1$grobs[[i]]$gp$fill <- "#ffffff"
+  table1$grobs[[i]]$gp$fontsize <- 9
+}
+
+# Cadre noir autour
+table1 <- gtable::gtable_add_grob(
+  table1,
+  grobs = grid::rectGrob(gp = gpar(col = "black", fill = NA)),
+  t = 1, l = 1, b = nrow(table1), r = ncol(table1)
+)
+
+# Export PNG
+ggsave("interaction_model_coef.png", table1, width = 5.8, height = 2.5, dpi = 300)
+
+```
+
+```{r}
+# 2. Model Fit Statistics Table
+interaction_stats <- broom::glance(interaction_model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
+
+# Renommer colonnes
+colnames(interaction_stats) <- c(
+  "R²", "Adjusted R²", "Residual Std. Error", "F-statistic", "DF", "p-value"
+)
+
+# Génération du tableau
+table2 <- gridExtra::tableGrob(interaction_stats, rows = NULL)
+
+# Fond blanc + taille police
+for (i in seq_along(table2$grobs)) {
+  if (is.null(table2$grobs[[i]]$gp)) table2$grobs[[i]]$gp <- gpar()
+  table2$grobs[[i]]$gp$fill <- "#ffffff"
+  table2$grobs[[i]]$gp$fontsize <- 9
+}
+
+# Cadre noir autour
+table2 <- gtable::gtable_add_grob(
+  table2,
+  grobs = grid::rectGrob(gp = gpar(col = "black", fill = NA)),
+  t = 1, l = 1, b = nrow(table2), r = ncol(table2)
+)
+
+# Export PNG
+ggsave("interaction_model_fitstats.png", table2, width = 9, height = 1, dpi = 300)
+
+```
+\begin{minipage}{0.4\textwidth}
+\includegraphics[width=1.5\linewidth]{interaction_model_coef.png}
+\vspace{-0.3em}
+\footnotesize Table 10: Coefficients of Interaction Model
+\end{minipage}
+\hfill
+\begin{minipage}{0.35\textwidth}
+The 2-way Interactions model, which is more complex than the Stepwise
+model, explains approximately 79.9\% of the variance in Mortgage Yield.
+The Residual Standard Error (0.1002) is low, and the overall model is
+highly significant (p < 0.001), indicating that at least one of the
+terms has a significant influence on Mortgage Yield.
+\end{minipage}
+\includegraphics[width=1\linewidth]{interaction_model_fitstats.png}\par
+\vspace{-0.3em}
+\footnotesize Table 11: Fit Statistics of Interaction Model
+\addtocounter{table}{2}
+None of the variables show statistically significant individual
+contributions: only the intercept appears to be moderately significant
+to fit the model (p \< 0.05). This suggests that a reduced model may be
+more appropriate.\
+We end up with : `mortYld` = 5.3710 + 0.0069$\cdot$**X1** - 0.0001$\cdot$**X3** - 0.0009$\cdot$**X4** + 0.0$\cdot$**X1**:**X3** + 0.0$\cdot$**X1**:**X4** + 0.0$\cdot$**X3**:**X4**\
+\
+We decided not to include a 3-way Interactions model in our analysis.
+Given the small sample size (18 observations), adding high-order
+interactions would significantly reduce degrees of freedom and increase
+the risk of overfitting. Moreover, 3-way interactions are often
+difficult to interpret meaningfully.
+
+## Model Comparison
+
+```{r, fig.width=10, fig.height=2}
+# Create comparison table
+model_metrics <- data.frame(
+  Model = c("Full Model", "Stepwise Model", "2-Way Interaction Model"),
+  R2 = c(
+    summary(full_model)$r.squared,
+    summary(step_model)$r.squared,
+    summary(interaction_model)$r.squared
+  ),
+  Adj_R2 = c(
+    summary(full_model)$adj.r.squared,
+    summary(step_model)$adj.r.squared,
+    summary(interaction_model)$adj.r.squared
+  ),
+  AIC = c(
+    AIC(full_model),
+    AIC(step_model),
+    AIC(interaction_model)
+  ),
+  Residual_SE = c(
+    summary(full_model)$sigma,
+    summary(step_model)$sigma,
+    summary(interaction_model)$sigma
+  ),
+  F_statistic = c(
+    summary(full_model)$fstatistic[1],
+    summary(step_model)$fstatistic[1],
+    summary(interaction_model)$fstatistic[1]
+  )
+)
+
+# Display table
+kable(model_metrics, digits = 3, caption = "Comparison of Model Performance Metrics") %>%
+  kable_styling(font_size = 8, full_width = FALSE, position = "center")
+
+```
+
+The Stepwise model offers the best trade-off between simplicity and
+performance: it has the lowest AIC (\~29.7), demonstrating the best
+model fit among the three. Despite having a slightly lower R² than the
+Full and 2-ways Interactions model, it achieves the highest Adjusted R².
+It also has the lowest Residual Standard Error (0.091) and the highest
+F-statistic (\~29.5). This confirms the overall model significance and
+parsimony.
+
+```{r}
+# Compare with ANOVA and convert to data frame
+anova_result <- anova(step_model, interaction_model)
+
+# Ajouter les noms des modèles pour plus de clarté
+anova_df <- as.data.frame(anova_result)
+anova_df$Model <- c("Stepwise model", "Interaction model")
+
+# Réorganiser les colonnes
+anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum of Sq", "F", "Pr(>F)")]
+
+# Affichage avec kable
+kable(anova_df,
+      caption = "ANOVA Comparison: Stepwise vs Interactions Model",
+      booktabs = TRUE, digits = 4, format = "latex", escape = TRUE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
+```
+
+An ANOVA is then conducted to compare the Stepwise Model and the Interaction Model, which are nested — the Interaction Model extends the Stepwise Model by including additional two-way interaction terms.
+The test yields an F-statistic of 0.18 and a p-value of 0.91, indicating that the additional interaction terms do not significantly reduce the residual variance. 
+As a result, the simpler model with only main effects (**X1**, **X3**, and **X4**) truly provides the best fit, as it also offers comparable explanatory power and better interpretability.
+
+# Model assumptions and Diagnostics
+
+## Independence evaluation
+
+```{r, fig.width=7.5, fig.height=2.5}
+par(mfrow = c(1, 3),        # 1 row, 3 columns
+    mar = c(3.5, 3.5, 2, 1), # Margins: bottom, left, top, right
+    mgp = c(2, 0.6, 0),     # Axis label position
+    cex.main = 0.8,         # Title size
+    cex.lab = 0.8,          # Axis label size
+    cex.axis = 0.7)         # Tick mark size
+
+# Residuals vs. Fitted Values Plot
+plot(fitted(model), resid(model),
+     main = "Residuals vs Fitted",
+     xlab = "Fitted Values", ylab = "Residuals",
+     pch = 19, col = "blue")
+res_fit_lm <- lm(resid(model) ~ fitted(model))  # Linear model
+abline(res_fit_lm, col = "red", lwd = 2)  # Linear trend line
+coef_res_fit <- coef(res_fit_lm)
+text(min(fitted(model)), max(resid(model)), 
+     labels = paste0("y = ", round(coef_res_fit[2], 3), "x + ", round(coef_res_fit[1], 3)), 
+     pos = 4, col = "red", cex = 0.8)
+
+# Residuals vs. Observation Order Plot
+plot(resid(model), type = "p",
+     main = "Residuals vs Observation Order",
+     xlab = "Observation Index", ylab = "Residuals",
+     pch = 19, col = "darkgreen")
+res_obs_lm <- lm(resid(model) ~ c(1:length(resid(model))))  # Linear model
+abline(res_obs_lm, col = "red", lwd = 2)  # Linear trend line
+coef_res_obs <- coef(res_obs_lm)
+text(1, max(resid(model)), 
+     labels = paste0("y = ", round(coef_res_obs[2], 3), "x + ", round(coef_res_obs[1], 3)), 
+     pos = 4, col = "red", cex = 0.8)
+
+# Scale-Location Plot (Spread-Location)
+plot(fitted(model), sqrt(abs(resid(model))),
+     main = "Scale-Location Plot",
+     xlab = "Fitted Values", ylab = "√|Residuals|",
+     pch = 19, col = "purple")
+scale_loc_lm <- lm(sqrt(abs(resid(model))) ~ fitted(model))  # Linear model
+abline(scale_loc_lm, col = "red", lwd = 2)  # Linear trend line
+coef_scale_loc <- coef(scale_loc_lm)
+text(min(fitted(model)), max(sqrt(abs(resid(model)))),
+     labels = paste0("y = ", round(coef_scale_loc[2], 3), "x + ", round(coef_scale_loc[1], 3)), 
+     pos = 4, col = "red", cex = 0.8)
+
+# Reset plot settings
+par(mfrow = c(1, 1))
+
+```
+
+The `Residuals VS Fitted Values` plot shows that the residuals are
+randomly scattered around 0, with no clear pattern. This suggests that
+the assumptions of linearity and constant error variance are reasonably
+met. Secondly, the slightly negative but close to zero slope (-0.286) in
+the `Scale-Location Plot` indicates that the spread of residuals is
+almost constant across fitted values. This is a sign that our model
+doesn't suffer from heteroscedasticity and is likely a good fit:
+homoscedasticity seems therefore satisfied.
+
+The `Residuals VS Observation Order` plot helps us conclude that there
+is no consistent trend: the independence of residuals is verified, as
+they are not correlated with the order of observations.
+
+
+```{r save_vif_table, echo=FALSE, message=FALSE, warning=FALSE}
+# Compute VIF
+vif_values <- vif(step_model)
+vif_df <- data.frame(
+  Variable = rownames(as.data.frame(vif_values)),
+  VIF = round(as.numeric(vif_values), 6)
+)
+
+# Create grob table with white background and black borders
+vif_table <- tableGrob(vif_df, rows = NULL)
+
+# Equalize column widths
+vif_table$widths <- unit(rep(1, ncol(vif_table)), "null")
+
+# White background + font size
+for (i in seq_along(vif_table$grobs)) {
+  if (is.null(vif_table$grobs[[i]]$gp)) vif_table$grobs[[i]]$gp <- gpar()
+  vif_table$grobs[[i]]$gp$fill <- "#ffffff"
+  vif_table$grobs[[i]]$gp$fontsize <- 9
+}
+
+# Add black border
+vif_table <- gtable_add_grob(
+  vif_table,
+  rectGrob(gp = gpar(col = "black", fill = NA, lwd = 1)),
+  t = 1, l = 1, b = nrow(vif_table), r = ncol(vif_table)
+)
+
+# Save as PNG
+ggsave("vif_table.png", vif_table, width = 1.5, height = 1.3, dpi = 300)
+
+```
+\vspace{-0.5em}
+## Multicolinearity diagnostic
+\noindent
+\begin{minipage}{0.75\textwidth}
+\vspace{-0.5em}
+As all variables have a VIF value under 5, it means that they don’t cause problematic multicollinearity in the final model and that none of them should be eliminated. This confirms our choice of keeping \textbf{X3} and \textbf{X4}: even if they showed a high correlation coefficient (0.77), these variables still provide enough unique, non-redundant information to justify keeping them in the model.
+\end{minipage}
+\hfill
+\begin{minipage}{0.2\textwidth}
+\vspace{-3em}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{vif_table.png}
+    \vspace{-0.5em}
+    \caption{\tiny Variance Inflation Factors (VIF)}
+  \end{figure}
+\end{minipage}
+
+\vspace{-1em}
+
+## Normality Check
+
+```{r save_qqplot, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+
+png("qqplot_residuals.png", width = 650, height = 650, res = 150)
+
+par(pty = "s", 
+    mar = c(4, 3.5, 2, 1),
+    mgp = c(2, 0.5, 0),
+    cex.main = 0.8,
+    cex.lab = 0.8,
+    cex.axis = 0.7)
+
+qqnorm(resid(step_model), 
+       main = "Q-Q plot of Residuals", 
+       xlab = "Theoretical Quantiles", 
+       ylab = "Sample Quantiles",
+       pch = 19, col = "steelblue",
+       xlim = c(-2, 2), ylim = c(-0.2, 0.2))
+qqline(resid(step_model), col = "red")
+
+dev.off()
+
+```
+\noindent
+\begin{minipage}{0.65\textwidth}
+\justifying
+\vspace{-3.5em}
+The \texttt{Q-Q plot of Residuals} indicates that most of the points align closely with the 45-degree line, suggesting that the residuals are approximately normally distributed. However, six points deviate at the extremes of the theoretical quantiles, which indicates the presence of potential outliers or heavy tails in the distribution. In a dataset with just 18 observations, small deviations in the Q-Q plot are usual. Outliers or deviations are common in such a small sample size and do not automatically suggest a violation of normality.
+\end{minipage}
+\hfill
+\begin{minipage}{0.33\textwidth}
+\centering
+\vspace{-2em}  % Reduce space before image
+\includegraphics[width=0.9\linewidth]{qqplot_residuals.png}
+\vspace{-1em}     % Reduce space after image
+\end{minipage}
+
+\vspace{-3em}
+# Conclusion
+The final estimated model is : `mortYld` = 4.223 + 0.02229$\cdot$**X1** -
+0.001863$\cdot$**X3** + 0.0002249$\cdot$**X4**\
+where **X1** is the Loan-to-Mortgage Ratio, **X3** is the Savings per New Unit
+Built, and **X4** is the Savings per Capita.
+
+The analysis shows that these variables significantly impact Mortgage Yield. Mortgage Yield is positively influenced by the Loan-to-Mortgage Ratio, indicating that higher loan amounts relative to mortgages may lead to better returns for lenders. Conversely, Mortgage Yield is negatively impacted by Savings per New Unit Built, suggesting that more capital saved for construction could reduce reliance on mortgages, leading to lower returns. Finally, Savings per Capita has a positive, though small, effect on Mortgage Yield. As individual savings increase, it may signal a more financially stable environment, leading to slightly better mortgage performance.
+
+While the assumptions of linear regression are generally satisfied,
+there are some minor deviations. The model shows strong predictive
+performance, accounting for 83.4% of the variance in Mortgage Yield,
+with homoscedasticity nearly achieved.
+
+Future improvements could include exploring additional predictors,
+testing for non-linear relationships, or refining the model to better
+capture any residual heteroscedasticity.
