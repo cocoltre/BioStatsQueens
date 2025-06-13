@@ -290,13 +290,56 @@ The model is fitted using Ordinary Least Squares (OLS), which minimizes the sum 
 ## Null Model vs Full Model Comparison
 
 ```{r}
+
+# 1️⃣ Model & tidy table
 null_model <- lm(mortYld ~ 1, data = df)
 full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 
-#anova(null_model, full_model)
-
-# Résumé au format tableau propre
 anova_table <- tidy(anova(null_model, full_model))
+
+# 2️⃣ Format numerics to 2 decimals with trailing zeroes
+anova_table <- as.data.frame(lapply(anova_table, function(x) {
+  if (is.numeric(x)) sprintf("%.2f", x) else x
+}))
+
+# 3️⃣ Generate the table grob
+table <- gridExtra::tableGrob(anova_table, rows = NULL)
+
+# 4️⃣ Apply white background & font size 12pt for all cells
+for (i in seq_along(table$grobs)) {
+  if (is.null(table$grobs[[i]]$gp)) table$grobs[[i]]$gp <- gpar()
+  table$grobs[[i]]$gp$fill <- "#ffffff"
+  table$grobs[[i]]$gp$fontsize <- 10
+}
+
+# 6️⃣ Add horizontal lines between rows
+for (j in 1:(ncol(table) - 1)) {
+  table <- gtable::gtable_add_grob(
+    table,
+    grobs = grid::linesGrob(
+      x = unit(c(0, 0), "npc"),   # vertical line at left edge of column
+      y = unit(c(0, 1), "npc"),
+      gp = gpar(col = "black", lwd = 1)
+    ),
+    t = 1, b = nrow(table), l = j + 1
+  )
+}
+
+# 7️⃣ Add full black border around entire table
+table <- gtable::gtable_add_grob(
+  table,
+  grobs = grid::rectGrob(gp = gpar(col = "black", fill = NA, lwd = 1.2)),
+  t = 1, l = 1, b = nrow(table), r = ncol(table)
+)
+
+# 8️⃣ Compute exact size (in inches) for perfect PNG export
+w <- convertWidth(sum(table$widths), "in", valueOnly = TRUE)
+h <- convertHeight(sum(table$heights), "in", valueOnly = TRUE)
+
+# 9️⃣ Export PNG exactly to fit the table (no extra white space)
+png("figures/Table 2.png", width = w, height = h, units = "in", res = 300, bg = "white")
+grid::grid.draw(table)
+invisible(dev.off())
 
 # Affichage du tableau formaté
 #kable(anova_table, caption = "Comparison of Null and Full Model (ANOVA)") %>%
@@ -307,7 +350,8 @@ anova_table <- tidy(anova(null_model, full_model))
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/Table 2.png}
-\caption{Table 2: Comparison of Null and Full Model (ANOVA)}
+\captionsetup{font=normalsize}
+\caption*{Table 4: Comparison of Null and Full Model (ANOVA)}
 \end{figure}
 \vspace{-0.5cm}
 
@@ -318,36 +362,48 @@ F-statistic and p-value (p \< 0.001). This indicates that at least one
 of the predictors is significantly related to Mortgage Yield.
 
 ```{r}
-# 1. Full Linear Model Summary Table
 model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
-model_summary <- tidy(model)
-table1 <- tableGrob(model_summary, rows = NULL)
+model_summary <- broom::tidy(model)
 
-# Harmoniser colonnes
+# Format numeric columns with 2 decimals
+model_summary <- as.data.frame(lapply(model_summary, function(x) {
+  if (is.numeric(x)) sprintf("%.2f", x) else x
+}))
+
+table1 <- tableGrob(model_summary, rows = NULL)
 table1$widths <- unit(rep(1, ncol(table1)), "null")
 
-# Appliquer fond blanc et police lisible
 for (i in seq_along(table1$grobs)) {
   if (is.null(table1$grobs[[i]]$gp)) table1$grobs[[i]]$gp <- gpar()
   table1$grobs[[i]]$gp$fill <- "#ffffff"
-  table1$grobs[[i]]$gp$fontsize <- 9
+  table1$grobs[[i]]$gp$fontsize <- 10
 }
 
-# Bordure noire autour du tableau
 table1 <- gtable_add_grob(
   table1,
   rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
   t = 1, l = 1, b = nrow(table1), r = ncol(table1)
 )
 
-# Export PNG
-ggsave("full_model_summary_table.png", table1, width = 4.3, height = 2.5, dpi = 300)
+w <- convertWidth(sum(table1$widths), "in", valueOnly = TRUE)
+h <- convertHeight(sum(table1$heights), "in", valueOnly = TRUE)
+
+# Set minimum size to avoid quartz device error
+min_size_in <- 1
+w <- max(w, min_size_in)
+h <- max(h, min_size_in)
+
+# Save PNG exactly sized to table content
+png("full_model_fitstats_table.png", width = w, height = h, units = "in", res = 300, bg = "white")
+grid.draw(table1)
+
+# Close device
+invisible(dev.off())
  
 ```
 
 ```{r}
-# 2. Fit Statistics Table
-model_stats <- glance(model)[, c("r.squared", "adj.r.squared", "sigma", "statistic","df", "p.value")]
+model_stats <- broom::glance(model)[, c("r.squared", "adj.r.squared", "sigma", "statistic","df", "p.value")]
 colnames(model_stats) <- c(
   "R²", 
   "Adjusted R²",
@@ -357,48 +413,60 @@ colnames(model_stats) <- c(
   "p-value"
 )
 
-# Round numeric values to 6 digits
+# Formater chiffres en chaînes x.xx
 model_stats <- as.data.frame(lapply(model_stats, function(x) {
-  if (is.numeric(x)) round(x, 6) else x
+  if (is.numeric(x)) sprintf("%.2f", x) else x
 }))
 
+# Construire table grob sans forcer largeurs
 table2 <- tableGrob(model_stats, rows = NULL)
-table2$widths <- unit(rep(1, ncol(table2)), "null")
 
-# Appliquer fond blanc et style
+# Appliquer fond blanc et taille 10 pt
 for (i in seq_along(table2$grobs)) {
   if (is.null(table2$grobs[[i]]$gp)) table2$grobs[[i]]$gp <- gpar()
   table2$grobs[[i]]$gp$fill <- "#ffffff"
-  table2$grobs[[i]]$gp$fontsize <- 9
+  table2$grobs[[i]]$gp$fontsize <- 10
 }
 
+# Ajouter bordure noire
 table2 <- gtable_add_grob(
   table2,
   rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
   t = 1, l = 1, b = nrow(table2), r = ncol(table2)
 )
 
-ggsave("full_model_fitstats_table.png", table2, width = 8, height = 1.2, dpi = 300)
+# Calcul taille PNG selon contenu
+w <- convertWidth(sum(table2$widths), "in", valueOnly = TRUE)
+h <- convertHeight(sum(table2$heights), "in", valueOnly = TRUE)
+
+w <- w + 0.01
+h <- h + 0.01
+
+# Export PNG ajusté au contenu
+png("full_model_fitstats_table.png", width = w, height = h, units = "in", res = 300, bg = "white")
+grid.draw(table2)
+
+invisible(dev.off())
 
 ```
 \begin{minipage}{0.42\textwidth}
 \includegraphics[width=1\linewidth]{full_model_summary_table.png}
 \vspace{-0.2em}
-\footnotesize Table 5: Summary of Full Linear Model
+{\fontsize{12}{14}\selectfont Table 5: Summary of Full Linear Model}
 \end{minipage}
 \hfill
 \begin{minipage}{0.55\textwidth}
 The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% after adjusting for the number of predictors, which highlights a strong fit. The Residual Standard Error is low, and the overall model is statistically significant, with a very low p-value ($p < 0.001$). Once again, it means that at least one term contributes significantly to explaining the variation in \texttt{mortYld}.
 \end{minipage}
 \noindent
+\vspace{-5pt}
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\linewidth, height=0.15\textheight]{full_model_fitstats_table.png}
-  \vspace{-6pt}
-  \caption*{\footnotesize \textbf{Table 6:} Fit Statistics of Full Linear Model}
+  \caption*{{\fontsize{12}{14}\selectfont Table 6: Fit Statistics of Full Linear Model}}
 \end{figure}
 \addtocounter{table}{2}
-
+\vspace{-5pt}
 The intercept appears to be strongly significant to fit the model (p \<
 0.001). On the other hand, most of the variables do not show
 statistically significant individual contributions: only **X1** and **X3** show
@@ -410,12 +478,6 @@ We end up with : `mortYld` = 4.2852 + 0.0203$\cdot$**X1** + 0.0$\cdot$**X2** - 0
 ## Make stepwise regression to select the best model
 
 ```{r save_stepwise_tables, echo=FALSE, message=FALSE, warning=FALSE}
-# 1. Stepwise AIC Steps Table
-step_trace <- capture.output(
-  step_model <- stepAIC(model, direction = "both", trace = TRUE)
-)
-
-# Build Stepwise AIC Trace Manually
 step_trace_df <- data.frame(
   Step = c("Start", "Step 1", "Step 2", "Step 3"),
   Model = c("X1 + X2 + X3 + X4 + X5 + X6",
@@ -426,6 +488,10 @@ step_trace_df <- data.frame(
   AIC = c(-77.79, -79.77, -81.61, -82.81)
 )
 
+# Format numeric columns with 2 decimals
+step_trace_df$RSS <- sprintf("%.2f", step_trace_df$RSS)
+step_trace_df$AIC <- sprintf("%.2f", step_trace_df$AIC)
+
 table1 <- tableGrob(step_trace_df, rows = NULL)
 table1$widths <- unit(rep(1, ncol(table1)), "null")
 
@@ -435,15 +501,20 @@ for (i in seq_along(table1$grobs)) {
   table1$grobs[[i]]$gp$fill <- "#ffffff"
 }
 
-# Ajouter quadrillage noir pour table 1
-table1 <- gtable::gtable_add_grob(
+table1 <- gtable_add_grob(
   table1,
-  grobs = rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
+  rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
   t = 1, l = 1, b = nrow(table1), r = ncol(table1)
 )
 
-# TABLE 2: Coefficient table avec colonne "term"
-step_summary <- tidy(step_model)  # on garde toutes les colonnes
+# 2. Stepwise Model Coefficients Table
+step_model <- stepAIC(model, direction = "both", trace = FALSE)
+step_summary <- broom::tidy(step_model)
+
+# Format numeric columns to 2 decimals for all numeric columns
+step_summary <- as.data.frame(lapply(step_summary, function(x) {
+  if(is.numeric(x)) sprintf("%.2f", x) else x
+}))
 
 table2 <- tableGrob(step_summary, rows = NULL)
 table2$widths <- unit(rep(1, ncol(table2)), "null")
@@ -454,30 +525,28 @@ for (i in seq_along(table2$grobs)) {
   table2$grobs[[i]]$gp$fill <- "#ffffff"
 }
 
-# Ajouter quadrillage noir pour table 2
-table2 <- gtable::gtable_add_grob(
+table2 <- gtable_add_grob(
   table2,
-  grobs = rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
+  rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
   t = 1, l = 1, b = nrow(table2), r = ncol(table2)
 )
 
-# Sauvegarde des PNG
+# Save as PNGs
 ggsave("stepwise_aic_table.png", table1, width = 4.5, height = 2, dpi = 300)
 ggsave("stepwise_coef_table.png", table2, width = 4.5, height = 2, dpi = 300)
-
 ```
 \begin{minipage}{0.48\textwidth}
 \centering
 \includegraphics[width=\linewidth]{stepwise_aic_table.png}
-\vspace{-0.3em}
-\footnotesize Table 7: Stepwise AIC Steps
+\vspace{-2em}
+{\fontsize{12}{14}\selectfont Table 7: Stepwise AIC Steps. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.\par}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\textwidth}
 \centering
 \includegraphics[width=\linewidth]{stepwise_coef_table.png}\\
-\vspace{-0.3em}
-\footnotesize Table 8: Coefficients of Final Stepwise Model
+\vspace{-2em}
+{\fontsize{12}{14}\selectfont Table 8: Coefficients of Final Stepwise Model\par}
 \end{minipage}
 
 \addtocounter{table}{2}
@@ -503,12 +572,14 @@ step_glance$`p-value` <- formatC(step_glance$`p-value`, format = "e", digits = 2
 
 # Afficher en tableau LaTeX
 kable(step_glance,
-      caption = "Fit Statistics of Stepwise Model",
       booktabs = TRUE, format = "latex", escape = FALSE) %>%
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
-
 ```
+\vspace{-2em}
+\begin{center}
+{\fontsize{12}{14}\selectfont Table 9: Fit Statistics of Stepwise Model\par}
+\end{center}
 
 The Stepwise regression process identifies **X1**, **X3**, and **X4** as the most
 significant predictors of Mortgage Yield, constituting the final model.
@@ -537,6 +608,10 @@ Let's now try a model with 2-way interactions.
 interaction_model <- lm(mortYld ~ X1 + X3 + X4 + X1:X3 + X1:X4 + X3:X4, data = df)
 interaction_coef <- broom::tidy(interaction_model)
 
+interaction_coef <- as.data.frame(lapply(interaction_coef, function(x) {
+  if(is.numeric(x)) sprintf("%.2f", x) else x
+}))
+
 # Génération du tableau
 table1 <- gridExtra::tableGrob(interaction_coef, rows = NULL)
 
@@ -554,14 +629,26 @@ table1 <- gtable::gtable_add_grob(
   t = 1, l = 1, b = nrow(table1), r = ncol(table1)
 )
 
-# Export PNG
-ggsave("interaction_model_coef.png", table1, width = 5.8, height = 2.5, dpi = 300)
+w <- convertWidth(sum(table1$widths), "in", valueOnly = TRUE)
+h <- convertHeight(sum(table1$heights), "in", valueOnly = TRUE)
+
+w <- w + 0.01
+h <- h + 0.01
+
+# Export PNG ajusté au contenu
+png("interaction_model_coef.png", width = w, height = h, units = "in", res = 300, bg = "white")
+grid.draw(table1)
+
+invisible(dev.off())
+
 
 ```
 
 ```{r}
 # 2. Model Fit Statistics Table
 interaction_stats <- broom::glance(interaction_model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
+
+interaction_stats <- as.data.frame(lapply(interaction_stats, function(x) sprintf("%.2f", x)))
 
 # Renommer colonnes
 colnames(interaction_stats) <- c(
@@ -585,14 +672,23 @@ table2 <- gtable::gtable_add_grob(
   t = 1, l = 1, b = nrow(table2), r = ncol(table2)
 )
 
-# Export PNG
-ggsave("interaction_model_fitstats.png", table2, width = 9, height = 1, dpi = 300)
+w <- convertWidth(sum(table2$widths), "in", valueOnly = TRUE)
+h <- convertHeight(sum(table2$heights), "in", valueOnly = TRUE)
+
+w <- w + 0.01
+h <- h + 0.01
+
+# Export PNG ajusté au contenu
+png("interaction_model_fitstats.png", width = w, height = h, units = "in", res = 300, bg = "white")
+grid.draw(table2)
+
+invisible(dev.off())
 
 ```
 \begin{minipage}{0.4\textwidth}
 \includegraphics[width=1.5\linewidth]{interaction_model_coef.png}
 \vspace{-0.3em}
-\footnotesize Table 10: Coefficients of Interaction Model
+\fontsize{12}{14}\selectfont Table 10: Coefficients of Interaction Model\par
 \end{minipage}
 \hfill
 \begin{minipage}{0.35\textwidth}
@@ -602,10 +698,11 @@ The Residual Standard Error (0.1002) is low, and the overall model is
 highly significant (p < 0.001), indicating that at least one of the
 terms has a significant influence on Mortgage Yield.
 \end{minipage}
+
 \includegraphics[width=1\linewidth]{interaction_model_fitstats.png}\par
-\vspace{-0.3em}
-\footnotesize Table 11: Fit Statistics of Interaction Model
+\fontsize{12}{14}\selectfont Table 11: Fit Statistics of Interaction Model\par
 \addtocounter{table}{2}
+
 None of the variables show statistically significant individual
 contributions: only the intercept appears to be moderately significant
 to fit the model (p \< 0.05). This suggests that a reduced model may be
@@ -652,7 +749,7 @@ model_metrics <- data.frame(
 )
 
 # Display table
-kable(model_metrics, digits = 3, caption = "Comparison of Model Performance Metrics") %>%
+kable(model_metrics, digits = 2, caption = "Comparison of Model Performance Metrics") %>%
   kable_styling(font_size = 8, full_width = FALSE, position = "center")
 
 ```
@@ -679,7 +776,7 @@ anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum of Sq", "F", "Pr(>
 # Affichage avec kable
 kable(anova_df,
       caption = "ANOVA Comparison: Stepwise vs Interactions Model",
-      booktabs = TRUE, digits = 4, format = "latex", escape = TRUE) %>%
+      booktabs = TRUE, digits = 2, format = "latex", escape = TRUE) %>%
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
 ```
@@ -760,7 +857,7 @@ they are not correlated with the order of observations.
 vif_values <- vif(step_model)
 vif_df <- data.frame(
   Variable = rownames(as.data.frame(vif_values)),
-  VIF = round(as.numeric(vif_values), 6)
+  VIF = round(as.numeric(vif_values), 2)
 )
 
 # Create grob table with white background and black borders
@@ -801,7 +898,8 @@ As all variables have a VIF value under 5, it means that they don’t cause prob
     \centering
     \includegraphics[width=0.8\linewidth]{vif_table.png}
     \vspace{-0.5em}
-    \caption{\tiny Variance Inflation Factors (VIF)}
+    \captionsetup{font=normalsize}
+    \caption*{Table 14: Variance Inflation Factors (VIF)}
   \end{figure}
 \end{minipage}
 

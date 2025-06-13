@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.10)  11 APR 2025 17:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.10)  13 JUN 2025 16:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -8,8 +8,8 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-03-26>
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
-(/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+(/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count197
 \c@section=\count198
@@ -573,7 +573,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
 \BKM@id=\count332
 ))
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 115.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 116.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
@@ -582,24 +582,24 @@ File: l3backend-pdftex.def 2025-03-14 L3 backend support: PDF output (pdfTeX)
 ) (./report1_r1.aux)
 \openout1 = `report1_r1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 115.
-LaTeX Font Info:    ... okay on input line 115.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 116.
+LaTeX Font Info:    ... okay on input line 116.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -625,12 +625,12 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=5.0pt
-* \topskip=11.0pt
+* \topskip=12.0pt
 * \footskip=30.0pt
-* \marginparwidth=59.0pt
+* \marginparwidth=44.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -650,129 +650,101 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 Package caption Info: threeparttable package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 115.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 117.
+Package hyperref Info: Link coloring OFF on input line 116.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 118.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 117.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 118.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 117.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 118.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 117.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 118.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 117.
+(Font)              <14.4> on input line 118.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 117.
+(Font)              <10> on input line 118.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 117.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 117.
+(Font)              <7> on input line 118.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 118.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 117.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 118.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 135.
-(/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
+Overfull \hbox (18.76233pt too wide) in paragraph at lines 118--118
+ [] 
+ []
+
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 137.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
+<figures/Table 1.png, id=4, 594.22pt x 114.4275pt>
+File: figures/Table 1.png Graphic file (type png)
+<use figures/Table 1.png>
+Package pdftex.def Info: figures/Table 1.png  used on input line 169.
+(pdftex.def)             Requested size: 472.04904pt x 90.90132pt.
+
 
 [1
 
 {/Users/colineleteurtre/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
-<Figs/unnamed-chunk-4-1.pdf, id=23, 939.51pt x 361.35pt>
-File: Figs/unnamed-chunk-4-1.pdf Graphic file (type pdf)
-<use Figs/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-4-1.pdf  used on input line 218.
-(pdftex.def)             Requested size: 472.03323pt x 181.55124pt.
+<figures/Figure 1.png, id=18, 626.34pt x 477.28313pt>
+File: figures/Figure 1.png Graphic file (type png)
+<use figures/Figure 1.png>
+Package pdftex.def Info: figures/Figure 1.png  used on input line 196.
+(pdftex.def)             Requested size: 233.6536pt x 178.04854pt.
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[2 <./Figs/unnamed-chunk-4-1.pdf>]
-<association_matrix.png, id=36, 903.375pt x 903.375pt>
-File: association_matrix.png Graphic file (type png)
-<use association_matrix.png>
-Package pdftex.def Info: association_matrix.png  used on input line 259.
-(pdftex.def)             Requested size: 188.80458pt x 188.80458pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 260.
-<6plots_summary.png, id=38, 1204.5pt x 722.7pt>
-File: 6plots_summary.png Graphic file (type png)
-<use 6plots_summary.png>
-Package pdftex.def Info: 6plots_summary.png  used on input line 263.
-(pdftex.def)             Requested size: 283.22295pt x 169.93376pt.
-
-Overfull \hbox (2.43332pt too wide) in paragraph at lines 258--265
-[]$[]$  $[]$ 
+Overfull \hbox (21.24098pt too wide) in paragraph at lines 196--197
+ [][] 
  []
 
+<figures/Figure 2.png, id=19, 752.8125pt x 485.815pt>
+File: figures/Figure 2.png Graphic file (type png)
+<use figures/Figure 2.png>
+Package pdftex.def Info: figures/Figure 2.png  used on input line 203.
+(pdftex.def)             Requested size: 233.65663pt x 150.7864pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 266--269
-
- []
-
-<correlation_heatmap.png, id=39, 231.264pt x 231.264pt>
-File: correlation_heatmap.png Graphic file (type png)
-<use correlation_heatmap.png>
-Package pdftex.def Info: correlation_heatmap.png  used on input line 299.
-(pdftex.def)             Requested size: 188.81902pt x 188.81902pt.
-
-Overfull \hbox (2.43332pt too wide) in paragraph at lines 298--318
-$[]$  $[]$ 
+Overfull \hbox (21.24402pt too wide) in paragraph at lines 203--204
+ [][] 
  []
 
 
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[3 <./association_matrix.png> <./6plots_summary.png>]
-<simple_regression_table.png, id=48, 289.08pt x 144.54pt>
-File: simple_regression_table.png Graphic file (type png)
-<use simple_regression_table.png>
-Package pdftex.def Info: simple_regression_table.png  used on input line 334.
-(pdftex.def)             Requested size: 236.01495pt x 118.00746pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 335.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 335.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 335.
+[2 <./figures/Table 1.png> <./figures/Figure 1.png> <./figures/Figure 2.png>]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 237.
+(/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+<figures/Figure 3.png, id=32, 695.59875pt x 661.47125pt>
+File: figures/Figure 3.png Graphic file (type png)
+<use figures/Figure 3.png>
+Package pdftex.def Info: figures/Figure 3.png  used on input line 252.
+(pdftex.def)             Requested size: 179.36545pt x 170.56541pt.
+<figures/Figure 4.png, id=33, 1233.60875pt x 728.7225pt>
+File: figures/Figure 4.png Graphic file (type png)
+<use figures/Figure 4.png>
+Package pdftex.def Info: figures/Figure 4.png  used on input line 259.
+(pdftex.def)             Requested size: 273.7665pt x 161.72049pt.
 
-Overfull \hbox (25.2593pt too wide) in paragraph at lines 333--346
-$[]$   $[]$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 333--346
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 347--349
+Underfull \hbox (badness 10000) in paragraph at lines 264--267
 
  []
 
@@ -780,117 +752,192 @@ Underfull \hbox (badness 10000) in paragraph at lines 347--349
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} <./correlation_heatmap.png> <./simple_regression_table.png>]
-<full_model_summary_table.png, id=63, 310.761pt x 180.675pt>
+[3 <./figures/Figure 3.png> <./figures/Figure 4.png>]
+<figures/Figure 5.png, id=44, 656.4525pt x 537.00626pt>
+File: figures/Figure 5.png Graphic file (type png)
+<use figures/Figure 5.png>
+Package pdftex.def Info: figures/Figure 5.png  used on input line 297.
+(pdftex.def)             Requested size: 184.0859pt x 150.59015pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 299.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 299.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 299.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[4{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} <./figures/Figure 5.png>]
+<figures/Table 2.png, id=60, 2190.1825pt x 249.93375pt>
+File: figures/Table 2.png Graphic file (type png)
+<use figures/Table 2.png>
+Package pdftex.def Info: figures/Table 2.png  used on input line 372.
+(pdftex.def)             Requested size: 472.01633pt x 53.86436pt.
+<full_model_summary_table.png, id=61, 310.761pt x 180.675pt>
 File: full_model_summary_table.png Graphic file (type png)
 <use full_model_summary_table.png>
-Package pdftex.def Info: full_model_summary_table.png  used on input line 373.
+Package pdftex.def Info: full_model_summary_table.png  used on input line 385.
 (pdftex.def)             Requested size: 198.25569pt x 115.26492pt.
-<full_model_fitstats_table.png, id=64, 578.16pt x 86.724pt>
+
+Underfull \hbox (badness 1430) in paragraph at lines 385--388
+\T1/lmr/m/n/12 Ta-ble 5: Sum-mary of Full Lin-ear
+ []
+
+<full_model_fitstats_table.png, id=62, 1621.05624pt x 169.63374pt>
 File: full_model_fitstats_table.png Graphic file (type png)
 <use full_model_fitstats_table.png>
-Package pdftex.def Info: full_model_fitstats_table.png  used on input line 386.
-(pdftex.def)             Requested size: 424.8234pt x 63.7235pt.
-<stepwise_aic_table.png, id=65, 325.215pt x 144.54pt>
+Package pdftex.def Info: full_model_fitstats_table.png  used on input line 398.
+(pdftex.def)             Requested size: 424.82869pt x 44.45575pt.
+<stepwise_aic_table.png, id=63, 325.215pt x 144.54pt>
 File: stepwise_aic_table.png Graphic file (type png)
 <use stepwise_aic_table.png>
-Package pdftex.def Info: stepwise_aic_table.png  used on input line 409.
+Package pdftex.def Info: stepwise_aic_table.png  used on input line 421.
 (pdftex.def)             Requested size: 226.57707pt x 100.7009pt.
-<stepwise_coef_table.png, id=66, 325.215pt x 144.54pt>
+<stepwise_coef_table.png, id=64, 325.215pt x 144.54pt>
 File: stepwise_coef_table.png Graphic file (type png)
 <use stepwise_coef_table.png>
-Package pdftex.def Info: stepwise_coef_table.png  used on input line 416.
+Package pdftex.def Info: stepwise_coef_table.png  used on input line 428.
 (pdftex.def)             Requested size: 226.57707pt x 100.7009pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 438.
 
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} <./full_model_summary_table.png> <./full_model_fitstats_table.png> <./stepwise_aic_table.png> <./stepwise_coef_table.png>]
-<interaction_model_coef.png, id=79, 419.166pt x 180.675pt>
+[5{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc} <./figures/Table 2.png> <./full_model_summary_table.png> <./full_model_fitstats_table.png>]
+<interaction_model_coef.png, id=76, 1238.6275pt x 670.505pt>
 File: interaction_model_coef.png Graphic file (type png)
 <use interaction_model_coef.png>
-Package pdftex.def Info: interaction_model_coef.png  used on input line 462.
-(pdftex.def)             Requested size: 283.21906pt x 122.07716pt.
+Package pdftex.def Info: interaction_model_coef.png  used on input line 477.
+(pdftex.def)             Requested size: 283.21515pt x 153.31258pt.
 
-Overfull \hbox (94.40945pt too wide) in paragraph at lines 462--465
+Overfull \hbox (94.40555pt too wide) in paragraph at lines 477--479
 [][]
  []
 
 
-Underfull \hbox (badness 4254) in paragraph at lines 468--473
-[]\T1/lmr/m/n/10.95 The 2-way In-ter-ac-tions model,
+Underfull \hbox (badness 1888) in paragraph at lines 483--488
+\T1/lmr/m/n/12 which is more com-plex than
  []
 
-<interaction_model_fitstats.png, id=80, 650.43pt x 72.27pt>
+
+Underfull \hbox (badness 1975) in paragraph at lines 483--488
+\T1/lmr/m/n/12 the Step-wise model, ex-plains
+ []
+
+
+Underfull \hbox (badness 6445) in paragraph at lines 483--488
+\T1/lmr/m/n/12 ap-prox-i-mately 79.9% of the
+ []
+
+
+Underfull \hbox (badness 5681) in paragraph at lines 483--488
+\T1/lmr/m/n/12 vari-ance in Mort-gage Yield.
+ []
+
+
+Underfull \hbox (badness 1558) in paragraph at lines 483--488
+\T1/lmr/m/n/12 The Resid-ual Stan-dard Er-ror
+ []
+
+<interaction_model_fitstats.png, id=77, 1654.18pt x 169.63374pt>
 File: interaction_model_fitstats.png Graphic file (type png)
 <use interaction_model_fitstats.png>
-Package pdftex.def Info: interaction_model_fitstats.png  used on input line 475.
-(pdftex.def)             Requested size: 472.04094pt x 52.44897pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 488.
-<Figs/unnamed-chunk-13-1.pdf, id=81, 542.025pt x 180.675pt>
-File: Figs/unnamed-chunk-13-1.pdf Graphic file (type pdf)
-<use Figs/unnamed-chunk-13-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-13-1.pdf  used on input line 554.
+Package pdftex.def Info: interaction_model_fitstats.png  used on input line 490.
+(pdftex.def)             Requested size: 472.02673pt x 48.40564pt.
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[6 <./stepwise_aic_table.png> <./stepwise_coef_table.png> <./interaction_model_coef.png> <./interaction_model_fitstats.png>]
+<Figs/unnamed-chunk-11-1.pdf, id=88, 542.025pt x 180.675pt>
+File: Figs/unnamed-chunk-11-1.pdf Graphic file (type pdf)
+<use Figs/unnamed-chunk-11-1.pdf>
+Package pdftex.def Info: Figs/unnamed-chunk-11-1.pdf  used on input line 570.
 (pdftex.def)             Requested size: 472.0459pt x 157.34862pt.
 
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6 <./interaction_model_coef.png> <./interaction_model_fitstats.png>]
-<vif_table.png, id=92, 108.405pt x 93.951pt>
+[7]
+<vif_table.png, id=97, 108.405pt x 93.951pt>
 File: vif_table.png Graphic file (type png)
 <use vif_table.png>
-Package pdftex.def Info: vif_table.png  used on input line 585.
+Package pdftex.def Info: vif_table.png  used on input line 601.
 (pdftex.def)             Requested size: 75.52733pt x 65.45703pt.
-<qqplot_residuals.png, id=93, 652.4375pt x 652.4375pt>
+
+Underfull \hbox (badness 2173) in paragraph at lines 604--604
+[]|\T1/lmr/m/n/12 Ta-ble 14: Vari-
+ []
+
+<qqplot_residuals.png, id=98, 652.4375pt x 652.4375pt>
 File: qqplot_residuals.png Graphic file (type png)
 <use qqplot_residuals.png>
-Package pdftex.def Info: qqplot_residuals.png  used on input line 606.
+Package pdftex.def Info: qqplot_residuals.png  used on input line 623.
 (pdftex.def)             Requested size: 140.19168pt x 140.19168pt.
 
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7 <./Figs/unnamed-chunk-13-1.pdf> <./vif_table.png> <./qqplot_residuals.png>] (./report1_r1.aux)
+[8 <./Figs/unnamed-chunk-11-1.pdf> <./vif_table.png> <./qqplot_residuals.png>]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[9] (./report1_r1.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-03-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15289 strings out of 471607
- 246642 string characters out of 5519709
- 653205 words of memory out of 5000000
- 41540 multiletter control sequences out of 15000+600000
- 709977 words of font info for 105 fonts, out of 8000000 for 9000
+ 15296 strings out of 471607
+ 246796 string characters out of 5519709
+ 641053 words of memory out of 5000000
+ 41543 multiletter control sequences out of 15000+600000
+ 710120 words of font info for 105 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 89i,12n,93p,876b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr9.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on report1_r1.pdf (7 pages, 932808 bytes).
+ 89i,12n,93p,876b,471s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
+Output written on report1_r1.pdf (9 pages, 1621410 bytes).
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
- 195 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 223 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 255 PDF objects out of 1000 (max. 8388607)
+ 183 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
+ 217 words of extra memory for PDF output out of 10000 (max. 10000000)
 
