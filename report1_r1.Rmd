@@ -135,7 +135,7 @@ We begin with a numerical summary of each variable:
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/Table 1.png}
-\caption{Table 1: Summary Statistics of Variables}
+\caption*{Table 1: Summary Statistics of Variables}
 \end{figure}
 \vspace{-0.5cm}
 Through this summary, we already observe that Mortgage Yields (**mortYld**) don’t vary much across regions. Most values are between 5.2% and 6.2%, suggesting relatively stable Mortgage rates.
@@ -155,6 +155,7 @@ distributions. Population Increase (**X5**) from 1950 to 1960 varies widely (7.5
 \begin{minipage}[t]{0.45\textwidth}
 \centering
 \includegraphics[width=1.1\linewidth]{figures/Figure 1.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 1: Histogram of Mortgage Yield per SMSA}
 \end{minipage}
 \hfill
@@ -162,6 +163,7 @@ distributions. Population Increase (**X5**) from 1950 to 1960 varies widely (7.5
 \centering
 \vspace{-6cm}
 \includegraphics[width=1.1\linewidth]{figures/Figure 2.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 2: Histograms of each variable (X1 to X6)}
 \end{minipage}
 
@@ -189,6 +191,7 @@ We can see that most of the plots are random dispersion, while some are linear, 
 \begin{minipage}[t]{0.38\textwidth}
 \centering
 \includegraphics[width=1\linewidth]{figures/Figure 3.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 3: Association Matrix of Variables and Mortgage Yield}
 \end{minipage}
 \hfill
@@ -196,6 +199,7 @@ We can see that most of the plots are random dispersion, while some are linear, 
 \centering
 \vspace{-6cm}
 \includegraphics[width=1\linewidth]{figures/Figure 4.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 4: Scatterplots of each variable (X1 to X6) compared to Mortgage Yield}
 \end{minipage}
 \end{figure}
@@ -220,6 +224,7 @@ savings contribute to Mortgage Yield variations.
 \centering
 \begin{minipage}{0.39\textwidth}
 \includegraphics[width=\linewidth]{figures/Figure 5.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 5: Correlation Heatmaps of variables}
 \end{minipage}
 \hfill
@@ -576,7 +581,7 @@ kable(step_glance,
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
 ```
-\vspace{-2em}
+
 \begin{center}
 {\fontsize{12}{14}\selectfont Table 9: Fit Statistics of Stepwise Model\par}
 \end{center}
@@ -749,10 +754,13 @@ model_metrics <- data.frame(
 )
 
 # Display table
-kable(model_metrics, digits = 2, caption = "Comparison of Model Performance Metrics") %>%
+kable(model_metrics, digits = 2) %>%
   kable_styling(font_size = 8, full_width = FALSE, position = "center")
 
 ```
+\begin{center}
+{\fontsize{12}{14}\selectfont Table 12: Comparison of Model Performance Metrics\par}
+\end{center}
 
 The Stepwise model offers the best trade-off between simplicity and
 performance: it has the lowest AIC (\~29.7), demonstrating the best
@@ -775,11 +783,13 @@ anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum of Sq", "F", "Pr(>
 
 # Affichage avec kable
 kable(anova_df,
-      caption = "ANOVA Comparison: Stepwise vs Interactions Model",
       booktabs = TRUE, digits = 2, format = "latex", escape = TRUE) %>%
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
 ```
+\begin{center}
+{\fontsize{12}{14}\selectfont Table 13: ANOVA Comparison: Stepwise vs Interactions Model\par}
+\end{center}
 
 An ANOVA is then conducted to compare the Stepwise Model and the Interaction Model, which are nested — the Interaction Model extends the Stepwise Model by including additional two-way interaction terms.
 The test yields an F-statistic of 0.18 and a p-value of 0.91, indicating that the additional interaction terms do not significantly reduce the residual variance. 
@@ -790,12 +800,12 @@ As a result, the simpler model with only main effects (**X1**, **X3**, and **X4*
 ## Independence evaluation
 
 ```{r, fig.width=7.5, fig.height=2.5}
-par(mfrow = c(1, 3),        # 1 row, 3 columns
-    mar = c(3.5, 3.5, 2, 1), # Margins: bottom, left, top, right
-    mgp = c(2, 0.6, 0),     # Axis label position
-    cex.main = 0.8,         # Title size
-    cex.lab = 0.8,          # Axis label size
-    cex.axis = 0.7)         # Tick mark size
+par(mfrow = c(1, 3),        
+    mar = c(3.5, 3.5, 2, 1),
+    mgp = c(2, 0.6, 0),     
+    cex.main = 1.2,     # Title size increased
+    cex.lab = 1.2,      # Axis label size increased
+    cex.axis = 1.0)     # Tick mark size increased
 
 # Residuals vs. Fitted Values Plot
 plot(fitted(model), resid(model),
@@ -805,9 +815,9 @@ plot(fitted(model), resid(model),
 res_fit_lm <- lm(resid(model) ~ fitted(model))  # Linear model
 abline(res_fit_lm, col = "red", lwd = 2)  # Linear trend line
 coef_res_fit <- coef(res_fit_lm)
-text(min(fitted(model)), max(resid(model)), 
-     labels = paste0("y = ", round(coef_res_fit[2], 3), "x + ", round(coef_res_fit[1], 3)), 
-     pos = 4, col = "red", cex = 0.8)
+text(min(fitted(model)), max(resid(model))* 0.9, 
+     labels = paste0("y = ", round(coef_res_fit[2], 2), "x + ", round(coef_res_fit[1], 2)), 
+     pos = 4, col = "red", cex = 1.2)
 
 # Residuals vs. Observation Order Plot
 plot(resid(model), type = "p",
@@ -817,9 +827,9 @@ plot(resid(model), type = "p",
 res_obs_lm <- lm(resid(model) ~ c(1:length(resid(model))))  # Linear model
 abline(res_obs_lm, col = "red", lwd = 2)  # Linear trend line
 coef_res_obs <- coef(res_obs_lm)
-text(1, max(resid(model)), 
-     labels = paste0("y = ", round(coef_res_obs[2], 3), "x + ", round(coef_res_obs[1], 3)), 
-     pos = 4, col = "red", cex = 0.8)
+text(1, max(resid(model))* 0.9, 
+     labels = paste0("y = ", round(coef_res_obs[2], 2), "x + ", round(coef_res_obs[1], 2)), 
+     pos = 4, col = "red", cex = 1.2)
 
 # Scale-Location Plot (Spread-Location)
 plot(fitted(model), sqrt(abs(resid(model))),
@@ -829,9 +839,9 @@ plot(fitted(model), sqrt(abs(resid(model))),
 scale_loc_lm <- lm(sqrt(abs(resid(model))) ~ fitted(model))  # Linear model
 abline(scale_loc_lm, col = "red", lwd = 2)  # Linear trend line
 coef_scale_loc <- coef(scale_loc_lm)
-text(min(fitted(model)), max(sqrt(abs(resid(model)))),
-     labels = paste0("y = ", round(coef_scale_loc[2], 3), "x + ", round(coef_scale_loc[1], 3)), 
-     pos = 4, col = "red", cex = 0.8)
+text(min(fitted(model)), max(sqrt(abs(resid(model))))* 0.95,
+     labels = paste0("y = ", round(coef_scale_loc[2], 2), "x + ", round(coef_scale_loc[1], 2)), 
+     pos = 4, col = "red", cex = 1.2)
 
 # Reset plot settings
 par(mfrow = c(1, 1))
@@ -870,7 +880,7 @@ vif_table$widths <- unit(rep(1, ncol(vif_table)), "null")
 for (i in seq_along(vif_table$grobs)) {
   if (is.null(vif_table$grobs[[i]]$gp)) vif_table$grobs[[i]]$gp <- gpar()
   vif_table$grobs[[i]]$gp$fill <- "#ffffff"
-  vif_table$grobs[[i]]$gp$fontsize <- 9
+  vif_table$grobs[[i]]$gp$fontsize <- 12
 }
 
 # Add black border
@@ -914,9 +924,9 @@ png("qqplot_residuals.png", width = 650, height = 650, res = 150)
 par(pty = "s", 
     mar = c(4, 3.5, 2, 1),
     mgp = c(2, 0.5, 0),
-    cex.main = 0.8,
-    cex.lab = 0.8,
-    cex.axis = 0.7)
+    cex.main = 1.6,
+    cex.lab = 1.6,
+    cex.axis = 1.4)
 
 qqnorm(resid(step_model), 
        main = "Q-Q plot of Residuals", 
@@ -932,7 +942,7 @@ dev.off()
 \noindent
 \begin{minipage}{0.65\textwidth}
 \justifying
-\vspace{-3.5em}
+
 The \texttt{Q-Q plot of Residuals} indicates that most of the points align closely with the 45-degree line, suggesting that the residuals are approximately normally distributed. However, six points deviate at the extremes of the theoretical quantiles, which indicates the presence of potential outliers or heavy tails in the distribution. In a dataset with just 18 observations, small deviations in the Q-Q plot are usual. Outliers or deviations are common in such a small sample size and do not automatically suggest a violation of normality.
 \end{minipage}
 \hfill
@@ -943,10 +953,10 @@ The \texttt{Q-Q plot of Residuals} indicates that most of the points align close
 \vspace{-1em}     % Reduce space after image
 \end{minipage}
 
-\vspace{-3em}
+
 # Conclusion
-The final estimated model is : `mortYld` = 4.223 + 0.02229$\cdot$**X1** -
-0.001863$\cdot$**X3** + 0.0002249$\cdot$**X4**\
+The final estimated model is : $\hat{mortYld}$ = 4.22 + 0.02$\cdot$**X1** -
+0.002$\cdot$**X3** + 0.0002$\cdot$**X4**\
 where **X1** is the Loan-to-Mortgage Ratio, **X3** is the Savings per New Unit
 Built, and **X4** is the Savings per Capita.
 

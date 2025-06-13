@@ -1,51 +1,51 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.10)  13 JUN 2025 16:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.13)  13 JUN 2025 18:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **report1_r1.tex
 (./report1_r1.tex
-LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-03-26>
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-05-26>
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2024/06/29 v1.4n Standard LaTeX document class
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count197
-\c@section=\count198
-\c@subsection=\count199
-\c@subsubsection=\count266
-\c@paragraph=\count267
-\c@subparagraph=\count268
-\c@figure=\count269
-\c@table=\count270
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
-\bibindent=\dimen146
+\bibindent=\dimen148
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2024/11/05 v2.17t AMS math features
+Package: amsmath 2025/05/18 v2.17x AMS math features
 \@mathmargin=\skip51
 For additional information on amsmath, use the `?' option.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2021/08/26 v2.01 AMS text
+Package: amstext 2024/11/17 v2.01 AMS text
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks17
-\ex@=\dimen147
+\ex@=\dimen149
 )) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen148
+\pmbraise@=\dimen150
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count271
+\inf@bad=\count283
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count272
-\leftroot@=\count273
+\uproot@=\count284
+\leftroot@=\count285
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count274
-\DOTSCASE@=\count275
+\classnum@=\count286
+\DOTSCASE@=\count287
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -55,36 +55,36 @@ LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
 LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen149
+\big@size=\dimen151
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count276
+\macc@depth=\count288
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count277
+\c@MaxMatrixCols=\count289
 \dotsspace@=\muskip17
-\c@parentequation=\count278
-\dspbrk@lvl=\count279
+\c@parentequation=\count290
+\dspbrk@lvl=\count291
 \tag@help=\toks18
-\row@=\count280
-\column@=\count281
-\maxfields@=\count282
+\row@=\count292
+\column@=\count293
+\maxfields@=\count294
 \andhelp@=\toks19
-\eqnshift@=\dimen150
-\alignsep@=\dimen151
-\tagshift@=\dimen152
-\tagwidth@=\dimen153
-\totwidth@=\dimen154
-\lineht@=\dimen155
+\eqnshift@=\dimen152
+\alignsep@=\dimen153
+\tagshift@=\dimen154
+\tagwidth@=\dimen155
+\totwidth@=\dimen156
+\lineht@=\dimen157
 \@envbody=\toks20
 \multlinegap=\skip52
 \multlinetaggap=\skip53
 \mathdisplay@stack=\toks21
-LaTeX Info: Redefining \[ on input line 2953.
-LaTeX Info: Redefining \] on input line 2954.
+LaTeX Info: Redefining \[ on input line 2949.
+LaTeX Info: Redefining \] on input line 2950.
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
@@ -97,7 +97,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks22
@@ -164,20 +164,20 @@ Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count283
-\Gm@cntv=\count284
-\c@Gm@tempcnt=\count285
-\Gm@bindingoffset=\dimen156
-\Gm@wd@mp=\dimen157
-\Gm@odd@mp=\dimen158
-\Gm@even@mp=\dimen159
-\Gm@layoutwidth=\dimen160
-\Gm@layoutheight=\dimen161
-\Gm@layouthoffset=\dimen162
-\Gm@layoutvoffset=\dimen163
+\Gm@cnth=\count295
+\Gm@cntv=\count296
+\c@Gm@tempcnt=\count297
+\Gm@bindingoffset=\dimen158
+\Gm@wd@mp=\dimen159
+\Gm@odd@mp=\dimen160
+\Gm@even@mp=\dimen161
+\Gm@layoutwidth=\dimen162
+\Gm@layoutheight=\dimen163
+\Gm@layouthoffset=\dimen164
+\Gm@layoutvoffset=\dimen165
 \Gm@dimlist=\toks25
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
@@ -187,43 +187,43 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
 )
-\Gin@req@height=\dimen164
-\Gin@req@width=\dimen165
+\Gin@req@height=\dimen166
+\Gin@req@width=\dimen167
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen166
-\lightrulewidth=\dimen167
-\cmidrulewidth=\dimen168
-\belowrulesep=\dimen169
-\belowbottomsep=\dimen170
-\aboverulesep=\dimen171
-\abovetopsep=\dimen172
-\cmidrulesep=\dimen173
-\cmidrulekern=\dimen174
-\defaultaddspace=\dimen175
-\@cmidla=\count286
-\@cmidlb=\count287
-\@aboverulesep=\dimen176
-\@belowrulesep=\dimen177
-\@thisruleclass=\count288
-\@lastruleclass=\count289
-\@thisrulewidth=\dimen178
+\heavyrulewidth=\dimen168
+\lightrulewidth=\dimen169
+\cmidrulewidth=\dimen170
+\belowrulesep=\dimen171
+\belowbottomsep=\dimen172
+\aboverulesep=\dimen173
+\abovetopsep=\dimen174
+\cmidrulesep=\dimen175
+\cmidrulekern=\dimen176
+\defaultaddspace=\dimen177
+\@cmidla=\count298
+\@cmidlb=\count299
+\@aboverulesep=\dimen178
+\@belowrulesep=\dimen179
+\@thisruleclass=\count300
+\@lastruleclass=\count301
+\@thisrulewidth=\dimen180
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen179
-\captionmargin=\dimen180
-\caption@leftmargin=\dimen181
-\caption@rightmargin=\dimen182
-\caption@width=\dimen183
-\caption@indent=\dimen184
-\caption@parindent=\dimen185
-\caption@hangindent=\dimen186
+\caption@tempdima=\dimen181
+\captionmargin=\dimen182
+\caption@leftmargin=\dimen183
+\caption@rightmargin=\dimen184
+\caption@width=\dimen185
+\caption@indent=\dimen186
+\caption@parindent=\dimen187
+\caption@hangindent=\dimen188
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count290
-\c@continuedfloat=\count291
+\c@caption@flags=\count302
+\c@continuedfloat=\count303
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@headwidth=\skip54
@@ -258,25 +258,25 @@ Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 \RaggedRightParindent=\skip80
 \JustifyingParindent=\skip81
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2024/09/14 v1.9i multicolumn formatting (FMi)
-\c@tracingmulticols=\count292
+Package: multicol 2025/05/25 v2.0a multicolumn formatting (FMi)
+\c@tracingmulticols=\count304
 \mult@box=\box55
-\multicol@leftmargin=\dimen187
-\c@unbalance=\count293
-\c@collectmore=\count294
-\doublecol@number=\count295
-\multicoltolerance=\count296
-\multicolpretolerance=\count297
-\full@width=\dimen188
-\page@free=\dimen189
-\premulticols=\dimen190
-\postmulticols=\dimen191
+\multicol@leftmargin=\dimen189
+\c@unbalance=\count305
+\c@collectmore=\count306
+\doublecol@number=\count307
+\multicoltolerance=\count308
+\multicolpretolerance=\count309
+\full@width=\dimen190
+\page@free=\dimen191
+\premulticols=\dimen192
+\postmulticols=\dimen193
 \multicolsep=\skip82
 \multicolbaselineskip=\skip83
 \partial@page=\box56
 \last@line=\box57
 \mc@boxedresult=\box58
-\maxbalancingoverflow=\dimen192
+\maxbalancingoverflow=\dimen194
 \mult@rightbox=\box59
 \mult@grightbox=\box60
 \mult@firstbox=\box61
@@ -317,57 +317,58 @@ Package: multicol 2024/09/14 v1.9i multicolumn formatting (FMi)
 \@tempa=\box96
 \@tempa=\box97
 \@tempa=\box98
-\c@minrows=\count298
-\c@columnbadness=\count299
-\c@finalcolumnbadness=\count300
-\last@try=\dimen193
-\multicolovershoot=\dimen194
-\multicolundershoot=\dimen195
+\c@minrows=\count310
+\c@columnbadness=\count311
+\c@finalcolumnbadness=\count312
+\last@try=\dimen195
+\multicolovershoot=\dimen196
+\multicolundershoot=\dimen197
 \mult@nat@firstbox=\box99
 \colbreak@box=\box100
-\mc@col@check@num=\count301
+\mc@col@check@num=\count313
+\g__mc_curr_col_int=\count314
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box101
 \beforetitleunit=\skip84
 \aftertitleunit=\skip85
-\ttl@plus=\dimen196
-\ttl@minus=\dimen197
+\ttl@plus=\dimen198
+\ttl@minus=\dimen199
 \ttl@toksa=\toks27
-\titlewidth=\dimen198
-\titlewidthlast=\dimen199
-\titlewidthfirst=\dimen256
+\titlewidth=\dimen256
+\titlewidthlast=\dimen257
+\titlewidthfirst=\dimen258
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count302
+\etb@tempcnta=\count315
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/titling/titling.sty
 Package: titling 2009/09/04 v2.1d maketitle typesetting
 \thanksmarkwidth=\skip86
 \thanksmargin=\skip87
 \droptitle=\skip88
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2024-10-27 v4.22 Multi-page Table package (DPC)
+Package: longtable 2024-12-18 v4.23 Multi-page Table package (DPC)
 \LTleft=\skip89
 \LTright=\skip90
 \LTpre=\skip91
 \LTpost=\skip92
-\LTchunksize=\count303
-\LTcapwidth=\dimen257
+\LTchunksize=\count316
+\LTcapwidth=\dimen259
 \LT@head=\box102
 \LT@firsthead=\box103
 \LT@foot=\box104
 \LT@lastfoot=\box105
 \LT@gbox=\box106
-\LT@cols=\count304
-\LT@rows=\count305
-\c@LT@tables=\count306
-\c@LT@chunks=\count307
+\LT@cols=\count317
+\LT@rows=\count318
+\c@LT@tables=\count319
+\c@LT@chunks=\count320
 \LT@p@ftn=\toks28
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
-Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
-\col@sep=\dimen258
+Package: array 2025/06/08 v2.6j Tabular extension package (FMi)
+\col@sep=\dimen260
 \ar@mcellbox=\box107
-\extrarowheight=\dimen259
+\extrarowheight=\dimen261
 \NC@list=\toks29
 \extratabsurround=\skip93
 \backup@length=\skip94
@@ -375,28 +376,28 @@ Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip95
-\multirow@cntb=\count308
+\multirow@cntb=\count321
 \multirow@dima=\skip96
-\bigstrutjot=\dimen260
+\bigstrutjot=\dimen262
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen261
-\WF@size=\dimen262
-\c@WF@wrappedlines=\count309
+\wrapoverhang=\dimen263
+\WF@size=\dimen264
+\c@WF@wrappedlines=\count322
 \WF@box=\box109
 \WF@everypar=\toks30
 Package: wrapfig 2003/01/31  v 3.6
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count310
+\c@float@type=\count323
 \float@exts=\toks31
 \float@box=\box110
 \@float@everytoks=\toks32
 \@floatcapt=\box111
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
+Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
 \everycr=\toks33
 \minrowclearance=\skip97
-\rownum=\count311
+\rownum=\count324
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
@@ -410,25 +411,26 @@ Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box112
-\sift@deathcycles=\count312
-\@vwid@loff=\dimen263
-\@vwid@roff=\dimen264
+\sift@deathcycles=\count325
+\@vwid@loff=\dimen265
+\@vwid@roff=\dimen266
 )
-\c@taburow=\count313
-\tabu@nbcols=\count314
-\tabu@cnt=\count315
-\tabu@Xcol=\count316
-\tabu@alloc=\count317
-\tabu@nested=\count318
-\tabu@target=\dimen265
-\tabu@spreadtarget=\dimen266
-\tabu@naturalX=\dimen267
-\tabucolX=\dimen268
-\tabu@Xsum=\dimen269
-\extrarowdepth=\dimen270
-\abovetabulinesep=\dimen271
-\belowtabulinesep=\dimen272
-\tabustrutrule=\dimen273
+==> First Aid for varwidth.sty applied!
+\c@taburow=\count326
+\tabu@nbcols=\count327
+\tabu@cnt=\count328
+\tabu@Xcol=\count329
+\tabu@alloc=\count330
+\tabu@nested=\count331
+\tabu@target=\dimen267
+\tabu@spreadtarget=\dimen268
+\tabu@naturalX=\dimen269
+\tabucolX=\dimen270
+\tabu@Xsum=\dimen271
+\extrarowdepth=\dimen272
+\abovetabulinesep=\dimen273
+\belowtabulinesep=\dimen274
+\tabustrutrule=\dimen275
 \tabu@thebody=\toks34
 \tabu@footnotes=\toks35
 \tabu@box=\box113
@@ -452,21 +454,21 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \UL@hyphenbox=\box119
 \UL@skip=\skip100
 \UL@hook=\toks36
-\UL@height=\dimen274
-\UL@pe=\count319
-\UL@pixel=\dimen275
+\UL@height=\dimen276
+\UL@pe=\count332
+\UL@pixel=\dimen277
 \ULC@box=\box120
 Package: ulem 2019/11/18
-\ULdepth=\dimen276
+\ULdepth=\dimen278
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen277
-\c@nlinenum=\count320
+\rotheadsize=\dimen279
+\c@nlinenum=\count333
 \TeXr@lab=\toks37
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
+Package: hyperref 2025-05-20 v7.01m Hypertext links for LaTeX
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
@@ -494,23 +496,23 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count321
+\c@section@level=\count334
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen278
-\Hy@linkcounter=\count322
-\Hy@pagecounter=\count323
+\@linkdim=\dimen280
+\Hy@linkcounter=\count335
+\Hy@pagecounter=\count336
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2025-05-20 v7.01m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count324
+\Hy@SavedSpaceFactor=\count337
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2025-05-20 v7.01m Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
@@ -522,21 +524,21 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count325
+\c@Hy@tempcnt=\count338
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen279
+\XeTeXLinkMargin=\dimen281
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count326
-\Field@Width=\dimen280
-\Fld@charsize=\dimen281
+\Fld@menulength=\count339
+\Field@Width=\dimen282
+\Fld@charsize=\dimen283
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -548,22 +550,21 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count327
-\c@Item=\count328
-\c@Hfootnote=\count329
+\Hy@abspage=\count340
+\c@Item=\count341
+\c@Hfootnote=\count342
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
+File: hpdftex.def 2025-05-20 v7.01m Hyperref driver for pdfTeX
+\Fld@listcount=\count343
+\c@bookmark@seq@number=\count344
+(/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
-)
-\Fld@listcount=\count330
-\c@bookmark@seq@number=\count331
-(/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
-(/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
@@ -571,14 +572,14 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \Hy@SectionHShift=\skip101
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
-\BKM@id=\count332
+\BKM@id=\count345
 ))
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 116.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2025-03-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count333
+File: l3backend-pdftex.def 2025-04-14 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count346
 ) (./report1_r1.aux)
 \openout1 = `report1_r1.aux'.
 
@@ -705,17 +706,17 @@ File: figures/Figure 1.png Graphic file (type png)
 Package pdftex.def Info: figures/Figure 1.png  used on input line 196.
 (pdftex.def)             Requested size: 233.6536pt x 178.04854pt.
 
-Overfull \hbox (21.24098pt too wide) in paragraph at lines 196--197
+Overfull \hbox (21.24098pt too wide) in paragraph at lines 196--198
  [][] 
  []
 
 <figures/Figure 2.png, id=19, 752.8125pt x 485.815pt>
 File: figures/Figure 2.png Graphic file (type png)
 <use figures/Figure 2.png>
-Package pdftex.def Info: figures/Figure 2.png  used on input line 203.
+Package pdftex.def Info: figures/Figure 2.png  used on input line 204.
 (pdftex.def)             Requested size: 233.65663pt x 150.7864pt.
 
-Overfull \hbox (21.24402pt too wide) in paragraph at lines 203--204
+Overfull \hbox (21.24402pt too wide) in paragraph at lines 204--206
  [][] 
  []
 
@@ -729,22 +730,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [2 <./figures/Table 1.png> <./figures/Figure 1.png> <./figures/Figure 2.png>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 237.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 239.
 (/Users/colineleteurtre/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 <figures/Figure 3.png, id=32, 695.59875pt x 661.47125pt>
 File: figures/Figure 3.png Graphic file (type png)
 <use figures/Figure 3.png>
-Package pdftex.def Info: figures/Figure 3.png  used on input line 252.
+Package pdftex.def Info: figures/Figure 3.png  used on input line 254.
 (pdftex.def)             Requested size: 179.36545pt x 170.56541pt.
 <figures/Figure 4.png, id=33, 1233.60875pt x 728.7225pt>
 File: figures/Figure 4.png Graphic file (type png)
 <use figures/Figure 4.png>
-Package pdftex.def Info: figures/Figure 4.png  used on input line 259.
+Package pdftex.def Info: figures/Figure 4.png  used on input line 262.
 (pdftex.def)             Requested size: 273.7665pt x 161.72049pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 264--267
+Underfull \hbox (badness 10000) in paragraph at lines 268--271
 
  []
 
@@ -761,14 +762,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <figures/Figure 5.png, id=44, 656.4525pt x 537.00626pt>
 File: figures/Figure 5.png Graphic file (type png)
 <use figures/Figure 5.png>
-Package pdftex.def Info: figures/Figure 5.png  used on input line 297.
+Package pdftex.def Info: figures/Figure 5.png  used on input line 301.
 (pdftex.def)             Requested size: 184.0859pt x 150.59015pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 299.
+(Font)              <12> on input line 304.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 299.
+(Font)              <8> on input line 304.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 299.
+(Font)              <6> on input line 304.
 
 
 
@@ -778,39 +779,39 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[4{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} <./figures/Figure 5.png>]
-<figures/Table 2.png, id=60, 2190.1825pt x 249.93375pt>
+[4{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} <./figures/Figure 5.png>]
+<figures/Table 2.png, id=59, 2190.1825pt x 249.93375pt>
 File: figures/Table 2.png Graphic file (type png)
 <use figures/Table 2.png>
-Package pdftex.def Info: figures/Table 2.png  used on input line 372.
+Package pdftex.def Info: figures/Table 2.png  used on input line 377.
 (pdftex.def)             Requested size: 472.01633pt x 53.86436pt.
-<full_model_summary_table.png, id=61, 310.761pt x 180.675pt>
+<full_model_summary_table.png, id=60, 310.761pt x 180.675pt>
 File: full_model_summary_table.png Graphic file (type png)
 <use full_model_summary_table.png>
-Package pdftex.def Info: full_model_summary_table.png  used on input line 385.
+Package pdftex.def Info: full_model_summary_table.png  used on input line 390.
 (pdftex.def)             Requested size: 198.25569pt x 115.26492pt.
 
-Underfull \hbox (badness 1430) in paragraph at lines 385--388
+Underfull \hbox (badness 1430) in paragraph at lines 390--393
 \T1/lmr/m/n/12 Ta-ble 5: Sum-mary of Full Lin-ear
  []
 
-<full_model_fitstats_table.png, id=62, 1621.05624pt x 169.63374pt>
+<full_model_fitstats_table.png, id=61, 1621.05624pt x 169.63374pt>
 File: full_model_fitstats_table.png Graphic file (type png)
 <use full_model_fitstats_table.png>
-Package pdftex.def Info: full_model_fitstats_table.png  used on input line 398.
+Package pdftex.def Info: full_model_fitstats_table.png  used on input line 403.
 (pdftex.def)             Requested size: 424.82869pt x 44.45575pt.
-<stepwise_aic_table.png, id=63, 325.215pt x 144.54pt>
+<stepwise_aic_table.png, id=62, 325.215pt x 144.54pt>
 File: stepwise_aic_table.png Graphic file (type png)
 <use stepwise_aic_table.png>
-Package pdftex.def Info: stepwise_aic_table.png  used on input line 421.
+Package pdftex.def Info: stepwise_aic_table.png  used on input line 426.
 (pdftex.def)             Requested size: 226.57707pt x 100.7009pt.
-<stepwise_coef_table.png, id=64, 325.215pt x 144.54pt>
+<stepwise_coef_table.png, id=63, 325.215pt x 144.54pt>
 File: stepwise_coef_table.png Graphic file (type png)
 <use stepwise_coef_table.png>
-Package pdftex.def Info: stepwise_coef_table.png  used on input line 428.
+Package pdftex.def Info: stepwise_coef_table.png  used on input line 433.
 (pdftex.def)             Requested size: 226.57707pt x 100.7009pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 438.
+(Font)              <5> on input line 443.
 
 
 
@@ -820,46 +821,46 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[5{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc} <./figures/Table 2.png> <./full_model_summary_table.png> <./full_model_fitstats_table.png>]
+[5{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc} <./figures/Table 2.png> <./full_model_summary_table.png> <./full_model_fitstats_table.png>]
 <interaction_model_coef.png, id=76, 1238.6275pt x 670.505pt>
 File: interaction_model_coef.png Graphic file (type png)
 <use interaction_model_coef.png>
-Package pdftex.def Info: interaction_model_coef.png  used on input line 477.
+Package pdftex.def Info: interaction_model_coef.png  used on input line 482.
 (pdftex.def)             Requested size: 283.21515pt x 153.31258pt.
 
-Overfull \hbox (94.40555pt too wide) in paragraph at lines 477--479
+Overfull \hbox (94.40555pt too wide) in paragraph at lines 482--484
 [][]
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 483--488
+Underfull \hbox (badness 1888) in paragraph at lines 488--493
 \T1/lmr/m/n/12 which is more com-plex than
  []
 
 
-Underfull \hbox (badness 1975) in paragraph at lines 483--488
+Underfull \hbox (badness 1975) in paragraph at lines 488--493
 \T1/lmr/m/n/12 the Step-wise model, ex-plains
  []
 
 
-Underfull \hbox (badness 6445) in paragraph at lines 483--488
+Underfull \hbox (badness 6445) in paragraph at lines 488--493
 \T1/lmr/m/n/12 ap-prox-i-mately 79.9% of the
  []
 
 
-Underfull \hbox (badness 5681) in paragraph at lines 483--488
+Underfull \hbox (badness 5681) in paragraph at lines 488--493
 \T1/lmr/m/n/12 vari-ance in Mort-gage Yield.
  []
 
 
-Underfull \hbox (badness 1558) in paragraph at lines 483--488
+Underfull \hbox (badness 1558) in paragraph at lines 488--493
 \T1/lmr/m/n/12 The Resid-ual Stan-dard Er-ror
  []
 
 <interaction_model_fitstats.png, id=77, 1654.18pt x 169.63374pt>
 File: interaction_model_fitstats.png Graphic file (type png)
 <use interaction_model_fitstats.png>
-Package pdftex.def Info: interaction_model_fitstats.png  used on input line 490.
+Package pdftex.def Info: interaction_model_fitstats.png  used on input line 495.
 (pdftex.def)             Requested size: 472.02673pt x 48.40564pt.
 
 
@@ -870,11 +871,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6 <./stepwise_aic_table.png> <./stepwise_coef_table.png> <./interaction_model_coef.png> <./interaction_model_fitstats.png>]
-<Figs/unnamed-chunk-11-1.pdf, id=88, 542.025pt x 180.675pt>
+[6 <./stepwise_aic_table.png> <./stepwise_coef_table.png> <./interaction_model_coef.png>]
+<Figs/unnamed-chunk-11-1.pdf, id=87, 542.025pt x 180.675pt>
 File: Figs/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use Figs/unnamed-chunk-11-1.pdf>
-Package pdftex.def Info: Figs/unnamed-chunk-11-1.pdf  used on input line 570.
+Package pdftex.def Info: Figs/unnamed-chunk-11-1.pdf  used on input line 579.
 (pdftex.def)             Requested size: 472.0459pt x 157.34862pt.
 
 
@@ -885,21 +886,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7]
+[7 <./interaction_model_fitstats.png>]
 <vif_table.png, id=97, 108.405pt x 93.951pt>
 File: vif_table.png Graphic file (type png)
 <use vif_table.png>
-Package pdftex.def Info: vif_table.png  used on input line 601.
+Package pdftex.def Info: vif_table.png  used on input line 610.
 (pdftex.def)             Requested size: 75.52733pt x 65.45703pt.
 
-Underfull \hbox (badness 2173) in paragraph at lines 604--604
+Underfull \hbox (badness 2173) in paragraph at lines 613--613
 []|\T1/lmr/m/n/12 Ta-ble 14: Vari-
  []
 
 <qqplot_residuals.png, id=98, 652.4375pt x 652.4375pt>
 File: qqplot_residuals.png Graphic file (type png)
 <use qqplot_residuals.png>
-Package pdftex.def Info: qqplot_residuals.png  used on input line 623.
+Package pdftex.def Info: qqplot_residuals.png  used on input line 632.
 (pdftex.def)             Requested size: 140.19168pt x 140.19168pt.
 
 
@@ -921,20 +922,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [9] (./report1_r1.aux)
  ***********
-LaTeX2e <2024-11-01> patch level 2
-L3 programming layer <2025-03-26>
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-05-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15296 strings out of 471607
- 246796 string characters out of 5519709
- 641053 words of memory out of 5000000
- 41543 multiletter control sequences out of 15000+600000
+ 15312 strings out of 469867
+ 247226 string characters out of 5482744
+ 659580 words of memory out of 5000000
+ 43299 multiletter control sequences out of 15000+600000
  710120 words of font info for 105 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 89i,12n,93p,876b,471s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,12n,93p,876b,477s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on report1_r1.pdf (9 pages, 1621410 bytes).
+Output written on report1_r1.pdf (9 pages, 1634344 bytes).
 PDF statistics:
  255 PDF objects out of 1000 (max. 8388607)
  183 compressed objects within 2 object streams

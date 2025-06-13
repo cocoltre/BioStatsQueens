@@ -167,7 +167,7 @@ We begin with a numerical summary of each variable:
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/Table 1.png}
-\caption{Table 1: Summary Statistics of Variables}
+\caption*{Table 1: Summary Statistics of Variables}
 \end{figure}
 \vspace{-0.5cm}
 
@@ -194,6 +194,7 @@ external financing while others rely more on local institutions.
 \begin{minipage}[t]{0.45\textwidth}
 \centering
 \includegraphics[width=1.1\linewidth]{figures/Figure 1.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 1: Histogram of Mortgage Yield per SMSA}
 \end{minipage}
 \hfill
@@ -201,6 +202,7 @@ external financing while others rely more on local institutions.
 \centering
 \vspace{-6cm}
 \includegraphics[width=1.1\linewidth]{figures/Figure 2.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 2: Histograms of each variable (X1 to X6)}
 \end{minipage}
 
@@ -250,6 +252,7 @@ with \textbf{X3}.
 \begin{minipage}[t]{0.38\textwidth}
 \centering
 \includegraphics[width=1\linewidth]{figures/Figure 3.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 3: Association Matrix of Variables and Mortgage Yield}
 \end{minipage}
 \hfill
@@ -257,6 +260,7 @@ with \textbf{X3}.
 \centering
 \vspace{-6cm}
 \includegraphics[width=1\linewidth]{figures/Figure 4.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 4: Scatterplots of each variable (X1 to X6) compared to Mortgage Yield}
 \end{minipage}
 \end{figure}
@@ -295,6 +299,7 @@ savings contribute to Mortgage Yield variations. \vspace{-3pt}
 \centering
 \begin{minipage}{0.39\textwidth}
 \includegraphics[width=\linewidth]{figures/Figure 5.png}
+\captionsetup{font=normalsize}
 \caption*{Figure 5: Correlation Heatmaps of variables}
 \end{minipage}
 \hfill
@@ -444,7 +449,7 @@ $R^2$ & Adjusted $R^2$ & Residual Std. Error & F-statistic & DF & p-value\\
 \end{tabular}
 \endgroup{}
 \end{table}
-\vspace{-2em}
+
 \begin{center}
 {\fontsize{12}{14}\selectfont Table 9: Fit Statistics of Stepwise Model\par}
 \end{center}
@@ -518,7 +523,6 @@ difficult to interpret meaningfully.
 \begingroup\fontsize{8}{10}\selectfont
 
 \begin{longtable}[t]{lrrrrr}
-\caption{\label{tab:unnamed-chunk-9}Comparison of Model Performance Metrics}\\
 \toprule
 Model & R2 & Adj\_R2 & AIC & Residual\_SE & F\_statistic\\
 \midrule
@@ -528,6 +532,9 @@ Stepwise Model & 0.86 & 0.83 & -29.73 & 0.09 & 29.49\\
 \bottomrule
 \end{longtable}
 \endgroup{}
+\begin{center}
+{\fontsize{12}{14}\selectfont Table 12: Comparison of Model Performance Metrics\par}
+\end{center}
 
 The Stepwise model offers the best trade-off between simplicity and
 performance: it has the lowest AIC (\textasciitilde29.7), demonstrating
@@ -538,11 +545,9 @@ the highest F-statistic (\textasciitilde29.5). This confirms the overall
 model significance and parsimony.
 
 \begin{table}[!h]
-\centering
-\caption{\label{tab:unnamed-chunk-10}ANOVA Comparison: Stepwise vs Interactions Model}
-\centering
-\fontsize{8}{10}\selectfont
-\begin{tabular}[t]{lrrrrrr}
+\centering\begingroup\fontsize{8}{10}\selectfont
+
+\begin{tabular}{lrrrrrr}
 \toprule
 Model & Res.Df & RSS & Df & Sum of Sq & F & Pr(>F)\\
 \midrule
@@ -550,7 +555,11 @@ Stepwise model & 14 & 0.12 & NA & NA & NA & NA\\
 Interaction model & 11 & 0.11 & 3 & 0.01 & 0.18 & 0.91\\
 \bottomrule
 \end{tabular}
+\endgroup{}
 \end{table}
+\begin{center}
+{\fontsize{12}{14}\selectfont Table 13: ANOVA Comparison: Stepwise vs Interactions Model\par}
+\end{center}
 
 An ANOVA is then conducted to compare the Stepwise Model and the
 Interaction Model, which are nested --- the Interaction Model extends
@@ -613,7 +622,7 @@ As all variables have a VIF value under 5, it means that they don’t cause prob
 
 \begin{minipage}{0.65\textwidth}
 \justifying
-\vspace{-3.5em}
+
 The \texttt{Q-Q plot of Residuals} indicates that most of the points align closely with the 45-degree line, suggesting that the residuals are approximately normally distributed. However, six points deviate at the extremes of the theoretical quantiles, which indicates the presence of potential outliers or heavy tails in the distribution. In a dataset with just 18 observations, small deviations in the Q-Q plot are usual. Outliers or deviations are common in such a small sample size and do not automatically suggest a violation of normality.
 \end{minipage}
 \hfill
@@ -624,13 +633,11 @@ The \texttt{Q-Q plot of Residuals} indicates that most of the points align close
 \vspace{-1em}     % Reduce space after image
 \end{minipage}
 
-\vspace{-3em}
-
 \section{Conclusion}\label{conclusion}
 
-The final estimated model is : \texttt{mortYld} = 4.223 +
-0.02229\(\cdot\)\textbf{X1} - 0.001863\(\cdot\)\textbf{X3} +
-0.0002249\(\cdot\)\textbf{X4}\\
+The final estimated model is : \(\hat{`mortYld`}\) = 4.22 +
+0.02\(\cdot\)\textbf{X1} - 0.002\(\cdot\)\textbf{X3} +
+0.0002\(\cdot\)\textbf{X4}\\
 where \textbf{X1} is the Loan-to-Mortgage Ratio, \textbf{X3} is the
 Savings per New Unit Built, and \textbf{X4} is the Savings per Capita.
 
