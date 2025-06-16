@@ -8,6 +8,7 @@ output:
     toc: false
     latex_engine: pdflatex
     keep_tex: true
+bibliography: refs.bib
 geometry: top=2.5cm, bottom=2.0cm, left=2.5cm, right=2.5cm
 fontsize: 12pt
 header-includes:
@@ -51,7 +52,7 @@ editor_options:
 # Introduction
 
 The study of A. H. Schaaf, 1966, "Regional Differences in Mortgage
-Financing Costs", investigates the existence and causes of regional
+Financing Costs" [@schaaf1966], investigates the existence and causes of regional
 differences in Mortgage financing costs in the United States. While
 these differences in Mortgage Yields were decreasing in the early 20th
 century, they suprisingly remained stable after World War II. The paper
@@ -136,7 +137,7 @@ We begin with a numerical summary of each variable:
 \centering
 \includegraphics[width=1.0\textwidth]{figures/Table 1.png}
 \captionsetup{font=normalsize}
-\caption*{Table 1: Summary Statistics of Variables}
+\caption*{Table 1: Summary Statistics of all Variables}
 \end{figure}
 \vspace{-0.5cm}
 Through this summary, we already observe that Mortgage Yields (**mortYld**) don’t vary much across regions. Most values are between 5.2% and 6.2%, suggesting relatively stable Mortgage rates.
@@ -157,7 +158,8 @@ distributions. Population Increase (**X5**) from 1950 to 1960 varies widely (7.5
 \centering
 \includegraphics[width=1.1\linewidth]{figures/Figure 1.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 1: Histogram of Mortgage Yield per SMSA}
+\caption*{Figure 1: Histogram of Mortgage Yield across SMSAs (Standard
+Metropolitan Statistical Area)}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.5\textwidth}
@@ -165,7 +167,7 @@ distributions. Population Increase (**X5**) from 1950 to 1960 varies widely (7.5
 \vspace{-6cm}
 \includegraphics[width=1.1\linewidth]{figures/Figure 2.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 2: Histograms of each variable (X1 to X6)}
+\caption*{Figure 2: Histograms of Mortgage Yield across Predictor Variables}
 \end{minipage}
 
 \end{figure}
@@ -193,7 +195,7 @@ We can see that most of the plots are random dispersion, while some are linear, 
 \centering
 \includegraphics[width=1\linewidth]{figures/Figure 3.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 3: Association Matrix of Variables and Mortgage Yield}
+\caption*{Figure 3: Association Matrix Between Mortgage Yield and Predictor Variables}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.58\textwidth}
@@ -201,7 +203,7 @@ We can see that most of the plots are random dispersion, while some are linear, 
 \vspace{-5.6cm}
 \includegraphics[width=1\linewidth]{figures/Figure 4.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 4: Scatterplots of each variable (X1 to X6) compared to Mortgage Yield}
+\caption*{Figure 4: Scatterplots Comparing Predictor Variables with Mortgage Yield}
 \end{minipage}
 \end{figure}
 
@@ -226,7 +228,7 @@ savings contribute to Mortgage Yield variations.
 \begin{minipage}{0.39\textwidth}
 \includegraphics[width=\linewidth]{figures/Figure 5.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 5: Correlation Heatmaps of variables}
+\caption*{Figure 5: Correlation Heatmap of Mortgage Yield and Predictor Variables. Red = strong positive, Purple = strong negative, White = no correlation.}
 \end{minipage}
 \hfill
 \begin{minipage}{0.59\textwidth}
@@ -315,12 +317,12 @@ kable(anova_df,
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
 ```
-\begin{center}
-\vspace{-1.6em}
-{\fontsize{12}{14}\selectfont Table 2: Comparison of Null and Full Model (ANOVA)\par}
-\end{center}
+\vspace{-0.2em}
+\noindent
+\fontsize{12}{14}\selectfont Table 2: ANOVA Comparison Between Null and Full Models. Residual degrees of freedom (Residual_DF) and residual sum of squares (RSS) show the unexplained variance. The degrees of freedom for the model (DF), F-statistic, and p-value test whether the full model significantly improves the fit compared to the null model. A significant p-value (typically < 0.05) indicates that the additional predictors in the full model provide a better fit.\par
 
-\vspace{-0.5cm}
+
+\vspace{1cm}
 
 The ANOVA comparison between the null model (intercept-only) and the
 full model (including all predictors), reveals that the full model
@@ -414,8 +416,8 @@ model_stats <- as.data.frame(model_stats)
 
 # Apply rounding
 model_stats$`$R^2$` <- round(model_stats$`$R^2$`, 2)
-model_stats$`Adjusted\\_$R^{2}$` <- round(model_stats$`Adjusted\\_$R^{2}$`, 2)
-model_stats$`Std.Error` <- round(model_stats$`Std.Error`, 2)
+model_stats$`Adjusted\\_$R^{2}$` <- sprintf("%.2f", model_stats$`Adjusted\\_$R^{2}$`)
+model_stats$`Std.Error` <- sprintf("%.2f", model_stats$`Std.Error`)
 model_stats$`F-statistic` <- round(model_stats$`F-statistic`, 2)
 model_stats$`DF` <- as.integer(model_stats$`DF`)
 model_stats$`p-value` <- sprintf("%.2f", model_stats$`p-value`)
@@ -425,10 +427,8 @@ kable(model_stats,
       booktabs = TRUE, format = "latex", escape = FALSE) %>%
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 ```
-\begin{center}
-\vspace{-2em}
-{\fontsize{12}{14}\selectfont Table 4: Fit Statistics of Full Linear Model\par}
-\end{center}
+\noindent
+\fontsize{12}{14}\selectfont Table 4: Fit Statistics of Full Linear Model. R² shows the proportion of variance explained, Adjusted R² accounts for the number of predictors, and Standard Error measures the average distance of observed values from the fitted values.\par
 
 \addtocounter{table}{2}
 \vspace{-5pt}
@@ -462,12 +462,12 @@ table1 <- tableGrob(step_trace_df, rows = NULL)
 # Make "Model" column twice as wide as the others
 n <- ncol(table1)
 widths_vec <- rep(1, n)
-widths_vec[1] <- 2  # Adjust this if "Model" is not first column
+widths_vec[2] <- 2.5  # Adjust this if "Model" is not first column
 table1$widths <- unit(widths_vec, "null")
 
 for (i in seq_along(table1$grobs)) {
   if (is.null(table1$grobs[[i]]$gp)) table1$grobs[[i]]$gp <- gpar()
-  table1$grobs[[i]]$gp$fontsize <- 10
+  table1$grobs[[i]]$gp$fontsize <- 11
   table1$grobs[[i]]$gp$fill <- "#ffffff"
 }
 
@@ -511,21 +511,21 @@ ggsave("figures/stepwise_coef_table.png", table2, width = 4.53, height = 2, dpi 
 \begin{minipage}{0.48\textwidth}
 \centering
 \includegraphics[width=\linewidth]{figures/stepwise_aic_table.png}
-\vspace{-1em}
-\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 5: Stepwise AIC Steps. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.}
+\vspace{-1.3em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 5: Stepwise AIC Process. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.}
 \end{minipage}
 \hfill
 \raisebox{1.6em}{%
 \begin{minipage}{0.48\textwidth}
 \centering
 \includegraphics[width=\linewidth]{figures/stepwise_coef_table.png}
-\vspace{-1em}
-\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 6: Coefficients of Final Stepwise Model}
+\vspace{-1.3em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 6: Summary of Final Stepwise Model}
 \end{minipage}
 }
 
 \addtocounter{table}{2}
-
+\vspace{0.3em}
 ```{r}
 # 3. Fit Statistics of Stepwise Model
 
@@ -598,7 +598,7 @@ table1 <- gridExtra::tableGrob(interaction_coef, rows = NULL)
 for (i in seq_along(table1$grobs)) {
   if (is.null(table1$grobs[[i]]$gp)) table1$grobs[[i]]$gp <- gpar()
   table1$grobs[[i]]$gp$fill <- "#ffffff"
-  table1$grobs[[i]]$gp$fontsize <- 9
+  table1$grobs[[i]]$gp$fontsize <- 12
 }
 
 # Cadre noir autour
@@ -623,14 +623,14 @@ invisible(dev.off())
 
 ```
 
-\begin{minipage}{0.46\textwidth}
-\includegraphics[width=1.35\linewidth]{figures/interaction_model_coef.png}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=1.25\linewidth]{figures/interaction_model_coef.png}
 \vspace{-0.3em}
-\fontsize{12}{12}\selectfont Table 8: Coefficients of Interaction Model
+\fontsize{12}{12}\selectfont Table 8: Summary of 2-way Interaction Model
 \end{minipage}
 \hfill
 \begin{minipage}{0.35\textwidth}
-The 2-way Interactions model, which is more complex than the Stepwise
+The 2-way Interaction model, which is more complex than the Stepwise
 model, explains approximately 79.9\% of the variance in Mortgage Yield.
 The Residual Standard Error (0.10) is low, and the overall model is
 highly significant (p < 0.001), indicating that at least one of the
@@ -651,8 +651,8 @@ interaction_stats <- as.data.frame(interaction_stats)
 
 # Apply rounding
 interaction_stats$`$R^2$` <- round(interaction_stats$`$R^2$`, 2)
-interaction_stats$`Adjusted\\_$R^{2}$` <- round(interaction_stats$`Adjusted\\_$R^{2}$`, 2)
-interaction_stats$`Std.Error` <- round(interaction_stats$`Std.Error`, 2)
+interaction_stats$`Adjusted\\_$R^{2}$` <- sprintf("%.2f", interaction_stats$`Adjusted\\_$R^{2}$`)
+interaction_stats$`Std.Error` <- sprintf("%.2f", interaction_stats$`Std.Error`)
 interaction_stats$`F-statistic` <- round(interaction_stats$`F-statistic`, 2)
 interaction_stats$`DF` <- as.integer(interaction_stats$`DF`)
 interaction_stats$`p-value` <- sprintf("%.2f", interaction_stats$`p-value`)
@@ -664,8 +664,8 @@ kable(interaction_stats,
 
 ```
 \begin{center}
-\vspace{4em}
-{\fontsize{12}{14}\selectfont Table 9: Fit Statistics of Interaction Model\par}
+\vspace{-1.5em}
+{\fontsize{12}{14}\selectfont Table 9: Fit Statistics of 2-way Interaction Model\par}
 \end{center}
 
 
@@ -677,7 +677,7 @@ to fit the model (p \< 0.05). This suggests that a reduced model may be
 more appropriate.\
 We end up with : $\hat{mortYld}$ = 5.37 + 0.007$\cdot$**X1** - 0.0001$\cdot$**X3** - 0.0009$\cdot$**X4** + 0.0$\cdot$**X1**:**X3** + 0.0$\cdot$**X1**:**X4** + 0.0$\cdot$**X3**:**X4**\
 \
-We decided not to include a 3-way Interactions model in our analysis.
+We decided not to include a 3-way Interaction model in our analysis.
 Given the small sample size (18 observations), adding high-order
 interactions would significantly reduce degrees of freedom and increase
 the risk of overfitting. Moreover, 3-way interactions are often
@@ -728,7 +728,7 @@ kable(model_metrics, digits = 2, escape=FALSE) %>%
 ```
 \begin{center}
 \vspace{-0.5em}
-{\fontsize{12}{14}\selectfont Table 10: Comparison of Model Performance Metrics\par}
+{\fontsize{12}{14}\selectfont Table 10: Comparison of Model Performance Metrics. RSE (residual standard error) reflects the typical size of prediction errors; lower values indicate better fit.\par}
 \end{center}
 
 The Stepwise model offers the best trade-off between simplicity and
@@ -759,7 +759,7 @@ kable(anova_df,
 ```
 \begin{center}
 \vspace{-1.6em}
-{\fontsize{12}{14}\selectfont Table 11: ANOVA Comparison: Stepwise vs Interactions Model\par}
+{\fontsize{12}{14}\selectfont Table 11: ANOVA Comparison Between Stepwise and Interaction Models\par}
 \end{center}
 
 An ANOVA is then conducted to compare the Stepwise Model and the Interaction Model, which are nested — the Interaction Model extends the Stepwise Model by including additional two-way interaction terms.
@@ -824,18 +824,15 @@ par(mfrow = c(1, 1))
 \vspace{-1em}
   \centering
   \begin{minipage}[b]{0.3\linewidth}
-    \centering
-    {\fontsize{12}{14}\selectfont Figure 6: Residuals vs Fitted plot\par}
+    {\fontsize{12}{14}\selectfont Figure 6: Residuals vs Fitted Plot. It displays residual spread to assess homoscedasticity; no clear pattern indicates constant variance.\par}
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.3\linewidth}
-    \centering
-    {\fontsize{12}{14}\selectfont Figure 7: Residuals vs Observation Order plot\par}
+    {\fontsize{12}{14}\selectfont Figure 7: Residuals vs Observation Order Plot. It shows residuals over SMSAs to detect trends or autocorrelation; randomness suggests independence.\par}
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.3\linewidth}
-    \centering
-    {\fontsize{12}{14}\selectfont Figure 8: Scale-Location Plot\par}
+    {\fontsize{12}{14}\selectfont Figure 8: Scale-Location Plot. It shows the variance of residuals versus fitted values to check for homoscedasticity; a horizontal pattern suggests constant variance.\par}
   \end{minipage}
 \end{figure}
 
@@ -888,19 +885,19 @@ ggsave("figures/vif_table.png", vif_table, width = 1.5, height = 1.3, dpi = 300)
 \vspace{-0.5em}
 ## Multicolinearity diagnostic
 \noindent
-\begin{minipage}{0.75\textwidth}
+\begin{minipage}{0.6\textwidth}
 \vspace{-0.5em}
 As all variables have a VIF value under 5, it means that they don’t cause problematic multicollinearity in the final model and that none of them should be eliminated. This confirms our choice of keeping \textbf{X3} and \textbf{X4}: even if they showed a high correlation coefficient (0.77), these variables still provide enough unique, non-redundant information to justify keeping them in the model.
 \end{minipage}
 \hfill
-\begin{minipage}{0.2\textwidth}
+\begin{minipage}{0.37\textwidth}
 \vspace{-3em}
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{figures/vif_table.png}
     \vspace{-0.5em}
     \captionsetup{font=normalsize}
-    \caption*{Table 12: Variance Inflation Factors (VIF)}
+    \caption*{Table 12: Variance Inflation Factors (VIF). Values > 5: potential multicollinearity. Values > 10: strong multicollinearity.}
   \end{figure}
 \end{minipage}
 
@@ -942,7 +939,7 @@ The \texttt{Q-Q plot of Residuals} plot indicates that most of the points align 
 \vspace{-2em}  % Reduce space before image
 \includegraphics[width=0.9\linewidth]{figures/qqplot_residuals.png}
 \vspace{-1em}
-\parbox{\linewidth}{\fontsize{12}{14}\selectfont Figure 9: Q-Q plot of Residuals}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Figure 9: Q-Q Plot of Residuals. Deviations from the line suggest non-normality of model errors.}
 
 \end{minipage}
 
@@ -963,3 +960,5 @@ with homoscedasticity nearly achieved.
 Future improvements could include exploring additional predictors,
 testing for non-linear relationships, or refining the model to better
 capture any residual heteroscedasticity.
+
+# References

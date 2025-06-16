@@ -55,6 +55,39 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{booktabs}
@@ -119,13 +152,13 @@ Leteurtre}
 \section{Introduction}\label{introduction}
 
 The study of A. H. Schaaf, 1966, ``Regional Differences in Mortgage
-Financing Costs'', investigates the existence and causes of regional
-differences in Mortgage financing costs in the United States. While
-these differences in Mortgage Yields were decreasing in the early 20th
-century, they suprisingly remained stable after World War II. The paper
-explores two main explanations for this phenomenon: differences in
-investment value due to risk, terms, and liquidity, and market
-imperfections such as legal barriers and information gaps.
+Financing Costs'' (Schaaf 1966), investigates the existence and causes
+of regional differences in Mortgage financing costs in the United
+States. While these differences in Mortgage Yields were decreasing in
+the early 20th century, they suprisingly remained stable after World War
+II. The paper explores two main explanations for this phenomenon:
+differences in investment value due to risk, terms, and liquidity, and
+market imperfections such as legal barriers and information gaps.
 \vspace{0.5pt} The data used in this study comes from the Federal Home
 Loan Bank Board, which contains interest rates and fees in 18 SMSAs
 (Standard Metropolitan Statistical Areas). The findings suggest that
@@ -168,7 +201,7 @@ We begin with a numerical summary of each variable:
 \centering
 \includegraphics[width=1.0\textwidth]{figures/Table 1.png}
 \captionsetup{font=normalsize}
-\caption*{Table 1: Summary Statistics of Variables}
+\caption*{Table 1: Summary Statistics of all Variables}
 \end{figure}
 \vspace{-0.5cm}
 
@@ -196,7 +229,8 @@ external financing while others rely more on local institutions.
 \centering
 \includegraphics[width=1.1\linewidth]{figures/Figure 1.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 1: Histogram of Mortgage Yield per SMSA}
+\caption*{Figure 1: Histogram of Mortgage Yield across SMSAs (Standard
+Metropolitan Statistical Area)}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.5\textwidth}
@@ -204,7 +238,7 @@ external financing while others rely more on local institutions.
 \vspace{-6cm}
 \includegraphics[width=1.1\linewidth]{figures/Figure 2.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 2: Histograms of each variable (X1 to X6)}
+\caption*{Figure 2: Histograms of Mortgage Yield across Predictor Variables}
 \end{minipage}
 
 \end{figure}
@@ -254,7 +288,7 @@ with \textbf{X3}.
 \centering
 \includegraphics[width=1\linewidth]{figures/Figure 3.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 3: Association Matrix of Variables and Mortgage Yield}
+\caption*{Figure 3: Association Matrix Between Mortgage Yield and Predictor Variables}
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.58\textwidth}
@@ -262,7 +296,7 @@ with \textbf{X3}.
 \vspace{-5.6cm}
 \includegraphics[width=1\linewidth]{figures/Figure 4.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 4: Scatterplots of each variable (X1 to X6) compared to Mortgage Yield}
+\caption*{Figure 4: Scatterplots Comparing Predictor Variables with Mortgage Yield}
 \end{minipage}
 \end{figure}
 
@@ -301,7 +335,7 @@ savings contribute to Mortgage Yield variations. \vspace{-3pt}
 \begin{minipage}{0.39\textwidth}
 \includegraphics[width=\linewidth]{figures/Figure 5.png}
 \captionsetup{font=normalsize}
-\caption*{Figure 5: Correlation Heatmaps of variables}
+\caption*{Figure 5: Correlation Heatmap of Mortgage Yield and Predictor Variables. Red = strong positive, Purple = strong negative, White = no correlation.}
 \end{minipage}
 \hfill
 \begin{minipage}{0.59\textwidth}
@@ -385,12 +419,19 @@ mortYld \textasciitilde{} X1 + X2 + X3 + X4 + X5 + X6 & 11 & 0.11 & 6 & 0.74 & 1
 \end{tabular}
 \endgroup{}
 \end{table}
-\begin{center}
-\vspace{-1.6em}
-{\fontsize{12}{14}\selectfont Table 2: Comparison of Null and Full Model (ANOVA)\par}
-\end{center}
+\vspace{-0.2em}
 
-\vspace{-0.5cm}
+\noindent \fontsize{12}{14}\selectfont Table 2: ANOVA Comparison Between
+Null and Full Models. Residual degrees of freedom (Residual\_DF) and
+residual sum of squares (RSS) show the unexplained variance. The degrees
+of freedom for the model (DF), F-statistic, and p-value test whether the
+full model significantly improves the fit compared to the null model. A
+significant p-value (typically \textless{} 0.05) indicates that the
+additional predictors in the full model provide a better fit.
+
+\par
+
+\vspace{1cm}
 
 The ANOVA comparison between the null model (intercept-only) and the
 full model (including all predictors), reveals that the full model
@@ -413,19 +454,22 @@ The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% a
 \begin{table}[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
-\begin{tabular}{rrrrrl}
+\begin{tabular}{lrlrrl}
 \toprule
 Adjusted\_$R^{2}$ & $R^2$ & Std.Error & DF & F-statistic & p-value\\
 \midrule
-0.8 & 0.87 & 0.1 & 6 & 12.33 & 0.00\\
+0.80 & 0.87 & 0.10 & 6 & 12.33 & 0.00\\
 \bottomrule
 \end{tabular}
 \endgroup{}
 \end{table}
-\begin{center}
-\vspace{-2em}
-{\fontsize{12}{14}\selectfont Table 4: Fit Statistics of Full Linear Model\par}
-\end{center}
+
+\noindent \fontsize{12}{14}\selectfont Table 4: Fit Statistics of Full
+Linear Model. R² shows the proportion of variance explained, Adjusted R²
+accounts for the number of predictors, and Standard Error measures the
+average distance of observed values from the fitted values.
+
+\par
 
 \addtocounter{table}{2}
 \vspace{-5pt}
@@ -448,21 +492,21 @@ model}\label{make-stepwise-regression-to-select-the-best-model}
 \begin{minipage}{0.48\textwidth}
 \centering
 \includegraphics[width=\linewidth]{figures/stepwise_aic_table.png}
-\vspace{-1em}
-\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 5: Stepwise AIC Steps. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.}
+\vspace{-1.3em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 5: Stepwise AIC Process. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.}
 \end{minipage}
 \hfill
 \raisebox{1.6em}{%
 \begin{minipage}{0.48\textwidth}
 \centering
 \includegraphics[width=\linewidth]{figures/stepwise_coef_table.png}
-\vspace{-1em}
-\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 6: Coefficients of Final Stepwise Model}
+\vspace{-1.3em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 6: Summary of Final Stepwise Model}
 \end{minipage}
 }
 
 \addtocounter{table}{2}
-
+\vspace{0.3em}
 \begin{table}[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
@@ -504,14 +548,14 @@ We end up with : \(\hat{mortYld}\) = 4.22 + 0.02\(\cdot\)\textbf{X1} -
 \strut \\
 Let's now try a model with 2-way interactions.
 
-\begin{minipage}{0.46\textwidth}
-\includegraphics[width=1.35\linewidth]{figures/interaction_model_coef.png}
+\begin{minipage}{0.5\textwidth}
+\includegraphics[width=1.25\linewidth]{figures/interaction_model_coef.png}
 \vspace{-0.3em}
-\fontsize{12}{12}\selectfont Table 8: Coefficients of Interaction Model
+\fontsize{12}{12}\selectfont Table 8: Summary of 2-way Interaction Model
 \end{minipage}
 \hfill
 \begin{minipage}{0.35\textwidth}
-The 2-way Interactions model, which is more complex than the Stepwise
+The 2-way Interaction model, which is more complex than the Stepwise
 model, explains approximately 79.9\% of the variance in Mortgage Yield.
 The Residual Standard Error (0.10) is low, and the overall model is
 highly significant (p < 0.001), indicating that at least one of the
@@ -521,18 +565,18 @@ terms has a significant influence on Mortgage Yield.
 \begin{table}[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
-\begin{tabular}{rrrrrl}
+\begin{tabular}{lrlrrl}
 \toprule
 Adjusted\_$R^{2}$ & $R^2$ & Std.Error & DF & F-statistic & p-value\\
 \midrule
-0.8 & 0.87 & 0.1 & 6 & 12.25 & 0.00\\
+0.80 & 0.87 & 0.10 & 6 & 12.25 & 0.00\\
 \bottomrule
 \end{tabular}
 \endgroup{}
 \end{table}
 \begin{center}
-\vspace{5em}
-{\fontsize{12}{14}\selectfont Table 9: Fit Statistics of Interaction Model\par}
+\vspace{-1.5em}
+{\fontsize{12}{14}\selectfont Table 9: Fit Statistics of 2-way Interaction Model\par}
 \end{center}
 
 \addtocounter{table}{2}
@@ -547,7 +591,7 @@ We end up with : \(\hat{mortYld}\) = 5.37 + 0.007\(\cdot\)\textbf{X1} -
 0.0\(\cdot\)\textbf{X1}:\textbf{X4} +
 0.0\(\cdot\)\textbf{X3}:\textbf{X4}\\
 \strut \\
-We decided not to include a 3-way Interactions model in our analysis.
+We decided not to include a 3-way Interaction model in our analysis.
 Given the small sample size (18 observations), adding high-order
 interactions would significantly reduce degrees of freedom and increase
 the risk of overfitting. Moreover, 3-way interactions are often
@@ -569,7 +613,7 @@ Stepwise Model & 0.83 & 0.86 & 0.09 & -29.73 & 29.49\\
 \endgroup{}
 \begin{center}
 \vspace{-0.5em}
-{\fontsize{12}{14}\selectfont Table 10: Comparison of Model Performance Metrics\par}
+{\fontsize{12}{14}\selectfont Table 10: Comparison of Model Performance Metrics. RSE (residual standard error) reflects the typical size of prediction errors; lower values indicate better fit.\par}
 \end{center}
 
 The Stepwise model offers the best trade-off between simplicity and
@@ -595,7 +639,7 @@ Interaction model & 11 & 0.11 & 3 & 0.01 & 0.18 & 0.91\\
 \end{table}
 \begin{center}
 \vspace{-1.6em}
-{\fontsize{12}{14}\selectfont Table 11: ANOVA Comparison: Stepwise vs Interactions Model\par}
+{\fontsize{12}{14}\selectfont Table 11: ANOVA Comparison Between Stepwise and Interaction Models\par}
 \end{center}
 
 An ANOVA is then conducted to compare the Stepwise Model and the
@@ -619,18 +663,15 @@ Diagnostics}\label{model-assumptions-and-diagnostics}
 \vspace{-1em}
   \centering
   \begin{minipage}[b]{0.3\linewidth}
-    \centering
-    {\fontsize{12}{14}\selectfont Figure 6: Residuals vs Fitted plot\par}
+    {\fontsize{12}{14}\selectfont Figure 6: Residuals vs Fitted Plot. It displays residual spread to assess homoscedasticity; no clear pattern indicates constant variance.\par}
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.3\linewidth}
-    \centering
-    {\fontsize{12}{14}\selectfont Figure 7: Residuals vs Observation Order\par}
+    {\fontsize{12}{14}\selectfont Figure 7: Residuals vs Observation Order Plot. It shows residuals over SMSAs to detect trends or autocorrelation; randomness suggests independence.\par}
   \end{minipage}
   \hfill
   \begin{minipage}[b]{0.3\linewidth}
-    \centering
-    {\fontsize{12}{14}\selectfont Figure 8: Scale-Location Plot\par}
+    {\fontsize{12}{14}\selectfont Figure 8: Scale-Location Plot. It shows the variance of residuals versus fitted values to check for homoscedasticity; a horizontal pattern suggests constant variance.\par}
   \end{minipage}
 \end{figure}
 
@@ -654,19 +695,19 @@ diagnostic}\label{multicolinearity-diagnostic}
 
 \noindent
 
-\begin{minipage}{0.75\textwidth}
+\begin{minipage}{0.6\textwidth}
 \vspace{-0.5em}
 As all variables have a VIF value under 5, it means that they don’t cause problematic multicollinearity in the final model and that none of them should be eliminated. This confirms our choice of keeping \textbf{X3} and \textbf{X4}: even if they showed a high correlation coefficient (0.77), these variables still provide enough unique, non-redundant information to justify keeping them in the model.
 \end{minipage}
 \hfill
-\begin{minipage}{0.2\textwidth}
+\begin{minipage}{0.37\textwidth}
 \vspace{-3em}
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{figures/vif_table.png}
     \vspace{-0.5em}
     \captionsetup{font=normalsize}
-    \caption*{Table 12: Variance Inflation Factors (VIF)}
+    \caption*{Table 12: Variance Inflation Factors (VIF). Values > 5: potential multicollinearity. Values > 10: strong multicollinearity.}
   \end{figure}
 \end{minipage}
 
@@ -687,7 +728,7 @@ The \texttt{Q-Q plot of Residuals} plot indicates that most of the points align 
 \vspace{-2em}  % Reduce space before image
 \includegraphics[width=0.9\linewidth]{figures/qqplot_residuals.png}
 \vspace{-1em}
-\parbox{\linewidth}{\fontsize{12}{14}\selectfont Figure 9: Q-Q plot of Residuals}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Figure 9: Q-Q Plot of Residuals. Deviations from the line suggest non-normality of model errors.}
 
 \end{minipage}
 
@@ -718,5 +759,17 @@ with homoscedasticity nearly achieved.
 Future improvements could include exploring additional predictors,
 testing for non-linear relationships, or refining the model to better
 capture any residual heteroscedasticity.
+
+\section*{References}\label{references}
+\addcontentsline{toc}{section}{References}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-schaaf1966}
+Schaaf, A. H. 1966. {``Regional Differences in Mortgage Financing
+Costs.''} \emph{The Journal of Finance} 21 (1): 85--94.
+\url{https://www.jstor.org/stable/2977600}.
+
+\end{CSLReferences}
 
 \end{document}
