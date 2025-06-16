@@ -167,6 +167,7 @@ We begin with a numerical summary of each variable:
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/Table 1.png}
+\captionsetup{font=normalsize}
 \caption*{Table 1: Summary Statistics of Variables}
 \end{figure}
 \vspace{-0.5cm}
@@ -198,7 +199,7 @@ external financing while others rely more on local institutions.
 \caption*{Figure 1: Histogram of Mortgage Yield per SMSA}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.45\textwidth}
+\begin{minipage}[t]{0.5\textwidth}
 \centering
 \vspace{-6cm}
 \includegraphics[width=1.1\linewidth]{figures/Figure 2.png}
@@ -258,7 +259,7 @@ with \textbf{X3}.
 \hfill
 \begin{minipage}[t]{0.58\textwidth}
 \centering
-\vspace{-6cm}
+\vspace{-5.6cm}
 \includegraphics[width=1\linewidth]{figures/Figure 4.png}
 \captionsetup{font=normalsize}
 \caption*{Figure 4: Scatterplots of each variable (X1 to X6) compared to Mortgage Yield}
@@ -371,13 +372,24 @@ the sum of squared residuals:\\
 \subsection{Null Model vs Full Model
 Comparison}\label{null-model-vs-full-model-comparison}
 
-\vspace{-0.5cm}
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/Table 2.png}
-\captionsetup{font=normalsize}
-\caption*{Table 4: Comparison of Null and Full Model (ANOVA)}
-\end{figure}
+\begin{table}[!h]
+\centering\begingroup\fontsize{8}{10}\selectfont
+
+\begin{tabular}{lrrrrrr}
+\toprule
+Model & Residual\_DF & RSS & DF & SS & F-statistic & p-value\\
+\midrule
+mortYld \textasciitilde{} 1 & 17 & 0.85 & NA & NA & NA & NA\\
+mortYld \textasciitilde{} X1 + X2 + X3 + X4 + X5 + X6 & 11 & 0.11 & 6 & 0.74 & 12.33 & 0\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}
+\begin{center}
+\vspace{-1.6em}
+{\fontsize{12}{14}\selectfont Table 2: Comparison of Null and Full Model (ANOVA)\par}
+\end{center}
+
 \vspace{-0.5cm}
 
 The ANOVA comparison between the null model (intercept-only) and the
@@ -386,30 +398,35 @@ better explains the Mortgage Yield, as shown by the significant
 F-statistic and p-value (p \textless{} 0.001). This indicates that at
 least one of the predictors is significantly related to Mortgage Yield.
 
-\includegraphics{report1_r1_files/figure-latex/unnamed-chunk-4-1.pdf}
-
-\begin{verbatim}
-## pdf 
-##   2
-\end{verbatim}
-
 \begin{minipage}{0.42\textwidth}
 \includegraphics[width=1\linewidth]{figures/full_model_summary_table.png}
-\vspace{-0.2em}
-{\fontsize{12}{14}\selectfont Table 5: Summary of Full Linear Model}
+\vspace{-0.1em}
+{\fontsize{12}{14}\selectfont Table 3: Summary of Full Linear Model}
 \end{minipage}
 \hfill
 \begin{minipage}{0.55\textwidth}
 The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% after adjusting for the number of predictors, which highlights a strong fit. The Residual Standard Error is low, and the overall model is statistically significant, with a very low p-value ($p < 0.001$). Once again, it means that at least one term contributes significantly to explaining the variation in \texttt{mortYld}.
 \end{minipage}
 
-\noindent \vspace{-5pt}
+\noindent \vspace{-0.4em}
 
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.9\linewidth, height=0.15\textheight]{figures/full_model_fitstats_table.png}
-  \caption*{{\fontsize{12}{14}\selectfont Table 6: Fit Statistics of Full Linear Model}}
-\end{figure}
+\begin{table}[!h]
+\centering\begingroup\fontsize{8}{10}\selectfont
+
+\begin{tabular}{rrrrrl}
+\toprule
+Adjusted\_$R^{2}$ & $R^2$ & Std.Error & DF & F-statistic & p-value\\
+\midrule
+0.8 & 0.87 & 0.1 & 6 & 12.33 & 0.00\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}
+\begin{center}
+\vspace{-2em}
+{\fontsize{12}{14}\selectfont Table 4: Fit Statistics of Full Linear Model\par}
+\end{center}
+
 \addtocounter{table}{2}
 \vspace{-5pt}
 
@@ -420,9 +437,9 @@ statistically significant individual contributions: only \textbf{X1} and
 variables, \textbf{X2}, \textbf{X5} and \textbf{X6}, do not show
 significant individual effects. This suggests that a reduced model may
 be more appropriate.\\
-We end up with : \texttt{mortYld} = 4.2852 + 0.0203\(\cdot\)\textbf{X1}
-+ 0.0\(\cdot\)\textbf{X2} - 0.0016\(\cdot\)\textbf{X3} +
-0.0002\(\cdot\)\textbf{X4} + 0.0013\(\cdot\)\textbf{X5} +
+We end up with : \(\hat{mortYld}\) = 4.29 + 0.02\(\cdot\)\textbf{X1} +
+0.0\(\cdot\)\textbf{X2} - 0.002\(\cdot\)\textbf{X3} +
+0.0002\(\cdot\)\textbf{X4} + 0.001\(\cdot\)\textbf{X5} +
 0.0002\(\cdot\)\textbf{X6}
 
 \subsection{Make stepwise regression to select the best
@@ -431,16 +448,18 @@ model}\label{make-stepwise-regression-to-select-the-best-model}
 \begin{minipage}{0.48\textwidth}
 \centering
 \includegraphics[width=\linewidth]{figures/stepwise_aic_table.png}
-\vspace{-2em}
-{\fontsize{12}{14}\selectfont Table 7: Stepwise AIC Steps. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.\par}
+\vspace{-1em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 5: Stepwise AIC Steps. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.}
 \end{minipage}
 \hfill
+\raisebox{1.6em}{%
 \begin{minipage}{0.48\textwidth}
 \centering
-\includegraphics[width=\linewidth]{figures/stepwise_coef_table.png}\\
-\vspace{-2em}
-{\fontsize{12}{14}\selectfont Table 8: Coefficients of Final Stepwise Model\par}
+\includegraphics[width=\linewidth]{figures/stepwise_coef_table.png}
+\vspace{-1em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 6: Coefficients of Final Stepwise Model}
 \end{minipage}
+}
 
 \addtocounter{table}{2}
 
@@ -449,16 +468,16 @@ model}\label{make-stepwise-regression-to-select-the-best-model}
 
 \begin{tabular}{rrrrrl}
 \toprule
-$R^2$ & Adjusted $R^2$ & Residual Std. Error & F-statistic & DF & p-value\\
+Adjusted\_$R^{2}$ & $R^2$ & Std.Error & DF & F-statistic & p-value\\
 \midrule
-0.8634 & 0.8341 & 0.091 & 29.4933 & 3 & 2.62e-06\\
+0.83 & 0.86 & 0.09 & 3 & 29.49 & 0.00\\
 \bottomrule
 \end{tabular}
 \endgroup{}
 \end{table}
-
 \begin{center}
-{\fontsize{12}{14}\selectfont Table 9: Fit Statistics of Stepwise Model\par}
+\vspace{-1.5em}
+{\fontsize{12}{14}\selectfont Table 7: Fit Statistics of Stepwise Model\par}
 \end{center}
 
 The Stepwise regression process identifies \textbf{X1}, \textbf{X3}, and
@@ -478,43 +497,52 @@ increases a lot when keeping more predictors, meaning that even if these
 predictors can still be statistically valid to keep, they are not so
 useful to the model. Though the final model is simpler, it explains the
 data just as well or better than more complex models. The Residual
-Standard Error (0.091) is low, and the overall model is highly
+Standard Error (0.09) is low, and the overall model is highly
 significant (p \textless{} 0.001), indicating a good fit.\\
-We end up with : \texttt{mortYld} = 4.223 + 0.02229\(\cdot\)\textbf{X1}
-- 0.001863\(\cdot\)\textbf{X3} + 0.0002249\(\cdot\)\textbf{X4}\\
+We end up with : \(\hat{mortYld}\) = 4.22 + 0.02\(\cdot\)\textbf{X1} -
+0.002\(\cdot\)\textbf{X3} + 0.0002\(\cdot\)\textbf{X4}\\
 \strut \\
 Let's now try a model with 2-way interactions.
 
-\begin{minipage}{0.4\textwidth}
-\includegraphics[width=1.5\linewidth]{figures/interaction_model_coef.png}
+\begin{minipage}{0.46\textwidth}
+\includegraphics[width=1.35\linewidth]{figures/interaction_model_coef.png}
 \vspace{-0.3em}
-\fontsize{12}{14}\selectfont Table 10: Coefficients of Interaction Model\par
+\fontsize{12}{12}\selectfont Table 8: Coefficients of Interaction Model
 \end{minipage}
 \hfill
 \begin{minipage}{0.35\textwidth}
 The 2-way Interactions model, which is more complex than the Stepwise
 model, explains approximately 79.9\% of the variance in Mortgage Yield.
-The Residual Standard Error (0.1002) is low, and the overall model is
+The Residual Standard Error (0.10) is low, and the overall model is
 highly significant (p < 0.001), indicating that at least one of the
 terms has a significant influence on Mortgage Yield.
 \end{minipage}
 
-\includegraphics[width=1\linewidth]{figures/interaction_model_fitstats.png}
+\begin{table}[!h]
+\centering\begingroup\fontsize{8}{10}\selectfont
 
-\par
+\begin{tabular}{rrrrrl}
+\toprule
+Adjusted\_$R^{2}$ & $R^2$ & Std.Error & DF & F-statistic & p-value\\
+\midrule
+0.8 & 0.87 & 0.1 & 6 & 12.25 & 0.00\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}
+\begin{center}
+\vspace{5em}
+{\fontsize{12}{14}\selectfont Table 9: Fit Statistics of Interaction Model\par}
+\end{center}
 
-\fontsize{12}{14}\selectfont Table 11: Fit Statistics of Interaction
-Model
-
-\par
 \addtocounter{table}{2}
 
 None of the variables show statistically significant individual
 contributions: only the intercept appears to be moderately significant
 to fit the model (p \textless{} 0.05). This suggests that a reduced
 model may be more appropriate.\\
-We end up with : \texttt{mortYld} = 5.3710 + 0.0069\(\cdot\)\textbf{X1}
-- 0.0001\(\cdot\)\textbf{X3} - 0.0009\(\cdot\)\textbf{X4} +
+We end up with : \(\hat{mortYld}\) = 5.37 + 0.007\(\cdot\)\textbf{X1} -
+0.0001\(\cdot\)\textbf{X3} - 0.0009\(\cdot\)\textbf{X4} +
 0.0\(\cdot\)\textbf{X1}:\textbf{X3} +
 0.0\(\cdot\)\textbf{X1}:\textbf{X4} +
 0.0\(\cdot\)\textbf{X3}:\textbf{X4}\\
@@ -531,23 +559,24 @@ difficult to interpret meaningfully.
 
 \begin{longtable}[t]{lrrrrr}
 \toprule
-Model & R2 & Adj\_R2 & AIC & Residual\_SE & F\_statistic\\
+Model & Adjusted\_R² & R² & RSE & AIC & F-statistic\\
 \midrule
-Full Model & 0.87 & 0.80 & -24.71 & 0.10 & 12.33\\
-Stepwise Model & 0.86 & 0.83 & -29.73 & 0.09 & 29.49\\
-2-Way Interaction Model & 0.87 & 0.80 & -24.60 & 0.10 & 12.25\\
+Full Model & 0.80 & 0.87 & 0.10 & -24.71 & 12.33\\
+Stepwise Model & 0.83 & 0.86 & 0.09 & -29.73 & 29.49\\
+2-Way Interaction Model & 0.80 & 0.87 & 0.10 & -24.60 & 12.25\\
 \bottomrule
 \end{longtable}
 \endgroup{}
 \begin{center}
-{\fontsize{12}{14}\selectfont Table 12: Comparison of Model Performance Metrics\par}
+\vspace{-0.5em}
+{\fontsize{12}{14}\selectfont Table 10: Comparison of Model Performance Metrics\par}
 \end{center}
 
 The Stepwise model offers the best trade-off between simplicity and
 performance: it has the lowest AIC (\textasciitilde29.7), demonstrating
 the best model fit among the three. Despite having a slightly lower R²
 than the Full and 2-ways Interactions model, it achieves the highest
-Adjusted R². It also has the lowest Residual Standard Error (0.091) and
+Adjusted R². It also has the lowest Residual Standard Error (0.09) and
 the highest F-statistic (\textasciitilde29.5). This confirms the overall
 model significance and parsimony.
 
@@ -556,7 +585,7 @@ model significance and parsimony.
 
 \begin{tabular}{lrrrrrr}
 \toprule
-Model & Res.Df & RSS & Df & Sum of Sq & F & Pr(>F)\\
+Model & Residual\_DF & RSS & DF & SS & F-statistic & p-value\\
 \midrule
 Stepwise model & 14 & 0.12 & NA & NA & NA & NA\\
 Interaction model & 11 & 0.11 & 3 & 0.01 & 0.18 & 0.91\\
@@ -565,7 +594,8 @@ Interaction model & 11 & 0.11 & 3 & 0.01 & 0.18 & 0.91\\
 \endgroup{}
 \end{table}
 \begin{center}
-{\fontsize{12}{14}\selectfont Table 13: ANOVA Comparison: Stepwise vs Interactions Model\par}
+\vspace{-1.6em}
+{\fontsize{12}{14}\selectfont Table 11: ANOVA Comparison: Stepwise vs Interactions Model\par}
 \end{center}
 
 An ANOVA is then conducted to compare the Stepwise Model and the
@@ -585,11 +615,30 @@ Diagnostics}\label{model-assumptions-and-diagnostics}
 
 \includegraphics{report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf}
 
+\begin{figure}[htbp]
+\vspace{-1em}
+  \centering
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    {\fontsize{12}{14}\selectfont Figure 6: Residuals vs Fitted plot\par}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    {\fontsize{12}{14}\selectfont Figure 7: Residuals vs Observation Order\par}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    {\fontsize{12}{14}\selectfont Figure 8: Scale-Location Plot\par}
+  \end{minipage}
+\end{figure}
+
 The \texttt{Residuals\ VS\ Fitted\ Values} plot shows that the residuals
 are randomly scattered around 0, with no clear pattern. This suggests
 that the assumptions of linearity and constant error variance are
 reasonably met. Secondly, the slightly negative but close to zero slope
-(-0.286) in the \texttt{Scale-Location\ Plot} indicates that the spread
+(-0.286) in the \texttt{Scale-Location} plot indicates that the spread
 of residuals is almost constant across fitted values. This is a sign
 that our model doesn't suffer from heteroscedasticity and is likely a
 good fit: homoscedasticity seems therefore satisfied.
@@ -617,7 +666,7 @@ As all variables have a VIF value under 5, it means that they don’t cause prob
     \includegraphics[width=0.8\linewidth]{figures/vif_table.png}
     \vspace{-0.5em}
     \captionsetup{font=normalsize}
-    \caption*{Table 14: Variance Inflation Factors (VIF)}
+    \caption*{Table 12: Variance Inflation Factors (VIF)}
   \end{figure}
 \end{minipage}
 
@@ -630,14 +679,16 @@ As all variables have a VIF value under 5, it means that they don’t cause prob
 \begin{minipage}{0.65\textwidth}
 \justifying
 
-The \texttt{Q-Q plot of Residuals} indicates that most of the points align closely with the 45-degree line, suggesting that the residuals are approximately normally distributed. However, six points deviate at the extremes of the theoretical quantiles, which indicates the presence of potential outliers or heavy tails in the distribution. In a dataset with just 18 observations, small deviations in the Q-Q plot are usual. Outliers or deviations are common in such a small sample size and do not automatically suggest a violation of normality.
+The \texttt{Q-Q plot of Residuals} plot indicates that most of the points align closely with the 45-degree line, suggesting that the residuals are approximately normally distributed. However, six points deviate at the extremes of the theoretical quantiles, which indicates the presence of potential outliers or heavy tails in the distribution. In a dataset with just 18 observations, small deviations in the Q-Q plot are usual. Outliers or deviations are common in such a small sample size and do not automatically suggest a violation of normality.
 \end{minipage}
 \hfill
 \begin{minipage}{0.33\textwidth}
 \centering
 \vspace{-2em}  % Reduce space before image
 \includegraphics[width=0.9\linewidth]{figures/qqplot_residuals.png}
-\vspace{-1em}     % Reduce space after image
+\vspace{-1em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Figure 9: Q-Q plot of Residuals}
+
 \end{minipage}
 
 \section{Conclusion}\label{conclusion}

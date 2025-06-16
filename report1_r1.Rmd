@@ -135,6 +135,7 @@ We begin with a numerical summary of each variable:
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/Table 1.png}
+\captionsetup{font=normalsize}
 \caption*{Table 1: Summary Statistics of Variables}
 \end{figure}
 \vspace{-0.5cm}
@@ -159,7 +160,7 @@ distributions. Population Increase (**X5**) from 1950 to 1960 varies widely (7.5
 \caption*{Figure 1: Histogram of Mortgage Yield per SMSA}
 \end{minipage}
 \hfill
-\begin{minipage}[t]{0.45\textwidth}
+\begin{minipage}[t]{0.5\textwidth}
 \centering
 \vspace{-6cm}
 \includegraphics[width=1.1\linewidth]{figures/Figure 2.png}
@@ -197,7 +198,7 @@ We can see that most of the plots are random dispersion, while some are linear, 
 \hfill
 \begin{minipage}[t]{0.58\textwidth}
 \centering
-\vspace{-6cm}
+\vspace{-5.6cm}
 \includegraphics[width=1\linewidth]{figures/Figure 4.png}
 \captionsetup{font=normalsize}
 \caption*{Figure 4: Scatterplots of each variable (X1 to X6) compared to Mortgage Yield}
@@ -295,69 +296,30 @@ The model is fitted using Ordinary Least Squares (OLS), which minimizes the sum 
 ## Null Model vs Full Model Comparison
 
 ```{r}
-
-# 1️⃣ Model & tidy table
 null_model <- lm(mortYld ~ 1, data = df)
 full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 
-anova_table <- tidy(anova(null_model, full_model))
+anova_result <- anova(null_model, full_model)
 
-# 2️⃣ Format numerics to 2 decimals with trailing zeroes
-anova_table <- as.data.frame(lapply(anova_table, function(x) {
-  if (is.numeric(x)) sprintf("%.2f", x) else x
-}))
+# Ajouter les noms des modèles pour plus de clarté
+anova_df <- as.data.frame(anova_result)
+anova_df$Model <- c("mortYld ~ 1", "mortYld ~ X1 + X2 + X3 + X4 + X5 + X6")
 
-# 3️⃣ Generate the table grob
-table <- gridExtra::tableGrob(anova_table, rows = NULL)
+# Réorganiser les colonnes
+anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum of Sq", "F", "Pr(>F)")]
+colnames(anova_df) <- c("Model", "Residual_DF", "RSS", "DF", "SS", "F-statistic", "p-value")
 
-# 4️⃣ Apply white background & font size 12pt for all cells
-for (i in seq_along(table$grobs)) {
-  if (is.null(table$grobs[[i]]$gp)) table$grobs[[i]]$gp <- gpar()
-  table$grobs[[i]]$gp$fill <- "#ffffff"
-  table$grobs[[i]]$gp$fontsize <- 10
-}
-
-# 6️⃣ Add horizontal lines between rows
-for (j in 1:(ncol(table) - 1)) {
-  table <- gtable::gtable_add_grob(
-    table,
-    grobs = grid::linesGrob(
-      x = unit(c(0, 0), "npc"),   # vertical line at left edge of column
-      y = unit(c(0, 1), "npc"),
-      gp = gpar(col = "black", lwd = 1)
-    ),
-    t = 1, b = nrow(table), l = j + 1
-  )
-}
-
-# 7️⃣ Add full black border around entire table
-table <- gtable::gtable_add_grob(
-  table,
-  grobs = grid::rectGrob(gp = gpar(col = "black", fill = NA, lwd = 1.2)),
-  t = 1, l = 1, b = nrow(table), r = ncol(table)
-)
-
-# 8️⃣ Compute exact size (in inches) for perfect PNG export
-w <- convertWidth(sum(table$widths), "in", valueOnly = TRUE)
-h <- convertHeight(sum(table$heights), "in", valueOnly = TRUE)
-
-# 9️⃣ Export PNG exactly to fit the table (no extra white space)
-png("figures/Table 2.png", width = w, height = h, units = "in", res = 300, bg = "white")
-grid::grid.draw(table)
-invisible(dev.off())
-
-# Affichage du tableau formaté
-#kable(anova_table, caption = "Comparison of Null and Full Model (ANOVA)") %>%
-#  kable_styling(font_size = 8, latex_options = c("striped", "hold_position"))
+# Affichage avec kable
+kable(anova_df,
+      booktabs = TRUE, digits = 2, format = "latex", escape = TRUE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
 ```
-\vspace{-0.5cm}
-\begin{figure}[H]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/Table 2.png}
-\captionsetup{font=normalsize}
-\caption*{Table 4: Comparison of Null and Full Model (ANOVA)}
-\end{figure}
+\begin{center}
+\vspace{-1.6em}
+{\fontsize{12}{14}\selectfont Table 2: Comparison of Null and Full Model (ANOVA)\par}
+\end{center}
+
 \vspace{-0.5cm}
 
 The ANOVA comparison between the null model (intercept-only) and the
@@ -370,10 +332,18 @@ of the predictors is significantly related to Mortgage Yield.
 model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 model_summary <- broom::tidy(model)
 
-# Format numeric columns with 2 decimals
-model_summary <- as.data.frame(lapply(model_summary, function(x) {
-  if (is.numeric(x)) sprintf("%.2f", x) else x
-}))
+model_summary <- as.data.frame(
+  Map(function(col, name) {
+    if (is.numeric(col) && !grepl("^df", name)) {
+      sprintf("%.2f", col)
+    } else {
+      col
+    }
+  }, model_summary, names(model_summary))
+)
+
+colnames(model_summary) <- c("Term", "Estimate", "Std.Error", "F-statistic", "p-value")
+
 
 # Build table grob
 table1 <- tableGrob(model_summary, rows = NULL)
@@ -382,7 +352,7 @@ table1 <- tableGrob(model_summary, rows = NULL)
 for (i in seq_along(table1$grobs)) {
   if (is.null(table1$grobs[[i]]$gp)) table1$grobs[[i]]$gp <- gpar()
   table1$grobs[[i]]$gp$fill <- "#ffffff"
-  table1$grobs[[i]]$gp$fontsize <- 10
+  table1$grobs[[i]]$gp$fontsize <- 12
 }
 
 # Add border around entire table
@@ -392,90 +362,74 @@ table1 <- gtable_add_grob(
   t = 1, l = 1, b = nrow(table1), r = ncol(table1)
 )
 
-# Force layout (IMPORTANT STEP)
-grid.newpage()
-grid.draw(table1)
+# ---- HEADLESS LAYOUT ----
+# Create virtual layout without displaying
+gt <- grobTree(table1)
 
-# Compute exact size
+# Open PNG device first (without drawing yet)
+png("figures/full_model_summary_table.png", width = 10, height = 10, units = "in", res = 300, bg = "white")
+
+# Force layout and compute exact size
+grid.newpage()
+grid.draw(gt)
+
+# Compute exact size after layout
 w <- convertWidth(sum(table1$widths), "in", valueOnly = TRUE)
 h <- convertHeight(sum(table1$heights), "in", valueOnly = TRUE)
 
-# Add small margin
-w <- w + 0.2
-h <- h + 0.2
+# Close temporary oversized file
+invisible(dev.off())
 
-# Save with exact size
-png("figures/full_model_summary_table.png", width = w, height = h, units = "in", res = 300, bg = "white")
+# Re-open final PNG device with correct size
+png("figures/full_model_summary_table.png", width = w + 0.1, height = h + 0.1, units = "in", res = 300, bg = "white")
 grid.newpage()
-pushViewport(viewport(width=unit(1, "npc"), height=unit(1, "npc")))
 grid.draw(table1)
 invisible(dev.off())
 
-```
-
-```{r}
-model_stats <- broom::glance(model)[, c("r.squared", "adj.r.squared", "sigma", "statistic","df", "p.value")]
-colnames(model_stats) <- c(
-  "R²", 
-  "Adjusted R²",
-  "Residual Std. Error", 
-  "F-statistic", 
-  "DF",
-  "p-value"
-)
-
-# Formater chiffres en chaînes x.xx
-model_stats <- as.data.frame(lapply(model_stats, function(x) {
-  if (is.numeric(x)) sprintf("%.2f", x) else x
-}))
-
-# Construire table grob sans forcer largeurs
-table2 <- tableGrob(model_stats, rows = NULL)
-
-# Appliquer fond blanc et taille 10 pt
-for (i in seq_along(table2$grobs)) {
-  if (is.null(table2$grobs[[i]]$gp)) table2$grobs[[i]]$gp <- gpar()
-  table2$grobs[[i]]$gp$fill <- "#ffffff"
-  table2$grobs[[i]]$gp$fontsize <- 10
-}
-
-# Ajouter bordure noire
-table2 <- gtable_add_grob(
-  table2,
-  rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
-  t = 1, l = 1, b = nrow(table2), r = ncol(table2)
-)
-
-# Calcul taille PNG selon contenu
-w <- convertWidth(sum(table2$widths), "in", valueOnly = TRUE)
-h <- convertHeight(sum(table2$heights), "in", valueOnly = TRUE)
-
-w <- w + 0.01
-h <- h + 0.01
-
-# Export PNG ajusté au contenu
-png("figures/full_model_fitstats_table.png", width = w, height = h, units = "in", res = 300, bg = "white")
-grid.draw(table2)
-
-invisible(dev.off())
 
 ```
+
 \begin{minipage}{0.42\textwidth}
 \includegraphics[width=1\linewidth]{figures/full_model_summary_table.png}
-\vspace{-0.2em}
-{\fontsize{12}{14}\selectfont Table 5: Summary of Full Linear Model}
+\vspace{-0.1em}
+{\fontsize{12}{14}\selectfont Table 3: Summary of Full Linear Model}
 \end{minipage}
 \hfill
 \begin{minipage}{0.55\textwidth}
 The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% after adjusting for the number of predictors, which highlights a strong fit. The Residual Standard Error is low, and the overall model is statistically significant, with a very low p-value ($p < 0.001$). Once again, it means that at least one term contributes significantly to explaining the variation in \texttt{mortYld}.
 \end{minipage}
 \noindent
-\vspace{-5pt}
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.9\linewidth, height=0.15\textheight]{figures/full_model_fitstats_table.png}
-  \caption*{{\fontsize{12}{14}\selectfont Table 6: Fit Statistics of Full Linear Model}}
-\end{figure}
+\vspace{-0.4em}
+```{r}
+model_stats <- glance(model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
+
+# Rename columns (LaTeX-ready names)
+colnames(model_stats) <- c("$R^2$", "Adjusted\\_$R^{2}$", "Std.Error", "F-statistic", "DF", "p-value")
+
+# Reorder columns
+model_stats <- model_stats[, c("Adjusted\\_$R^{2}$", "$R^2$", "Std.Error", "DF", "F-statistic", "p-value")]
+
+# Convert to data.frame
+model_stats <- as.data.frame(model_stats)
+
+# Apply rounding
+model_stats$`$R^2$` <- round(model_stats$`$R^2$`, 2)
+model_stats$`Adjusted\\_$R^{2}$` <- round(model_stats$`Adjusted\\_$R^{2}$`, 2)
+model_stats$`Std.Error` <- round(model_stats$`Std.Error`, 2)
+model_stats$`F-statistic` <- round(model_stats$`F-statistic`, 2)
+model_stats$`DF` <- as.integer(model_stats$`DF`)
+model_stats$`p-value` <- sprintf("%.2f", model_stats$`p-value`)
+
+# Display table (optional)
+kable(model_stats,
+      booktabs = TRUE, format = "latex", escape = FALSE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+```
+\begin{center}
+\vspace{-2em}
+{\fontsize{12}{14}\selectfont Table 4: Fit Statistics of Full Linear Model\par}
+\end{center}
+
 \addtocounter{table}{2}
 \vspace{-5pt}
 The intercept appears to be strongly significant to fit the model (p \<
@@ -483,7 +437,7 @@ The intercept appears to be strongly significant to fit the model (p \<
 statistically significant individual contributions: only **X1** and **X3** show
 weak significance (p $\approx$ 0.05), while the other variables, **X2**, **X5**
 and **X6**, do not show significant individual effects. This suggests that a reduced model may be more appropriate.\
-We end up with : `mortYld` = 4.2852 + 0.0203$\cdot$**X1** + 0.0$\cdot$**X2** - 0.0016$\cdot$**X3** + 0.0002$\cdot$**X4** + 0.0013$\cdot$**X5** +
+We end up with : $\hat{mortYld}$ = 4.29 + 0.02$\cdot$**X1** + 0.0$\cdot$**X2** - 0.002$\cdot$**X3** + 0.0002$\cdot$**X4** + 0.001$\cdot$**X5** +
 0.0002$\cdot$**X6**
 
 ## Make stepwise regression to select the best model
@@ -504,11 +458,16 @@ step_trace_df$RSS <- sprintf("%.2f", step_trace_df$RSS)
 step_trace_df$AIC <- sprintf("%.2f", step_trace_df$AIC)
 
 table1 <- tableGrob(step_trace_df, rows = NULL)
-table1$widths <- unit(rep(1, ncol(table1)), "null")
+
+# Make "Model" column twice as wide as the others
+n <- ncol(table1)
+widths_vec <- rep(1, n)
+widths_vec[1] <- 2  # Adjust this if "Model" is not first column
+table1$widths <- unit(widths_vec, "null")
 
 for (i in seq_along(table1$grobs)) {
   if (is.null(table1$grobs[[i]]$gp)) table1$grobs[[i]]$gp <- gpar()
-  table1$grobs[[i]]$gp$fontsize <- 9
+  table1$grobs[[i]]$gp$fontsize <- 10
   table1$grobs[[i]]$gp$fill <- "#ffffff"
 }
 
@@ -517,6 +476,7 @@ table1 <- gtable_add_grob(
   rectGrob(gp = gpar(lwd = 1, col = "black", fill = NA)),
   t = 1, l = 1, b = nrow(table1), r = ncol(table1)
 )
+
 
 # 2. Stepwise Model Coefficients Table
 step_model <- stepAIC(model, direction = "both", trace = FALSE)
@@ -527,12 +487,14 @@ step_summary <- as.data.frame(lapply(step_summary, function(x) {
   if(is.numeric(x)) sprintf("%.2f", x) else x
 }))
 
+colnames(step_summary) <- c("Term", "Estimate", "Std.Error", "F-statistic", "p-value")
+
 table2 <- tableGrob(step_summary, rows = NULL)
 table2$widths <- unit(rep(1, ncol(table2)), "null")
 
 for (i in seq_along(table2$grobs)) {
   if (is.null(table2$grobs[[i]]$gp)) table2$grobs[[i]]$gp <- gpar()
-  table2$grobs[[i]]$gp$fontsize <- 8.5
+  table2$grobs[[i]]$gp$fontsize <- 12
   table2$grobs[[i]]$gp$fill <- "#ffffff"
 }
 
@@ -544,21 +506,23 @@ table2 <- gtable_add_grob(
 
 # Save as PNGs
 ggsave("figures/stepwise_aic_table.png", table1, width = 4.5, height = 2, dpi = 300)
-ggsave("figures/stepwise_coef_table.png", table2, width = 4.5, height = 2, dpi = 300)
+ggsave("figures/stepwise_coef_table.png", table2, width = 4.53, height = 2, dpi = 300)
 ```
 \begin{minipage}{0.48\textwidth}
 \centering
 \includegraphics[width=\linewidth]{figures/stepwise_aic_table.png}
-\vspace{-2em}
-{\fontsize{12}{14}\selectfont Table 7: Stepwise AIC Steps. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.\par}
+\vspace{-1em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 5: Stepwise AIC Steps. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.}
 \end{minipage}
 \hfill
+\raisebox{1.6em}{%
 \begin{minipage}{0.48\textwidth}
 \centering
-\includegraphics[width=\linewidth]{figures/stepwise_coef_table.png}\\
-\vspace{-2em}
-{\fontsize{12}{14}\selectfont Table 8: Coefficients of Final Stepwise Model\par}
+\includegraphics[width=\linewidth]{figures/stepwise_coef_table.png}
+\vspace{-1em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 6: Coefficients of Final Stepwise Model}
 \end{minipage}
+}
 
 \addtocounter{table}{2}
 
@@ -567,19 +531,21 @@ ggsave("figures/stepwise_coef_table.png", table2, width = 4.5, height = 2, dpi =
 
 # Extraire les stats globales
 step_glance <- glance(step_model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
-colnames(step_glance) <- c("$R^2$", "Adjusted $R^2$", "Residual Std. Error", "F-statistic", "DF", "p-value")
+colnames(step_glance) <- c("$R^2$", "Adjusted\\_$R^{2}$", "Std.Error", "F-statistic", "DF", "p-value")
+
+step_glance <- step_glance[, c("Adjusted\\_$R^{2}$", "$R^2$", "Std.Error", "DF", "F-statistic", "p-value")]
 
 
 # Convertir en data.frame pour mise en forme fine
 step_glance <- as.data.frame(step_glance)
 
 # Appliquer un arrondi classique sauf pour la p-value
-step_glance$`$R^2$` <- round(step_glance$`$R^2$`, 4)
-step_glance$`Adjusted $R^2$` <- round(step_glance$`Adjusted $R^2$`, 4)
-step_glance$`Residual Std. Error` <- round(step_glance$`Residual Std. Error`, 4)
-step_glance$`F-statistic` <- round(step_glance$`F-statistic`, 4)
+step_glance$`$R^2$` <- round(step_glance$`$R^2$`, 2)
+step_glance$`Adjusted\\_$R^{2}$` <- round(step_glance$`Adjusted\\_$R^{2}$`, 2)
+step_glance$`Std.Error` <- round(step_glance$`Std.Error`, 2)
+step_glance$`F-statistic` <- round(step_glance$`F-statistic`, 2)
 step_glance$`DF` <- as.integer(step_glance$`DF`)  # entier
-step_glance$`p-value` <- formatC(step_glance$`p-value`, format = "e", digits = 2)
+step_glance$`p-value` <- sprintf("%.2f", step_glance$`p-value`)
 
 # Afficher en tableau LaTeX
 kable(step_glance,
@@ -587,9 +553,9 @@ kable(step_glance,
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
 ```
-
 \begin{center}
-{\fontsize{12}{14}\selectfont Table 9: Fit Statistics of Stepwise Model\par}
+\vspace{-1.5em}
+{\fontsize{12}{14}\selectfont Table 7: Fit Statistics of Stepwise Model\par}
 \end{center}
 
 The Stepwise regression process identifies **X1**, **X3**, and **X4** as the most
@@ -607,10 +573,10 @@ increases a lot when keeping more predictors, meaning that even if these
 predictors can still be statistically valid to keep, they are not so
 useful to the model. Though the final model is simpler, it explains the
 data just as well or better than more complex models. The Residual
-Standard Error (0.091) is low, and the overall model is highly
+Standard Error (0.09) is low, and the overall model is highly
 significant (p \< 0.001), indicating a good fit.\
-We end up with : `mortYld` = 4.223 + 0.02229$\cdot$**X1** -
-0.001863$\cdot$**X3** + 0.0002249$\cdot$**X4**\
+We end up with : $\hat{mortYld}$ = 4.22 + 0.02$\cdot$**X1** -
+0.002$\cdot$**X3** + 0.0002$\cdot$**X4**\
 \
 Let's now try a model with 2-way interactions.
 
@@ -622,6 +588,8 @@ interaction_coef <- broom::tidy(interaction_model)
 interaction_coef <- as.data.frame(lapply(interaction_coef, function(x) {
   if(is.numeric(x)) sprintf("%.2f", x) else x
 }))
+
+colnames(interaction_coef) <- c("Term", "Estimate", "Std.Error", "F-statistic", "p-value")
 
 # Génération du tableau
 table1 <- gridExtra::tableGrob(interaction_coef, rows = NULL)
@@ -655,70 +623,59 @@ invisible(dev.off())
 
 ```
 
-```{r}
-# 2. Model Fit Statistics Table
-interaction_stats <- broom::glance(interaction_model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
-
-interaction_stats <- as.data.frame(lapply(interaction_stats, function(x) sprintf("%.2f", x)))
-
-# Renommer colonnes
-colnames(interaction_stats) <- c(
-  "R²", "Adjusted R²", "Residual Std. Error", "F-statistic", "DF", "p-value"
-)
-
-# Génération du tableau
-table2 <- gridExtra::tableGrob(interaction_stats, rows = NULL)
-
-# Fond blanc + taille police
-for (i in seq_along(table2$grobs)) {
-  if (is.null(table2$grobs[[i]]$gp)) table2$grobs[[i]]$gp <- gpar()
-  table2$grobs[[i]]$gp$fill <- "#ffffff"
-  table2$grobs[[i]]$gp$fontsize <- 9
-}
-
-# Cadre noir autour
-table2 <- gtable::gtable_add_grob(
-  table2,
-  grobs = grid::rectGrob(gp = gpar(col = "black", fill = NA)),
-  t = 1, l = 1, b = nrow(table2), r = ncol(table2)
-)
-
-w <- convertWidth(sum(table2$widths), "in", valueOnly = TRUE)
-h <- convertHeight(sum(table2$heights), "in", valueOnly = TRUE)
-
-w <- w + 0.01
-h <- h + 0.01
-
-# Export PNG ajusté au contenu
-png("figures/interaction_model_fitstats.png", width = w, height = h, units = "in", res = 300, bg = "white")
-grid.draw(table2)
-
-invisible(dev.off())
-
-```
-\begin{minipage}{0.4\textwidth}
-\includegraphics[width=1.5\linewidth]{figures/interaction_model_coef.png}
+\begin{minipage}{0.46\textwidth}
+\includegraphics[width=1.35\linewidth]{figures/interaction_model_coef.png}
 \vspace{-0.3em}
-\fontsize{12}{14}\selectfont Table 10: Coefficients of Interaction Model\par
+\fontsize{12}{12}\selectfont Table 8: Coefficients of Interaction Model
 \end{minipage}
 \hfill
 \begin{minipage}{0.35\textwidth}
 The 2-way Interactions model, which is more complex than the Stepwise
 model, explains approximately 79.9\% of the variance in Mortgage Yield.
-The Residual Standard Error (0.1002) is low, and the overall model is
+The Residual Standard Error (0.10) is low, and the overall model is
 highly significant (p < 0.001), indicating that at least one of the
 terms has a significant influence on Mortgage Yield.
 \end{minipage}
 
-\includegraphics[width=1\linewidth]{figures/interaction_model_fitstats.png}\par
-\fontsize{12}{14}\selectfont Table 11: Fit Statistics of Interaction Model\par
+```{r}
+interaction_stats <- glance(interaction_model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
+
+# Rename columns (LaTeX-ready names)
+colnames(interaction_stats) <- c("$R^2$", "Adjusted\\_$R^{2}$", "Std.Error", "F-statistic", "DF", "p-value")
+
+# Reorder columns
+interaction_stats <- interaction_stats[, c("Adjusted\\_$R^{2}$", "$R^2$", "Std.Error", "DF", "F-statistic", "p-value")]
+
+# Convert to data.frame
+interaction_stats <- as.data.frame(interaction_stats)
+
+# Apply rounding
+interaction_stats$`$R^2$` <- round(interaction_stats$`$R^2$`, 2)
+interaction_stats$`Adjusted\\_$R^{2}$` <- round(interaction_stats$`Adjusted\\_$R^{2}$`, 2)
+interaction_stats$`Std.Error` <- round(interaction_stats$`Std.Error`, 2)
+interaction_stats$`F-statistic` <- round(interaction_stats$`F-statistic`, 2)
+interaction_stats$`DF` <- as.integer(interaction_stats$`DF`)
+interaction_stats$`p-value` <- sprintf("%.2f", interaction_stats$`p-value`)
+
+# Display table (optional)
+kable(interaction_stats,
+      booktabs = TRUE, format = "latex", escape = FALSE) %>%
+  kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
+
+```
+\begin{center}
+\vspace{4em}
+{\fontsize{12}{14}\selectfont Table 9: Fit Statistics of Interaction Model\par}
+\end{center}
+
+
 \addtocounter{table}{2}
 
 None of the variables show statistically significant individual
 contributions: only the intercept appears to be moderately significant
 to fit the model (p \< 0.05). This suggests that a reduced model may be
 more appropriate.\
-We end up with : `mortYld` = 5.3710 + 0.0069$\cdot$**X1** - 0.0001$\cdot$**X3** - 0.0009$\cdot$**X4** + 0.0$\cdot$**X1**:**X3** + 0.0$\cdot$**X1**:**X4** + 0.0$\cdot$**X3**:**X4**\
+We end up with : $\hat{mortYld}$ = 5.37 + 0.007$\cdot$**X1** - 0.0001$\cdot$**X3** - 0.0009$\cdot$**X4** + 0.0$\cdot$**X1**:**X3** + 0.0$\cdot$**X1**:**X4** + 0.0$\cdot$**X3**:**X4**\
 \
 We decided not to include a 3-way Interactions model in our analysis.
 Given the small sample size (18 observations), adding high-order
@@ -730,49 +687,55 @@ difficult to interpret meaningfully.
 
 ```{r, fig.width=10, fig.height=2}
 # Create comparison table
+# Create the data.frame with simple names first
 model_metrics <- data.frame(
   Model = c("Full Model", "Stepwise Model", "2-Way Interaction Model"),
+  Adjusted_R2 = c(
+    summary(full_model)$adj.r.squared,
+    summary(step_model)$adj.r.squared,
+    summary(interaction_model)$adj.r.squared
+  ),
   R2 = c(
     summary(full_model)$r.squared,
     summary(step_model)$r.squared,
     summary(interaction_model)$r.squared
   ),
-  Adj_R2 = c(
-    summary(full_model)$adj.r.squared,
-    summary(step_model)$adj.r.squared,
-    summary(interaction_model)$adj.r.squared
+  RSE = c(
+    summary(full_model)$sigma,
+    summary(step_model)$sigma,
+    summary(interaction_model)$sigma
   ),
   AIC = c(
     AIC(full_model),
     AIC(step_model),
     AIC(interaction_model)
   ),
-  Residual_SE = c(
-    summary(full_model)$sigma,
-    summary(step_model)$sigma,
-    summary(interaction_model)$sigma
-  ),
-  F_statistic = c(
+  `F-statistic` = c(
     summary(full_model)$fstatistic[1],
     summary(step_model)$fstatistic[1],
     summary(interaction_model)$fstatistic[1]
   )
 )
 
+# Then rename the columns for LaTeX display
+colnames(model_metrics) <- c("Model", "Adjusted_R²", "R²", "RSE", "AIC", "F-statistic")
+
+
 # Display table
-kable(model_metrics, digits = 2) %>%
+kable(model_metrics, digits = 2, escape=FALSE) %>%
   kable_styling(font_size = 8, full_width = FALSE, position = "center")
 
 ```
 \begin{center}
-{\fontsize{12}{14}\selectfont Table 12: Comparison of Model Performance Metrics\par}
+\vspace{-0.5em}
+{\fontsize{12}{14}\selectfont Table 10: Comparison of Model Performance Metrics\par}
 \end{center}
 
 The Stepwise model offers the best trade-off between simplicity and
 performance: it has the lowest AIC (\~29.7), demonstrating the best
 model fit among the three. Despite having a slightly lower R² than the
 Full and 2-ways Interactions model, it achieves the highest Adjusted R².
-It also has the lowest Residual Standard Error (0.091) and the highest
+It also has the lowest Residual Standard Error (0.09) and the highest
 F-statistic (\~29.5). This confirms the overall model significance and
 parsimony.
 
@@ -786,6 +749,7 @@ anova_df$Model <- c("Stepwise model", "Interaction model")
 
 # Réorganiser les colonnes
 anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum of Sq", "F", "Pr(>F)")]
+colnames(anova_df) <- c("Model", "Residual_DF", "RSS", "DF", "SS", "F-statistic", "p-value")
 
 # Affichage avec kable
 kable(anova_df,
@@ -794,7 +758,8 @@ kable(anova_df,
 
 ```
 \begin{center}
-{\fontsize{12}{14}\selectfont Table 13: ANOVA Comparison: Stepwise vs Interactions Model\par}
+\vspace{-1.6em}
+{\fontsize{12}{14}\selectfont Table 11: ANOVA Comparison: Stepwise vs Interactions Model\par}
 \end{center}
 
 An ANOVA is then conducted to compare the Stepwise Model and the Interaction Model, which are nested — the Interaction Model extends the Stepwise Model by including additional two-way interaction terms.
@@ -807,58 +772,78 @@ As a result, the simpler model with only main effects (**X1**, **X3**, and **X4*
 
 ```{r, fig.width=7.5, fig.height=2.5}
 par(mfrow = c(1, 3),        
-    mar = c(3.5, 3.5, 2, 1),
+    mar = c(4, 4, 1, 1),       # bottom margin increased to fit caption
     mgp = c(2, 0.6, 0),     
-    cex.main = 1.2,     # Title size increased
-    cex.lab = 1.2,      # Axis label size increased
-    cex.axis = 1.0)     # Tick mark size increased
+    cex.main = 1.2,     # Title size (not used now)
+    cex.lab = 1.2,      
+    cex.axis = 1.0)
 
-# Residuals vs. Fitted Values Plot
+# Residuals vs. Fitted Values Plot (no top title)
 plot(fitted(model), resid(model),
-     main = "Residuals vs Fitted",
+     main = "",
      xlab = "Fitted Values", ylab = "Residuals",
      pch = 19, col = "blue")
-res_fit_lm <- lm(resid(model) ~ fitted(model))  # Linear model
-abline(res_fit_lm, col = "red", lwd = 2)  # Linear trend line
+res_fit_lm <- lm(resid(model) ~ fitted(model))
+abline(res_fit_lm, col = "red", lwd = 2)
 coef_res_fit <- coef(res_fit_lm)
-text(min(fitted(model)), max(resid(model))* 0.9, 
+text(min(fitted(model)), max(resid(model)) * 0.9, 
      labels = paste0("y = ", round(coef_res_fit[2], 2), "x + ", round(coef_res_fit[1], 2)), 
      pos = 4, col = "red", cex = 1.2)
 
-# Residuals vs. Observation Order Plot
+# Residuals vs. Observation Order Plot (no top title)
 plot(resid(model), type = "p",
-     main = "Residuals vs Observation Order",
+     main = "",
      xlab = "Observation Index", ylab = "Residuals",
      pch = 19, col = "darkgreen")
-res_obs_lm <- lm(resid(model) ~ c(1:length(resid(model))))  # Linear model
-abline(res_obs_lm, col = "red", lwd = 2)  # Linear trend line
+res_obs_lm <- lm(resid(model) ~ seq_along(resid(model)))
+abline(res_obs_lm, col = "red", lwd = 2)
 coef_res_obs <- coef(res_obs_lm)
-text(1, max(resid(model))* 0.9, 
+text(1, max(resid(model)) * 0.9, 
      labels = paste0("y = ", round(coef_res_obs[2], 2), "x + ", round(coef_res_obs[1], 2)), 
      pos = 4, col = "red", cex = 1.2)
 
-# Scale-Location Plot (Spread-Location)
+# Scale-Location Plot (no top title)
 plot(fitted(model), sqrt(abs(resid(model))),
-     main = "Scale-Location Plot",
-     xlab = "Fitted Values", ylab = "√|Residuals|",
+     main = "",
+     xlab = "Fitted Values", ylab = expression(sqrt(abs(Residuals))),
      pch = 19, col = "purple")
-scale_loc_lm <- lm(sqrt(abs(resid(model))) ~ fitted(model))  # Linear model
-abline(scale_loc_lm, col = "red", lwd = 2)  # Linear trend line
+scale_loc_lm <- lm(sqrt(abs(resid(model))) ~ fitted(model))
+abline(scale_loc_lm, col = "red", lwd = 2)
 coef_scale_loc <- coef(scale_loc_lm)
-text(min(fitted(model)), max(sqrt(abs(resid(model))))* 0.95,
+text(min(fitted(model)), max(sqrt(abs(resid(model)))) * 0.95,
      labels = paste0("y = ", round(coef_scale_loc[2], 2), "x + ", round(coef_scale_loc[1], 2)), 
      pos = 4, col = "red", cex = 1.2)
 
-# Reset plot settings
+
+# Reset plotting parameters
 par(mfrow = c(1, 1))
 
+
 ```
+\begin{figure}[htbp]
+\vspace{-1em}
+  \centering
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    {\fontsize{12}{14}\selectfont Figure 6: Residuals vs Fitted plot\par}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    {\fontsize{12}{14}\selectfont Figure 7: Residuals vs Observation Order plot\par}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    {\fontsize{12}{14}\selectfont Figure 8: Scale-Location Plot\par}
+  \end{minipage}
+\end{figure}
 
 The `Residuals VS Fitted Values` plot shows that the residuals are
 randomly scattered around 0, with no clear pattern. This suggests that
 the assumptions of linearity and constant error variance are reasonably
 met. Secondly, the slightly negative but close to zero slope (-0.286) in
-the `Scale-Location Plot` indicates that the spread of residuals is
+the `Scale-Location` plot indicates that the spread of residuals is
 almost constant across fitted values. This is a sign that our model
 doesn't suffer from heteroscedasticity and is likely a good fit:
 homoscedasticity seems therefore satisfied.
@@ -915,7 +900,7 @@ As all variables have a VIF value under 5, it means that they don’t cause prob
     \includegraphics[width=0.8\linewidth]{figures/vif_table.png}
     \vspace{-0.5em}
     \captionsetup{font=normalsize}
-    \caption*{Table 14: Variance Inflation Factors (VIF)}
+    \caption*{Table 12: Variance Inflation Factors (VIF)}
   \end{figure}
 \end{minipage}
 
@@ -935,7 +920,7 @@ par(pty = "s",
     cex.axis = 1.4)
 
 qqnorm(resid(step_model), 
-       main = "Q-Q plot of Residuals", 
+       main = "", 
        xlab = "Theoretical Quantiles", 
        ylab = "Sample Quantiles",
        pch = 19, col = "steelblue",
@@ -949,14 +934,16 @@ dev.off()
 \begin{minipage}{0.65\textwidth}
 \justifying
 
-The \texttt{Q-Q plot of Residuals} indicates that most of the points align closely with the 45-degree line, suggesting that the residuals are approximately normally distributed. However, six points deviate at the extremes of the theoretical quantiles, which indicates the presence of potential outliers or heavy tails in the distribution. In a dataset with just 18 observations, small deviations in the Q-Q plot are usual. Outliers or deviations are common in such a small sample size and do not automatically suggest a violation of normality.
+The \texttt{Q-Q plot of Residuals} plot indicates that most of the points align closely with the 45-degree line, suggesting that the residuals are approximately normally distributed. However, six points deviate at the extremes of the theoretical quantiles, which indicates the presence of potential outliers or heavy tails in the distribution. In a dataset with just 18 observations, small deviations in the Q-Q plot are usual. Outliers or deviations are common in such a small sample size and do not automatically suggest a violation of normality.
 \end{minipage}
 \hfill
 \begin{minipage}{0.33\textwidth}
 \centering
 \vspace{-2em}  % Reduce space before image
 \includegraphics[width=0.9\linewidth]{figures/qqplot_residuals.png}
-\vspace{-1em}     % Reduce space after image
+\vspace{-1em}
+\parbox{\linewidth}{\fontsize{12}{14}\selectfont Figure 9: Q-Q plot of Residuals}
+
 \end{minipage}
 
 
