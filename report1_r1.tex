@@ -111,7 +111,7 @@
 \title{\textbf{Predicting Mortgage Yield using Regression Analysis}}
 \author{Group 42: Clara Delandre, Majandra Garcia, Paola Biocchi, Coline
 Leteurtre}
-\date{2025-06-13}
+\date{2025-06-16}
 
 \begin{document}
 \maketitle
@@ -386,8 +386,15 @@ better explains the Mortgage Yield, as shown by the significant
 F-statistic and p-value (p \textless{} 0.001). This indicates that at
 least one of the predictors is significantly related to Mortgage Yield.
 
+\includegraphics{report1_r1_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{verbatim}
+## pdf 
+##   2
+\end{verbatim}
+
 \begin{minipage}{0.42\textwidth}
-\includegraphics[width=1\linewidth]{full_model_summary_table.png}
+\includegraphics[width=1\linewidth]{figures/full_model_summary_table.png}
 \vspace{-0.2em}
 {\fontsize{12}{14}\selectfont Table 5: Summary of Full Linear Model}
 \end{minipage}
@@ -400,7 +407,7 @@ The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% a
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\linewidth, height=0.15\textheight]{full_model_fitstats_table.png}
+  \includegraphics[width=0.9\linewidth, height=0.15\textheight]{figures/full_model_fitstats_table.png}
   \caption*{{\fontsize{12}{14}\selectfont Table 6: Fit Statistics of Full Linear Model}}
 \end{figure}
 \addtocounter{table}{2}
@@ -423,14 +430,14 @@ model}\label{make-stepwise-regression-to-select-the-best-model}
 
 \begin{minipage}{0.48\textwidth}
 \centering
-\includegraphics[width=\linewidth]{stepwise_aic_table.png}
+\includegraphics[width=\linewidth]{figures/stepwise_aic_table.png}
 \vspace{-2em}
 {\fontsize{12}{14}\selectfont Table 7: Stepwise AIC Steps. AIC = Akaike Information Criterion. Lower AIC indicates a better trade-off between model fit and complexity.\par}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\textwidth}
 \centering
-\includegraphics[width=\linewidth]{stepwise_coef_table.png}\\
+\includegraphics[width=\linewidth]{figures/stepwise_coef_table.png}\\
 \vspace{-2em}
 {\fontsize{12}{14}\selectfont Table 8: Coefficients of Final Stepwise Model\par}
 \end{minipage}
@@ -479,7 +486,7 @@ We end up with : \texttt{mortYld} = 4.223 + 0.02229\(\cdot\)\textbf{X1}
 Let's now try a model with 2-way interactions.
 
 \begin{minipage}{0.4\textwidth}
-\includegraphics[width=1.5\linewidth]{interaction_model_coef.png}
+\includegraphics[width=1.5\linewidth]{figures/interaction_model_coef.png}
 \vspace{-0.3em}
 \fontsize{12}{14}\selectfont Table 10: Coefficients of Interaction Model\par
 \end{minipage}
@@ -492,7 +499,7 @@ highly significant (p < 0.001), indicating that at least one of the
 terms has a significant influence on Mortgage Yield.
 \end{minipage}
 
-\includegraphics[width=1\linewidth]{interaction_model_fitstats.png}
+\includegraphics[width=1\linewidth]{figures/interaction_model_fitstats.png}
 
 \par
 
@@ -576,7 +583,7 @@ Diagnostics}\label{model-assumptions-and-diagnostics}
 
 \subsection{Independence evaluation}\label{independence-evaluation}
 
-\includegraphics{Figs/unnamed-chunk-11-1.pdf}
+\includegraphics{report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf}
 
 The \texttt{Residuals\ VS\ Fitted\ Values} plot shows that the residuals
 are randomly scattered around 0, with no clear pattern. This suggests
@@ -607,7 +614,7 @@ As all variables have a VIF value under 5, it means that they don’t cause prob
 \vspace{-3em}
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{vif_table.png}
+    \includegraphics[width=0.8\linewidth]{figures/vif_table.png}
     \vspace{-0.5em}
     \captionsetup{font=normalsize}
     \caption*{Table 14: Variance Inflation Factors (VIF)}
@@ -629,13 +636,13 @@ The \texttt{Q-Q plot of Residuals} indicates that most of the points align close
 \begin{minipage}{0.33\textwidth}
 \centering
 \vspace{-2em}  % Reduce space before image
-\includegraphics[width=0.9\linewidth]{qqplot_residuals.png}
+\includegraphics[width=0.9\linewidth]{figures/qqplot_residuals.png}
 \vspace{-1em}     % Reduce space after image
 \end{minipage}
 
 \section{Conclusion}\label{conclusion}
 
-The final estimated model is : \(\hat{`mortYld`}\) = 4.22 +
+The final estimated model is : \(\hat{mortYld}\) = 4.22 +
 0.02\(\cdot\)\textbf{X1} - 0.002\(\cdot\)\textbf{X3} +
 0.0002\(\cdot\)\textbf{X4}\\
 where \textbf{X1} is the Loan-to-Mortgage Ratio, \textbf{X3} is the
