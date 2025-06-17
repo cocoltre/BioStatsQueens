@@ -288,7 +288,7 @@ We assume the classical linear regression assumptions:
 The model is fitted using Ordinary Least Squares (OLS), which minimizes the sum of squared residuals:  
 \vspace{-0.2cm}	
 \[
-\min_{\boldsymbol\beta} \sum_{i=1}^n \left( \text{mortYld}_i - \beta_0 - \sum_{j=1}^18 \beta_j X_{ji} \right)^2
+\min_{\boldsymbol\beta} \sum_{i=1}^n \left( \text{mortYld}_i - \beta_0 - \sum_{j=1}^(18) \beta_j X_{ji} \right)^2
 \]
 \vspace{-0.3cm}	
 
