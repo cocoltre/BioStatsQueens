@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.13)  16 JUN 2025 20:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex 2025.6.13)  17 JUN 2025 11:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -802,11 +802,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [4{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} <./figures/Figure 5.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 412.
-<figures/full_model_summary_table.png, id=59, 1334.9875pt x 696.6025pt>
+<figures/full_model_summary_table.png, id=59, 1363.0925pt x 696.6025pt>
 File: figures/full_model_summary_table.png Graphic file (type png)
 <use figures/full_model_summary_table.png>
 Package pdftex.def Info: figures/full_model_summary_table.png  used on input line 443.
-(pdftex.def)             Requested size: 198.2432pt x 103.44418pt.
+(pdftex.def)             Requested size: 198.23613pt x 101.30771pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 443--446
 [][]
@@ -830,30 +830,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <figures/stepwise_aic_table.png, id=73, 325.215pt x 144.54pt>
 File: figures/stepwise_aic_table.png Graphic file (type png)
 <use figures/stepwise_aic_table.png>
-Package pdftex.def Info: figures/stepwise_aic_table.png  used on input line 494.
+Package pdftex.def Info: figures/stepwise_aic_table.png  used on input line 496.
 (pdftex.def)             Requested size: 226.57707pt x 100.7009pt.
 <figures/stepwise_coef_table.png, id=74, 327.3831pt x 144.54pt>
 File: figures/stepwise_coef_table.png Graphic file (type png)
 <use figures/stepwise_coef_table.png>
-Package pdftex.def Info: figures/stepwise_coef_table.png  used on input line 506.
+Package pdftex.def Info: figures/stepwise_coef_table.png  used on input line 508.
 (pdftex.def)             Requested size: 226.57396pt x 100.03264pt.
-<figures/interaction_model_coef.png, id=75, 1330.9725pt x 670.505pt>
+<figures/interaction_model_coef.png, id=75, 1362.08875pt x 670.505pt>
 File: figures/interaction_model_coef.png Graphic file (type png)
 <use figures/interaction_model_coef.png>
-Package pdftex.def Info: figures/interaction_model_coef.png  used on input line 552.
-(pdftex.def)             Requested size: 295.00822pt x 148.6165pt.
+Package pdftex.def Info: figures/interaction_model_coef.png  used on input line 555.
+(pdftex.def)             Requested size: 295.00488pt x 145.21979pt.
 
-Overfull \hbox (58.99261pt too wide) in paragraph at lines 552--555
+Overfull \hbox (58.98927pt too wide) in paragraph at lines 555--558
 [][]
  []
 
 
-Underfull \hbox (badness 1112) in paragraph at lines 558--563
+Underfull \hbox (badness 1112) in paragraph at lines 561--566
 []\T1/lmr/m/n/12 The 2-way In-ter-ac-tion model,
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 558--563
+Underfull \hbox (badness 1888) in paragraph at lines 561--566
 \T1/lmr/m/n/12 which is more com-plex than
  []
 
@@ -876,40 +876,40 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [7 <./figures/interaction_model_coef.png>]
-<report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf, id=93, 542.025pt x 180.675pt>
+<report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf, id=94, 542.025pt x 180.675pt>
 File: report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf>
-Package pdftex.def Info: report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf  used on input line 660.
+Package pdftex.def Info: report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf  used on input line 665.
 (pdftex.def)             Requested size: 472.0459pt x 157.34862pt.
 
-Underfull \hbox (badness 4024) in paragraph at lines 666--666
+Underfull \hbox (badness 4024) in paragraph at lines 671--671
 []\T1/lmr/m/n/12 Figure 6: Resid-u-als vs
  []
 
 
-Underfull \hbox (badness 1189) in paragraph at lines 666--666
+Underfull \hbox (badness 1189) in paragraph at lines 671--671
 \T1/lmr/m/n/12 Fit-ted Plot. It dis-plays
  []
 
 
-Underfull \hbox (badness 2229) in paragraph at lines 666--666
+Underfull \hbox (badness 2229) in paragraph at lines 671--671
 \T1/lmr/m/n/12 resid-ual spread to as-sess
  []
 
 
-Underfull \hbox (badness 1762) in paragraph at lines 674--674
+Underfull \hbox (badness 1762) in paragraph at lines 679--679
 []\T1/lmr/m/n/12 Figure 8: Scale-Location
  []
 
 
-Underfull \hbox (badness 1590) in paragraph at lines 674--674
+Underfull \hbox (badness 1590) in paragraph at lines 679--679
 \T1/lmr/m/n/12 tal pat-tern sug-gests con-
  []
 
-<figures/vif_table.png, id=94, 108.405pt x 93.951pt>
+<figures/vif_table.png, id=95, 108.405pt x 93.951pt>
 File: figures/vif_table.png Graphic file (type png)
 <use figures/vif_table.png>
-Package pdftex.def Info: figures/vif_table.png  used on input line 707.
+Package pdftex.def Info: figures/vif_table.png  used on input line 712.
 (pdftex.def)             Requested size: 108.40968pt x 93.95506pt.
 
 
@@ -921,13 +921,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [8 <./report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf>]
-<figures/qqplot_residuals.png, id=107, 652.4375pt x 652.4375pt>
+<figures/qqplot_residuals.png, id=108, 652.4375pt x 652.4375pt>
 File: figures/qqplot_residuals.png Graphic file (type png)
 <use figures/qqplot_residuals.png>
-Package pdftex.def Info: figures/qqplot_residuals.png  used on input line 729.
+Package pdftex.def Info: figures/qqplot_residuals.png  used on input line 734.
 (pdftex.def)             Requested size: 140.19168pt x 140.19168pt.
 
-Underfull \hbox (badness 1584) in paragraph at lines 731--731
+Underfull \hbox (badness 1584) in paragraph at lines 736--736
 \T1/lmr/m/n/12 u-als. De-vi-a-tions from the
  []
 
@@ -949,16 +949,16 @@ L3 programming layer <2025-05-26>
 Here is how much of TeX's memory you used:
  15406 strings out of 469867
  248859 string characters out of 5482744
- 663830 words of memory out of 5000000
+ 664830 words of memory out of 5000000
  43384 multiletter control sequences out of 15000+600000
  711764 words of font info for 106 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  89i,11n,93p,876b,475s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on report1_r1.pdf (9 pages, 1623004 bytes).
+</Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmex10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr6.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmri12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmro12.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></Users/colineleteurtre/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
+Output written on report1_r1.pdf (9 pages, 1663528 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 195 compressed objects within 2 object streams
+ 270 PDF objects out of 1000 (max. 8388607)
+ 198 compressed objects within 2 object streams
  41 named destinations out of 1000 (max. 500000)
  210 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -144,7 +144,7 @@
 \title{\textbf{Predicting Mortgage Yield using Regression Analysis}}
 \author{Group 42: Clara Delandre, Majandra Garcia, Paola Biocchi, Coline
 Leteurtre}
-\date{2025-06-16}
+\date{2025-06-17}
 
 \begin{document}
 \maketitle
@@ -400,7 +400,7 @@ correlated.
 The model is fitted using Ordinary Least Squares (OLS), which minimizes
 the sum of squared residuals:\\
 \vspace{-0.2cm} \[
-\min_{\boldsymbol\beta} \sum_{i=1}^n \left( \text{mortYld}_i - \beta_0 - \sum_{j=1}^6 \beta_j X_{ji} \right)^2
+\min_{\boldsymbol\beta} \sum_{i=1}^n \left( \text{mortYld}_i - \beta_0 - \sum_{j=1}^18 \beta_j X_{ji} \right)^2
 \] \vspace{-0.3cm}
 
 \subsection{Null Model vs Full Model
@@ -409,12 +409,12 @@ Comparison}\label{null-model-vs-full-model-comparison}
 \begin{table}[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lllrlll}
 \toprule
 Model & Residual\_DF & RSS & DF & SS & F-statistic & p-value\\
 \midrule
-mortYld \textasciitilde{} 1 & 17 & 0.85 & NA & NA & NA & NA\\
-mortYld \textasciitilde{} X1 + X2 + X3 + X4 + X5 + X6 & 11 & 0.11 & 6 & 0.74 & 12.33 & 0\\
+mortYld \textasciitilde{} 1 & 17.00 & 0.85 & NA & NA & NA & NA\\
+mortYld \textasciitilde{} X1 + X2 + X3 + X4 + X5 + X6 & 11.00 & 0.11 & 6 & 0.74 & 12.33 & 2.52e-04\\
 \bottomrule
 \end{tabular}
 \endgroup{}
@@ -458,7 +458,7 @@ The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% a
 \toprule
 Adjusted\_$R^{2}$ & $R^2$ & Std.Error & DF & F-statistic & p-value\\
 \midrule
-0.80 & 0.87 & 0.10 & 6 & 12.33 & 0.00\\
+0.80 & 0.87 & 0.10 & 6 & 12.33 & 2.52e-04\\
 \bottomrule
 \end{tabular}
 \endgroup{}
@@ -481,10 +481,12 @@ statistically significant individual contributions: only \textbf{X1} and
 variables, \textbf{X2}, \textbf{X5} and \textbf{X6}, do not show
 significant individual effects. This suggests that a reduced model may
 be more appropriate.\\
-We end up with : \(\hat{mortYld}\) = 4.29 + 0.02\(\cdot\)\textbf{X1} +
-0.0\(\cdot\)\textbf{X2} - 0.002\(\cdot\)\textbf{X3} +
-0.0002\(\cdot\)\textbf{X4} + 0.001\(\cdot\)\textbf{X5} +
-0.0002\(\cdot\)\textbf{X6}
+We end up with : \(\hat{mortYld}\) = 4.29 + 0.020\(\cdot\)\textbf{X1} +
+1.36\(\cdot\)\(10^{-5}\)\(\cdot\)\textbf{X2} -
+1.58\(\cdot\)\(10^{-3}\)\(\cdot\)\textbf{X3} +
+2.02\(\cdot\)\(10^{-4}\)\(\cdot\)\textbf{X4} +
+1.28\(\cdot\)\(10^{-3}\)\(\cdot\)\textbf{X5} +
+2.36\(\cdot\)\(10^{-4}\)\(\cdot\)\textbf{X6}
 
 \subsection{Make stepwise regression to select the best
 model}\label{make-stepwise-regression-to-select-the-best-model}
@@ -510,11 +512,11 @@ model}\label{make-stepwise-regression-to-select-the-best-model}
 \begin{table}[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
-\begin{tabular}{rrrrrl}
+\begin{tabular}{lrlrrl}
 \toprule
 Adjusted\_$R^{2}$ & $R^2$ & Std.Error & DF & F-statistic & p-value\\
 \midrule
-0.83 & 0.86 & 0.09 & 3 & 29.49 & 0.00\\
+0.83 & 0.86 & 0.091 & 3 & 29.49 & 2.62e-06\\
 \bottomrule
 \end{tabular}
 \endgroup{}
@@ -543,8 +545,9 @@ useful to the model. Though the final model is simpler, it explains the
 data just as well or better than more complex models. The Residual
 Standard Error (0.09) is low, and the overall model is highly
 significant (p \textless{} 0.001), indicating a good fit.\\
-We end up with : \(\hat{mortYld}\) = 4.22 + 0.02\(\cdot\)\textbf{X1} -
-0.002\(\cdot\)\textbf{X3} + 0.0002\(\cdot\)\textbf{X4}\\
+We end up with : \(\hat{mortYld}\) = 4.22 + 0.022\(\cdot\)\textbf{X1} -
+1.86\(\cdot\)\(10^{-3}\)\(\cdot\)\textbf{X3} +
+2.25\(\cdot\)\(10^{-4}\)\(\cdot\)\textbf{X4}\\
 \strut \\
 Let's now try a model with 2-way interactions.
 
@@ -569,7 +572,7 @@ terms has a significant influence on Mortgage Yield.
 \toprule
 Adjusted\_$R^{2}$ & $R^2$ & Std.Error & DF & F-statistic & p-value\\
 \midrule
-0.80 & 0.87 & 0.10 & 6 & 12.25 & 0.00\\
+0.80 & 0.87 & 0.10 & 6 & 12.25 & 2.60e-04\\
 \bottomrule
 \end{tabular}
 \endgroup{}
@@ -585,11 +588,13 @@ None of the variables show statistically significant individual
 contributions: only the intercept appears to be moderately significant
 to fit the model (p \textless{} 0.05). This suggests that a reduced
 model may be more appropriate.\\
-We end up with : \(\hat{mortYld}\) = 5.37 + 0.007\(\cdot\)\textbf{X1} -
-0.0001\(\cdot\)\textbf{X3} - 0.0009\(\cdot\)\textbf{X4} +
-0.0\(\cdot\)\textbf{X1}:\textbf{X3} +
-0.0\(\cdot\)\textbf{X1}:\textbf{X4} +
-0.0\(\cdot\)\textbf{X3}:\textbf{X4}\\
+We end up with : \(\hat{mortYld}\) = 5.37 +
+6.91\(\cdot\)\(10^{-3}\)\(\cdot\)\textbf{X1} -
+1.04\(\cdot\)\(10^{-4}\)\(\cdot\)\textbf{X3} -
+9.10\(\cdot\)\(10^{-4}\)\(\cdot\)\textbf{X4} -
+2.09\(\cdot\)\(10^{-5}\)\(\cdot\)\textbf{X1}:\textbf{X3} +
+1.50\(\cdot\)\(10^{-5}\)\(\cdot\)\textbf{X1}:\textbf{X4} -
+4.75\(\cdot\)\(10^{-8}\)\(\cdot\)\textbf{X3}:\textbf{X4}\\
 \strut \\
 We decided not to include a 3-way Interaction model in our analysis.
 Given the small sample size (18 observations), adding high-order
@@ -601,12 +606,12 @@ difficult to interpret meaningfully.
 
 \begingroup\fontsize{8}{10}\selectfont
 
-\begin{longtable}[t]{lrrrrr}
+\begin{longtable}[t]{lrrlrr}
 \toprule
 Model & Adjusted\_R² & R² & RSE & AIC & F-statistic\\
 \midrule
 Full Model & 0.80 & 0.87 & 0.10 & -24.71 & 12.33\\
-Stepwise Model & 0.83 & 0.86 & 0.09 & -29.73 & 29.49\\
+Stepwise Model & 0.83 & 0.86 & 0.091 & -29.73 & 29.49\\
 2-Way Interaction Model & 0.80 & 0.87 & 0.10 & -24.60 & 12.25\\
 \bottomrule
 \end{longtable}
@@ -627,12 +632,12 @@ model significance and parsimony.
 \begin{table}[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lllrlll}
 \toprule
 Model & Residual\_DF & RSS & DF & SS & F-statistic & p-value\\
 \midrule
-Stepwise model & 14 & 0.12 & NA & NA & NA & NA\\
-Interaction model & 11 & 0.11 & 3 & 0.01 & 0.18 & 0.91\\
+Stepwise model & 14.00 & 0.12 & NA & NA & NA & NA\\
+Interaction model & 11.00 & 0.11 & 3 & 5.46e-03 & 0.18 & 0.91\\
 \bottomrule
 \end{tabular}
 \endgroup{}
@@ -735,8 +740,8 @@ The \texttt{Q-Q plot of Residuals} plot indicates that most of the points align 
 \section{Conclusion}\label{conclusion}
 
 The final estimated model is : \(\hat{mortYld}\) = 4.22 +
-0.02\(\cdot\)\textbf{X1} - 0.002\(\cdot\)\textbf{X3} +
-0.0002\(\cdot\)\textbf{X4}\\
+0.022\(\cdot\)\textbf{X1} - 1.86\(\cdot\)\(10^{-3}\)\(\cdot\)\textbf{X3}
++ 2.25\(\cdot\)\(10^{-4}\)\(\cdot\)\textbf{X4}\\
 where \textbf{X1} is the Loan-to-Mortgage Ratio, \textbf{X3} is the
 Savings per New Unit Built, and \textbf{X4} is the Savings per Capita.
 

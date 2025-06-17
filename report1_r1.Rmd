@@ -1,51 +1,49 @@
 ---
-title: "**Predicting Mortgage Yield using Regression Analysis**"
-author: "Group 42: Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurtre"
+title: '**Predicting Mortgage Yield using Regression Analysis**'
+author: 'Group 42: Clara Delandre, Majandra Garcia, Paola Biocchi, Coline Leteurtre'
 date: "`r Sys.Date()`"
-output: 
+output:
   pdf_document:
     number_sections: true
     toc: false
     latex_engine: pdflatex
     keep_tex: true
+  html_document:
+    toc: false
+    df_print: paged
 bibliography: refs.bib
 geometry: top=2.5cm, bottom=2.0cm, left=2.5cm, right=2.5cm
 fontsize: 12pt
 header-includes:
-  - \usepackage{graphicx}
-  - \usepackage{amsmath}
-  - \usepackage{booktabs}
-  - \usepackage[font=footnotesize,skip=4pt]{caption}
-  - \usepackage{caption}
-  - \usepackage{fancyhdr}
-  - \usepackage{ragged2e}
-  - \usepackage{multicol}
-  - \justifying
-  - \pagestyle{fancy}
-  - \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurtre}
-  - \fancyfoot[C]{\thepage}
-  - \usepackage{titlesec}
-  # Adjust spacing between title, author, and date
-  - \titlespacing*{\title}{0pt}{0pt}{0pt}  # Title has no space above or below
-  - \titlespacing*{\author}{0pt}{-0.5cm}{0pt}  # Author moved closer to title (less space)
-  - \titlespacing*{\date}{0pt}{-0.5cm}{0pt}  # Date moved closer to author (less space)
-  # Adjust space before Introduction
-  - \titlespacing*{\section}{0pt}{0.5cm}{0pt}  # Space before first section (Introduction) reduced
-  # Add more space between sections and subsections
-  - \titlespacing*{\subsection}{0pt}{0.5cm}{0pt}  # Add space between section and subsection (e.g. 2 and 2.1)
-  - \titlespacing*{\subsubsection}{0pt}{0.8cm}{0pt}  # Add space between subsections (e.g. 2.1 and 2.1.1)
-  - \usepackage{etoolbox}
-  - \patchcmd{\maketitle}{\vspace*{2\baselineskip}}{}{}{}  # Remove extra space in title block
-  - \usepackage{titling}
-  - \setlength{\droptitle}{-1.5cm}  # Moves the whole title block up
-  - \setlength{\headheight}{12pt}  # Minimal headheight to avoid warnings
-  - \setlength{\headsep}{5pt}  # Reduce space between header and text
-  - \setlength{\parindent}{0pt}  # Reduce paragraph indent
-  - \setlength{\parskip}{1pt}  # Reduce paragraph spacing
-
-
-editor_options: 
-  markdown: 
+- \usepackage{graphicx}
+- \usepackage{amsmath}
+- \usepackage{booktabs}
+- \usepackage[font=footnotesize,skip=4pt]{caption}
+- \usepackage{caption}
+- \usepackage{fancyhdr}
+- \usepackage{ragged2e}
+- \usepackage{multicol}
+- \justifying
+- \pagestyle{fancy}
+- \fancyhead[L]{Delandre, Garcia, Biocchi, Leteurtre}
+- \fancyfoot[C]{\thepage}
+- \usepackage{titlesec}
+- \titlespacing*{\title}{0pt}{0pt}{0pt}
+- "\\titlespacing*{\\author}{0pt}{-0.5cm}{0pt}"
+- "\\titlespacing*{\\date}{0pt}{-0.5cm}{0pt}"
+- \titlespacing*{\section}{0pt}{0.5cm}{0pt}
+- \titlespacing*{\subsection}{0pt}{0.5cm}{0pt}
+- \titlespacing*{\subsubsection}{0pt}{0.8cm}{0pt}
+- \usepackage{etoolbox}
+- \patchcmd{\maketitle}{\vspace*{2\baselineskip}}{}{}{}
+- \usepackage{titling}
+- "\\setlength{\\droptitle}{-1.5cm}"
+- \setlength{\headheight}{12pt}
+- \setlength{\headsep}{5pt}
+- \setlength{\parindent}{0pt}
+- \setlength{\parskip}{1pt}
+editor_options:
+  markdown:
     wrap: 72
 ---
 
@@ -290,7 +288,7 @@ We assume the classical linear regression assumptions:
 The model is fitted using Ordinary Least Squares (OLS), which minimizes the sum of squared residuals:  
 \vspace{-0.2cm}	
 \[
-\min_{\boldsymbol\beta} \sum_{i=1}^n \left( \text{mortYld}_i - \beta_0 - \sum_{j=1}^6 \beta_j X_{ji} \right)^2
+\min_{\boldsymbol\beta} \sum_{i=1}^n \left( \text{mortYld}_i - \beta_0 - \sum_{j=1}^18 \beta_j X_{ji} \right)^2
 \]
 \vspace{-0.3cm}	
 
@@ -303,12 +301,30 @@ full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
 
 anova_result <- anova(null_model, full_model)
 
-# Ajouter les noms des modèles pour plus de clarté
-anova_df <- as.data.frame(anova_result)
+# Format numeric values: if ≥ 0.095 show 2 decimals, else use scientific notation
+anova_df <- as.data.frame(
+  Map(function(col, name) {
+    if (is.numeric(col)) {
+      sapply(col, function(x) {
+        if (is.na(x)) {
+          NA
+        } else if (abs(x) >= 0.095) {
+          sprintf("%.2f", x)
+        } else {
+          formatC(x, format = "e", digits = 2)
+        }
+      })
+    } else {
+      col
+    }
+  }, anova_result, names(anova_result))
+)
+
+anova_df$`Df` <- as.integer(anova_df$`Df`)
 anova_df$Model <- c("mortYld ~ 1", "mortYld ~ X1 + X2 + X3 + X4 + X5 + X6")
 
 # Réorganiser les colonnes
-anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum of Sq", "F", "Pr(>F)")]
+anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum.of.Sq", "F", "Pr..F.")]
 colnames(anova_df) <- c("Model", "Residual_DF", "RSS", "DF", "SS", "F-statistic", "p-value")
 
 # Affichage avec kable
@@ -337,7 +353,15 @@ model_summary <- broom::tidy(model)
 model_summary <- as.data.frame(
   Map(function(col, name) {
     if (is.numeric(col) && !grepl("^df", name)) {
-      sprintf("%.2f", col)
+      sapply(col, function(x) {
+        if (abs(x) >= 0.095) {
+          sprintf("%.2f", x)
+        } else if (abs(x) >= 0.0095) {
+          sprintf("%.3f", x)
+        } else {
+          formatC(x, format = "e", digits = 2)
+        }
+      })
     } else {
       col
     }
@@ -420,7 +444,7 @@ model_stats$`Adjusted\\_$R^{2}$` <- sprintf("%.2f", model_stats$`Adjusted\\_$R^{
 model_stats$`Std.Error` <- sprintf("%.2f", model_stats$`Std.Error`)
 model_stats$`F-statistic` <- round(model_stats$`F-statistic`, 2)
 model_stats$`DF` <- as.integer(model_stats$`DF`)
-model_stats$`p-value` <- sprintf("%.2f", model_stats$`p-value`)
+model_stats$`p-value` <- formatC(model_stats$`p-value`, format = "e", digits = 2)
 
 # Display table (optional)
 kable(model_stats,
@@ -437,8 +461,8 @@ The intercept appears to be strongly significant to fit the model (p \<
 statistically significant individual contributions: only **X1** and **X3** show
 weak significance (p $\approx$ 0.05), while the other variables, **X2**, **X5**
 and **X6**, do not show significant individual effects. This suggests that a reduced model may be more appropriate.\
-We end up with : $\hat{mortYld}$ = 4.29 + 0.02$\cdot$**X1** + 0.0$\cdot$**X2** - 0.002$\cdot$**X3** + 0.0002$\cdot$**X4** + 0.001$\cdot$**X5** +
-0.0002$\cdot$**X6**
+We end up with : $\hat{mortYld}$ = 4.29 + 0.020$\cdot$**X1** + 1.36$\cdot$$10^{-5}$$\cdot$**X2** - 1.58$\cdot$$10^{-3}$$\cdot$**X3** + 2.02$\cdot$$10^{-4}$$\cdot$**X4** + 1.28$\cdot$$10^{-3}$$\cdot$**X5** +
+2.36$\cdot$$10^{-4}$$\cdot$**X6**
 
 ## Make stepwise regression to select the best model
 
@@ -482,10 +506,23 @@ table1 <- gtable_add_grob(
 step_model <- stepAIC(model, direction = "both", trace = FALSE)
 step_summary <- broom::tidy(step_model)
 
-# Format numeric columns to 2 decimals for all numeric columns
-step_summary <- as.data.frame(lapply(step_summary, function(x) {
-  if(is.numeric(x)) sprintf("%.2f", x) else x
-}))
+step_summary <- as.data.frame(
+  Map(function(col, name) {
+    if (is.numeric(col) && !grepl("^df", name)) {
+      sapply(col, function(x) {
+        if (abs(x) >= 0.095) {
+          sprintf("%.2f", x)
+        } else if (abs(x) >= 0.0095) {
+          sprintf("%.3f", x)
+        } else {
+          formatC(x, format = "e", digits = 2)
+        }
+      })
+    } else {
+      col
+    }
+  }, step_summary, names(step_summary))
+)
 
 colnames(step_summary) <- c("Term", "Estimate", "Std.Error", "F-statistic", "p-value")
 
@@ -539,13 +576,12 @@ step_glance <- step_glance[, c("Adjusted\\_$R^{2}$", "$R^2$", "Std.Error", "DF",
 # Convertir en data.frame pour mise en forme fine
 step_glance <- as.data.frame(step_glance)
 
-# Appliquer un arrondi classique sauf pour la p-value
 step_glance$`$R^2$` <- round(step_glance$`$R^2$`, 2)
-step_glance$`Adjusted\\_$R^{2}$` <- round(step_glance$`Adjusted\\_$R^{2}$`, 2)
-step_glance$`Std.Error` <- round(step_glance$`Std.Error`, 2)
+step_glance$`Adjusted\\_$R^{2}$` <- sprintf("%.2f", step_glance$`Adjusted\\_$R^{2}$`)
+step_glance$`Std.Error` <- sprintf("%.3f", step_glance$`Std.Error`)
 step_glance$`F-statistic` <- round(step_glance$`F-statistic`, 2)
-step_glance$`DF` <- as.integer(step_glance$`DF`)  # entier
-step_glance$`p-value` <- sprintf("%.2f", step_glance$`p-value`)
+step_glance$`DF` <- as.integer(step_glance$`DF`)
+step_glance$`p-value` <- formatC(step_glance$`p-value`, format = "e", digits = 2)
 
 # Afficher en tableau LaTeX
 kable(step_glance,
@@ -575,8 +611,8 @@ useful to the model. Though the final model is simpler, it explains the
 data just as well or better than more complex models. The Residual
 Standard Error (0.09) is low, and the overall model is highly
 significant (p \< 0.001), indicating a good fit.\
-We end up with : $\hat{mortYld}$ = 4.22 + 0.02$\cdot$**X1** -
-0.002$\cdot$**X3** + 0.0002$\cdot$**X4**\
+We end up with : $\hat{mortYld}$ = 4.22 + 0.022$\cdot$**X1** -
+1.86$\cdot$$10^{-3}$$\cdot$**X3** + 2.25$\cdot$$10^{-4}$$\cdot$**X4**\
 \
 Let's now try a model with 2-way interactions.
 
@@ -585,9 +621,23 @@ Let's now try a model with 2-way interactions.
 interaction_model <- lm(mortYld ~ X1 + X3 + X4 + X1:X3 + X1:X4 + X3:X4, data = df)
 interaction_coef <- broom::tidy(interaction_model)
 
-interaction_coef <- as.data.frame(lapply(interaction_coef, function(x) {
-  if(is.numeric(x)) sprintf("%.2f", x) else x
-}))
+interaction_coef <- as.data.frame(
+  Map(function(col, name) {
+    if (is.numeric(col) && !grepl("^df", name)) {
+      sapply(col, function(x) {
+        if (abs(x) >= 0.095) {
+          sprintf("%.2f", x)
+        } else if (abs(x) >= 0.0095) {
+          sprintf("%.3f", x)
+        } else {
+          formatC(x, format = "e", digits = 2)
+        }
+      })
+    } else {
+      col
+    }
+  }, interaction_coef, names(interaction_coef))
+)
 
 colnames(interaction_coef) <- c("Term", "Estimate", "Std.Error", "F-statistic", "p-value")
 
@@ -649,13 +699,13 @@ interaction_stats <- interaction_stats[, c("Adjusted\\_$R^{2}$", "$R^2$", "Std.E
 # Convert to data.frame
 interaction_stats <- as.data.frame(interaction_stats)
 
-# Apply rounding
 interaction_stats$`$R^2$` <- round(interaction_stats$`$R^2$`, 2)
 interaction_stats$`Adjusted\\_$R^{2}$` <- sprintf("%.2f", interaction_stats$`Adjusted\\_$R^{2}$`)
 interaction_stats$`Std.Error` <- sprintf("%.2f", interaction_stats$`Std.Error`)
 interaction_stats$`F-statistic` <- round(interaction_stats$`F-statistic`, 2)
 interaction_stats$`DF` <- as.integer(interaction_stats$`DF`)
-interaction_stats$`p-value` <- sprintf("%.2f", interaction_stats$`p-value`)
+interaction_stats$`p-value` <- formatC(interaction_stats$`p-value`, format = "e", digits = 2)
+
 
 # Display table (optional)
 kable(interaction_stats,
@@ -675,7 +725,7 @@ None of the variables show statistically significant individual
 contributions: only the intercept appears to be moderately significant
 to fit the model (p \< 0.05). This suggests that a reduced model may be
 more appropriate.\
-We end up with : $\hat{mortYld}$ = 5.37 + 0.007$\cdot$**X1** - 0.0001$\cdot$**X3** - 0.0009$\cdot$**X4** + 0.0$\cdot$**X1**:**X3** + 0.0$\cdot$**X1**:**X4** + 0.0$\cdot$**X3**:**X4**\
+We end up with : $\hat{mortYld}$ = 5.37 + 6.91$\cdot$$10^{-3}$$\cdot$**X1** - 1.04$\cdot$$10^{-4}$$\cdot$**X3** - 9.10$\cdot$$10^{-4}$$\cdot$**X4** - 2.09$\cdot$$10^{-5}$$\cdot$**X1**:**X3** + 1.50$\cdot$$10^{-5}$$\cdot$**X1**:**X4** - 4.75$\cdot$$10^{-8}$$\cdot$**X3**:**X4**\
 \
 We decided not to include a 3-way Interaction model in our analysis.
 Given the small sample size (18 observations), adding high-order
@@ -720,6 +770,12 @@ model_metrics <- data.frame(
 # Then rename the columns for LaTeX display
 colnames(model_metrics) <- c("Model", "Adjusted_R²", "R²", "RSE", "AIC", "F-statistic")
 
+model_metrics$RSE <- c(
+  sprintf("%.2f", model_metrics$RSE[1]),
+  sprintf("%.3f", model_metrics$RSE[2]),
+  sprintf("%.2f", model_metrics$RSE[3])
+)
+
 
 # Display table
 kable(model_metrics, digits = 2, escape=FALSE) %>%
@@ -743,12 +799,30 @@ parsimony.
 # Compare with ANOVA and convert to data frame
 anova_result <- anova(step_model, interaction_model)
 
-# Ajouter les noms des modèles pour plus de clarté
-anova_df <- as.data.frame(anova_result)
+# Format numeric values: if ≥ 0.095 show 2 decimals, else use scientific notation
+anova_df <- as.data.frame(
+  Map(function(col, name) {
+    if (is.numeric(col)) {
+      sapply(col, function(x) {
+        if (is.na(x)) {
+          NA
+        } else if (abs(x) >= 0.095) {
+          sprintf("%.2f", x)
+        } else {
+          formatC(x, format = "e", digits = 2)
+        }
+      })
+    } else {
+      col
+    }
+  }, anova_result, names(anova_result))
+)
+
+anova_df$`Df` <- as.integer(anova_df$`Df`)
 anova_df$Model <- c("Stepwise model", "Interaction model")
 
 # Réorganiser les colonnes
-anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum of Sq", "F", "Pr(>F)")]
+anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum.of.Sq", "F", "Pr..F.")]
 colnames(anova_df) <- c("Model", "Residual_DF", "RSS", "DF", "SS", "F-statistic", "p-value")
 
 # Affichage avec kable
@@ -787,7 +861,7 @@ res_fit_lm <- lm(resid(model) ~ fitted(model))
 abline(res_fit_lm, col = "red", lwd = 2)
 coef_res_fit <- coef(res_fit_lm)
 text(min(fitted(model)), max(resid(model)) * 0.9, 
-     labels = paste0("y = ", round(coef_res_fit[2], 2), "x + ", round(coef_res_fit[1], 2)), 
+     labels = paste0("y = ", formatC(coef_res_fit[2], format = "e", digits=2), "*x + ", formatC(coef_res_fit[1], format = "e", digits=2)), 
      pos = 4, col = "red", cex = 1.2)
 
 # Residuals vs. Observation Order Plot (no top title)
@@ -799,7 +873,7 @@ res_obs_lm <- lm(resid(model) ~ seq_along(resid(model)))
 abline(res_obs_lm, col = "red", lwd = 2)
 coef_res_obs <- coef(res_obs_lm)
 text(1, max(resid(model)) * 0.9, 
-     labels = paste0("y = ", round(coef_res_obs[2], 2), "x + ", round(coef_res_obs[1], 2)), 
+     labels = paste0("y = ", formatC(coef_res_obs[2], format = "e", digits=2), "*x + ", sprintf("%.3f", coef_res_obs[1])), 
      pos = 4, col = "red", cex = 1.2)
 
 # Scale-Location Plot (no top title)
@@ -811,7 +885,7 @@ scale_loc_lm <- lm(sqrt(abs(resid(model))) ~ fitted(model))
 abline(scale_loc_lm, col = "red", lwd = 2)
 coef_scale_loc <- coef(scale_loc_lm)
 text(min(fitted(model)), max(sqrt(abs(resid(model)))) * 0.95,
-     labels = paste0("y = ", round(coef_scale_loc[2], 2), "x + ", round(coef_scale_loc[1], 2)), 
+     labels = paste0("y = ", round(coef_scale_loc[2], 2), "*x + ", round(coef_scale_loc[1], 2)), 
      pos = 4, col = "red", cex = 1.2)
 
 
@@ -945,8 +1019,8 @@ The \texttt{Q-Q plot of Residuals} plot indicates that most of the points align 
 
 
 # Conclusion
-The final estimated model is : $\hat{mortYld}$ = 4.22 + 0.02$\cdot$**X1** -
-0.002$\cdot$**X3** + 0.0002$\cdot$**X4**\
+The final estimated model is : $\hat{mortYld}$ = 4.22 + 0.022$\cdot$**X1** -
+1.86$\cdot$$10^{-3}$$\cdot$**X3** + 2.25$\cdot$$10^{-4}$$\cdot$**X4**\
 where **X1** is the Loan-to-Mortgage Ratio, **X3** is the Savings per New Unit
 Built, and **X4** is the Savings per Capita.
 
