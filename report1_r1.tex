@@ -400,7 +400,7 @@ correlated.
 The model is fitted using Ordinary Least Squares (OLS), which minimizes
 the sum of squared residuals:\\
 \vspace{-0.2cm} \[
-\min_{\boldsymbol\beta} \sum_{i=1}^n \left( \text{mortYld}_i - \beta_0 - \sum_{j=1}^18 \beta_j X_{ji} \right)^2
+\min_{\boldsymbol\beta} \sum_{i=1}^{18} \left( \text{mortYld}_i - \beta_0 - \sum_{j=1}^{6} \beta_j X_{ji} \right)^2
 \] \vspace{-0.3cm}
 
 \subsection{Null Model vs Full Model
@@ -409,12 +409,12 @@ Comparison}\label{null-model-vs-full-model-comparison}
 \begin{table}[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
-\begin{tabular}{lllrlll}
+\begin{tabular}{lrlrlll}
 \toprule
 Model & Residual\_DF & RSS & DF & SS & F-statistic & p-value\\
 \midrule
-mortYld \textasciitilde{} 1 & 17.00 & 0.85 & NA & NA & NA & NA\\
-mortYld \textasciitilde{} X1 + X2 + X3 + X4 + X5 + X6 & 11.00 & 0.11 & 6 & 0.74 & 12.33 & 2.52e-04\\
+mortYld \textasciitilde{} 1 & 17 & 0.85 & NA & NA & NA & NA\\
+mortYld \textasciitilde{} X1 + X2 + X3 + X4 + X5 + X6 & 11 & 0.11 & 6 & 0.74 & 12.33 & 2.52e-04\\
 \bottomrule
 \end{tabular}
 \endgroup{}
@@ -632,12 +632,12 @@ model significance and parsimony.
 \begin{table}[!h]
 \centering\begingroup\fontsize{8}{10}\selectfont
 
-\begin{tabular}{lllrlll}
+\begin{tabular}{lrlrlll}
 \toprule
 Model & Residual\_DF & RSS & DF & SS & F-statistic & p-value\\
 \midrule
-Stepwise model & 14.00 & 0.12 & NA & NA & NA & NA\\
-Interaction model & 11.00 & 0.11 & 3 & 5.46e-03 & 0.18 & 0.91\\
+Stepwise model & 14 & 0.12 & NA & NA & NA & NA\\
+Interaction model & 11 & 0.11 & 3 & 5.46e-03 & 0.18 & 0.91\\
 \bottomrule
 \end{tabular}
 \endgroup{}
