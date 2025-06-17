@@ -860,8 +860,8 @@ plot(fitted(model), resid(model),
 res_fit_lm <- lm(resid(model) ~ fitted(model))
 abline(res_fit_lm, col = "red", lwd = 2)
 coef_res_fit <- coef(res_fit_lm)
-text(min(fitted(model)), max(resid(model)) * 0.9, 
-     labels = paste0("y = ", formatC(coef_res_fit[2], format = "e", digits=2), "*x + ", formatC(coef_res_fit[1], format = "e", digits=2)), 
+text(min(fitted(model)), max(resid(model)) * 0.8, 
+     labels = paste0("y = ", formatC(coef_res_fit[2], format = "e", digits=2), "\u00B7x\n+ ", formatC(coef_res_fit[1], format = "e", digits=2)), 
      pos = 4, col = "red", cex = 1.2)
 
 # Residuals vs. Observation Order Plot (no top title)
@@ -873,7 +873,7 @@ res_obs_lm <- lm(resid(model) ~ seq_along(resid(model)))
 abline(res_obs_lm, col = "red", lwd = 2)
 coef_res_obs <- coef(res_obs_lm)
 text(1, max(resid(model)) * 0.9, 
-     labels = paste0("y = ", formatC(coef_res_obs[2], format = "e", digits=2), "*x + ", sprintf("%.3f", coef_res_obs[1])), 
+     labels = paste0("y = ", formatC(coef_res_obs[2], format = "e", digits=2), "\u00B7x + ", sprintf("%.3f", coef_res_obs[1])), 
      pos = 4, col = "red", cex = 1.2)
 
 # Scale-Location Plot (no top title)
@@ -885,7 +885,7 @@ scale_loc_lm <- lm(sqrt(abs(resid(model))) ~ fitted(model))
 abline(scale_loc_lm, col = "red", lwd = 2)
 coef_scale_loc <- coef(scale_loc_lm)
 text(min(fitted(model)), max(sqrt(abs(resid(model)))) * 0.95,
-     labels = paste0("y = ", round(coef_scale_loc[2], 2), "*x + ", round(coef_scale_loc[1], 2)), 
+     labels = paste0("y = ", round(coef_scale_loc[2], 2), "\u00B7x + ", round(coef_scale_loc[1], 2)), 
      pos = 4, col = "red", cex = 1.2)
 
 
