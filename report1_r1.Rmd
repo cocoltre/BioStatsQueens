@@ -336,9 +336,7 @@ $$ \vspace{-0.3cm}
 
 To test whether the explanatory variables significantly improve the
 model fit compared to the intercept-only model, we conduct an ANOVA
-comparing the null model and the full model.
-
-We test the following hypotheses:
+comparing the following null model and full (alternative) model :
 
 -   **Null Hypothesis ($H_0$)**:\
     $$
