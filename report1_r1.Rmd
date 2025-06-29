@@ -336,16 +336,17 @@ $$ \vspace{-0.3cm}
 
 To test whether the explanatory variables significantly improve the
 model fit compared to the intercept-only model, we conduct an ANOVA
-comparing the null model and the full (alternative) model. In order to do so, we test the following hypothesis :
+comparing the null model and the full (alternative) model. In order to
+do so, we test the following hypothesis :
 
--   **Null Hypothesis ($H_0$)**:\
+-   **Null Hypothesis (**$H_0$):\
     $$
     \beta_1 = \beta_2 = \beta_3 = \beta_4 = \beta_5 = \beta_6 = 0
     $$\
     The hypothesis suggests the explanatory variables do not improve the
     model.
 
--   **Alternative Hypothesis ($H_1$)**:\
+-   **Alternative Hypothesis (**$H_1$):\
     $$
     \text{At least one } \beta_j \neq 0 \quad \text{for } j = 1, \ldots, 6
     $$ The hypothesis suggests at least one explanatory variable
@@ -935,6 +936,22 @@ offers comparable explanatory power and better interpretability.
 
 # Model assumptions and Diagnostics
 
+In order to trust the results of our regression model, we must ensure
+that the residuals satisfy the following assumptions:
+
+1.  The residuals have an expected value (mean) of 0:
+    $\mathbb{E}[\varepsilon_i] = 0$
+2.  The residuals are homoscedastic (have constant variance):
+    $\text{Var}(\varepsilon_i) = \sigma^2$
+3.  The residuals are uncorrelated:
+    $\text{Cov}(\varepsilon_i, \varepsilon_j) = 0$ for $i \neq j$
+4.  The residuals are normally distributed:
+    $\varepsilon_i \sim \mathcal{N}(0, \sigma^2)$
+
+We evaluate these assumptions using residual diagnostic plots.
+
+------------------------------------------------------------------------
+
 ## Independence evaluation
 
 ```{r, fig.width=7.5, fig.height=2.5}
@@ -1004,18 +1021,14 @@ par(mfrow = c(1, 1))
   \end{minipage}
 \end{figure}
 
-The `Residuals VS Fitted Values` plot shows that the residuals are
-randomly scattered around 0, with no clear pattern. This suggests that
-the assumptions of linearity and constant error variance are reasonably
-met. Secondly, the slightly negative but close to zero slope (-0.286) in
-the `Scale-Location` plot indicates that the spread of residuals is
-almost constant across fitted values. This is a sign that our model
-doesn't suffer from heteroscedasticity and is likely a good fit:
-homoscedasticity seems therefore satisfied.
+The `Residuals VS Fitted Values` plot on Figure 6 checks for linearity and constant variance. Ideally, residuals should be symmetrically scattered around zero with no clear pattern or funnel shape. In our case, the residuals are randomly dispersed with no visible trend, and the red regression line is nearly flat (slope = \(-1.05 \times 10^{-16}\)), suggesting that the residuals have approximately zero mean and constant variance. Therefore, assumptions 1 and 2 are satisfied.
 
-The `Residuals VS Observation Order` plot helps us conclude that there
-is no consistent trend: the independence of residuals is verified, as
-they are not correlated with the order of observations.
+The `Residuals VS Observation Order` on Figure 7 is used to detect autocorrelation in the residuals (assumption 3). A patternless distribution across observations indicates independence. The red regression line has a slope of \(-0.0042\), which is close to zero, and residuals appear randomly scattered, suggesting that residuals are **not autocorrelated**. Hence, assumption 3 appears is verified.
+
+Lastly, the `Scale-Location` plot on Figure 8, shows the square root of standardized residuals vs fitted values. A line with constant spread indicates constant variance : although the slope is somewhat negative (\(-0.29\)), the spread remains relatively even. There is no clear increasing or decreasing funnel shape. This is a sign that our model doesn't suffer from heteroscedasticity and is likely a good fit : this supports the homoscedasticity assumption.
+
+In conclusion, based on Figures 6–8, we find that the residuals have a mean close to zero, appear homoscedastic, and show no sign of autocorrelation. Therefore, assumptions 1, 2, and 3 are reasonably satisfied.
+
 
 ```{r save_vif_table, echo=FALSE, message=FALSE, warning=FALSE}
 # Compute VIF
