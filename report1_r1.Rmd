@@ -334,6 +334,27 @@ $$ \vspace{-0.3cm}
 
 ## Null Model vs Full Model Comparison
 
+To test whether the explanatory variables significantly improve the
+model fit compared to the intercept-only model, we conduct an ANOVA
+comparing the null model and the full model.
+
+### Hypotheses
+
+We test the following hypotheses:
+
+-   **Null Hypothesis ($H_0$)**:\
+    $$
+    \beta_1 = \beta_2 = \beta_3 = \beta_4 = \beta_5 = \beta_6 = 0
+    $$\
+    The hypothesis suggests the explanatory variables do not improve the
+    model.
+
+-   **Alternative Hypothesis ($H_1$)**:\
+    $$
+    \text{At least one } \beta_j \neq 0 \quad \text{for } j = 1, \ldots, 6
+    $$ The hypothesis suggests at least one explanatory variable
+    significantly contributes to predicting mortgage yield.
+
 ```{r}
 null_model <- lm(mortYld ~ 1, data = df)
 full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
