@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.25)  8 JUL 2025 15:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.3) (preloaded format=pdflatex 2025.3.25)  8 JUL 2025 18:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -840,14 +840,14 @@ Overfull \hbox (18.76233pt too wide) in paragraph at lines 150--150
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-69.
+71.
 (C:\Users\msgar\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 <figures/Table 1.png, id=3, 594.22pt x 114.4275pt>
 File: figures/Table 1.png Graphic file (type png)
 <use figures/Table 1.png>
-Package pdftex.def Info: figures/Table 1.png  used on input line 201.
+Package pdftex.def Info: figures/Table 1.png  used on input line 203.
 (pdftex.def)             Requested size: 472.03123pt x 90.90132pt.
 
 
@@ -859,20 +859,20 @@ pData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}]
 <figures/Figure 1.png, id=17, 626.34pt x 477.28313pt>
 File: figures/Figure 1.png Graphic file (type png)
 <use figures/Figure 1.png>
-Package pdftex.def Info: figures/Figure 1.png  used on input line 229.
+Package pdftex.def Info: figures/Figure 1.png  used on input line 232.
 (pdftex.def)             Requested size: 233.65517pt x 178.04854pt.
 
-Overfull \hbox (21.24255pt too wide) in paragraph at lines 229--232
+Overfull \hbox (21.24255pt too wide) in paragraph at lines 232--235
  [][] 
  []
 
-<figures/Figure 2.png, id=18, 752.8125pt x 485.815pt>
+<figures/Figure 2.png, id=18, 1505.625pt x 971.63pt>
 File: figures/Figure 2.png Graphic file (type png)
 <use figures/Figure 2.png>
-Package pdftex.def Info: figures/Figure 2.png  used on input line 238.
-(pdftex.def)             Requested size: 259.6186pt x 167.54704pt.
+Package pdftex.def Info: figures/Figure 2.png  used on input line 241.
+(pdftex.def)             Requested size: 259.6186pt x 167.53223pt.
 
-Overfull \hbox (23.603pt too wide) in paragraph at lines 238--240
+Overfull \hbox (23.603pt too wide) in paragraph at lines 241--243
  [][] 
  []
 
@@ -887,7 +887,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [2 <./figures/Table 1.png> <./figures/Figure 1.png> <./figures/Figure 2.png>]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-73.
+76.
 (C:\Users\msgar\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -896,11 +896,17 @@ File: figures/Figure 3.png Graphic file (type png)
 <use figures/Figure 3.png>
 Package pdftex.def Info: figures/Figure 3.png  used on input line 288.
 (pdftex.def)             Requested size: 212.41261pt x 201.98563pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 295--298
-
- []
-
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 291.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 291.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 291.
+<figures/Figure 5.png, id=31, 656.4525pt x 537.00626pt>
+File: figures/Figure 5.png Graphic file (type png)
+<use figures/Figure 5.png>
+Package pdftex.def Info: figures/Figure 5.png  used on input line 322.
+(pdftex.def)             Requested size: 184.09189pt x 150.59015pt.
 
 
 
@@ -911,18 +917,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [3 <./figures/Figure 3.png>]
-<figures/Figure 5.png, id=40, 656.4525pt x 537.00626pt>
-File: figures/Figure 5.png Graphic file (type png)
-<use figures/Figure 5.png>
-Package pdftex.def Info: figures/Figure 5.png  used on input line 328.
-(pdftex.def)             Requested size: 184.09189pt x 150.59015pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 331.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 331.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 331.
-
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -932,49 +926,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [4{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.en
-c}{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc} <
+c}{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C
+:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc} <
 ./figures/Figure 5.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 408--409
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 415--416
-
- []
-
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 425.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[5{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
-c}{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.en
-c}]
-<figures/full_model_summary_table.png, id=66, 329.0694pt x 169.3527pt>
+(Font)              <5> on input line 415.
+<figures/full_model_summary_table.png, id=54, 329.0694pt x 169.3527pt>
 File: figures/full_model_summary_table.png Graphic file (type png)
 <use figures/full_model_summary_table.png>
 Package pdftex.def Info: figures/full_model_summary_table.png  used on input li
-ne 457.
+ne 445.
 (pdftex.def)             Requested size: 198.25224pt x 102.02844pt.
-<figures/stepwise_aic_table.png, id=67, 325.215pt x 144.54pt>
-File: figures/stepwise_aic_table.png Graphic file (type png)
-<use figures/stepwise_aic_table.png>
-Package pdftex.def Info: figures/stepwise_aic_table.png  used on input line 510
-.
-(pdftex.def)             Requested size: 226.57297pt x 100.7009pt.
-<figures/stepwise_coef_table.png, id=68, 327.3831pt x 144.54pt>
-File: figures/stepwise_coef_table.png Graphic file (type png)
-<use figures/stepwise_coef_table.png>
-Package pdftex.def Info: figures/stepwise_coef_table.png  used on input line 52
-2.
-(pdftex.def)             Requested size: 226.57297pt x 100.03264pt.
 
 
 
@@ -984,18 +946,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[6 <./figures/full_model_summary_table.png> <./figures/stepwise_aic_table.png> 
-<./figures/stepwise_coef_table.png>]
-<figures/interaction_model_coef.png, id=79, 326.9013pt x 160.9212pt>
+[5{C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.en
+c} <./figures/full_model_summary_table.png>]
+<figures/stepwise_aic_table.png, id=67, 325.215pt x 130.086pt>
+File: figures/stepwise_aic_table.png Graphic file (type png)
+<use figures/stepwise_aic_table.png>
+Package pdftex.def Info: figures/stepwise_aic_table.png  used on input line 503
+.
+(pdftex.def)             Requested size: 226.57297pt x 90.63081pt.
+<figures/stepwise_coef_table.png, id=68, 327.3831pt x 130.086pt>
+File: figures/stepwise_coef_table.png Graphic file (type png)
+<use figures/stepwise_coef_table.png>
+Package pdftex.def Info: figures/stepwise_coef_table.png  used on input line 51
+5.
+(pdftex.def)             Requested size: 226.57297pt x 90.02937pt.
+<figures/interaction_model_coef.png, id=69, 326.9013pt x 182.6022pt>
 File: figures/interaction_model_coef.png Graphic file (type png)
 <use figures/interaction_model_coef.png>
 Package pdftex.def Info: figures/interaction_model_coef.png  used on input line
- 570.
-(pdftex.def)             Requested size: 295.0195pt x 145.2378pt.
+ 562.
+(pdftex.def)             Requested size: 236.01561pt x 131.83847pt.
 
-Overfull \hbox (59.00389pt too wide) in paragraph at lines 570--573
-[][]
- []
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 
@@ -1006,20 +978,38 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[7 <./figures/interaction_model_coef.png>]
-<report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf, id=90, 542.025pt x 180.6
+[6 <./figures/stepwise_aic_table.png> <./figures/stepwise_coef_table.png> <./fi
+gures/interaction_model_coef.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 593--604
+
+ []
+
+<report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf, id=78, 542.025pt x 180.6
 75pt>
 File: report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type p
 df)
 <use report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf>
 Package pdftex.def Info: report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf  
-used on input line 705.
+used on input line 696.
 (pdftex.def)             Requested size: 542.02367pt x 180.67455pt.
 
-Underfull \hbox (badness 1072) in paragraph at lines 719--719
-[]\T1/lmr/m/n/12 (+20) Figure 8: Scale-Location
- []
+Overfull \vbox (13.08127pt too high) has occurred while \output is active []
 
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[7]
+<figures/vif_table.png, id=95, 108.405pt x 93.951pt>
+File: figures/vif_table.png Graphic file (type png)
+<use figures/vif_table.png>
+Package pdftex.def Info: figures/vif_table.png  used on input line 764.
+(pdftex.def)             Requested size: 104.7906pt x 90.82271pt.
 
 
 
@@ -1030,15 +1020,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [8 <./report1_r1_files/figure-latex/unnamed-chunk-11-1.pdf>]
-<figures/vif_table.png, id=109, 108.405pt x 93.951pt>
-File: figures/vif_table.png Graphic file (type png)
-<use figures/vif_table.png>
-Package pdftex.def Info: figures/vif_table.png  used on input line 773.
-(pdftex.def)             Requested size: 139.71992pt x 121.10555pt.
-<figures/qqplot_residuals.png, id=110, 313.17pt x 313.17pt>
+<figures/qqplot_residuals.png, id=107, 313.17pt x 313.17pt>
 File: figures/qqplot_residuals.png Graphic file (type png)
 <use figures/qqplot_residuals.png>
-Package pdftex.def Info: figures/qqplot_residuals.png  used on input line 799.
+Package pdftex.def Info: figures/qqplot_residuals.png  used on input line 784.
 (pdftex.def)             Requested size: 140.19308pt x 140.19884pt.
 
 
@@ -1065,15 +1050,14 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 17954 strings out of 473523
- 292007 string characters out of 5714630
- 734029 words of memory out of 5000000
- 40588 multiletter control sequences out of 15000+600000
- 654302 words of font info for 218 fonts, out of 8000000 for 9000
+ 17925 strings out of 473523
+ 291644 string characters out of 5714630
+ 739028 words of memory out of 5000000
+ 40584 multiletter control sequences out of 15000+600000
+ 649983 words of font info for 205 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,12n,93p,1201b,474s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
-b><C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
+ 83i,12n,93p,1201b,527s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pf
 b><C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pf
 b><C:/Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi8.pfb
@@ -1086,13 +1070,12 @@ Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/
 Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmro12.pfb><C:/
 Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/
 Users/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/U
-sers/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/U
 sers/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb><C:/U
 sers/msgar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/ms
 bm10.pfb>
-Output written on report1_r1.pdf (10 pages, 1414125 bytes).
+Output written on report1_r1.pdf (10 pages, 1368383 bytes).
 PDF statistics:
- 279 PDF objects out of 1000 (max. 8388607)
- 46 named destinations out of 1000 (max. 500000)
- 53453 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 268 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
+ 51405 words of extra memory for PDF output out of 51595 (max. 10000000)
 
