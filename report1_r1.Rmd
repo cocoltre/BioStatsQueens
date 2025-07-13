@@ -67,11 +67,10 @@ While these differences in Mortgage Yields were decreasing in the early
 20th century, they suprisingly remained stable after World War II. The
 paper explores two main explanations for this phenomenon: differences in investment value due to risk, terms, and liquidity, and market
 imperfections such as legal barriers and information gaps.\
-The data used in this study comes from the Federal Home Loan Bank Board, which contains interest rates and fees in 18 SMSAs (Standard Metropolitan Statistical Areas). The findings suggest that distance from major financial centers, risk levels, and local demand for savings significantly affect Mortgage Yields. However, market structure and overall savings levels play a lesser important role.
+The dataset, provided by the Federal Home Loan Bank Board, includes interest rates and fees in 18 SMSAs (Standard Metropolitan Statistical Areas). Key findings suggest that distance from major financial centers, local risk levels, and savings demand influence Mortgage Yields more than market structure and overall savings levels.
 
 
-The aim of this report is to analyze the data and develop a model to
-predict Mortgage Yield (in %) based on 6 explanatory variables:\
+The aim of this report is to analyze the dataset and build a predictive model for Mortgage Yield (in %) using 6 explanatory variables:\
 - **X1**: Loan-to-Mortgage Ratio, in % → High values indicate low down
 payments.\
 - **X2**: Distance from Boston, in miles → Measures regional proximity
@@ -155,8 +154,7 @@ We begin with a numerical summary of each variable:
 \vspace{-0.5cm}
 
 Through this summary, we already observe that Mortgage Yields
-(\textbf{mortYld}) don’t vary much across regions. Most values are between
-5.2% and 6.2%, suggesting relatively stable Mortgage rates.
+(\textbf{mortYld}) don’t vary much across regions. Most values are between 5.2% and 6.2%, suggesting relatively stable Mortgage rates.
 
 Loan-to-Mortgage Ratios (**X1**) are concentrated in between 67% and
 78.1%. Distance from Boston (**X2**) has a vast range (0–3162 miles),
@@ -212,21 +210,19 @@ The Association Matrix offers a visual overview of pairwise relationships, inclu
 Most plots show random dispersion: some indicate linear or curved trends. **X3** is positively related to **X4**, and negatively to **X5** and **X6**. **X2** and **X3** show a negative exponential relationship.
 \vspace{0.5em}
 \begin{minipage}{0.45\textwidth}
-
 \includegraphics[width=1\linewidth]{figures/Figure 3.png}
-\\
-\small Figure 3: Association Matrix Between Mortgage Yield and Predictor Variables. Displays pairwise correlations, highlighting the strength and direction of relationships between Mortgage Yield and all 6 variables.
+\small Figure 3: Association Matrix Between Mortgage Yield and Predictors. Displays pairwise correlations, highlighting relationship strength and direction between Mortgage Yield and the 6 variables.
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\textwidth}
 \vspace{0pt}
-Now let's examine the relationship between Mortgage Yield (%) and each explanatory variable (x-axis), corresponding to the first row of the Association Matrix.\
+Now let's examine the relationship between Mortgage Yield (\%) and each explanatory variable (x-axis), corresponding to the first row of the Association Matrix.\\
 \textbf{X1} shows a positive correlation: higher Loan-to-Mortgage Ratios are linked to higher yields.
-\textbf{X2} also correlates positively; yields tend to rise with distance from Boston, possibly due to reduced capital access.
-\textbf{X3} is negatively correlated, suggesting that regions investing more savings in new construction face lower Mortgage Yields.
-\textbf{X4} shows weak negative or no clear association with Mortgage Yield.
-\textbf{X5} has a positive, possibly square-root relationship; higher population growth may drive up demand and yields.
-\textbf{X6} shows no consistent trend, suggesting external financing reliance has limited impact on Mortgage Yield.
+\textbf{X2} also correlates positively; yields rise with distance from Boston, likely due to reduced capital access.
+\textbf{X3} is negatively correlated - regions investing more construction savings tend to have lower yields.
+\textbf{X4} shows little to no clear association.
+\textbf{X5} has a mildly positive, possibly non-linear relationship, with higher population growth linked to higher yields.
+\textbf{X6} shows no clear trend, suggesting limited impact of external financing.
 
 \end{minipage}
 \addtocounter{figure}{1}
@@ -262,19 +258,12 @@ This suggests potential multicollinearity. Removing one of the highly correlated
 
 # Model Fitting
 
-In this analysis, all predictors are continuous variables and each
-observation corresponds to a unique SMSA. Since the dataset contains no
-grouping or categorical factors with unequal group sizes, this is a
-standard multiple regression model with one observation per row.
-Therefore, the design is not factorial and does not involve unbalanced
-group structures. As a result, the order of the predictors for the
-linear regression model does not influence the coefficient estimates,
-F-tests, or model interpretation.
+All predictors are continuous, and each observation corresponds to a unique SMSA. With no grouping or unequal group sizes, this is a standard multiple linear regression with one observation per row. The order of predictors does not affect the results.
 
 The multiple linear regression model is defined mathematically as:
 \vspace{-0.2cm} $$
 \text{mortYld}_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 X_{3i} + \beta_4 X_{4i} + \beta_5 X_{5i} + \beta_6 X_{6i} + \varepsilon_i
-$$ where: $\text{mortYld}_i$ is the mortgage yield for the i-th SMSA, $X_{1i}$ to $X_{6i}$ are the explanatory variables, $\beta_0$ is the intercept, $\beta_1$ to $\beta_6$ are the regression coefficients, and  $\varepsilon_i$ is the error term for observation i.
+$$ where: $\text{mortYld}_i$ is the mortgage yield for the i-th SMSA, $X_{1i}$ to $X_{6i}$ are the predictors, $\beta_0$ are coefficients, $\beta_1$ to $\beta_6$ are the regression coefficients, and  $\varepsilon_i$ is the error term.
 
 \vspace{0.2cm}
 
@@ -352,13 +341,10 @@ kable(anova_df,
 
 \vspace{-0.4em}
 
-\noindent \fontsize{12}{14}\selectfont Table 2: ANOVA Comparison Between Null and Full Models. Residual degrees of freedom (Residual_DF) and residual sum of squares (RSS) reflect unexplained variance. The F-test uses numerator and denominator degrees of freedom (DF (num, den)). The sum of squares (SS), F-statistic, and p-value assess whether the full model improves fit. A p-value < 0.05 indicates the full model provides a significantly better fit.
+\noindent \fontsize{12}{14}\selectfont Table 2: ANOVA Comparison between Null and Full Models. It shows Residual degrees of freedom (Residual_DF), residual sum of squares (RSS), the numerator and denominator degrees of freedom (DF (num, den)), the sum of squares (SS), F-statistic, and p-value to assess whether the full model improves fit. A p-value < 0.05 indicates that at least one predictor is relevant.
 
 \vspace{0.2em}
-The ANOVA comparison between the null model (intercept-only) and the
-full model (including all predictors), reveals that the full model
-better explains the Mortgage Yield, as shown by the significant p-value (p \< 0.001). This indicates that at least one
-of the predictors is significantly related to Mortgage Yield.
+The ANOVA test confirms that the full model (with predictors) explains Mortgage Yield significantly better than the null model, as shown by the low p-value (p \< 0.001). This means at least one variable contributes meaningfully to the prediction.
 
 ```{r}
 model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
@@ -439,8 +425,6 @@ invisible(dev.off())
 The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% after adjusting for the number of predictors, which highlights a strong fit. The Residual Standard Error is low, and the overall model is statistically significant, with a very low p-value ($p < 0.001$). Once again, it means that at least one term contributes significantly to explaining the variation in \textbf{mortYld}.
 \end{minipage}
 
-\noindent \vspace{-0.4em}
-
 ```{r}
 model_stats <- glance(model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
 
@@ -466,18 +450,12 @@ kable(model_stats,
       booktabs = TRUE, format = "latex", escape = FALSE) %>%
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 ```
-\vspace{-2em}
 \fontsize{12}{14}\selectfont Table 4: Fit Statistics of Full
-Linear Model. R² shows the proportion of variance explained, Adjusted R²
-accounts for the number of predictors, and Standard Error measures the
-average distance of observed values from the fitted values.
-
-\par
+Linear Model. $R^2$ shows the proportion of variance explained, Adjusted $R^2$ accounts for the number of predictors, and Standard Error measures the average distance of observed values from the fitted values.
 
 \addtocounter{table}{2}
-\vspace{-1pt}
 
-The intercept is highly significant (p < 0.001). Among the predictors, only **X1** and **X3** show weak significance (p ≈ 0.05), while **X2**, **X5**, and **X6** are not individually significant.
+The intercept is highly significant (p < 0.001). Among the predictors, only **X1** and **X3** show weak significance (p $\approx$ 0.05), while **X2**, **X5**, and **X6** are not individually significant.
 We begin by fitting the full model to assess both combined and individual effects. Given the limited contribution of several variables, a reduced model may be more appropriate. We proceed with stepwise regression, using statistical significance and AIC as selection criteria.
 We end up with : $\hat{mortYld}$ = 4.29 + 0.020$\cdot$**X1** +
 1.36$\cdot$$10^{-5}$$\cdot$**X2** - 1.58$\cdot$$10^{-3}$$\cdot$**X3** +
@@ -697,7 +675,6 @@ highly significant (p < 0.001), indicating that at least one of the
 terms has a significant influence on Mortgage Yield.
 \end{minipage}
 
-
 \vspace{2em}
 ```{r}
 interaction_stats <- glance(interaction_model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
@@ -725,11 +702,12 @@ kable(interaction_stats,
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
 ```
-\vspace{-1.6em}
 \begin{center}
+\vspace{-1em}
 {\fontsize{12}{14}\selectfont Table 9: Fit Statistics of 2-way Interaction Model}
 \end{center}
 \addtocounter{table}{2}
+\vspace{0.5em}
 
 None of the variables show statistically significant individual
 contributions: only the intercept appears to be moderately significant
@@ -740,7 +718,7 @@ We end up with : $\hat{mortYld}$ = 5.37 +
 9.10$\cdot$$10^{-4}$$\cdot$**X4** -
 2.09$\cdot$$10^{-5}$$\cdot$**X1**:**X3** +
 1.50$\cdot$$10^{-5}$$\cdot$**X1**:**X4** -
-4.75$\cdot$$10^{-8}$$\cdot$**X3**:**X4**\
+4.75$\cdot$$10^{-8}$$\cdot$**X3**:**X4**
 
 We decided not to include a 3-way Interaction model in our analysis.
 Given the small sample size (18 observations), adding high-order
@@ -810,7 +788,7 @@ kable(model_metrics, digits = 2, escape=FALSE) %>%
 \vspace{-0.6em}
 {\fontsize{12}{14}\selectfont Table 10: Comparison of Model Performance Metrics. RSE (residual standard error) reflects the typical size of prediction errors; lower values indicate better fit.\par}
 \end{center}
-\vspace{-1.2em}
+\vspace{-0.5em}
 
 ```{r}
 # Compare with ANOVA and convert to data frame
@@ -850,7 +828,7 @@ kable(anova_df,
 
 ```
 \begin{center}
-\vspace{-1.5em}
+\vspace{-1em}
 {\fontsize{12}{14}\selectfont Table 11: ANOVA Comparison Between Stepwise and Interaction Models\par}
 \end{center}
 
@@ -995,12 +973,9 @@ ggsave("figures/vif_table.png", vif_table, width = 1.5, height = 1.3, dpi = 300)
 \vspace{-0.5em}
 \begin{minipage}{0.7\textwidth}
 \vspace{0.3cm}
-We assess multicollinearity using the Variance Inflation Factor (VIF). All variables in the final model have VIF values below 5 (see Table 12), indicating that none of the predictors are highly correlated with each other.
-
-Even though variables \(X_3\) and \(X_4\) had a pairwise correlation of 0.77, the VIF values of 4.55 and 3.35 respectively suggest acceptable collinearity. Therefore, these variables still provide enough unique, non-redundant information to justify keeping them in the model.\
-
+Variance Inflation Factors (VIF) for all final model variables are below 5 (see Table 12), suggesting no problematic multicollinearity.
+Though \textbf{X3} and \textbf{X4} have a correlation of 0.77, their VIFs (4.55 and 3.35) are within acceptable limits. Thus, they provide distinct and valuable information.\\
 In conclusion, there is no evidence of problematic multicollinearity, and all explanatory variables contribute distinct information to the model.
-
 \end{minipage}
 \hfill
 \begin{minipage}{0.27\textwidth}
@@ -1012,7 +987,8 @@ In conclusion, there is no evidence of problematic multicollinearity, and all ex
     \captionsetup{font=normalsize}
     \caption*{Table 12: Variance Inflation Factors (VIF).}
   \end{figure}
-  Values > 5: potential multicollinearity. Values > 10: strong multicollinearity.
+  \vspace{-1em}
+  Values \> 5: potential multicollinearity. Values \> 10: strong multicollinearity.
 \end{minipage}
 
 ## Normality Check
@@ -1044,8 +1020,10 @@ dev.off()
 
 \begin{minipage}{0.65\textwidth}
 \justifying
-The \texttt{Q-Q plot of Residuals} checks whether the residuals follow a normal distribution (assumption 4). If residuals are normally distributed, the points should align closely with the 45-degree reference line. 
-In our plot, most points fall near the line, particularly in the center, suggesting that the central portion of the distribution follows a normal pattern. However, several points at both tails deviate from the line (at the lower and upper ends of the theoretical quantiles), indicating potential departures from normality in the extremes: this could reflect outliers or heavy-tailed behavior.
+The \texttt{Q-Q plot} checks if residuals are normally distributed (assumption 4). Most points align with the 45° line, especially in the center, indicating approximate normality.
+Some deviation at the tails suggests potential outliers or heavy tails, but with only 18 observations, this is not a strong concern.\\
+Overall, normality is reasonably satisfied.
+With only 18 observations, such deviations can be expected and are not strong evidence against normality.
 \end{minipage}
 \hfill
 \begin{minipage}{0.33\textwidth}
@@ -1056,24 +1034,21 @@ In our plot, most points fall near the line, particularly in the center, suggest
 \parbox{\linewidth}{\fontsize{12}{14}\selectfont Figure 9: Q-Q Plot of Residuals.}
 \end{minipage}
 \vspace{0.5em}
-With only 18 observations, such deviations can be expected and are not strong evidence against normality.
 In conclusion, the residuals appear to be approximately normally distributed, and assumption 4 is reasonably met.
 
 # Conclusion
-First, with EDA, we observed that the data suggests regional variation in housing finance conditions, credit accessibility, and Mortgage market dynamics.\
-With deeper analysis, the final estimated model is : $\hat{mortYld}$ = 4.22 +
+First, EDA showed regional variation in mortgage yields linked to housing finance, savings, and credit conditions. The final model is:\
+$\hat{mortYld}$ = 4.22 +
 0.022$\cdot$**X1** - 1.86$\cdot$$10^{-3}$$\cdot$**X3** +
 2.25$\cdot$$10^{-4}$$\cdot$**X4**\
-where **X1** is the Loan-to-Mortgage Ratio, **X3** is the Savings per
-New Unit Built, and **X4** is the Savings per Capita.
+With **X1** (Loan-to-Mortgage Ratio), **X3** (Savings per
+New Unit Built), and **X4** (Savings per Capita).
 \
-Overall, our analysis shows that these three variables significantly impact Mortgage Yield. Specifically: Loan-to-Mortgage Ratio (**X1**) has a positive effect, indicating that higher loan amounts relative to mortgage value may lead to better returns for lenders. Savings per New Unit Built (**X3**) has a negative effect, suggesting that more capital saved for construction reduces reliance on mortgages, lowering returns. Savings per Capita (**X4**) has a small positive effect, indicating that higher individual savings may reflect a more financially stable environment, slightly increasing mortgage yields.
+Overall, our analysis shows that higher **X1** increases yield, suggesting greater returns from higher borrowing. Higher **X3** lowers yield, reflecting reduced mortgage reliance. **X4** has a mild positive effect, possibly tied to local financial stability.
 \
 The final stepwise regression model explains approximately 83.4% of the variance in Mortgage Yield, indicating a strong fit. Residual diagnostics suggest that linearity, independence, and homoscedasticity assumptions are generally satisfied, though some minor deviations remain.
 
-Mortgage Yield is primarily driven by financial leverage (Loan-to-Mortgage Ratio) and local savings characteristics (X3 and X4). These insights align with economic theory, where higher borrowing increases lender returns, while abundant local savings reduce mortgage dependency.
-\
-Potential future improvements include exploring additional predictors, testing for non-linear relationships, or applying robust regression techniques to better capture any remaining heteroscedasticity or outlier effects [@wilcox2004robust].
+Mortgage Yield is mainly influenced by financial leverage and local savings levels—consistent with economic theory. Future work could explore more predictors, non-linear trends, or robust regression to address residual issues [@wilcox2004robust].
 \
 In conclusion, the model provides valuable understanding of the factors influencing Mortgage Yield across regions and offers a solid foundation for further predictive or policy analysis.
 
