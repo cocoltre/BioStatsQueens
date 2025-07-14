@@ -68,7 +68,7 @@ While these differences in Mortgage Yields were decreasing in the early
 paper explores two main explanations for this phenomenon: differences in investment value due to risk, terms, and liquidity, and market
 imperfections such as legal barriers and information gaps.\
 The dataset, provided by the Federal Home Loan Bank Board, includes interest rates and fees in 18 SMSAs (Standard Metropolitan Statistical Areas). Key findings suggest that distance from major financial centers, local risk levels, and savings demand influence Mortgage Yields more than market structure and overall savings levels.
-
+\vspace{0.5em}
 
 The aim of this report is to analyze the dataset and build a predictive model for Mortgage Yield (in %) using 6 explanatory variables:\
 - **X1**: Loan-to-Mortgage Ratio, in % → High values indicate low down
@@ -83,7 +83,7 @@ credit demand.\
 demand growth.\
 - **X6**: Percentage of First Mortgages from Inter-Regional Banks, in %
 → Indicator of external financing reliance.
-\vspace{-1em}
+\vspace{-0.5em}
 
 # Exploratory Data Analysis (EDA)
 
@@ -128,15 +128,6 @@ colSums(is.na(df))
 
 ```
 
-<!--
-
-Each SMSA in the dataset is described by its Mortgage Yield as the
-dependent variable, along with six explanatory variables (X1 to X6).
-These variables include financial ratios, regional distances, savings
-indicators, population growth, and bank origination shares. All
-variables are numerical, and a preliminary check confirms there are no
-missing values in any of the observations.
--->
 
 ## Univariate analysis
 
@@ -144,7 +135,7 @@ missing values in any of the observations.
 
 We begin with a numerical summary of each variable:
 
-\vspace{-0.5cm}
+\vspace{-0.2cm}
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/Table 1.png}
@@ -153,8 +144,7 @@ We begin with a numerical summary of each variable:
 \end{figure}
 \vspace{-0.5cm}
 
-Through this summary, we already observe that Mortgage Yields
-(\textbf{mortYld}) don’t vary much across regions. Most values are between 5.2% and 6.2%, suggesting relatively stable Mortgage rates.
+The summary shows limited regional variation in **mortYld**, with most values between 5.2% and 6.2%, indicating relatively stable mortgage rates.
 
 Loan-to-Mortgage Ratios (**X1**) are concentrated in between 67% and
 78.1%. Distance from Boston (**X2**) has a vast range (0–3162 miles),
@@ -246,8 +236,9 @@ This suggests potential multicollinearity. Removing one of the highly correlated
 \end{minipage}
 \hfill
 \begin{minipage}{0.49\textwidth}
+\vspace{-1em}
 \centering
-\includegraphics[width=0.8\linewidth]{figures/Figure 5.png}
+\includegraphics[width=0.82\linewidth]{figures/Figure 5.png}
 \captionsetup{font=small}
 \caption*{Figure 5: Correlation Heatmap of Mortgage Yield and Predictor Variables. red: strong positive, blue: strong negative, white: no correlation.}
 \end{minipage}
@@ -263,7 +254,7 @@ All predictors are continuous, and each observation corresponds to a unique SMSA
 The multiple linear regression model is defined mathematically as:
 \vspace{-0.2cm} $$
 \text{mortYld}_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \beta_3 X_{3i} + \beta_4 X_{4i} + \beta_5 X_{5i} + \beta_6 X_{6i} + \varepsilon_i
-$$ where: $\text{mortYld}_i$ is the mortgage yield for the i-th SMSA, $X_{1i}$ to $X_{6i}$ are the predictors, $\beta_0$ are coefficients, $\beta_1$ to $\beta_6$ are the regression coefficients, and  $\varepsilon_i$ is the error term.
+$$ where $\text{mortYld}_i$ is the mortgage yield for the i-th SMSA, $X_{1i}$ to $X_{6i}$ are the predictors, $\beta_0$ are coefficients, $\beta_1$ to $\beta_6$ are the regression coefficients, and  $\varepsilon_i$ is the error term.
 
 \vspace{0.2cm}
 
@@ -296,6 +287,7 @@ do so, we test the following hypotheses:
 
 -   **Alternative Hypothesis (**$H_1$): $\text{At least one } \beta_j \neq 0 \quad \text{for } j = 1, \ldots, 6$. i.e. at least one explanatory variable significantly contributes to predicting mortgage yield.
 
+\vspace{-1.2em}
 ```{r}
 null_model <- lm(mortYld ~ 1, data = df)
 full_model <- lm(mortYld ~ X1 + X2 + X3 + X4 + X5 + X6, data = df)
@@ -425,6 +417,7 @@ invisible(dev.off())
 The Full model explains $\sim$87\% of the variance in Mortgage Yield, and 80\% after adjusting for the number of predictors, which highlights a strong fit. The Residual Standard Error is low, and the overall model is statistically significant, with a very low p-value ($p < 0.001$). Once again, it means that at least one term contributes significantly to explaining the variation in \textbf{mortYld}.
 \end{minipage}
 
+\vspace{-0.6em}
 ```{r}
 model_stats <- glance(model)[, c("r.squared", "adj.r.squared", "sigma", "statistic", "df", "p.value")]
 
@@ -547,7 +540,7 @@ ggsave("figures/stepwise_coef_table.png", table2, width = 4.53, height = 1.8, dp
 AIC is the Akaike Information Criterion. A lower AIC indicates a better trade-off between model fit and complexity.
 
 \begin{minipage}{0.48\textwidth}
-\vspace{-1.5em}
+\vspace{-1.3em}
 \centering
 \includegraphics[width=\linewidth]{figures/stepwise_aic_table.png}
 \parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 5: Stepwise AIC Process.}
@@ -558,7 +551,7 @@ AIC is the Akaike Information Criterion. A lower AIC indicates a better trade-of
 \centering
 \vspace{-2pt}
 \includegraphics[width=\linewidth]{figures/stepwise_coef_table.png}
-\vspace{-2em}
+\vspace{-2.2em}
 \parbox{\linewidth}{\fontsize{12}{14}\selectfont Table 6: Summary of Final Stepwise Model}
 \end{minipage}
 }
@@ -591,14 +584,15 @@ kable(step_glance,
   kable_styling(font_size = 8, latex_options = "hold_position", position = "center")
 
 ```
-\vspace{-0.5em}
+\vspace{-0.8em}
 \begin{center}
 {\fontsize{12}{14}\selectfont Table 7: Fit Statistics of Stepwise Model\par}
 \end{center}
-\vspace{0.5em}
+\vspace{0.2em}
 
 The Stepwise regression process identifies **X1**, **X3**, and **X4** as the most significant predictors of Mortgage Yield, constituting the
 final model. It is interesting to note that **X4** appears among the 3 most significant predictors although it shows very weak correlation in the Correlation Matrix. Multiple regression measures the effect of each variable while holding all others constant. As **X4** has very strong correlation with **X3** (0.77), holding **X3** can make the unique contribution of **X4** clearer.  
+\vspace{0em}
 
 The final Stepwise model explains approximately 83.4% of the variance in Mortgage Yield using only these three predictors. The AIC doesn’t increase a lot when keeping more predictors, meaning that even if these predictors can still be statistically valid to keep, they are not so useful to the model. Though the final model is simpler, it explains the data just as well or better than more complex models. The RSE (0.09) is low, and the overall model is highly significant (p < 0.001), indicating a good fit.\
 We end up with : $\hat{mortYld}$ = 4.22 + 0.022$\cdot$**X1** -
@@ -662,8 +656,8 @@ invisible(dev.off())
 ```
 
 \begin{minipage}{0.5\textwidth}
-\includegraphics[width=1\linewidth]{figures/interaction_model_coef.png}
-\vspace{-2em}
+\includegraphics[width=0.92\linewidth]{figures/interaction_model_coef.png}
+\vspace{-0.5em}
 \fontsize{12}{12}\selectfont Table 8: Summary of 2-way Interaction Model
 \end{minipage}
 \hfill
@@ -707,7 +701,7 @@ kable(interaction_stats,
 {\fontsize{12}{14}\selectfont Table 9: Fit Statistics of 2-way Interaction Model}
 \end{center}
 \addtocounter{table}{2}
-\vspace{0.5em}
+\vspace{0em}
 
 None of the variables show statistically significant individual
 contributions: only the intercept appears to be moderately significant
@@ -727,14 +721,6 @@ the risk of overfitting. Moreover, 3-way interactions are often
 difficult to interpret meaningfully.
 
 ## Model Comparison
-
-The Stepwise model offers the best trade-off between simplicity and
-performance: it has the lowest AIC (\~29.7), demonstrating the best
-model fit among the three. Despite having a slightly lower R² than the
-Full and 2-ways Interactions model, it achieves the highest Adjusted R².
-It also has the lowest Residual Standard Error (0.09) and the highest
-F-statistic (\~29.5). This confirms the overall model significance and
-parsimony.
 
 ```{r, fig.width=10, fig.height=2}
 # Create comparison table
@@ -785,10 +771,18 @@ kable(model_metrics, digits = 2, escape=FALSE) %>%
 ```
 
 \begin{center}
-\vspace{-0.6em}
+\vspace{-0.4em}
 {\fontsize{12}{14}\selectfont Table 10: Comparison of Model Performance Metrics. RSE (residual standard error) reflects the typical size of prediction errors; lower values indicate better fit.\par}
 \end{center}
 \vspace{-0.5em}
+
+The Stepwise model offers the best trade-off between simplicity and
+performance: it has the lowest AIC (\~29.7), demonstrating the best
+model fit among the three. Despite having a slightly lower R² than the
+Full and 2-ways Interactions model, it achieves the highest Adjusted R².
+It also has the lowest Residual Standard Error (0.09) and the highest
+F-statistic (\~29.5). This confirms the overall model significance and
+parsimony.
 
 ```{r}
 # Compare with ANOVA and convert to data frame
@@ -832,10 +826,7 @@ kable(anova_df,
 {\fontsize{12}{14}\selectfont Table 11: ANOVA Comparison Between Stepwise and Interaction Models\par}
 \end{center}
 
-An ANOVA is then conducted to compare the Stepwise Model and the
-Interaction Model, which are nested — the Interaction Model extends the
-Stepwise Model by including additional two-way interaction terms. The
-test yields an F-statistic of 0.18 and a p-value of 0.91, indicating
+Since the Stepwise Model shows the lowest AIC, we perform an ANOVA to verify whether the added complexity of the Interaction Model provides a significant improvement. The Interaction Model is a nested extension of the Stepwise Model, including additional two-way interaction terms. The test yields an F-statistic of 0.18 and a p-value of 0.91, indicating
 that the additional interaction terms do not significantly reduce the
 residual variance. As a result, the simpler model with only main effects
 (**X1**, **X3**, and **X4**) truly provides the best fit, as it also
@@ -927,7 +918,7 @@ par(mfrow = c(1, 1))
 
 The `Residuals VS Fitted Values` plot checks for linearity and constant variance. Ideally, residuals should be symmetrically scattered around zero with no clear pattern or funnel shape (indicates constant variance). In our case, the residuals are randomly dispersed with no visible trend (randomness suggests independence), and the red regression line is nearly flat (slope = \(-1.05 \times 10^{-16}\)), suggesting that the residuals have approximately zero mean and constant variance. Therefore, assumptions 1 and 2 are satisfied.
 
-The `Residuals VS Observation Order` is used to detect autocorrelation in the residuals (assumption 3). A patternless distribution across observations indicates independence. The red regression line has a slope of \(-0.0042\), which is close to zero, and residuals appear randomly scattered, suggesting that residuals are **not autocorrelated**. Hence, assumption 3 appears is verified.
+The `Residuals VS Observation Order` is used to detect autocorrelation in the residuals (assumption 3). A patternless distribution across observations indicates independence. The red regression line has a slope of \(-0.0042\), which is close to zero, and residuals appear randomly scattered, suggesting that residuals are not autocorrelated. Hence, assumption 3 appears is verified.
 
 Lastly, the `Scale-Location` plot, shows the square root of standardized residuals vs fitted values. A line with constant spread indicates constant variance : although the slope is somewhat negative (\(-0.29\)), the spread remains relatively even. There is no clear increasing or decreasing funnel shape. This is a sign that our model doesn't suffer from heteroscedasticity and is likely a good fit: this supports the homoscedasticity assumption.
 
@@ -967,7 +958,6 @@ ggsave("figures/vif_table.png", vif_table, width = 1.5, height = 1.3, dpi = 300)
 
 ```
 
-
 ## Multicolinearity diagnostic
 
 \vspace{-0.5em}
@@ -979,16 +969,14 @@ In conclusion, there is no evidence of problematic multicollinearity, and all ex
 \end{minipage}
 \hfill
 \begin{minipage}{0.27\textwidth}
-\vspace{-3em}
+\vspace{-3.7em}
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.45\linewidth]{figures/vif_table.png}
+    \includegraphics[width=0.6\linewidth]{figures/vif_table.png}
     \vspace{-0.5em}
     \captionsetup{font=normalsize}
-    \caption*{Table 12: Variance Inflation Factors (VIF).}
+    \caption*{Table 12: Variance Inflation Factors (VIF). Values > 5: potential multicollinearity. Values > 10: strong multicollinearity.}
   \end{figure}
-  \vspace{-1em}
-  Values \> 5: potential multicollinearity. Values \> 10: strong multicollinearity.
 \end{minipage}
 
 ## Normality Check
@@ -1018,7 +1006,7 @@ dev.off()
 
 \noindent
 
-\begin{minipage}{0.65\textwidth}
+\begin{minipage}{0.60\textwidth}
 \justifying
 The \texttt{Q-Q plot} checks if residuals are normally distributed (assumption 4). Most points align with the 45° line, especially in the center, indicating approximate normality.
 Some deviation at the tails suggests potential outliers or heavy tails, but with only 18 observations, this is not a strong concern.\\
@@ -1026,30 +1014,36 @@ Overall, normality is reasonably satisfied.
 With only 18 observations, such deviations can be expected and are not strong evidence against normality.
 \end{minipage}
 \hfill
-\begin{minipage}{0.33\textwidth}
+\begin{minipage}{0.38\textwidth}
 \centering
-\vspace{-2em}  % Reduce space before image
-\includegraphics[width=0.9\linewidth]{figures/qqplot_residuals.png}
-\vspace{-1em}
+\vspace{-2.5em}  % Reduce space before image
+\includegraphics[width=0.7\linewidth]{figures/qqplot_residuals.png}
+\vspace{-1.6em}
 \parbox{\linewidth}{\fontsize{12}{14}\selectfont Figure 9: Q-Q Plot of Residuals.}
 \end{minipage}
 \vspace{0.5em}
 In conclusion, the residuals appear to be approximately normally distributed, and assumption 4 is reasonably met.
 
 # Conclusion
-First, EDA showed regional variation in mortgage yields linked to housing finance, savings, and credit conditions. The final model is:\
-$\hat{mortYld}$ = 4.22 +
+First, EDA revealed regional variation in mortgage yields linked to housing finance, savings, and credit conditions.
+Assuming linear regression conditions, we compared the Null and Full models; the Full model showed a significantly better fit.
+Stepwise regression identified **X1**, **X3**, and **X4** as key predictors.
+We then tested a two-way Interaction model between these variables.
+Among the three models, the Stepwise model had the lowest AIC.
+An ANOVA confirmed that the Stepwise model (as a reduced version of the Interaction model) remains statistically more significant.\
+The final model is thus: $\hat{mortYld}$ = 4.22 +
 0.022$\cdot$**X1** - 1.86$\cdot$$10^{-3}$$\cdot$**X3** +
-2.25$\cdot$$10^{-4}$$\cdot$**X4**\
-With **X1** (Loan-to-Mortgage Ratio), **X3** (Savings per
-New Unit Built), and **X4** (Savings per Capita).
-\
-Overall, our analysis shows that higher **X1** increases yield, suggesting greater returns from higher borrowing. Higher **X3** lowers yield, reflecting reduced mortgage reliance. **X4** has a mild positive effect, possibly tied to local financial stability.
-\
+2.25$\cdot$$10^{-4}$$\cdot$**X4**,\
+with **X1**: Loan-to-Mortgage Ratio, **X3**: Savings per
+New Unit Built, and **X4**: Savings per Capita.
+\vspace{0.5em}
+
+Overall, our analysis shows that higher **X1** increases yield, suggesting greater returns from higher borrowing. Higher **X3** lowers yield, reflecting reduced mortgage reliance. **X4** has a mild positive effect, possibly tied to local financial stability.\
 The final stepwise regression model explains approximately 83.4% of the variance in Mortgage Yield, indicating a strong fit. Residual diagnostics suggest that linearity, independence, and homoscedasticity assumptions are generally satisfied, though some minor deviations remain.
 
-Mortgage Yield is mainly influenced by financial leverage and local savings levels—consistent with economic theory. Future work could explore more predictors, non-linear trends, or robust regression to address residual issues [@wilcox2004robust].
-\
+Mortgage Yield is thus mainly influenced by financial leverage and local savings levels, consistent with economic theory. Future work could explore more predictors, non-linear trends, or robust regression to address residual issues [@wilcox2004robust].
+\vspace{0.5em}
+
 In conclusion, the model provides valuable understanding of the factors influencing Mortgage Yield across regions and offers a solid foundation for further predictive or policy analysis.
 
 # References
