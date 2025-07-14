@@ -811,9 +811,12 @@ anova_df$`Df` <- as.integer(anova_df$`Df`)
 anova_df$`Res.Df` <- as.integer(anova_df$`Res.Df`)
 anova_df$Model <- c("Stepwise model", "Interaction model")
 
-# Réorganiser les colonnes
-anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "Df", "Sum.of.Sq", "F", "Pr..F.")]
-colnames(anova_df) <- c("Model", "Residual_DF", "RSS", "DF", "SS", "F-statistic", "p-value")
+# Create F-statistic DF column (num, den)
+anova_df$`F DF` <- c(NA, paste0(anova_df$Df[2], ",", anova_df$Res.Df[2]))
+
+# Reorganise columns WITHOUT the old 'Df' column
+anova_df <- anova_df[, c("Model", "Res.Df", "RSS", "F DF", "Sum.of.Sq", "F", "Pr..F.")]
+colnames(anova_df) <- c("Model", "Residual_DF", "RSS", "DF (num,den)", "SS", "F-statistic", "p-value")
 
 # Affichage avec kable
 kable(anova_df,
